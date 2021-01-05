@@ -1115,6 +1115,29 @@ PrefabInstance:
       propertyPath: enemySpawnLocation
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6796177598991306343, guid: e3ce98c44d5c04af6bf10da74e8771ab,
+        type: 3}
+      propertyPath: enemiesPrefabs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6796177598991306343, guid: e3ce98c44d5c04af6bf10da74e8771ab,
+        type: 3}
+      propertyPath: enemiesPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 4400181753530937205, guid: 7128d3a66e7d546a99e7eb2e39cddb4c,
+        type: 3}
+    - target: {fileID: 6796177598991306343, guid: e3ce98c44d5c04af6bf10da74e8771ab,
+        type: 3}
+      propertyPath: enemiesPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 3441147811784953779, guid: 06b3ce9f7f449457194374a28a16fe0d,
+        type: 3}
+    - target: {fileID: 6796177598991306343, guid: e3ce98c44d5c04af6bf10da74e8771ab,
+        type: 3}
+      propertyPath: enemiesPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 4591145555347698221, guid: 51802c9db3e2841bab56cc0899681a7f,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3ce98c44d5c04af6bf10da74e8771ab, type: 3}
 --- !u!4 &776764766 stripped
@@ -1856,6 +1879,29 @@ PrefabInstance:
       propertyPath: minWaitBeforeSpawn
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 6796177598991306343, guid: e3ce98c44d5c04af6bf10da74e8771ab,
+        type: 3}
+      propertyPath: enemiesPrefabs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6796177598991306343, guid: e3ce98c44d5c04af6bf10da74e8771ab,
+        type: 3}
+      propertyPath: enemiesPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 4400181753530937205, guid: 7128d3a66e7d546a99e7eb2e39cddb4c,
+        type: 3}
+    - target: {fileID: 6796177598991306343, guid: e3ce98c44d5c04af6bf10da74e8771ab,
+        type: 3}
+      propertyPath: enemiesPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 3441147811784953779, guid: 06b3ce9f7f449457194374a28a16fe0d,
+        type: 3}
+    - target: {fileID: 6796177598991306343, guid: e3ce98c44d5c04af6bf10da74e8771ab,
+        type: 3}
+      propertyPath: enemiesPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 4591145555347698221, guid: 51802c9db3e2841bab56cc0899681a7f,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3ce98c44d5c04af6bf10da74e8771ab, type: 3}
 --- !u!1 &1790427570
@@ -2244,6 +2290,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpawnLeft
       objectReference: {fileID: 0}
+    - target: {fileID: 6796177598991306343, guid: e3ce98c44d5c04af6bf10da74e8771ab,
+        type: 3}
+      propertyPath: enemiesPrefabs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6796177598991306343, guid: e3ce98c44d5c04af6bf10da74e8771ab,
+        type: 3}
+      propertyPath: enemiesPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 4400181753530937205, guid: 7128d3a66e7d546a99e7eb2e39cddb4c,
+        type: 3}
+    - target: {fileID: 6796177598991306343, guid: e3ce98c44d5c04af6bf10da74e8771ab,
+        type: 3}
+      propertyPath: enemiesPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 3441147811784953779, guid: 06b3ce9f7f449457194374a28a16fe0d,
+        type: 3}
+    - target: {fileID: 6796177598991306343, guid: e3ce98c44d5c04af6bf10da74e8771ab,
+        type: 3}
+      propertyPath: enemiesPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 4591145555347698221, guid: 51802c9db3e2841bab56cc0899681a7f,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3ce98c44d5c04af6bf10da74e8771ab, type: 3}
 --- !u!1001 &8154112012533592189
