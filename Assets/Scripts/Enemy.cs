@@ -15,7 +15,8 @@ public class Enemy : MonoBehaviour
     public float waitBeforeEscape;
     private bool _escapeEnabled;
     private EscapeDirection _escapeDirection;
-    
+    public EnterDirection _enterDirection;
+
     public float enemySpeed;
     public float enemyEscapingSpeed;
  
@@ -35,7 +36,14 @@ public class Enemy : MonoBehaviour
     private enum EscapeDirection
     {
         Left,
-        Up,
+        Top,
+        Right
+    }
+    
+    public enum EnterDirection
+    {
+        Left,
+        Top,
         Right
     }
  
@@ -130,7 +138,7 @@ public class Enemy : MonoBehaviour
         {
             transform.Translate(Vector3.right * enemyEscapingSpeed * Time.deltaTime);
 
-        } else if (_escapeDirection == EscapeDirection.Up)
+        } else if (_escapeDirection == EscapeDirection.Top)
         {
             transform.Translate(Vector3.up * enemyEscapingSpeed * Time.deltaTime);
         }
@@ -176,7 +184,17 @@ public class Enemy : MonoBehaviour
 
     private void StandbyMoving()
     {
-        transform.position = Vector3.MoveTowards(transform.position, new Vector3(_rightBound, transform.position.y, transform.position.z), enemySpeed * Time.deltaTime);
+        if (_enterDirection == EnterDirection.Left)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(_rightBound, transform.position.y, transform.position.z), enemySpeed * Time.deltaTime);
+        } else if (_enterDirection == EnterDirection.Top)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, _bottomBound, transform.position.z), enemySpeed * Time.deltaTime);
+
+        } else if (_enterDirection == EnterDirection.Right)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(_leftBound, transform.position.y, transform.position.z), enemySpeed * Time.deltaTime);
+        }
     }
 
     private void EnableCustomMoving()
