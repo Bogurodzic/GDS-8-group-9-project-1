@@ -224,6 +224,7 @@ public class Enemy : MonoBehaviour
         {
             Destroy(gameObject);
             Destroy(collision.gameObject);
+            GameManager.Instance.AddPoints(1);
         }
 
     }

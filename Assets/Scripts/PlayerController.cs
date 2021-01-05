@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -301,6 +302,14 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(gameObject);
             Destroy(collision.gameObject);
+            GameManager.Instance.ResetScore();
+            SceneManager.LoadScene("SampleScene");
+        }
+
+        if (collision.gameObject.CompareTag("Platform"))
+        {
+            GameManager.Instance.ResetScore();
+            SceneManager.LoadScene("SampleScene");
         }
 
     }
