@@ -293,5 +293,16 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+    
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        if (collision.gameObject.CompareTag("EnemyProjectile"))
+        {
+            Destroy(gameObject);
+            Destroy(collision.gameObject);
+        }
+
+    }
 
 }
