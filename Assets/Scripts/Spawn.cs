@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Spawn : MonoBehaviour
 {
-    public GameObject enemyPrefab;
+    public GameObject[] enemiesPrefabs;
     
     private GameObject _enemyArea;
     private BoxCollider2D _enemyAreaBoxCollider;
@@ -69,10 +69,11 @@ public class Spawn : MonoBehaviour
     {
         int enemyQuantity = GenerateEnemyQuantity();
         _enemiesSpawnPosition = GenerateNewPosition();
+        GameObject enemyToSpawn = GetRandomEnemyToSpawn();
 
         for (int i = 0; i < enemyQuantity; i++)
         {
-            GameObject enemy = Instantiate(enemyPrefab, new Vector3((_leftBound - 2) - (i * 1), _enemiesSpawnPosition.y, _enemiesSpawnPosition.z), enemyPrefab.transform.rotation);
+            GameObject enemy = Instantiate(enemyToSpawn, new Vector3((_leftBound - 2) - (i * 1), _enemiesSpawnPosition.y, _enemiesSpawnPosition.z), enemyToSpawn.transform.rotation);
             enemy.GetComponent<Enemy>()._enterDirection = Enemy.EnterDirection.Left;
         }       
         
@@ -83,10 +84,11 @@ public class Spawn : MonoBehaviour
     {
         int enemyQuantity = GenerateEnemyQuantity();
         _enemiesSpawnPosition = GenerateNewPosition();
+        GameObject enemyToSpawn = GetRandomEnemyToSpawn();
 
         for (int i = 0; i < enemyQuantity; i++)
         {
-            GameObject enemy = Instantiate(enemyPrefab, new Vector3(( _enemiesSpawnPosition.x - 2) - (i * 1), _topBound + 2, _enemiesSpawnPosition.z), enemyPrefab.transform.rotation);
+            GameObject enemy = Instantiate(enemyToSpawn, new Vector3(( _enemiesSpawnPosition.x - 2) - (i * 1), _topBound + 2, _enemiesSpawnPosition.z), enemyToSpawn.transform.rotation);
             enemy.GetComponent<Enemy>()._enterDirection = Enemy.EnterDirection.Top;
         }       
         
@@ -97,14 +99,20 @@ public class Spawn : MonoBehaviour
     {
         int enemyQuantity = GenerateEnemyQuantity();
         _enemiesSpawnPosition = GenerateNewPosition();
+        GameObject enemyToSpawn = GetRandomEnemyToSpawn();
 
         for (int i = 0; i < enemyQuantity; i++)
         {
-            GameObject enemy = Instantiate(enemyPrefab, new Vector3(( _rightBound + 2) - (i * 1),  _enemiesSpawnPosition.y, _enemiesSpawnPosition.z), enemyPrefab.transform.rotation);
+            GameObject enemy = Instantiate(enemyToSpawn, new Vector3(( _rightBound + 2) - (i * 1),  _enemiesSpawnPosition.y, _enemiesSpawnPosition.z), enemyToSpawn.transform.rotation);
             enemy.GetComponent<Enemy>()._enterDirection = Enemy.EnterDirection.Right;
         }       
         
         _isEnemySpawning = false;  
+    }
+
+    private GameObject GetRandomEnemyToSpawn()
+    {
+        return enemiesPrefabs[new System.Random().Next(enemiesPrefabs.Length)];
     }
 
     private int GenerateEnemyQuantity()
