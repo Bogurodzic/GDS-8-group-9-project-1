@@ -15,6 +15,9 @@ public class GameManager : GenericSingletonClass<GameManager>
     private PlayerSpeed _playerSpeed = PlayerSpeed.Normal;
     private Boolean _gameRunning = true;
 
+    private int _currentScore = 0;
+    private int _highScore = 0;
+
     public void StopGame()
     {
         this._gameRunning = false;
@@ -42,5 +45,34 @@ public class GameManager : GenericSingletonClass<GameManager>
     public void SetFastPlayerSpeed()
     {
         this._playerSpeed = PlayerSpeed.Fast;
+    }
+
+    public void AddPoints(int points)
+    {
+        _currentScore += points;
+        RefreshHighScore();
+    }
+
+    private void RefreshHighScore()
+    {
+        if (_currentScore > _highScore)
+        {
+            _highScore = _currentScore;
+        } 
+    }
+
+    public int GetCurrentScore()
+    {
+        return _currentScore;
+    }
+
+    public int GetHighScore()
+    {
+        return _highScore;
+    }
+
+    public void ResetScore()
+    {
+        _currentScore = 0;
     }
 }

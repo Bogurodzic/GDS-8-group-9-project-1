@@ -15,7 +15,8 @@ public class Enemy : MonoBehaviour
     public float waitBeforeEscape;
     private bool _escapeEnabled;
     private EscapeDirection _escapeDirection;
-    
+    public EnterDirection _enterDirection;
+
     public float enemySpeed;
     public float enemyEscapingSpeed;
  
@@ -23,6 +24,7 @@ public class Enemy : MonoBehaviour
 
     private GameObject _enemyArea;
     private BoxCollider2D _enemyAreaBoxCollider;
+    private Bounds _bounds;
 
     private float _leftBound;
     private float _rightBound;
@@ -35,7 +37,14 @@ public class Enemy : MonoBehaviour
     private enum EscapeDirection
     {
         Left,
-        Up,
+        Top,
+        Right
+    }
+    
+    public enum EnterDirection
+    {
+        Left,
+        Top,
         Right
     }
  
@@ -46,22 +55,47 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        _enemyArea = GameObject.FindGameObjectsWithTag("EnemyArea")[0];
-        _enemyAreaBoxCollider = _enemyArea.GetComponent<BoxCollider2D>();
+        LoadComponents();
         CalculateEnemyAreaBounds();
-        Invoke("EnableCustomMoving", 3);
         Invoke(methodName:"EnableEscaping", waitBeforeEscape);
     }
-    
-    
- 
+
     void Update()
     {
         HandleSpawningBomb();
         HandleMovingEnemy();
+    }
+    
+    private void LoadComponents()
+    {
+        _enemyArea = GameObject.FindGameObjectsWithTag("EnemyArea")[0];
+        _enemyAreaBoxCollider = _enemyArea.GetComponent<BoxCollider2D>();
+        _bounds = _enemyAreaBoxCollider.bounds;
+    }
+    
+    private void CalculateEnemyAreaBounds()
+    {
+        _leftBound = _bounds.min.x;
+        _rightBound =  _bounds.max.x;
+        _topBound = _bounds.max.y;
+        _bottomBound = _bounds.min.y;
 
     }
+    
+    private void EnableEscaping()
+    {
+        GenerateEscapeDirection();
+        _escapeEnabled = true;
+    }
 
+    private void GenerateEscapeDirection()
+    {
+        Array values = Enum.GetValues(typeof(EscapeDirection));
+        Random random = new Random();
+        EscapeDirection randomDirection = (EscapeDirection)values.GetValue(random.Next(values.Length));
+        _escapeDirection = randomDirection;
+    }
+    
     private void HandleSpawningBomb()
     {
         if (!_isBombSpawning)
@@ -77,30 +111,7 @@ public class Enemy : MonoBehaviour
         Instantiate(bomb, transform.position, transform.rotation);
         _isBombSpawning = false;
     }
-
-    private void CalculateEnemyAreaBounds()
-    {
-        _leftBound = _enemyAreaBoxCollider.bounds.min.x;
-        _rightBound =  _enemyAreaBoxCollider.bounds.max.x;
-        _topBound = _enemyAreaBoxCollider.bounds.max.y;
-        _bottomBound = _enemyAreaBoxCollider.bounds.min.y;
-
-    }
-
-    private float GenerateNewXPosition()
-    {
-        return UnityEngine.Random.Range(_leftBound, _rightBound);
-    }
-
-    private float GenerateNewYPosition()
-    {
-        return UnityEngine.Random.Range(_topBound, _bottomBound);
-    }
-
-    private Vector3 GenerateNewPosition()
-    {
-        return new Vector3(GenerateNewXPosition(), GenerateNewYPosition(), 0);
-    }
+    
 
     private void HandleMovingEnemy()
     {
@@ -130,7 +141,7 @@ public class Enemy : MonoBehaviour
         {
             transform.Translate(Vector3.right * enemyEscapingSpeed * Time.deltaTime);
 
-        } else if (_escapeDirection == EscapeDirection.Up)
+        } else if (_escapeDirection == EscapeDirection.Top)
         {
             transform.Translate(Vector3.up * enemyEscapingSpeed * Time.deltaTime);
         }
@@ -173,32 +184,91 @@ public class Enemy : MonoBehaviour
         _targetPosition = GenerateNewPosition();
         _isTargetPositionReached = false;
     }
+    
+    private Vector3 GenerateNewPosition()
+    {
+        return new Vector3(GenerateNewXPosition(), GenerateNewYPosition(), 0);
+    }
+    
+    private float GenerateNewXPosition()
+    {
+        return UnityEngine.Random.Range(_leftBound, _rightBound);
+    }
+
+    private float GenerateNewYPosition()
+    {
+        return UnityEngine.Random.Range(_topBound, _bottomBound);
+    }
 
     private void StandbyMoving()
+    {
+        if (_enterDirection == EnterDirection.Left)
+        {
+            if (EnemyReachedLeftSide())
+            {
+                EnableCustomMoving();
+            }
+            else
+            {
+                MoveTowardsLeftSide();
+            }
+        } else if (_enterDirection == EnterDirection.Top)
+        {
+            if (EnemyReachedTopSide())
+            {
+                EnableCustomMoving();
+            }
+            else
+            {
+                MoveTowardsTopSide();
+            }
+        } else if (_enterDirection == EnterDirection.Right)
+        {
+            if (EnemyReachedRightSide())
+            {
+                EnableCustomMoving();
+            }
+            else
+            {
+                MoveTowardsRightSide();
+            }
+        }
+    }
+
+    private bool EnemyReachedLeftSide()
+    {
+        return transform.position.x >= _bounds.center.x - (_bounds.extents.x * 0.7);
+    }
+
+    private bool EnemyReachedTopSide()
+    {
+        return transform.position.y <= _bounds.center.y + (_bounds.extents.y * 0.7);
+    }
+
+    private bool EnemyReachedRightSide()
+    {
+        return transform.position.x <= _bounds.center.x + (_bounds.extents.x * 0.7);
+    }
+
+    private void MoveTowardsLeftSide()
     {
         transform.position = Vector3.MoveTowards(transform.position, new Vector3(_rightBound, transform.position.y, transform.position.z), enemySpeed * Time.deltaTime);
     }
 
+    private void MoveTowardsTopSide()
+    {
+        transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, _bottomBound, transform.position.z), enemySpeed * Time.deltaTime);
+    }
+    
+    private void MoveTowardsRightSide()
+    {
+        transform.position = Vector3.MoveTowards(transform.position, new Vector3(_leftBound, transform.position.y, transform.position.z), enemySpeed * Time.deltaTime);
+    }
     private void EnableCustomMoving()
     {
         _customMovingEnabled = true;
     }
 
-    private void EnableEscaping()
-    {
-        GenerateEscapeDirection();
-        _escapeEnabled = true;
-    }
-
-    private void GenerateEscapeDirection()
-    {
-        Array values = Enum.GetValues(typeof(EscapeDirection));
-        Random random = new Random();
-        EscapeDirection randomDirection = (EscapeDirection)values.GetValue(random.Next(values.Length));
-        _escapeDirection = randomDirection;
-    }
-    
-    
     void OnTriggerEnter2D(Collider2D collision)
     {
 
@@ -206,6 +276,7 @@ public class Enemy : MonoBehaviour
         {
             Destroy(gameObject);
             Destroy(collision.gameObject);
+            GameManager.Instance.AddPoints(1);
         }
 
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Spawn : MonoBehaviour
 {
-    public GameObject enemyPrefab;
+    public GameObject[] enemiesPrefabs;
     
     private GameObject _enemyArea;
     private BoxCollider2D _enemyAreaBoxCollider;
@@ -15,43 +15,109 @@ public class Spawn : MonoBehaviour
     private float _bottomBound;
     private Vector3 _enemiesSpawnPosition;
 
+    public float firstSpawnTime;
     public float minWaitBeforeSpawn;
     public float maxWaitBeforeSpwan;
     private bool _isEnemySpawning = false;
+
+    public SpawnLocation enemySpawnLocation;
+
+    public enum SpawnLocation
+    {
+        Left,
+        Top,
+        Right
+    }
     void Start()
     {
         _enemyArea = GameObject.FindGameObjectsWithTag("EnemyArea")[0];
         _enemyAreaBoxCollider = _enemyArea.GetComponent<BoxCollider2D>();
         CalculateEnemyAreaBounds();
-        SpawnEnemy();
+        HandleSpawningEnemy(firstSpawnTime, firstSpawnTime);
     }
 
     void Update()
     {
-        HandleSpawningEnemy();
+        HandleSpawningEnemy(minWaitBeforeSpawn, maxWaitBeforeSpwan);
     }
     
-    private void HandleSpawningEnemy()
+    private void HandleSpawningEnemy(float minTime, float maxTime)
     {
         if (!_isEnemySpawning)
         {
-            float timer = UnityEngine.Random.Range(minWaitBeforeSpawn, maxWaitBeforeSpwan);
-            Invoke("SpawnEnemy", timer);
+            float timer = UnityEngine.Random.Range(minTime, maxTime);
+            Invoke("SpawnEnemyOnItsPosition", timer);
             _isEnemySpawning = true;
         }  
     }
  
-    void SpawnEnemy()
+    void SpawnEnemyOnItsPosition()
     {
-        int enemyQuantity = Random.Range(2, 5);
+        if (enemySpawnLocation == SpawnLocation.Left)
+        {
+            SpawnEnemyOnLeft();
+        } else if (enemySpawnLocation == SpawnLocation.Top)
+        {
+            SpawnEnemyOnTop();
+        } else if (enemySpawnLocation == SpawnLocation.Right)
+        {
+            SpawnEnemyOnRight();
+        }
+    }
+
+    private void SpawnEnemyOnLeft()
+    {
+        int enemyQuantity = GenerateEnemyQuantity();
         _enemiesSpawnPosition = GenerateNewPosition();
+        GameObject enemyToSpawn = GetRandomEnemyToSpawn();
 
         for (int i = 0; i < enemyQuantity; i++)
         {
-            Instantiate(enemyPrefab, new Vector3((_leftBound - 2) - (i * 1), _enemiesSpawnPosition.y, _enemiesSpawnPosition.z), enemyPrefab.transform.rotation);
+            GameObject enemy = Instantiate(enemyToSpawn, new Vector3((_leftBound - 2) - (i * 1), _enemiesSpawnPosition.y, _enemiesSpawnPosition.z), enemyToSpawn.transform.rotation);
+            enemy.GetComponent<Enemy>()._enterDirection = Enemy.EnterDirection.Left;
         }       
         
-        _isEnemySpawning = false;
+        _isEnemySpawning = false;  
+    }
+
+    private void SpawnEnemyOnTop()
+    {
+        int enemyQuantity = GenerateEnemyQuantity();
+        _enemiesSpawnPosition = GenerateNewPosition();
+        GameObject enemyToSpawn = GetRandomEnemyToSpawn();
+
+        for (int i = 0; i < enemyQuantity; i++)
+        {
+            GameObject enemy = Instantiate(enemyToSpawn, new Vector3(( _enemiesSpawnPosition.x - 2) - (i * 1), _topBound + 2, _enemiesSpawnPosition.z), enemyToSpawn.transform.rotation);
+            enemy.GetComponent<Enemy>()._enterDirection = Enemy.EnterDirection.Top;
+        }       
+        
+        _isEnemySpawning = false; 
+    }
+
+    private void SpawnEnemyOnRight()
+    {
+        int enemyQuantity = GenerateEnemyQuantity();
+        _enemiesSpawnPosition = GenerateNewPosition();
+        GameObject enemyToSpawn = GetRandomEnemyToSpawn();
+
+        for (int i = 0; i < enemyQuantity; i++)
+        {
+            GameObject enemy = Instantiate(enemyToSpawn, new Vector3(( _rightBound + 2) - (i * 1),  _enemiesSpawnPosition.y, _enemiesSpawnPosition.z), enemyToSpawn.transform.rotation);
+            enemy.GetComponent<Enemy>()._enterDirection = Enemy.EnterDirection.Right;
+        }       
+        
+        _isEnemySpawning = false;  
+    }
+
+    private GameObject GetRandomEnemyToSpawn()
+    {
+        return enemiesPrefabs[new System.Random().Next(enemiesPrefabs.Length)];
+    }
+
+    private int GenerateEnemyQuantity()
+    {
+        return Random.Range(2, 5);
     }
     
     private void CalculateEnemyAreaBounds()
