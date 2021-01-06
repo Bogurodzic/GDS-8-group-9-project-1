@@ -13,18 +13,50 @@ public class DestroyOutOfBounds : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Enemy enemy = GetComponent<Enemy>();
+        
         if (transform.position.x < -35)
         {
-            Destroy(gameObject);
+            if (enemy)
+            {
+                enemy.Destroy();
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         } else if (transform.position.y > 10)
         {
-            Destroy(gameObject);
+            if (enemy)
+            {
+                enemy.Destroy();
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         } else if (transform.position.x > 15)
         {
-            Destroy(gameObject);
+            if (enemy)
+            {
+                enemy.Destroy();
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+            
         } else if (transform.position.y < -10)
         {
-            Destroy(gameObject);
+            if (enemy)
+            {
+                enemy.Destroy();
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+            
         }
     }
 }

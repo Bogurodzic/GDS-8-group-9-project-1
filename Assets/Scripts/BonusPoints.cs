@@ -59,7 +59,21 @@ public class BonusPoints : MonoBehaviour
                 break;
         } 
     }
-    
+
+    public void RemoveStack(string enemyStackID)
+    {
+        EnemyStackStatus statusToRemove = null;
+        
+        foreach (EnemyStackStatus status in _enemyStackStatuses)
+        {
+            if (status.EnemyStackID == enemyStackID)
+            {
+                statusToRemove = status;
+            }
+        }
+
+        _enemyStackStatuses.Remove(statusToRemove);
+    }
 
     
 }

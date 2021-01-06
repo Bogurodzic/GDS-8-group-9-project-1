@@ -284,9 +284,10 @@ public class Enemy : MonoBehaviour
     public void Destroy()
     {
         Destroy(gameObject);
-        GameObject.Find("SpawnManager").GetComponent<BonusPoints>();
-
+        GameObject.Find("SpawnManager").GetComponent<BonusPoints>().RemoveStack(_enemyStackID);
     }
+    
+    
 
     public void SetEnemyStackID(string id)
     {
