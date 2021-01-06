@@ -7,6 +7,8 @@ using Random = System.Random;
 public class Enemy : MonoBehaviour
 {
 
+    public int pointsForKill;
+
     public GameObject bomb;
     
     public float minWaitBeforeBombDrop;
@@ -33,6 +35,8 @@ public class Enemy : MonoBehaviour
     private Vector3 _targetPosition;
     private bool _isTargetPositionReached = true;
     private bool _customMovingEnabled = false;
+
+    private string _enemyStackID;
 
     private enum EscapeDirection
     {
@@ -269,14 +273,34 @@ public class Enemy : MonoBehaviour
         _customMovingEnabled = true;
     }
 
+    public void Kill()
+    {
+        Destroy(gameObject);
+        GameManager.Instance.AddPoints(pointsForKill);
+        GameObject.Find("SpawnManager").GetComponent<BonusPoints>().DecreaseStackByOne(_enemyStackID);
+
+    }
+
+    public void Destroy()
+    {
+        Destroy(gameObject);
+        GameObject.Find("SpawnManager").GetComponent<BonusPoints>();
+
+    }
+
+    public void SetEnemyStackID(string id)
+    {
+        _enemyStackID = id;
+    }
+    
+
     void OnTriggerEnter2D(Collider2D collision)
     {
 
         if (collision.gameObject.CompareTag("Projectile"))
         {
-            Destroy(gameObject);
             Destroy(collision.gameObject);
-            GameManager.Instance.AddPoints(1);
+            Kill();
         }
 
     }

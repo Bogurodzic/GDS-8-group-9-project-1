@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
+using System.Runtime.InteropServices;
 
 public class Spawn : MonoBehaviour
 {
@@ -70,11 +72,13 @@ public class Spawn : MonoBehaviour
         int enemyQuantity = GenerateEnemyQuantity();
         _enemiesSpawnPosition = GenerateNewPosition();
         GameObject enemyToSpawn = GetRandomEnemyToSpawn();
+        string enemyStackID = Get8CharacterRandomString();
 
         for (int i = 0; i < enemyQuantity; i++)
         {
             GameObject enemy = Instantiate(enemyToSpawn, new Vector3((_leftBound - 2) - (i * 1), _enemiesSpawnPosition.y, _enemiesSpawnPosition.z), enemyToSpawn.transform.rotation);
             enemy.GetComponent<Enemy>()._enterDirection = Enemy.EnterDirection.Left;
+            enemy.GetComponent<Enemy>().SetEnemyStackID(enemyStackID);
         }       
         
         _isEnemySpawning = false;  
@@ -85,11 +89,15 @@ public class Spawn : MonoBehaviour
         int enemyQuantity = GenerateEnemyQuantity();
         _enemiesSpawnPosition = GenerateNewPosition();
         GameObject enemyToSpawn = GetRandomEnemyToSpawn();
-
+        string enemyStackID = Get8CharacterRandomString();
+        GameObject.Find("SpawnManager").GetComponent<BonusPoints>().AddStack(enemyStackID, enemyQuantity);
+        
         for (int i = 0; i < enemyQuantity; i++)
         {
             GameObject enemy = Instantiate(enemyToSpawn, new Vector3(( _enemiesSpawnPosition.x - 2) - (i * 1), _topBound + 2, _enemiesSpawnPosition.z), enemyToSpawn.transform.rotation);
             enemy.GetComponent<Enemy>()._enterDirection = Enemy.EnterDirection.Top;
+            enemy.GetComponent<Enemy>().SetEnemyStackID(enemyStackID);
+
         }       
         
         _isEnemySpawning = false; 
@@ -100,11 +108,14 @@ public class Spawn : MonoBehaviour
         int enemyQuantity = GenerateEnemyQuantity();
         _enemiesSpawnPosition = GenerateNewPosition();
         GameObject enemyToSpawn = GetRandomEnemyToSpawn();
+        string enemyStackID = Get8CharacterRandomString();
 
         for (int i = 0; i < enemyQuantity; i++)
         {
             GameObject enemy = Instantiate(enemyToSpawn, new Vector3(( _rightBound + 2) - (i * 1),  _enemiesSpawnPosition.y, _enemiesSpawnPosition.z), enemyToSpawn.transform.rotation);
             enemy.GetComponent<Enemy>()._enterDirection = Enemy.EnterDirection.Right;
+            enemy.GetComponent<Enemy>().SetEnemyStackID(enemyStackID);
+
         }       
         
         _isEnemySpawning = false;  
@@ -114,10 +125,17 @@ public class Spawn : MonoBehaviour
     {
         return enemiesPrefabs[new System.Random().Next(enemiesPrefabs.Length)];
     }
+    
+    private string Get8CharacterRandomString()
+    {
+        string path = Path.GetRandomFileName();
+        path = path.Replace(".", ""); // Remove period.
+        return path.Substring(0, 8);  // Return 8 character string
+    }
 
     private int GenerateEnemyQuantity()
     {
-        return Random.Range(2, 5);
+        return Random.Range(3, 5);
     }
     
     private void CalculateEnemyAreaBounds()

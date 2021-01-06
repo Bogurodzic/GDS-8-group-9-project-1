@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9608da40f4324ef0b8d3913a5c46ebc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointsForKill: 70
   bomb: {fileID: 3089171882319742166, guid: 8114e9c5192a9473eaca83078c29451e, type: 3}
   minWaitBeforeBombDrop: 2
   maxWaitBeforeBombDrop: 8
