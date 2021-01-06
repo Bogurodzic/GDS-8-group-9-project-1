@@ -31,23 +31,33 @@ public class BonusPoints : MonoBehaviour
             if (status.EnemyStackID == enemyStackID)
             {
                 status.DecreaseByOne();
-                if (status.Quantity == 0)
-                {
-                    switch (status.InitialQuantity)
-                    {
-                        case 3:
-                            GameManager.Instance.AddPoints(bonusPointFor3Stack);
-                            break;
-                        case 4:
-                            GameManager.Instance.AddPoints(bonusPointFor4Stack);
-                            break;
-                        case 5:
-                            GameManager.Instance.AddPoints(bonusPointFor5Stack);
-                            break;
-                    }
-                }
+                CheckIfStackIsEligibleForBonusPoints(status);
             }
         }
+    }
+
+    private void CheckIfStackIsEligibleForBonusPoints(EnemyStackStatus status)
+    {
+        if (status.Quantity == 0)
+        {
+            AddBonusPointsAccordingToStackSize(status.InitialQuantity);
+        }
+    }
+
+    private void AddBonusPointsAccordingToStackSize(int stackSize)
+    {
+        switch (stackSize)
+        {
+            case 3:
+                GameManager.Instance.AddPoints(bonusPointFor3Stack);
+                break;
+            case 4:
+                GameManager.Instance.AddPoints(bonusPointFor4Stack);
+                break;
+            case 5:
+                GameManager.Instance.AddPoints(bonusPointFor5Stack);
+                break;
+        } 
     }
     
 
