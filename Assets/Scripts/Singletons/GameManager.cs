@@ -18,6 +18,9 @@ public class GameManager : GenericSingletonClass<GameManager>
     private int _currentScore = 0;
     private int _highScore = 0;
 
+    private int _maxBombAmonut = 2;
+    private int _currentBombAmount = 0;
+
     public void StopGame()
     {
         this._gameRunning = false;
@@ -74,5 +77,23 @@ public class GameManager : GenericSingletonClass<GameManager>
     public void ResetScore()
     {
         _currentScore = 0;
+    }
+
+    public void BombDeployed()
+    {
+        _currentBombAmount += 1;
+    }
+
+    public bool CanBombBeSpawned()
+    {
+        return _currentBombAmount < _maxBombAmonut;
+    }
+
+    public void BombDestroyed()
+    {
+        if (_currentBombAmount > 0)
+        {
+            _currentBombAmount -= 1;
+        }
     }
 }

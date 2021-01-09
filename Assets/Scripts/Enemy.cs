@@ -107,7 +107,7 @@ public class Enemy : MonoBehaviour
     private void CalculateEnemyAreaBounds()
     {
         _leftBound = _bounds.min.x;
-        _rightBound =  _bounds.max.x;
+        _rightBound =  _bounds.center.x;
         _topBound = _bounds.max.y;
         _bottomBound = _bounds.min.y;
 
@@ -139,10 +139,27 @@ public class Enemy : MonoBehaviour
  
     void SpawnBomb()
     {
-        _enemyAnimation.animation.Stop();
-        _enemyAnimation.animation.Play("Enemy_Shot", 1);
-        Instantiate(bomb, transform.position, transform.rotation);
+        if (GameManager.Instance.CanBombBeSpawned())
+        {
+            _enemyAnimation.animation.Stop();
+            _enemyAnimation.animation.Play("Enemy_Shot", 1);
+            GameObject enemy = Instantiate(bomb, transform.position, transform.rotation);   
+            
+            enemy.SendMessage("StartObject", GetBombDirection());
+        }
         _isBombSpawning = false;
+    }
+
+    private Bomb.BombDirection GetBombDirection()
+    {
+        if (transform.position.x < _targetPosition.x)
+        {
+            return Bomb.BombDirection.Left;
+        }
+        else
+        {
+            return Bomb.BombDirection.Right;
+        }
     }
     
 

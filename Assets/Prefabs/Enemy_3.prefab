@@ -49,11 +49,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointsForKill: 70
   bomb: {fileID: 3089171882319742166, guid: 8114e9c5192a9473eaca83078c29451e, type: 3}
-  minWaitBeforeBombDrop: 2
-  maxWaitBeforeBombDrop: 8
+  minWaitBeforeBombDrop: 6
+  maxWaitBeforeBombDrop: 16
   waitBeforeEscape: 16
   _enterDirection: 0
-  enemySpeed: 1
+  enemySpeed: 1.5
   enemyEscapingSpeed: 3
 --- !u!212 &7436365726843752990
 SpriteRenderer:
