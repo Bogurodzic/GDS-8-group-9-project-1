@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using DragonBones;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -36,6 +37,9 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D playerRigidBody;
     
+    private UnityArmatureComponent _playerAnimation;
+    private bool _accelerationAnimationPlayed = false;
+    
     private enum JumpKind
     {
         Backward,
@@ -68,6 +72,7 @@ public class PlayerController : MonoBehaviour
     private void LoadComponents()  
     {
         playerRigidBody = GetComponent<Rigidbody2D>();
+        _playerAnimation = GetComponent<UnityArmatureComponent>();
     }
 
     private void SetInitialVariables()
@@ -120,7 +125,9 @@ public class PlayerController : MonoBehaviour
     {
         if (ShouldPlayerAccelerate())
         {
+
             Accelerate();
+            PlayAccelerateAnimation();
             _jumpKind = JumpKind.Forward;
         }  else if (ShouldPlayerSlowDown())
         {
@@ -304,6 +311,7 @@ public class PlayerController : MonoBehaviour
             Destroy(collision.gameObject);
             GameManager.Instance.ResetScore();
             SceneManager.LoadScene("SampleScene");
+
         }
 
         if (collision.gameObject.CompareTag("Platform"))
@@ -312,6 +320,22 @@ public class PlayerController : MonoBehaviour
             SceneManager.LoadScene("SampleScene");
         }
 
+    }
+
+    private void PlayAccelerateAnimation()
+    {
+        if (!_accelerationAnimationPlayed)
+        {
+            _playerAnimation.animation.Play("drive_acceleration", 1);
+            _accelerationAnimationPlayed = true;
+        }
+        else
+        {
+            if (_playerAnimation.animation.isCompleted)
+            {
+                _playerAnimation.animation.Play("drive_fast", 1);
+            }
+        }
     }
 
 }
