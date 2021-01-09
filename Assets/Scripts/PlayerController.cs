@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
     
     private UnityArmatureComponent _playerAnimation;
     private bool _accelerationAnimationPlayed = false;
+    private bool _decelerationAnimationPlayed = false;
     
     private enum JumpKind
     {
@@ -127,7 +128,6 @@ public class PlayerController : MonoBehaviour
         {
 
             Accelerate();
-            PlayAccelerateAnimation();
             _jumpKind = JumpKind.Forward;
         }  else if (ShouldPlayerSlowDown())
         {
@@ -136,7 +136,13 @@ public class PlayerController : MonoBehaviour
 
         } else if (ShouldPlayerMaintainSpeed())
         {
-
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                PlayAccelerateAnimation();
+            } else if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                PlayDecelerationAnimation();
+            }
         }
         else
         {
@@ -147,6 +153,7 @@ public class PlayerController : MonoBehaviour
 
     private void Accelerate()
     {
+        PlayAccelerateAnimation();
         transform.Translate(Vector3.right * playerAccelerationSpeed * Time.deltaTime);
         
         
@@ -157,6 +164,7 @@ public class PlayerController : MonoBehaviour
 
     private void SlowDown()
     {
+        PlayDecelerationAnimation();
         transform.Translate(Vector3.left * playerSlowDownSpeed * Time.deltaTime);
         //playerRigidBody.AddForce(Vector3.left * playerAccelerationSpeed);
         GameManager.Instance.SetSlowPlayerSpeed();  
@@ -241,6 +249,7 @@ public class PlayerController : MonoBehaviour
         {
             GameManager.Instance.SetNormalPlayerSpeed();
             _jumpKind = JumpKind.Normal;
+            PlayIdleAnimation();
         }
     }
 
@@ -324,17 +333,46 @@ public class PlayerController : MonoBehaviour
 
     private void PlayAccelerateAnimation()
     {
-        if (!_accelerationAnimationPlayed)
+        if (!_playerAnimation.animation.isPlaying || _playerAnimation.animation.isCompleted)
         {
-            _playerAnimation.animation.Play("drive_acceleration", 1);
-            _accelerationAnimationPlayed = true;
-        }
-        else
-        {
-            if (_playerAnimation.animation.isCompleted)
+            _decelerationAnimationPlayed = false;
+            if (!_accelerationAnimationPlayed)
+            {
+                _playerAnimation.animation.Play("drive_acceleration", 1);
+                _accelerationAnimationPlayed = true;
+            }
+            else
             {
                 _playerAnimation.animation.Play("drive_fast", 1);
+            }        
+        }
+    }
+
+    private void PlayDecelerationAnimation()
+    {
+        if (!_playerAnimation.animation.isPlaying || _playerAnimation.animation.isCompleted)
+        {
+            _accelerationAnimationPlayed = false;
+            if (!_decelerationAnimationPlayed)
+            {
+                _playerAnimation.animation.Play("drive_deceleration", 1);
+                _decelerationAnimationPlayed = true;
             }
+            else
+            {
+                _playerAnimation.animation.Play("drive_idle", 1);
+            
+            }          
+        }
+    }
+
+    private void PlayIdleAnimation()
+    {
+        if (!_playerAnimation.animation.isPlaying || _playerAnimation.animation.isCompleted)
+        {
+            _accelerationAnimationPlayed = false;
+            _decelerationAnimationPlayed = false;
+            _playerAnimation.animation.Play("drive_idle", 1);
         }
     }
 
