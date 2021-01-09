@@ -44,10 +44,16 @@ public class PlayerController : MonoBehaviour
 
 
     private Rigidbody2D playerRigidBody;
+
+    private bool _playerDeathInitialized = false;
+    private bool _playerDeathReached = false;
+    private float _deathZoneXPosition;
     
     private UnityArmatureComponent _playerAnimation;
     private bool _accelerationAnimationPlayed = false;
     private bool _decelerationAnimationPlayed = false;
+    private bool _deathAnimationPlayed = false;
+
     
     private enum JumpKind
     {
@@ -61,7 +67,9 @@ public class PlayerController : MonoBehaviour
     {
         Idle,
         Acceleration,
-        Deceleration
+        Deceleration,
+        Death,
+        None
     }
     
     void Start()
@@ -72,10 +80,34 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        HanldeShooting();
-        HandleJump();
-        HandleMovement();
-        Animate();
+        if (GameManager.Instance.IsGameRunning())
+        {
+            HanldeShooting();
+            HandleJump();
+            HandleMovement();
+            Animate();
+        } else if (!GameManager.Instance.IsGameRunning())
+        {
+            if (_playerDeathInitialized && !_playerDeathReached)
+            {
+                if (transform.position.x < _deathZoneXPosition)
+                {
+                    transform.Translate(Vector3.right * (playerAccelerationSpeed * 0.7f) * Time.deltaTime);
+                } else if (transform.position.x > _deathZoneXPosition)
+                {
+                    _playerDeathInitialized = true;
+                    transform.Translate(Vector3.left * (playerAccelerationSpeed * 0.7f) * Time.deltaTime);
+                }
+            } else if (_playerDeathReached)
+            {
+                Animate();
+                if (AnimationReadyToPlay())
+                {
+                    HandlePostDeath();
+                }
+            }
+        }
+
     }
     
     private void LoadComponents()  
@@ -172,7 +204,6 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            Debug.Log("NORMALIZATION");
             HandleNormalizeSpeed();
         }        
         
@@ -370,12 +401,12 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-    
+
     void OnTriggerEnter2D(Collider2D collision)
     {
 
         if (collision.gameObject.CompareTag("EnemyProjectile"))
-        {
+        { 
             Destroy(gameObject);
             Destroy(collision.gameObject);
             GameManager.Instance.ResetScore();
@@ -385,10 +416,33 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Platform"))
         {
-            GameManager.Instance.ResetScore();
-            SceneManager.LoadScene("SampleScene");
+
+            HandlePreDeath(collision);
+
         }
 
+    }
+
+    private void HandlePreDeath(Collider2D collision)
+    {
+        SwitchAnimation(PlayerAnimation.None);
+        _deathZoneXPosition = collision.bounds.center.x;
+        GameManager.Instance.StopGame();
+        _playerDeathInitialized = true;
+        Invoke("ReachPlayerDeath", 0.55f);
+    }
+
+    private void ReachPlayerDeath()
+    {
+        _playerDeathReached = true;
+        SwitchAnimation(PlayerAnimation.Death);
+        Debug.Log("PLAYER DEATH REACHED");
+    }
+
+    private void HandlePostDeath()
+    {
+        GameManager.Instance.ResetScore();
+        SceneManager.LoadScene("SampleScene");
     }
 
     private void PlayAccelerateAnimation()
@@ -441,6 +495,17 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void PlayDeathAnimation()
+    {
+        if (!_deathAnimationPlayed)
+        {
+            _deathAnimationPlayed = true;
+            _playerAnimation.animation.Stop();
+            _playerAnimation.animation.Play("Death_Player", 1);  
+        }
+
+    }
+
     private bool AnimationReadyToPlay()
     {
         return !_playerAnimation.animation.isPlaying || _playerAnimation.animation.isCompleted;
@@ -463,6 +528,10 @@ public class PlayerController : MonoBehaviour
                 break;
             case PlayerAnimation.Idle:
                 PlayIdleAnimation();
+                break;
+            case PlayerAnimation.Death:
+                Debug.Log("DEATH ANIMATION PLAYED");
+                PlayDeathAnimation();
                 break;
         }
     }
