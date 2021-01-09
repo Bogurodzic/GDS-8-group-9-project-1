@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using DragonBones;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -36,6 +37,10 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D playerRigidBody;
     
+    private UnityArmatureComponent _playerAnimation;
+    private bool _accelerationAnimationPlayed = false;
+    private bool _decelerationAnimationPlayed = false;
+    
     private enum JumpKind
     {
         Backward,
@@ -53,34 +58,60 @@ public class PlayerController : MonoBehaviour
     {
         HanldeShooting();
         HandleJump();
-
-        if (!AnimateJump())
-        {
-            HandleMovement();
-        }
-        else
-        {
-            HandleAnimatingJump();
-        }
-
+        HandleMovement();
     }
     
     private void LoadComponents()  
     {
         playerRigidBody = GetComponent<Rigidbody2D>();
+        _playerAnimation = GetComponent<UnityArmatureComponent>();
     }
 
     private void SetInitialVariables()
     {
         _playerInitialPosition = transform.position.x;
     }
-
-    private bool AnimateJump()
+    
+    private bool IsPlayerAboveGround()
     {
         return _isJumping;
     }
+    
+    private void HandleJump()
+    {
+        if (ShouldPlayerJump())
+        {
+            HandleJumpMotionOnGround();
+        }
 
-    private void HandleAnimatingJump()
+        if (IsPlayerAboveGround())
+        {
+            HandleJumpMotionAboveGround();
+        }
+    }
+
+    private void HandleJumpMotionOnGround()
+    {
+        playerRigidBody.freezeRotation = true;
+        _jumpReady = false;
+        _isJumping = true;
+            
+        if (IsBackJump())
+        {
+            _jumpKind = JumpKind.Backward;
+            playerRigidBody.AddForce(Vector3.up * (jumpHeight * 0.75f) , ForceMode2D.Impulse);
+        } else if (IsNormalJump())
+        {
+            _jumpKind = JumpKind.Normal;
+            playerRigidBody.AddForce(Vector3.up * (jumpHeight * 0.95f) , ForceMode2D.Impulse); 
+        } else if (IsBigJump())
+        {
+            _jumpKind = JumpKind.Forward;
+            playerRigidBody.AddForce(Vector3.up * (jumpHeight * 1.1f) , ForceMode2D.Impulse);             
+        }
+    }
+    
+    private void HandleJumpMotionAboveGround()
     {
         if (_jumpKind == JumpKind.Backward && ShouldPlayerSlowDown(true))
         {
@@ -88,70 +119,58 @@ public class PlayerController : MonoBehaviour
         } else if (_jumpKind == JumpKind.Forward && ShouldPlayerAccelerate(true))
         {
             Accelerate();
-        } 
-    }
-
-    private void HandleJump()
-    {
-        if (ShouldPlayerJump())
+        }
+        else
         {
-            playerRigidBody.freezeRotation = true;
-            _jumpReady = false;
-            _isJumping = true;
-            
-            if (IsBackJump())
-            {
-                _jumpKind = JumpKind.Backward;
-                playerRigidBody.AddForce(Vector3.up * (jumpHeight * 0.75f) , ForceMode2D.Impulse);
-            } else if (IsNormalJump())
-            {
-                _jumpKind = JumpKind.Normal;
-                playerRigidBody.AddForce(Vector3.up * (jumpHeight * 0.95f) , ForceMode2D.Impulse); 
-            } else if (IsBigJump())
-            {
-                _jumpKind = JumpKind.Forward;
-                playerRigidBody.AddForce(Vector3.up * (jumpHeight * 1.1f) , ForceMode2D.Impulse);             
-            }
-
+            PlayIdleAnimation();
         }
     }
 
     private void HandleMovement()
     {
-        if (ShouldPlayerAccelerate())
-        {
-            Accelerate();
-            _jumpKind = JumpKind.Forward;
-        }  else if (ShouldPlayerSlowDown())
-        {
-            SlowDown();
-            _jumpKind = JumpKind.Backward;
 
-        } else if (ShouldPlayerMaintainSpeed())
+        if (!IsPlayerAboveGround())
         {
+            if (ShouldPlayerAccelerate())
+            {
 
+                Accelerate();
+                _jumpKind = JumpKind.Forward;
+            }  else if (ShouldPlayerSlowDown())
+            {
+                SlowDown();
+                _jumpKind = JumpKind.Backward;
+
+            } else if (ShouldPlayerMaintainSpeed())
+            {
+                if (Input.GetKey(KeyCode.RightArrow))
+                {
+                    PlayAccelerateAnimation();
+                } else if (Input.GetKey(KeyCode.LeftArrow))
+                {
+                    PlayDecelerationAnimation();
+                }
+            }
+            else
+            {
+                NormalizeSpeed();
+            }        
         }
-        else
-        {
-            NormalizeSpeed();
-        }
+
 
     }
 
     private void Accelerate()
     {
+        PlayAccelerateAnimation();
         transform.Translate(Vector3.right * playerAccelerationSpeed * Time.deltaTime);
-        
-        
-        //playerRigidBody.AddForce(Vector3.right * playerAccelerationSpeed);
-
         GameManager.Instance.SetFastPlayerSpeed(); 
     }
 
     private void SlowDown()
     {
+        PlayDecelerationAnimation();
         transform.Translate(Vector3.left * playerSlowDownSpeed * Time.deltaTime);
-        //playerRigidBody.AddForce(Vector3.left * playerAccelerationSpeed);
         GameManager.Instance.SetSlowPlayerSpeed();  
     }
 
@@ -234,6 +253,7 @@ public class PlayerController : MonoBehaviour
         {
             GameManager.Instance.SetNormalPlayerSpeed();
             _jumpKind = JumpKind.Normal;
+            PlayIdleAnimation();
         }
     }
 
@@ -304,6 +324,7 @@ public class PlayerController : MonoBehaviour
             Destroy(collision.gameObject);
             GameManager.Instance.ResetScore();
             SceneManager.LoadScene("SampleScene");
+
         }
 
         if (collision.gameObject.CompareTag("Platform"))
@@ -312,6 +333,51 @@ public class PlayerController : MonoBehaviour
             SceneManager.LoadScene("SampleScene");
         }
 
+    }
+
+    private void PlayAccelerateAnimation()
+    {
+        if (!_playerAnimation.animation.isPlaying || _playerAnimation.animation.isCompleted)
+        {
+            _decelerationAnimationPlayed = false;
+            if (!_accelerationAnimationPlayed)
+            {
+                _playerAnimation.animation.Play("drive_acceleration",  1);
+                _accelerationAnimationPlayed = true;
+            }
+            else
+            {
+                _playerAnimation.animation.Play("drive_fast", 1);
+            }        
+        }
+    }
+
+    private void PlayDecelerationAnimation()
+    {
+        if (!_playerAnimation.animation.isPlaying || _playerAnimation.animation.isCompleted)
+        {
+            _accelerationAnimationPlayed = false;
+            if (!_decelerationAnimationPlayed)
+            {
+                _playerAnimation.animation.Play("drive_deceleration", 1);
+                _decelerationAnimationPlayed = true;
+            }
+            else
+            {
+                _playerAnimation.animation.Play("drive_idle", 1);
+            
+            }          
+        }
+    }
+
+    private void PlayIdleAnimation()
+    {
+        if (!_playerAnimation.animation.isPlaying || _playerAnimation.animation.isCompleted)
+        {
+            _accelerationAnimationPlayed = false;
+            _decelerationAnimationPlayed = false;
+            _playerAnimation.animation.Play("drive_idle", 1);
+        }
     }
 
 }

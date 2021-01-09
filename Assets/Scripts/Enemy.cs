@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using DragonBones;
 using UnityEngine;
 using Random = System.Random;
 
@@ -26,6 +27,7 @@ public class Enemy : MonoBehaviour
 
     private GameObject _enemyArea;
     private BoxCollider2D _enemyAreaBoxCollider;
+    private BoxCollider2D _enemyBoxCollider;
     private Bounds _bounds;
 
     private float _leftBound;
@@ -38,6 +40,10 @@ public class Enemy : MonoBehaviour
 
     private string _enemyStackID;
 
+    private UnityArmatureComponent _enemyAnimation;
+
+    private EnemyStatus _enemyStatus = EnemyStatus.Alive;
+    
     private enum EscapeDirection
     {
         Left,
@@ -50,6 +56,14 @@ public class Enemy : MonoBehaviour
         Left,
         Top,
         Right
+    }
+
+    public enum EnemyStatus
+    {
+        Alive,
+        Dying,
+        Destroyed,
+        Killed
     }
  
     void Awake()
@@ -67,7 +81,18 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         HandleSpawningBomb();
-        HandleMovingEnemy();
+        
+        if (_enemyStatus == EnemyStatus.Alive)
+        {
+            HandleMovingEnemy();
+        } else if (_enemyStatus == EnemyStatus.Dying)
+        {
+            if (_enemyAnimation.animation.isCompleted)
+            {
+                _enemyStatus = EnemyStatus.Killed;
+                Kill();
+            }
+        }
     }
     
     private void LoadComponents()
@@ -75,6 +100,8 @@ public class Enemy : MonoBehaviour
         _enemyArea = GameObject.FindGameObjectsWithTag("EnemyArea")[0];
         _enemyAreaBoxCollider = _enemyArea.GetComponent<BoxCollider2D>();
         _bounds = _enemyAreaBoxCollider.bounds;
+        _enemyAnimation = GetComponent<UnityArmatureComponent>();
+        _enemyBoxCollider = GetComponent<BoxCollider2D>();
     }
     
     private void CalculateEnemyAreaBounds()
@@ -112,6 +139,8 @@ public class Enemy : MonoBehaviour
  
     void SpawnBomb()
     {
+        _enemyAnimation.animation.Stop();
+        _enemyAnimation.animation.Play("Enemy_Shot", 1);
         Instantiate(bomb, transform.position, transform.rotation);
         _isBombSpawning = false;
     }
@@ -119,6 +148,10 @@ public class Enemy : MonoBehaviour
 
     private void HandleMovingEnemy()
     {
+        if (_enemyAnimation.animation.isCompleted)
+        {
+            _enemyAnimation.animation.Play("Enemy_Fly", 1);
+        }
         
         if (_escapeEnabled)
         {
@@ -273,12 +306,30 @@ public class Enemy : MonoBehaviour
         _customMovingEnabled = true;
     }
 
+
+    private void HandleCollisionWithProjectile(Collider2D collision)
+    {
+        _enemyBoxCollider.enabled = false;
+        _enemyStatus = EnemyStatus.Dying;
+        Destroy(collision.gameObject);
+        PlayDeathAnimation();
+    }
+    
     public void Kill()
     {
         Destroy(gameObject);
+        AddPointsForKill();
+    }
+
+    private void PlayDeathAnimation()
+    {
+        _enemyAnimation.animation.Play("Enemy_Death", 1);
+    }
+
+    private void AddPointsForKill()
+    {
         GameManager.Instance.AddPoints(pointsForKill);
         GameObject.Find("SpawnManager").GetComponent<BonusPoints>().DecreaseStackByOne(_enemyStackID);
-
     }
 
     public void Destroy()
@@ -300,8 +351,7 @@ public class Enemy : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Projectile"))
         {
-            Destroy(collision.gameObject);
-            Kill();
+            HandleCollisionWithProjectile(collision);
         }
 
     }
