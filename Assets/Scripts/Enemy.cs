@@ -139,6 +139,8 @@ public class Enemy : MonoBehaviour
  
     void SpawnBomb()
     {
+        _enemyAnimation.animation.Stop();
+        _enemyAnimation.animation.Play("Enemy_Shot", 1);
         Instantiate(bomb, transform.position, transform.rotation);
         _isBombSpawning = false;
     }
@@ -146,6 +148,10 @@ public class Enemy : MonoBehaviour
 
     private void HandleMovingEnemy()
     {
+        if (_enemyAnimation.animation.isCompleted)
+        {
+            _enemyAnimation.animation.Play("Enemy_Fly", 1);
+        }
         
         if (_escapeEnabled)
         {
