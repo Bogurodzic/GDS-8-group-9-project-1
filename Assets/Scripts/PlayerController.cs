@@ -94,7 +94,11 @@ public class PlayerController : MonoBehaviour
         } else if (_jumpKind == JumpKind.Forward && ShouldPlayerAccelerate(true))
         {
             Accelerate();
-        } 
+        }
+        else
+        {
+            PlayIdleAnimation();
+        }
     }
 
     private void HandleJump()
