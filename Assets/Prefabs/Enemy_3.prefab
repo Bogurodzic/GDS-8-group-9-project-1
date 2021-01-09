@@ -53,7 +53,7 @@ MonoBehaviour:
   maxWaitBeforeBombDrop: 16
   waitBeforeEscape: 16
   _enterDirection: 0
-  enemySpeed: 1
+  enemySpeed: 1.5
   enemyEscapingSpeed: 3
 --- !u!212 &7436365726843752990
 SpriteRenderer:
