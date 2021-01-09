@@ -807,13 +807,13 @@ MonoBehaviour:
   playerSlowDownSpeed: 1.2
   maxPlayerDistanceLeftDirection: 1
   maxPlayerDistanceRightDirection: 2.2
-  jumpHeight: 6
+  jumpHeight: 5.5
   backwardJumpHorizontalForce: -0.4
   backwardJumpHeightFactor: 0.55
   normalJumpHorizontalForce: 0
   normalJumpHeightFactor: 0.9
-  forwardJumpHorizontalForce: 0.55
-  forwardJumpHeightFactor: 1
+  forwardJumpHorizontalForce: 0.6
+  forwardJumpHeightFactor: 0.95
   horizontalProjectile: {fileID: 4839127419380771314, guid: 73cccc26a24bf437e9df71ecb1747553,
     type: 3}
   verticalProjectile: {fileID: 3004442331666695499, guid: f2f4fe44e1fb348c291c7d33756414f8,

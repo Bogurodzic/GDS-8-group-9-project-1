@@ -96,6 +96,9 @@ public class PlayerController : MonoBehaviour
         if (ShouldPlayerJump())
         {
             HandleJumpMotionOnGround();
+        } else if (IsPlayerAboveGround())
+        {
+            HandleConstraints();
         }
     }
 
@@ -266,6 +269,17 @@ public class PlayerController : MonoBehaviour
             _jumpKind = JumpKind.Normal;
             SwitchAnimation(PlayerAnimation.Idle);
 
+        }
+    }
+
+    private void HandleConstraints()
+    {
+        if ( transform.position.x <= _playerInitialPosition - maxPlayerDistanceLeftDirection)
+        {
+            playerRigidBody.velocity = new Vector2(0, playerRigidBody.velocity.y);
+        } else if (transform.position.x >= _playerInitialPosition + maxPlayerDistanceRightDirection)
+        {
+            playerRigidBody.velocity = new Vector2(0, playerRigidBody.velocity.y);
         }
     }
 
