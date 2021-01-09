@@ -342,7 +342,7 @@ public class PlayerController : MonoBehaviour
             _decelerationAnimationPlayed = false;
             if (!_accelerationAnimationPlayed)
             {
-                _playerAnimation.animation.Play("drive_acceleration", 1);
+                _playerAnimation.animation.Play("drive_acceleration",  1);
                 _accelerationAnimationPlayed = true;
             }
             else
