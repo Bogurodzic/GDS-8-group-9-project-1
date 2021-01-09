@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
 
         if (IsPlayerAboveGround())
         {
-            HandleJumpMotionAboveGround();
+            //HandleJumpMotionAboveGround();
         }
     }
 
@@ -95,19 +95,35 @@ public class PlayerController : MonoBehaviour
         playerRigidBody.freezeRotation = true;
         _jumpReady = false;
         _isJumping = true;
+
+
+        float backwardJumpHorizontalForce = -0.4f;
+        float backwardJumpHeightFactor = 0.55f;
+        
+        float normalJumpHorizontalForce = 0f;
+        float normalJumpHeightFactor = 0.90f;
+
+        float forwardJumpHorizontalForce = 0.55f;
+        float forwardJumpHeightFactor = 1f;
+
+
             
         if (IsBackJump())
         {
             _jumpKind = JumpKind.Backward;
-            playerRigidBody.AddForce(Vector3.up * (jumpHeight * 0.75f) , ForceMode2D.Impulse);
+            playerRigidBody.AddForce(new Vector2( backwardJumpHorizontalForce * jumpHeight, backwardJumpHeightFactor * jumpHeight) , ForceMode2D.Impulse);
+            //playerRigidBody.AddForce(Vector3.up * (jumpHeight * 0.75f) , ForceMode2D.Impulse);
         } else if (IsNormalJump())
         {
             _jumpKind = JumpKind.Normal;
-            playerRigidBody.AddForce(Vector3.up * (jumpHeight * 0.95f) , ForceMode2D.Impulse); 
+            //playerRigidBody.AddForce(Vector3.up * (jumpHeight * 0.95f) , ForceMode2D.Impulse); 
+            playerRigidBody.AddForce(new Vector2(normalJumpHorizontalForce * jumpHeight, normalJumpHeightFactor * jumpHeight) , ForceMode2D.Impulse);
+
         } else if (IsBigJump())
         {
             _jumpKind = JumpKind.Forward;
-            playerRigidBody.AddForce(Vector3.up * (jumpHeight * 1.1f) , ForceMode2D.Impulse);             
+           // playerRigidBody.AddForce(Vector3.up * (jumpHeight * 1.1f) , ForceMode2D.Impulse);    
+           playerRigidBody.AddForce(new Vector2( forwardJumpHorizontalForce * jumpHeight, forwardJumpHeightFactor * jumpHeight) , ForceMode2D.Impulse);
         }
     }
     
@@ -270,7 +286,7 @@ public class PlayerController : MonoBehaviour
 
     private bool ShouldPlayerJump()
     {
-        return (Input.GetKeyDown(KeyCode.UpArrow) && _jumpReady);
+        return (Input.GetKeyDown(KeyCode.UpArrow) && _jumpReady && !_isJumping);
     }
 
     private bool IsBackJump()
