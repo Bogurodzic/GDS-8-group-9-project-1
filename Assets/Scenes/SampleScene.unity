@@ -807,6 +807,7 @@ MonoBehaviour:
   playerSlowDownSpeed: 1.2
   maxPlayerDistanceLeftDirection: 1
   maxPlayerDistanceRightDirection: 2.2
+  normalizationSpeedDelay: 0.5
   jumpHeight: 5.5
   backwardJumpHorizontalForce: -0.4
   backwardJumpHeightFactor: 0.55

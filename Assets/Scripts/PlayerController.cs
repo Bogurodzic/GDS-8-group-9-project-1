@@ -13,7 +13,10 @@ public class PlayerController : MonoBehaviour
     public float playerSlowDownSpeed;
     public float maxPlayerDistanceLeftDirection;
     public float maxPlayerDistanceRightDirection;
+    public float normalizationSpeedDelay;
     private float _playerInitialPosition;
+    private bool _startedSpeedNormalization = false;
+    private bool _speedNormalizationActive = false;
     [Space(10)]
     
     [Header("Jump")]
@@ -150,10 +153,12 @@ public class PlayerController : MonoBehaviour
         {
 
             Accelerate();
+            ResetNormalizationStates();
             _jumpKind = JumpKind.Forward;
         }  else if (ShouldPlayerSlowDown())
         { 
-            SlowDown(); 
+            SlowDown();
+            ResetNormalizationStates();
             _jumpKind = JumpKind.Backward;
         } else if (ShouldPlayerMaintainSpeed())
         {
@@ -167,7 +172,8 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            NormalizeSpeed();
+            Debug.Log("NORMALIZATION");
+            HandleNormalizeSpeed();
         }        
         
 
@@ -186,6 +192,12 @@ public class PlayerController : MonoBehaviour
         SwitchAnimation(PlayerAnimation.Deceleration);
         transform.Translate(Vector3.left * playerSlowDownSpeed * Time.deltaTime);
         GameManager.Instance.SetSlowPlayerSpeed();  
+    }
+
+    private void ResetNormalizationStates()
+    {
+        _speedNormalizationActive = false;
+        _startedSpeedNormalization = false;
     }
 
 
@@ -250,6 +262,23 @@ public class PlayerController : MonoBehaviour
         return ((Input.GetKey(KeyCode.RightArrow) || ignoreKey) && transform.position.x < _playerInitialPosition + maxPlayerDistanceRightDirection && !IsPlayerAboveGround());
     }
 
+    private void HandleNormalizeSpeed()
+    {
+        if (!_startedSpeedNormalization)
+        {
+            _startedSpeedNormalization = true;
+            Invoke("ActiveSpeedNormalization", normalizationSpeedDelay);
+        } else if (_startedSpeedNormalization && _speedNormalizationActive)
+        {
+            NormalizeSpeed();
+        }
+    }
+
+    private void ActiveSpeedNormalization()
+    {
+        _speedNormalizationActive = true;
+    }
+
     private void NormalizeSpeed()
     {
         if (transform.position.x < _playerInitialPosition - 0.4)
@@ -268,9 +297,10 @@ public class PlayerController : MonoBehaviour
             GameManager.Instance.SetNormalPlayerSpeed();
             _jumpKind = JumpKind.Normal;
             SwitchAnimation(PlayerAnimation.Idle);
-
         }
     }
+    
+    
 
     private void HandleConstraints()
     {
