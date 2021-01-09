@@ -47,8 +47,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1e45fc14d32143c0b1a205cfc04be1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bombSpeed: 1
-  bombDelaySpeed: 3
+  bombSpeed: 0.75
+  bombDelaySpeed: 1.5
+  bombDropAngle: 1.1
 --- !u!212 &-7852050954913081701
 SpriteRenderer:
   m_ObjectHideFlags: 0

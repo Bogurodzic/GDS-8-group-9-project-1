@@ -107,7 +107,7 @@ public class Enemy : MonoBehaviour
     private void CalculateEnemyAreaBounds()
     {
         _leftBound = _bounds.min.x;
-        _rightBound =  _bounds.max.x;
+        _rightBound =  _bounds.center.x;
         _topBound = _bounds.max.y;
         _bottomBound = _bounds.min.y;
 
@@ -139,9 +139,12 @@ public class Enemy : MonoBehaviour
  
     void SpawnBomb()
     {
-        _enemyAnimation.animation.Stop();
-        _enemyAnimation.animation.Play("Enemy_Shot", 1);
-        Instantiate(bomb, transform.position, transform.rotation);
+        if (GameManager.Instance.CanBombBeSpawned())
+        {
+            _enemyAnimation.animation.Stop();
+            _enemyAnimation.animation.Play("Enemy_Shot", 1);
+            Instantiate(bomb, transform.position, transform.rotation);           
+        }
         _isBombSpawning = false;
     }
     
