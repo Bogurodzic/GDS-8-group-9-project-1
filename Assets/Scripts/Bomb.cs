@@ -1,38 +1,46 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
+using Random = UnityEngine.Random;
+using Vector2 = UnityEngine.Vector2;
 
 public class Bomb : MonoBehaviour
 {
-    public float bombSpeed;
-    public float bombDelaySpeed;
-    
-    private Vector3 _basicBombTargetPosition;
-    
+
+    public float bombFireForce;
+
+    private Rigidbody2D _bombRigidBody;
+
+    public enum BombDirection
+    {
+        Left,
+        Right
+    }
+
     void Start()
+    {
+        
+    }
+
+    public void StartObject(BombDirection bombDirection)
     {
         GameManager.Instance.BombDeployed();
         LoadComponents();
-        Invoke("SpeedUpBomb", 1.0f);
+        _bombRigidBody.AddForce(new Vector2(GetBombDirection(bombDirection)  * (bombFireForce / 2), 1 * bombFireForce), ForceMode2D.Impulse);
     }
 
     void Update()
     {
-        Drop();
+        
     }
 
     private void LoadComponents()
     {
-    }
-    private void Drop() {
-        transform.Translate(Vector3.down * bombSpeed * Time.deltaTime);
+        _bombRigidBody = GetComponent<Rigidbody2D>();
     }
     
-    private void SpeedUpBomb()
-    {
-        bombSpeed = bombDelaySpeed;
-    }
-
     private void DestroyBomb()
     {
         GameManager.Instance.BombDestroyed();
@@ -54,5 +62,17 @@ public class Bomb : MonoBehaviour
             DestroyBomb();
         }
 
+    }
+    
+    private int GetBombDirection(BombDirection bombDirection)
+    {
+        if (bombDirection == BombDirection.Left)
+        {
+            return -1;
+        }
+        else
+        {
+            return 1;
+        }
     }
 }

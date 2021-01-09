@@ -143,9 +143,23 @@ public class Enemy : MonoBehaviour
         {
             _enemyAnimation.animation.Stop();
             _enemyAnimation.animation.Play("Enemy_Shot", 1);
-            Instantiate(bomb, transform.position, transform.rotation);           
+            GameObject enemy = Instantiate(bomb, transform.position, transform.rotation);   
+            
+            enemy.SendMessage("StartObject", GetBombDirection());
         }
         _isBombSpawning = false;
+    }
+
+    private Bomb.BombDirection GetBombDirection()
+    {
+        if (transform.position.x < _targetPosition.x)
+        {
+            return Bomb.BombDirection.Left;
+        }
+        else
+        {
+            return Bomb.BombDirection.Right;
+        }
     }
     
 
