@@ -13,12 +13,17 @@ public class PlayerController : MonoBehaviour
     public float playerSlowDownSpeed;
     public float maxPlayerDistanceLeftDirection;
     public float maxPlayerDistanceRightDirection;
-    public float normalizeSpeedFactor;
     private float _playerInitialPosition;
     [Space(10)]
     
     [Header("Jump")]
     public float jumpHeight;
+    public float backwardJumpHorizontalForce;
+    public float backwardJumpHeightFactor;
+    public float normalJumpHorizontalForce ;
+    public float normalJumpHeightFactor;
+    public float forwardJumpHorizontalForce;
+    public float forwardJumpHeightFactor;
     private bool _jumpReady = true;
     private bool _isJumping = false;
     private JumpKind _jumpKind = JumpKind.Normal;
@@ -47,6 +52,14 @@ public class PlayerController : MonoBehaviour
         Normal,
         Forward
     }
+
+    private PlayerAnimation _animationToDisplay;
+    private enum PlayerAnimation
+    {
+        Idle,
+        Acceleration,
+        Deceleration
+    }
     
     void Start()
     {
@@ -59,6 +72,7 @@ public class PlayerController : MonoBehaviour
         HanldeShooting();
         HandleJump();
         HandleMovement();
+        Animate();
     }
     
     private void LoadComponents()  
@@ -83,11 +97,6 @@ public class PlayerController : MonoBehaviour
         {
             HandleJumpMotionOnGround();
         }
-
-        if (IsPlayerAboveGround())
-        {
-            //HandleJumpMotionAboveGround();
-        }
     }
 
     private void HandleJumpMotionOnGround()
@@ -95,34 +104,22 @@ public class PlayerController : MonoBehaviour
         playerRigidBody.freezeRotation = true;
         _jumpReady = false;
         _isJumping = true;
-
-
-        float backwardJumpHorizontalForce = -0.4f;
-        float backwardJumpHeightFactor = 0.55f;
         
-        float normalJumpHorizontalForce = 0f;
-        float normalJumpHeightFactor = 0.90f;
-
-        float forwardJumpHorizontalForce = 0.55f;
-        float forwardJumpHeightFactor = 1f;
-
-
-            
         if (IsBackJump())
         {
+            SwitchAnimation(PlayerAnimation.Deceleration);
             _jumpKind = JumpKind.Backward;
             playerRigidBody.AddForce(new Vector2( backwardJumpHorizontalForce * jumpHeight, backwardJumpHeightFactor * jumpHeight) , ForceMode2D.Impulse);
-            //playerRigidBody.AddForce(Vector3.up * (jumpHeight * 0.75f) , ForceMode2D.Impulse);
         } else if (IsNormalJump())
         {
+            SwitchAnimation(PlayerAnimation.Idle);
             _jumpKind = JumpKind.Normal;
-            //playerRigidBody.AddForce(Vector3.up * (jumpHeight * 0.95f) , ForceMode2D.Impulse); 
             playerRigidBody.AddForce(new Vector2(normalJumpHorizontalForce * jumpHeight, normalJumpHeightFactor * jumpHeight) , ForceMode2D.Impulse);
 
         } else if (IsBigJump())
         {
+            SwitchAnimation(PlayerAnimation.Acceleration);
             _jumpKind = JumpKind.Forward;
-           // playerRigidBody.AddForce(Vector3.up * (jumpHeight * 1.1f) , ForceMode2D.Impulse);    
            playerRigidBody.AddForce(new Vector2( forwardJumpHorizontalForce * jumpHeight, forwardJumpHeightFactor * jumpHeight) , ForceMode2D.Impulse);
         }
     }
@@ -145,47 +142,45 @@ public class PlayerController : MonoBehaviour
     private void HandleMovement()
     {
 
-        if (!IsPlayerAboveGround())
+
+        if (ShouldPlayerAccelerate())
         {
-            if (ShouldPlayerAccelerate())
-            {
 
-                Accelerate();
-                _jumpKind = JumpKind.Forward;
-            }  else if (ShouldPlayerSlowDown())
+            Accelerate();
+            _jumpKind = JumpKind.Forward;
+        }  else if (ShouldPlayerSlowDown())
+        { 
+            SlowDown(); 
+            _jumpKind = JumpKind.Backward;
+        } else if (ShouldPlayerMaintainSpeed())
+        {
+            if (Input.GetKey(KeyCode.RightArrow))
             {
-                SlowDown();
-                _jumpKind = JumpKind.Backward;
-
-            } else if (ShouldPlayerMaintainSpeed())
+                SwitchAnimation(PlayerAnimation.Acceleration);
+            } else if (Input.GetKey(KeyCode.LeftArrow))
             {
-                if (Input.GetKey(KeyCode.RightArrow))
-                {
-                    PlayAccelerateAnimation();
-                } else if (Input.GetKey(KeyCode.LeftArrow))
-                {
-                    PlayDecelerationAnimation();
-                }
+                SwitchAnimation(PlayerAnimation.Deceleration);
             }
-            else
-            {
-                NormalizeSpeed();
-            }        
         }
+        else
+        {
+            NormalizeSpeed();
+        }        
+        
 
 
     }
 
     private void Accelerate()
     {
-        PlayAccelerateAnimation();
+        SwitchAnimation(PlayerAnimation.Acceleration);
         transform.Translate(Vector3.right * playerAccelerationSpeed * Time.deltaTime);
         GameManager.Instance.SetFastPlayerSpeed(); 
     }
 
     private void SlowDown()
     {
-        PlayDecelerationAnimation();
+        SwitchAnimation(PlayerAnimation.Deceleration);
         transform.Translate(Vector3.left * playerSlowDownSpeed * Time.deltaTime);
         GameManager.Instance.SetSlowPlayerSpeed();  
     }
@@ -249,7 +244,7 @@ public class PlayerController : MonoBehaviour
 
     private bool ShouldPlayerAccelerate(bool ignoreKey = false)
     {
-        return ((Input.GetKey(KeyCode.RightArrow) || ignoreKey) && transform.position.x < _playerInitialPosition + maxPlayerDistanceRightDirection);
+        return ((Input.GetKey(KeyCode.RightArrow) || ignoreKey) && transform.position.x < _playerInitialPosition + maxPlayerDistanceRightDirection && !IsPlayerAboveGround());
     }
 
     private void NormalizeSpeed()
@@ -269,14 +264,15 @@ public class PlayerController : MonoBehaviour
         {
             GameManager.Instance.SetNormalPlayerSpeed();
             _jumpKind = JumpKind.Normal;
-            PlayIdleAnimation();
+            SwitchAnimation(PlayerAnimation.Idle);
+
         }
     }
 
 
     private bool ShouldPlayerSlowDown(bool ignoreKey = false)
     {
-        return ((Input.GetKey(KeyCode.LeftArrow) || ignoreKey) && transform.position.x > _playerInitialPosition - maxPlayerDistanceLeftDirection);
+        return ((Input.GetKey(KeyCode.LeftArrow) || ignoreKey) && transform.position.x > _playerInitialPosition - maxPlayerDistanceLeftDirection && !IsPlayerAboveGround());
     }
 
     private bool ShouldPlayerMaintainSpeed()
@@ -353,46 +349,77 @@ public class PlayerController : MonoBehaviour
 
     private void PlayAccelerateAnimation()
     {
-        if (!_playerAnimation.animation.isPlaying || _playerAnimation.animation.isCompleted)
-        {
+
             _decelerationAnimationPlayed = false;
             if (!_accelerationAnimationPlayed)
             {
+                _playerAnimation.animation.Stop();
                 _playerAnimation.animation.Play("drive_acceleration",  1);
                 _accelerationAnimationPlayed = true;
             }
             else
             {
-                _playerAnimation.animation.Play("drive_fast", 1);
+                if (AnimationReadyToPlay())
+                {
+                    _playerAnimation.animation.Play("drive_fast", 1);
+                }
             }        
-        }
+        
     }
 
     private void PlayDecelerationAnimation()
     {
-        if (!_playerAnimation.animation.isPlaying || _playerAnimation.animation.isCompleted)
-        {
+
             _accelerationAnimationPlayed = false;
             if (!_decelerationAnimationPlayed)
             {
+                _playerAnimation.animation.Stop();
                 _playerAnimation.animation.Play("drive_deceleration", 1);
                 _decelerationAnimationPlayed = true;
             }
             else
             {
-                _playerAnimation.animation.Play("drive_idle", 1);
-            
+                if (AnimationReadyToPlay())
+                {
+                    _playerAnimation.animation.Play("drive_idle", 1);
+                }
             }          
-        }
+        
     }
 
     private void PlayIdleAnimation()
     {
-        if (!_playerAnimation.animation.isPlaying || _playerAnimation.animation.isCompleted)
+        if (AnimationReadyToPlay())
         {
             _accelerationAnimationPlayed = false;
             _decelerationAnimationPlayed = false;
             _playerAnimation.animation.Play("drive_idle", 1);
+        }
+    }
+
+    private bool AnimationReadyToPlay()
+    {
+        return !_playerAnimation.animation.isPlaying || _playerAnimation.animation.isCompleted;
+    }
+
+    private void SwitchAnimation(PlayerAnimation animation)
+    {
+        _animationToDisplay = animation;
+    }
+
+    private void Animate()
+    {
+        switch (_animationToDisplay)
+        {
+            case PlayerAnimation.Acceleration:
+                PlayAccelerateAnimation();
+                break;
+            case PlayerAnimation.Deceleration:
+                PlayDecelerationAnimation();
+                break;
+            case PlayerAnimation.Idle:
+                PlayIdleAnimation();
+                break;
         }
     }
 
