@@ -106,7 +106,7 @@ public class PlayerController : MonoBehaviour
             Animate();
             if (AnimationReadyToPlay())
             {
-                HandlePostDeath();
+                HandleLogicAfterDeath();
             }
         }
     }
@@ -422,14 +422,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void HandleLogicBeforeDeath(Collider2D collision)
-    {
-        SwitchAnimation(PlayerAnimation.None);
-        SetFinalDeathPosition(collision.bounds.center.x);
-        StopGame();
-        InitializeDeath();
-        Invoke("ReachFinalDeathPosition", 0.55f);
-    }
+
 
     private void StopGame()
     {
@@ -456,11 +449,36 @@ public class PlayerController : MonoBehaviour
         _finalDeathPositionReached = true;
         SwitchAnimation(PlayerAnimation.Death);
     }
-
-    private void HandlePostDeath()
+    private void HandleLogicBeforeDeath(Collider2D collision)
     {
-        GameManager.Instance.ResetScore();
+        GameManager.Instance.PlayerDeath();
+        SwitchAnimation(PlayerAnimation.None);
+        SetFinalDeathPosition(collision.bounds.center.x);
+        InitializeDeath();
+        Invoke("ReachFinalDeathPosition", 0.55f);
+    }
+
+    private void HandleLogicAfterDeath()
+    {
+        if (GameManager.Instance.CanRespawnPlayer())
+        {
+            RespawnPlayer();
+        }
+
+    }
+
+    private void RespawnPlayer()
+    {
+        GameManager.Instance.RespawnPlayer();
         SceneManager.LoadScene("SampleScene");
+        SwitchAnimation(PlayerAnimation.Idle);
+        _deathInitialized = false;
+        _finalDeathPositionReached = false;
+        _accelerationAnimationPlayed = false;
+        _deathAnimationPlayed = false;
+        _decelerationAnimationPlayed = false;
+        _jumpReady = true;
+        _isJumping = false;
     }
 
     private void PlayAccelerateAnimation()

@@ -21,9 +21,17 @@ public class GameManager : GenericSingletonClass<GameManager>
     private int _maxBombAmonut = 2;
     private int _currentBombAmount = 0;
 
+    private int _initLivesAmount = 2;
+    private int _currentLivesAmount = 2;
+
     public void StopGame()
     {
         this._gameRunning = false;
+    }
+
+    public void StartGame()
+    {
+        _gameRunning = true;
     }
     public Boolean IsGameRunning()
     {
@@ -95,5 +103,35 @@ public class GameManager : GenericSingletonClass<GameManager>
         {
             _currentBombAmount -= 1;
         }
+    }
+
+    public int GetPlayerLives()
+    {
+        return _currentLivesAmount;
+    }
+
+    public bool CanRespawnPlayer()
+    {
+        return _currentLivesAmount > 0;
+    }
+
+    public void DecreaseLivesAmount()
+    {
+        if (_currentLivesAmount > 0)
+        {
+            _currentLivesAmount -= 1;
+        }
+    }
+
+    public void RespawnPlayer()
+    {
+   //     ResetScore();
+        StartGame();
+        DecreaseLivesAmount();
+    }
+
+    public void PlayerDeath()
+    {
+        StopGame();
     }
 }
