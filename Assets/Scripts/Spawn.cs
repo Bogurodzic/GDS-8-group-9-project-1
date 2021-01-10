@@ -40,10 +40,9 @@ public class Spawn : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.Instance.IsGameRunning())
-        {
-            HandleSpawningEnemy(minWaitBeforeSpawn, maxWaitBeforeSpwan);
-        }
+
+        HandleSpawningEnemy(minWaitBeforeSpawn, maxWaitBeforeSpwan);
+        
     }
     
     private void HandleSpawningEnemy(float minTime, float maxTime)
@@ -54,7 +53,8 @@ public class Spawn : MonoBehaviour
             Invoke("SpawnEnemyOnItsPosition", timer);
             _isEnemySpawning = true;
         }
-        else
+
+        if (!GameManager.Instance.IsGameRunning())
         {
             CancelInvoke("SpawnEnemyOnItsPosition");
         }
