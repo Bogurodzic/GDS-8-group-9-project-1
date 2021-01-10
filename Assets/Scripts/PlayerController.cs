@@ -534,7 +534,7 @@ public class PlayerController : MonoBehaviour
             if (!_accelerationAnimationPlayed)
             {
                 _playerAnimation.animation.Stop();
-                _playerAnimation.animation.FadeIn("drive_acceleration",  0.15f, 1);
+                _playerAnimation.animation.FadeIn("drive_acceleration",  0.2f, 1);
                 _accelerationAnimationPlayed = true;
             }
             else
