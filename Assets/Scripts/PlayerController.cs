@@ -174,7 +174,14 @@ public class PlayerController : MonoBehaviour
         {
             SwitchAnimation(PlayerAnimation.Deceleration);
             _jumpKind = JumpKind.Backward;
-            playerRigidBody.AddForce(new Vector2( backwardJumpHorizontalForce * jumpHeight, backwardJumpHeightFactor * jumpHeight) , ForceMode2D.Force);
+            if (PlayerAheadInitialPosition())
+            {
+                playerRigidBody.AddForce(new Vector2( backwardJumpHorizontalForce * jumpHeight * 1.1f, backwardJumpHeightFactor * jumpHeight * 1.1f) , ForceMode2D.Force);
+            } else if (PlayerBehindInitialPosition())
+            {
+                playerRigidBody.AddForce(new Vector2( backwardJumpHorizontalForce * jumpHeight, backwardJumpHeightFactor * jumpHeight) , ForceMode2D.Force);
+
+            }
         } else if (IsNormalJump())
         {
             SwitchAnimation(PlayerAnimation.Idle);
@@ -253,14 +260,14 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            if (ShouldSlowDownToNormalSpeed())
+            if (PlayerAheadInitialPosition())
             {
                 if (_currentPlayerDecelerationSpeed < playerSlowDownSpeed)
                 {
                     _currentPlayerDecelerationSpeed += 0.0075f;
                 }
                 transform.Translate(Vector3.left * _currentPlayerDecelerationSpeed * Time.deltaTime); 
-            } else if (ShouldSlowDownBelowNormalSpeed())
+            } else if (PlayerBehindInitialPosition())
             {
                 if (_currentPlayerDecelerationSpeed < playerSlowDownSpeed / 2)
                 {
@@ -276,12 +283,12 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    private bool ShouldSlowDownToNormalSpeed()
+    private bool PlayerAheadInitialPosition()
     {
         return transform.position.x > _playerInitialPosition;
     }
 
-    private bool ShouldSlowDownBelowNormalSpeed()
+    private bool PlayerBehindInitialPosition()
     {
         return transform.position.x <= _playerInitialPosition;
     }
