@@ -105,6 +105,11 @@ public class GameManager : GenericSingletonClass<GameManager>
         }
     }
 
+    public void ResetBombDeployed()
+    {
+        _currentBombAmount = 0;
+    }
+
     public int GetPlayerLives()
     {
         return _currentLivesAmount;
@@ -126,6 +131,7 @@ public class GameManager : GenericSingletonClass<GameManager>
     public void RespawnPlayer()
     {
    //     ResetScore();
+        ResetBombDeployed();
         StartGame();
         DecreaseLivesAmount();
     }
