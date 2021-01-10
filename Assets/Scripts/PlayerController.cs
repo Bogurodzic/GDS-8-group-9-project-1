@@ -405,18 +405,14 @@ public class PlayerController : MonoBehaviour
     {
 
         if (collision.gameObject.CompareTag("EnemyProjectile"))
-        { 
-            Destroy(gameObject);
-            Destroy(collision.gameObject);
-            GameManager.Instance.ResetScore();
-            SceneManager.LoadScene("SampleScene");
-
+        {
+            HandleLogicAfterCollisionWithProjectile(collision);
         }
 
         if (collision.gameObject.CompareTag("Platform"))
         {
 
-            HandleLogicBeforeDeath(collision);
+            HandleLogicAfterCollisionWithHole(collision);
 
         }
 
@@ -449,7 +445,17 @@ public class PlayerController : MonoBehaviour
         _finalDeathPositionReached = true;
         SwitchAnimation(PlayerAnimation.Death);
     }
-    private void HandleLogicBeforeDeath(Collider2D collision)
+
+    private void HandleLogicAfterCollisionWithProjectile(Collider2D collision)
+    {
+        Destroy(collision.gameObject);
+        GameManager.Instance.PlayerDeath();
+        SwitchAnimation(PlayerAnimation.None);
+        SetFinalDeathPosition(collision.bounds.center.x);
+        InitializeDeath();
+        ReachFinalDeathPosition();
+    }
+    private void HandleLogicAfterCollisionWithHole(Collider2D collision)
     {
         GameManager.Instance.PlayerDeath();
         SwitchAnimation(PlayerAnimation.None);
