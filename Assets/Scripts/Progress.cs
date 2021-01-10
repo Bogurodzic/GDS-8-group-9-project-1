@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using GUI_Scripts;
 using UnityEngine;
 
 public class Progress : MonoBehaviour
@@ -39,13 +40,17 @@ public class Progress : MonoBehaviour
 
         float currentPosition = _landWrapperBoxCollider2D.bounds.min.x - _playerInitPosition;
         float width = _landInitMaxPosition - _landInitMinPosition;
-        float progress = currentPosition / width * 100;
-        progress = (float) Math.Floor(Math.Abs(progress));
+        float progress = currentPosition / width * -1;
+        if (progress < 0)
+        {
+            progress = progress * -1;
+        }
         return progress;
     }
 
     private void UpdateProgress()
     {
-        GameManager.Instance.SetProgress(CalculateProgress());
+        float progress = CalculateProgress();
+        GameManager.Instance.SetProgress(progress);
     }
 }
