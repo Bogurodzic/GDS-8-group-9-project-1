@@ -132,9 +132,9 @@ GameObject:
   - component: {fileID: 83301412}
   - component: {fileID: 83301417}
   - component: {fileID: 83301416}
-  - component: {fileID: 83301415}
   - component: {fileID: 83301414}
   - component: {fileID: 83301413}
+  - component: {fileID: 83301415}
   m_Layer: 0
   m_Name: Land (11)
   m_TagString: Platform
@@ -206,7 +206,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -2.8647013}
+  m_Offset: {x: 2.9967134, y: -2.3586578}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -217,7 +217,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 18.84, y: 0.7406969}
+  m_Size: {x: 2.1214938, y: 1.7527838}
   m_EdgeRadius: 0
 --- !u!50 &83301416
 Rigidbody2D:
@@ -461,9 +461,9 @@ GameObject:
   - component: {fileID: 206859500}
   - component: {fileID: 206859499}
   - component: {fileID: 206859498}
-  - component: {fileID: 206859497}
   - component: {fileID: 206859496}
   - component: {fileID: 206859495}
+  - component: {fileID: 206859497}
   m_Layer: 0
   m_Name: Land (6)
   m_TagString: Platform
@@ -521,7 +521,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -2.851818}
+  m_Offset: {x: 2.9967134, y: -2.3586578}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -532,7 +532,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 18.84, y: 0.7664635}
+  m_Size: {x: 2.1214938, y: 1.7527838}
   m_EdgeRadius: 0
 --- !u!50 &206859498
 Rigidbody2D:
@@ -832,9 +832,9 @@ GameObject:
   - component: {fileID: 258496816}
   - component: {fileID: 258496815}
   - component: {fileID: 258496814}
-  - component: {fileID: 258496813}
   - component: {fileID: 258496812}
   - component: {fileID: 258496811}
+  - component: {fileID: 258496813}
   m_Layer: 0
   m_Name: Land (3)
   m_TagString: Platform
@@ -892,7 +892,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -2.8647013}
+  m_Offset: {x: 2.9967134, y: -2.3586578}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -903,7 +903,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 18.84, y: 0.7406969}
+  m_Size: {x: 2.1214938, y: 1.7527838}
   m_EdgeRadius: 0
 --- !u!50 &258496814
 Rigidbody2D:
@@ -1529,7 +1529,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: {fileID: 477688090}
-  time: 0
+  timeStart: 0
+  textBox: {fileID: 0}
 --- !u!114 &477688090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1899,9 +1900,9 @@ GameObject:
   - component: {fileID: 643044829}
   - component: {fileID: 643044828}
   - component: {fileID: 643044827}
-  - component: {fileID: 643044826}
   - component: {fileID: 643044825}
   - component: {fileID: 643044824}
+  - component: {fileID: 643044826}
   m_Layer: 0
   m_Name: Land (7)
   m_TagString: Platform
@@ -1959,7 +1960,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -2.851819}
+  m_Offset: {x: 2.9967134, y: -2.3586578}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1970,7 +1971,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 18.84, y: 0.7664616}
+  m_Size: {x: 2.1214938, y: 1.7527838}
   m_EdgeRadius: 0
 --- !u!50 &643044827
 Rigidbody2D:
@@ -2068,9 +2069,9 @@ GameObject:
   - component: {fileID: 653572872}
   - component: {fileID: 653572871}
   - component: {fileID: 653572870}
-  - component: {fileID: 653572869}
   - component: {fileID: 653572868}
   - component: {fileID: 653572867}
+  - component: {fileID: 653572869}
   m_Layer: 0
   m_Name: Land (5)
   m_TagString: Platform
@@ -2128,7 +2129,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -2.851818}
+  m_Offset: {x: 2.9967134, y: -2.3586578}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2139,7 +2140,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 18.84, y: 0.7664635}
+  m_Size: {x: 2.1214938, y: 1.7527838}
   m_EdgeRadius: 0
 --- !u!50 &653572870
 Rigidbody2D:
@@ -2362,9 +2363,9 @@ GameObject:
   - component: {fileID: 736232205}
   - component: {fileID: 736232210}
   - component: {fileID: 736232209}
-  - component: {fileID: 736232208}
   - component: {fileID: 736232207}
   - component: {fileID: 736232206}
+  - component: {fileID: 736232208}
   m_Layer: 0
   m_Name: Land (12)
   m_TagString: Platform
@@ -2436,7 +2437,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -2.8647022}
+  m_Offset: {x: 2.9967134, y: -2.3586578}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2447,7 +2448,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 18.84, y: 0.740695}
+  m_Size: {x: 2.1214938, y: 1.7527838}
   m_EdgeRadius: 0
 --- !u!50 &736232209
 Rigidbody2D:
@@ -3121,9 +3122,9 @@ GameObject:
   - component: {fileID: 1021325934}
   - component: {fileID: 1021325933}
   - component: {fileID: 1021325932}
-  - component: {fileID: 1021325931}
   - component: {fileID: 1021325930}
   - component: {fileID: 1021325929}
+  - component: {fileID: 1021325931}
   m_Layer: 0
   m_Name: Land (1)
   m_TagString: Platform
@@ -3181,7 +3182,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -2.8379478}
+  m_Offset: {x: 2.9967134, y: -2.3586578}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -3192,7 +3193,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 18.84, y: 0.79420376}
+  m_Size: {x: 2.1214938, y: 1.7527838}
   m_EdgeRadius: 0
 --- !u!50 &1021325932
 Rigidbody2D:
@@ -3290,9 +3291,9 @@ GameObject:
   - component: {fileID: 1088124346}
   - component: {fileID: 1088124351}
   - component: {fileID: 1088124350}
-  - component: {fileID: 1088124349}
   - component: {fileID: 1088124348}
   - component: {fileID: 1088124347}
+  - component: {fileID: 1088124349}
   m_Layer: 0
   m_Name: Land (8)
   m_TagString: Platform
@@ -3364,7 +3365,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -2.7862425}
+  m_Offset: {x: 2.9967134, y: -2.3586578}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -3375,7 +3376,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 18.84, y: 0.8976147}
+  m_Size: {x: 2.1214938, y: 1.7527838}
   m_EdgeRadius: 0
 --- !u!50 &1088124350
 Rigidbody2D:
@@ -3459,9 +3460,9 @@ GameObject:
   - component: {fileID: 1124148364}
   - component: {fileID: 1124148363}
   - component: {fileID: 1124148362}
-  - component: {fileID: 1124148361}
   - component: {fileID: 1124148360}
   - component: {fileID: 1124148359}
+  - component: {fileID: 1124148361}
   m_Layer: 0
   m_Name: Land (2)
   m_TagString: Platform
@@ -3519,7 +3520,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -2.851819}
+  m_Offset: {x: 2.9967134, y: -2.3586578}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -3530,7 +3531,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 18.84, y: 0.7664616}
+  m_Size: {x: 2.1214938, y: 1.7527838}
   m_EdgeRadius: 0
 --- !u!50 &1124148362
 Rigidbody2D:
@@ -3735,9 +3736,9 @@ GameObject:
   - component: {fileID: 1378208894}
   - component: {fileID: 1378208899}
   - component: {fileID: 1378208898}
-  - component: {fileID: 1378208897}
   - component: {fileID: 1378208896}
   - component: {fileID: 1378208895}
+  - component: {fileID: 1378208897}
   m_Layer: 0
   m_Name: Land (15)
   m_TagString: Platform
@@ -3809,7 +3810,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -2.851819}
+  m_Offset: {x: 2.9967134, y: -2.3586578}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -3820,7 +3821,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 18.84, y: 0.7664616}
+  m_Size: {x: 2.1214938, y: 1.7527838}
   m_EdgeRadius: 0
 --- !u!50 &1378208898
 Rigidbody2D:
@@ -4316,9 +4317,9 @@ GameObject:
   - component: {fileID: 1802189109}
   - component: {fileID: 1802189108}
   - component: {fileID: 1802189107}
-  - component: {fileID: 1802189106}
   - component: {fileID: 1802189105}
   - component: {fileID: 1802189104}
+  - component: {fileID: 1802189106}
   m_Layer: 0
   m_Name: Land (4)
   m_TagString: Platform
@@ -4376,7 +4377,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -2.8647022}
+  m_Offset: {x: 2.9967134, y: -2.3586578}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -4387,7 +4388,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 18.84, y: 0.740695}
+  m_Size: {x: 2.1214938, y: 1.7527838}
   m_EdgeRadius: 0
 --- !u!50 &1802189107
 Rigidbody2D:
@@ -4485,9 +4486,9 @@ GameObject:
   - component: {fileID: 1848453971}
   - component: {fileID: 1848453976}
   - component: {fileID: 1848453975}
-  - component: {fileID: 1848453974}
   - component: {fileID: 1848453973}
   - component: {fileID: 1848453972}
+  - component: {fileID: 1848453974}
   m_Layer: 0
   m_Name: Land (13)
   m_TagString: Platform
@@ -4559,7 +4560,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -2.851818}
+  m_Offset: {x: 2.9967134, y: -2.3586578}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -4570,7 +4571,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 18.84, y: 0.7664635}
+  m_Size: {x: 2.1214938, y: 1.7527838}
   m_EdgeRadius: 0
 --- !u!50 &1848453975
 Rigidbody2D:
@@ -4654,9 +4655,9 @@ GameObject:
   - component: {fileID: 1872890250}
   - component: {fileID: 1872890255}
   - component: {fileID: 1872890254}
-  - component: {fileID: 1872890253}
   - component: {fileID: 1872890252}
   - component: {fileID: 1872890251}
+  - component: {fileID: 1872890253}
   m_Layer: 0
   m_Name: Land (14)
   m_TagString: Platform
@@ -4728,7 +4729,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -2.851818}
+  m_Offset: {x: 2.9967134, y: -2.3586578}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -4739,7 +4740,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 18.84, y: 0.7664635}
+  m_Size: {x: 2.1214938, y: 1.7527838}
   m_EdgeRadius: 0
 --- !u!50 &1872890254
 Rigidbody2D:
@@ -4989,9 +4990,9 @@ GameObject:
   - component: {fileID: 1992172354}
   - component: {fileID: 1992172359}
   - component: {fileID: 1992172358}
-  - component: {fileID: 1992172357}
   - component: {fileID: 1992172356}
   - component: {fileID: 1992172355}
+  - component: {fileID: 1992172357}
   m_Layer: 0
   m_Name: Land (10)
   m_TagString: Platform
@@ -5063,7 +5064,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -2.851819}
+  m_Offset: {x: 2.9967134, y: -2.3586578}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -5074,7 +5075,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 18.84, y: 0.7664616}
+  m_Size: {x: 2.1214938, y: 1.7527838}
   m_EdgeRadius: 0
 --- !u!50 &1992172358
 Rigidbody2D:
@@ -5164,9 +5165,9 @@ GameObject:
   - component: {fileID: 2007741540}
   - component: {fileID: 2007741545}
   - component: {fileID: 2007741544}
-  - component: {fileID: 2007741543}
   - component: {fileID: 2007741542}
   - component: {fileID: 2007741541}
+  - component: {fileID: 2007741543}
   m_Layer: 0
   m_Name: Land (9)
   m_TagString: Platform
@@ -5238,7 +5239,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -2.8379478}
+  m_Offset: {x: 2.9967134, y: -2.3586578}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -5249,7 +5250,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 18.84, y: 0.79420376}
+  m_Size: {x: 2.1214938, y: 1.7527838}
   m_EdgeRadius: 0
 --- !u!50 &2007741544
 Rigidbody2D:
