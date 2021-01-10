@@ -13,8 +13,11 @@ public class RepeatBackground : MonoBehaviour
     }
     void Update()
     {
-        MoveBackground();
-        HandleRepeatingBackground();
+        if (GameManager.Instance.IsGameRunning())
+        {
+            MoveBackground();
+            HandleRepeatingBackground();
+        }
     }
     
 

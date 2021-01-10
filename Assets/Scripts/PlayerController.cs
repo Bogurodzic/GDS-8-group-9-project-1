@@ -13,12 +13,20 @@ public class PlayerController : MonoBehaviour
     public float playerSlowDownSpeed;
     public float maxPlayerDistanceLeftDirection;
     public float maxPlayerDistanceRightDirection;
-    public float normalizeSpeedFactor;
+    public float normalizationSpeedDelay;
     private float _playerInitialPosition;
+    private bool _startedSpeedNormalization = false;
+    private bool _speedNormalizationActive = false;
     [Space(10)]
     
     [Header("Jump")]
     public float jumpHeight;
+    public float backwardJumpHorizontalForce;
+    public float backwardJumpHeightFactor;
+    public float normalJumpHorizontalForce ;
+    public float normalJumpHeightFactor;
+    public float forwardJumpHorizontalForce;
+    public float forwardJumpHeightFactor;
     private bool _jumpReady = true;
     private bool _isJumping = false;
     private JumpKind _jumpKind = JumpKind.Normal;
@@ -32,20 +40,34 @@ public class PlayerController : MonoBehaviour
     private bool _horizontalShootReady = true;
     private bool _verticalShootReady = true;
     [Space(10)]
-
-
-
+    
     private Rigidbody2D playerRigidBody;
+
+    private bool _deathInitialized = false;
+    private bool _finalDeathPositionReached = false;
+    private float _finalDeathPosition;
     
     private UnityArmatureComponent _playerAnimation;
     private bool _accelerationAnimationPlayed = false;
     private bool _decelerationAnimationPlayed = false;
+    private bool _deathAnimationPlayed = false;
+
     
     private enum JumpKind
     {
         Backward,
         Normal,
         Forward
+    }
+
+    private PlayerAnimation _animationToDisplay;
+    private enum PlayerAnimation
+    {
+        Idle,
+        Acceleration,
+        Deceleration,
+        Death,
+        None
     }
     
     void Start()
@@ -56,10 +78,60 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        HanldeShooting();
-        HandleJump();
-        HandleMovement();
+        if (IsGameRunning())
+        {
+            HandleShooting();
+            HandleJump();
+            HandleMovement();
+            Animate();
+        } else if (!IsGameRunning())
+        {
+            HandleDeathMovement();
+        }
     }
+
+    private void HandleDeathMovement()
+    {
+        if (ShouldPlayerMoveTowardsFinalDeathPosition())
+        {
+            if (FinalDeathPositionIsOnRight())
+            {
+                transform.Translate(Vector3.right * (playerAccelerationSpeed * 1.5f) * Time.deltaTime);
+            } else if (FinalDeathPositionIsOnLeft())
+            {
+                transform.Translate(Vector3.left * (playerAccelerationSpeed * 1.5f) * Time.deltaTime);
+            }
+        } else if (IsFinalDeathPositionReached())
+        {
+            Animate();
+            if (AnimationReadyToPlay())
+            {
+                HandleLogicAfterDeath();
+            }
+        }
+    }
+
+    private bool ShouldPlayerMoveTowardsFinalDeathPosition()
+    {
+        return _deathInitialized && !_finalDeathPositionReached;
+    }
+
+    private bool FinalDeathPositionIsOnRight()
+    {
+        return transform.position.x < _finalDeathPosition;
+    }
+
+    private bool FinalDeathPositionIsOnLeft()
+    {
+        return transform.position.x > _finalDeathPosition;
+    }
+
+    private bool IsFinalDeathPositionReached()
+    {
+        return _finalDeathPositionReached;
+    }
+    
+
     
     private void LoadComponents()  
     {
@@ -82,11 +154,9 @@ public class PlayerController : MonoBehaviour
         if (ShouldPlayerJump())
         {
             HandleJumpMotionOnGround();
-        }
-
-        if (IsPlayerAboveGround())
+        } else if (IsPlayerAboveGround())
         {
-            HandleJumpMotionAboveGround();
+            HandleConstraints();
         }
     }
 
@@ -95,88 +165,77 @@ public class PlayerController : MonoBehaviour
         playerRigidBody.freezeRotation = true;
         _jumpReady = false;
         _isJumping = true;
-            
+        
         if (IsBackJump())
         {
+            SwitchAnimation(PlayerAnimation.Deceleration);
             _jumpKind = JumpKind.Backward;
-            playerRigidBody.AddForce(Vector3.up * (jumpHeight * 0.75f) , ForceMode2D.Impulse);
+            playerRigidBody.AddForce(new Vector2( backwardJumpHorizontalForce * jumpHeight, backwardJumpHeightFactor * jumpHeight) , ForceMode2D.Impulse);
         } else if (IsNormalJump())
         {
+            SwitchAnimation(PlayerAnimation.Idle);
             _jumpKind = JumpKind.Normal;
-            playerRigidBody.AddForce(Vector3.up * (jumpHeight * 0.95f) , ForceMode2D.Impulse); 
+            playerRigidBody.AddForce(new Vector2(normalJumpHorizontalForce * jumpHeight, normalJumpHeightFactor * jumpHeight) , ForceMode2D.Impulse);
+
         } else if (IsBigJump())
         {
+            SwitchAnimation(PlayerAnimation.Acceleration);
             _jumpKind = JumpKind.Forward;
-            playerRigidBody.AddForce(Vector3.up * (jumpHeight * 1.1f) , ForceMode2D.Impulse);             
+           playerRigidBody.AddForce(new Vector2( forwardJumpHorizontalForce * jumpHeight, forwardJumpHeightFactor * jumpHeight) , ForceMode2D.Impulse);
         }
     }
     
-    private void HandleJumpMotionAboveGround()
+    private void HandleMovement()
     {
-        if (_jumpKind == JumpKind.Backward && ShouldPlayerSlowDown(true))
-        {
-            SlowDown();
-        } else if (_jumpKind == JumpKind.Forward && ShouldPlayerAccelerate(true))
+        if (ShouldPlayerAccelerate())
         {
             Accelerate();
+            ResetNormalizationStates();
+            _jumpKind = JumpKind.Forward;
+        }  else if (ShouldPlayerSlowDown())
+        { 
+            SlowDown();
+            ResetNormalizationStates();
+            _jumpKind = JumpKind.Backward;
+        } else if (ShouldPlayerMaintainSpeed())
+        {
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                SwitchAnimation(PlayerAnimation.Acceleration);
+            } else if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                SwitchAnimation(PlayerAnimation.Deceleration);
+            }
         }
         else
         {
-            PlayIdleAnimation();
+            HandleNormalizeSpeed();
         }
-    }
-
-    private void HandleMovement()
-    {
-
-        if (!IsPlayerAboveGround())
-        {
-            if (ShouldPlayerAccelerate())
-            {
-
-                Accelerate();
-                _jumpKind = JumpKind.Forward;
-            }  else if (ShouldPlayerSlowDown())
-            {
-                SlowDown();
-                _jumpKind = JumpKind.Backward;
-
-            } else if (ShouldPlayerMaintainSpeed())
-            {
-                if (Input.GetKey(KeyCode.RightArrow))
-                {
-                    PlayAccelerateAnimation();
-                } else if (Input.GetKey(KeyCode.LeftArrow))
-                {
-                    PlayDecelerationAnimation();
-                }
-            }
-            else
-            {
-                NormalizeSpeed();
-            }        
-        }
-
-
     }
 
     private void Accelerate()
     {
-        PlayAccelerateAnimation();
+        SwitchAnimation(PlayerAnimation.Acceleration);
         transform.Translate(Vector3.right * playerAccelerationSpeed * Time.deltaTime);
         GameManager.Instance.SetFastPlayerSpeed(); 
     }
 
     private void SlowDown()
     {
-        PlayDecelerationAnimation();
+        SwitchAnimation(PlayerAnimation.Deceleration);
         transform.Translate(Vector3.left * playerSlowDownSpeed * Time.deltaTime);
         GameManager.Instance.SetSlowPlayerSpeed();  
     }
 
+    private void ResetNormalizationStates()
+    {
+        _speedNormalizationActive = false;
+        _startedSpeedNormalization = false;
+    }
 
 
-    private void HanldeShooting()
+
+    private void HandleShooting()
     {
         if (ShouldPlayerShootHorizontally())
         {
@@ -223,17 +282,34 @@ public class PlayerController : MonoBehaviour
 
     private void CreateVerticalProjectile()
     {
-        Instantiate(verticalProjectile, transform.position, verticalProjectile.transform.rotation);
+        Instantiate(verticalProjectile, new Vector3(transform.position.x - 0.5f, transform.position.y + 0.2f, transform.position.z), verticalProjectile.transform.rotation);
     }
 
     private void CreateHorizontalProjectile()
     {
-        Instantiate(horizontalProjectile, transform.position, horizontalProjectile.transform.rotation);
+        Instantiate(horizontalProjectile, new Vector3(transform.position.x + 1.1f, transform.position.y - 0.23f, transform.position.z), horizontalProjectile.transform.rotation);
     }
 
     private bool ShouldPlayerAccelerate(bool ignoreKey = false)
     {
-        return ((Input.GetKey(KeyCode.RightArrow) || ignoreKey) && transform.position.x < _playerInitialPosition + maxPlayerDistanceRightDirection);
+        return ((Input.GetKey(KeyCode.RightArrow) || ignoreKey) && transform.position.x < _playerInitialPosition + maxPlayerDistanceRightDirection && !IsPlayerAboveGround());
+    }
+
+    private void HandleNormalizeSpeed()
+    {
+        if (!_startedSpeedNormalization)
+        {
+            _startedSpeedNormalization = true;
+            Invoke("ActiveSpeedNormalization", normalizationSpeedDelay);
+        } else if (_startedSpeedNormalization && _speedNormalizationActive)
+        {
+            NormalizeSpeed();
+        }
+    }
+
+    private void ActiveSpeedNormalization()
+    {
+        _speedNormalizationActive = true;
     }
 
     private void NormalizeSpeed()
@@ -253,14 +329,27 @@ public class PlayerController : MonoBehaviour
         {
             GameManager.Instance.SetNormalPlayerSpeed();
             _jumpKind = JumpKind.Normal;
-            PlayIdleAnimation();
+            SwitchAnimation(PlayerAnimation.Idle);
+        }
+    }
+    
+    
+
+    private void HandleConstraints()
+    {
+        if ( transform.position.x <= _playerInitialPosition - maxPlayerDistanceLeftDirection)
+        {
+            playerRigidBody.velocity = new Vector2(0, playerRigidBody.velocity.y);
+        } else if (transform.position.x >= _playerInitialPosition + maxPlayerDistanceRightDirection)
+        {
+            playerRigidBody.velocity = new Vector2(0, playerRigidBody.velocity.y);
         }
     }
 
 
     private bool ShouldPlayerSlowDown(bool ignoreKey = false)
     {
-        return ((Input.GetKey(KeyCode.LeftArrow) || ignoreKey) && transform.position.x > _playerInitialPosition - maxPlayerDistanceLeftDirection);
+        return ((Input.GetKey(KeyCode.LeftArrow) || ignoreKey) && transform.position.x > _playerInitialPosition - maxPlayerDistanceLeftDirection && !IsPlayerAboveGround());
     }
 
     private bool ShouldPlayerMaintainSpeed()
@@ -270,24 +359,21 @@ public class PlayerController : MonoBehaviour
 
     private bool ShouldPlayerJump()
     {
-        return (Input.GetKeyDown(KeyCode.UpArrow) && _jumpReady);
+        return (Input.GetKeyDown(KeyCode.UpArrow) && _jumpReady && !_isJumping);
     }
 
     private bool IsBackJump()
     {
-        //return Input.GetKey(KeyCode.LeftArrow);
         return _jumpKind == JumpKind.Backward;
     }
 
     private bool IsNormalJump()
     {
-        //return !Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow);
         return _jumpKind == JumpKind.Normal;
     }
 
     private bool IsBigJump()
     {
-        //return Input.GetKey(KeyCode.RightArrow);
         return _jumpKind == JumpKind.Forward;
     }
 
@@ -314,69 +400,185 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-    
+
     void OnTriggerEnter2D(Collider2D collision)
     {
 
         if (collision.gameObject.CompareTag("EnemyProjectile"))
         {
-            Destroy(gameObject);
-            Destroy(collision.gameObject);
-            GameManager.Instance.ResetScore();
-            SceneManager.LoadScene("SampleScene");
-
+            HandleLogicAfterCollisionWithProjectile(collision);
         }
 
         if (collision.gameObject.CompareTag("Platform"))
         {
-            GameManager.Instance.ResetScore();
-            SceneManager.LoadScene("SampleScene");
+
+            HandleLogicAfterCollisionWithHole(collision);
+
         }
 
     }
 
+
+
+    private void StopGame()
+    {
+        GameManager.Instance.StopGame();
+    }
+
+    private bool IsGameRunning()
+    {
+        return GameManager.Instance.IsGameRunning();
+    }
+
+    private void InitializeDeath()
+    {
+        _deathInitialized = true;
+    }
+
+    private void SetFinalDeathPosition(float position)
+    {
+        _finalDeathPosition = position;
+    }
+
+    private void ReachFinalDeathPosition()
+    {
+        _finalDeathPositionReached = true;
+        SwitchAnimation(PlayerAnimation.Death);
+    }
+
+    private void HandleLogicAfterCollisionWithProjectile(Collider2D collision)
+    {
+        Destroy(collision.gameObject);
+        GameManager.Instance.PlayerDeath();
+        SwitchAnimation(PlayerAnimation.None);
+        SetFinalDeathPosition(collision.bounds.center.x);
+        InitializeDeath();
+        ReachFinalDeathPosition();
+    }
+    private void HandleLogicAfterCollisionWithHole(Collider2D collision)
+    {
+        playerRigidBody.velocity = new Vector2(playerRigidBody.velocity.x, 0);
+        GameManager.Instance.PlayerDeath();
+        SwitchAnimation(PlayerAnimation.None);
+        SetFinalDeathPosition(collision.bounds.center.x);
+        InitializeDeath();
+        Invoke("ReachFinalDeathPosition", 0.65f);
+    }
+
+    private void HandleLogicAfterDeath()
+    {
+        if (GameManager.Instance.CanRespawnPlayer())
+        {
+            RespawnPlayer();
+        }
+        else
+        {
+            GameManager.Instance.ResetGame();
+        }
+
+    }
+
+    private void RespawnPlayer()
+    {
+        GameManager.Instance.RespawnPlayer();
+        SceneManager.LoadScene("SampleScene");
+        SwitchAnimation(PlayerAnimation.Idle);
+        _deathInitialized = false;
+        _finalDeathPositionReached = false;
+        _accelerationAnimationPlayed = false;
+        _deathAnimationPlayed = false;
+        _decelerationAnimationPlayed = false;
+        _jumpReady = true;
+        _isJumping = false;
+    }
+
     private void PlayAccelerateAnimation()
     {
-        if (!_playerAnimation.animation.isPlaying || _playerAnimation.animation.isCompleted)
-        {
+
             _decelerationAnimationPlayed = false;
             if (!_accelerationAnimationPlayed)
             {
+                _playerAnimation.animation.Stop();
                 _playerAnimation.animation.Play("drive_acceleration",  1);
                 _accelerationAnimationPlayed = true;
             }
             else
             {
-                _playerAnimation.animation.Play("drive_fast", 1);
+                if (AnimationReadyToPlay())
+                {
+                    _playerAnimation.animation.Play("drive_fast", 1);
+                }
             }        
-        }
+        
     }
 
     private void PlayDecelerationAnimation()
     {
-        if (!_playerAnimation.animation.isPlaying || _playerAnimation.animation.isCompleted)
-        {
+
             _accelerationAnimationPlayed = false;
             if (!_decelerationAnimationPlayed)
             {
+                _playerAnimation.animation.Stop();
                 _playerAnimation.animation.Play("drive_deceleration", 1);
                 _decelerationAnimationPlayed = true;
             }
             else
             {
-                _playerAnimation.animation.Play("drive_idle", 1);
-            
+                if (AnimationReadyToPlay())
+                {
+                    _playerAnimation.animation.Play("drive_idle", 1);
+                }
             }          
-        }
+        
     }
 
     private void PlayIdleAnimation()
     {
-        if (!_playerAnimation.animation.isPlaying || _playerAnimation.animation.isCompleted)
+        if (AnimationReadyToPlay())
         {
             _accelerationAnimationPlayed = false;
             _decelerationAnimationPlayed = false;
             _playerAnimation.animation.Play("drive_idle", 1);
+        }
+    }
+
+    private void PlayDeathAnimation()
+    {
+        if (!_deathAnimationPlayed)
+        {
+            _deathAnimationPlayed = true;
+            _playerAnimation.animation.Stop();
+            _playerAnimation.animation.Play("Death_Player", 1);  
+        }
+
+    }
+
+    private bool AnimationReadyToPlay()
+    {
+        return !_playerAnimation.animation.isPlaying || _playerAnimation.animation.isCompleted;
+    }
+
+    private void SwitchAnimation(PlayerAnimation animation)
+    {
+        _animationToDisplay = animation;
+    }
+
+    private void Animate()
+    {
+        switch (_animationToDisplay)
+        {
+            case PlayerAnimation.Acceleration:
+                PlayAccelerateAnimation();
+                break;
+            case PlayerAnimation.Deceleration:
+                PlayDecelerationAnimation();
+                break;
+            case PlayerAnimation.Idle:
+                PlayIdleAnimation();
+                break;
+            case PlayerAnimation.Death:
+                PlayDeathAnimation();
+                break;
         }
     }
 

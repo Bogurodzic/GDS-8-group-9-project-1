@@ -15,8 +15,10 @@ public class LandController : MonoBehaviour
     }
     void Update()
     {
-        MoveLand();
-        //HandleRepeatingBackground();
+        if (GameManager.Instance.IsGameRunning())
+        {
+            MoveLand();
+        }
     }
 
     private void LoadComponents()
