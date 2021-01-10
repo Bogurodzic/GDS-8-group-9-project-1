@@ -25,6 +25,8 @@ public class GameManager : GenericSingletonClass<GameManager>
     private int _initLivesAmount = 2;
     private int _currentLivesAmount = 2;
 
+    private float _progress = 0;
+
     public void StopGame()
     {
         this._gameRunning = false;
@@ -153,6 +155,16 @@ public class GameManager : GenericSingletonClass<GameManager>
         ResetLivesAmount();
         StartGame();
         GoToMenu();
+    }
+
+    public void SetProgress(float progress)
+    {
+        _progress = progress;
+    }
+
+    public float GetProgress()
+    {
+        return _progress;
     }
 
     public void GoToMenu()

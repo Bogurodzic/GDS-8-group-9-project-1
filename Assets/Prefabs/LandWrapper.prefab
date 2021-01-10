@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2063661026174362159}
   - component: {fileID: 2063661026174362158}
   - component: {fileID: 2063661026174362153}
-  - component: {fileID: 2063661026174362152}
   - component: {fileID: 2063661026174362155}
   m_Layer: 0
   m_Name: Land (14)
@@ -132,19 +131,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.8124497, y: 1.7643485}
   m_EdgeRadius: 0
---- !u!114 &2063661026174362152
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2063661026174362149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 039e00ac1c121466b93da80e58d7b0f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  landSpeed: 4.5
 --- !u!68 &2063661026174362155
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -196,7 +182,6 @@ GameObject:
   - component: {fileID: 2063661026186916403}
   - component: {fileID: 2063661026186916402}
   - component: {fileID: 2063661026186916397}
-  - component: {fileID: 2063661026186916396}
   - component: {fileID: 2063661026186916399}
   m_Layer: 0
   m_Name: Land (4)
@@ -316,19 +301,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.8124497, y: 1.7643485}
   m_EdgeRadius: 0
---- !u!114 &2063661026186916396
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2063661026186916393}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 039e00ac1c121466b93da80e58d7b0f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  landSpeed: 4.5
 --- !u!68 &2063661026186916399
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -380,7 +352,6 @@ GameObject:
   - component: {fileID: 2063661026263764851}
   - component: {fileID: 2063661026263764850}
   - component: {fileID: 2063661026263764845}
-  - component: {fileID: 2063661026263764844}
   - component: {fileID: 2063661026263764847}
   m_Layer: 0
   m_Name: Land (13)
@@ -500,19 +471,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.8124497, y: 1.7643485}
   m_EdgeRadius: 0
---- !u!114 &2063661026263764844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2063661026263764841}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 039e00ac1c121466b93da80e58d7b0f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  landSpeed: 4.5
 --- !u!68 &2063661026263764847
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -564,7 +522,6 @@ GameObject:
   - component: {fileID: 2063661026341894069}
   - component: {fileID: 2063661026341894068}
   - component: {fileID: 2063661026341894071}
-  - component: {fileID: 2063661026341894070}
   - component: {fileID: 2063661026341894065}
   m_Layer: 0
   m_Name: Land (11)
@@ -684,19 +641,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.8124497, y: 1.7643485}
   m_EdgeRadius: 0
---- !u!114 &2063661026341894070
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2063661026341894067}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 039e00ac1c121466b93da80e58d7b0f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  landSpeed: 4.5
 --- !u!68 &2063661026341894065
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -748,7 +692,6 @@ GameObject:
   - component: {fileID: 2063661026404224364}
   - component: {fileID: 2063661026404224367}
   - component: {fileID: 2063661026404224366}
-  - component: {fileID: 2063661026404224361}
   - component: {fileID: 2063661026404224360}
   m_Layer: 0
   m_Name: Land (1)
@@ -868,19 +811,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.8124497, y: 1.7643485}
   m_EdgeRadius: 0
---- !u!114 &2063661026404224361
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2063661026404224362}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 039e00ac1c121466b93da80e58d7b0f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  landSpeed: 4.5
 --- !u!68 &2063661026404224360
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -932,7 +862,6 @@ GameObject:
   - component: {fileID: 2063661026426014538}
   - component: {fileID: 2063661026426014533}
   - component: {fileID: 2063661026426014532}
-  - component: {fileID: 2063661026426014535}
   - component: {fileID: 2063661026426014534}
   m_Layer: 0
   m_Name: Land (9)
@@ -1052,19 +981,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.8124497, y: 1.7643485}
   m_EdgeRadius: 0
---- !u!114 &2063661026426014535
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2063661026426014528}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 039e00ac1c121466b93da80e58d7b0f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  landSpeed: 4.5
 --- !u!68 &2063661026426014534
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -1116,7 +1032,6 @@ GameObject:
   - component: {fileID: 2063661026478148909}
   - component: {fileID: 2063661026478148908}
   - component: {fileID: 2063661026478148911}
-  - component: {fileID: 2063661026478148910}
   - component: {fileID: 2063661026478148905}
   m_Layer: 0
   m_Name: Land (6)
@@ -1236,19 +1151,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.8124497, y: 1.7643485}
   m_EdgeRadius: 0
---- !u!114 &2063661026478148910
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2063661026478148907}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 039e00ac1c121466b93da80e58d7b0f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  landSpeed: 4.5
 --- !u!68 &2063661026478148905
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -1300,7 +1202,6 @@ GameObject:
   - component: {fileID: 2063661026595665721}
   - component: {fileID: 2063661026595665720}
   - component: {fileID: 2063661026595665723}
-  - component: {fileID: 2063661026595665722}
   - component: {fileID: 2063661026595665717}
   m_Layer: 0
   m_Name: Land (5)
@@ -1420,19 +1321,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.8124497, y: 1.7643485}
   m_EdgeRadius: 0
---- !u!114 &2063661026595665722
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2063661026595665719}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 039e00ac1c121466b93da80e58d7b0f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  landSpeed: 4.5
 --- !u!68 &2063661026595665717
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -1484,7 +1372,6 @@ GameObject:
   - component: {fileID: 2063661026782142778}
   - component: {fileID: 2063661026782142773}
   - component: {fileID: 2063661026782142772}
-  - component: {fileID: 2063661026782142775}
   - component: {fileID: 2063661026782142774}
   m_Layer: 0
   m_Name: Land (8)
@@ -1604,19 +1491,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.8124497, y: 1.7643485}
   m_EdgeRadius: 0
---- !u!114 &2063661026782142775
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2063661026782142768}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 039e00ac1c121466b93da80e58d7b0f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  landSpeed: 4.5
 --- !u!68 &2063661026782142774
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -1668,7 +1542,6 @@ GameObject:
   - component: {fileID: 2063661026793382645}
   - component: {fileID: 2063661026793382644}
   - component: {fileID: 2063661026793382647}
-  - component: {fileID: 2063661026793382646}
   - component: {fileID: 2063661026793382641}
   m_Layer: 0
   m_Name: Land (2)
@@ -1788,19 +1661,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.8124497, y: 1.7643485}
   m_EdgeRadius: 0
---- !u!114 &2063661026793382646
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2063661026793382643}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 039e00ac1c121466b93da80e58d7b0f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  landSpeed: 4.5
 --- !u!68 &2063661026793382641
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -1852,7 +1712,6 @@ GameObject:
   - component: {fileID: 2063661026839930909}
   - component: {fileID: 2063661026839930908}
   - component: {fileID: 2063661026839930911}
-  - component: {fileID: 2063661026839930910}
   - component: {fileID: 2063661026839930905}
   m_Layer: 0
   m_Name: Land (7)
@@ -1972,19 +1831,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.8124497, y: 1.7643485}
   m_EdgeRadius: 0
---- !u!114 &2063661026839930910
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2063661026839930907}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 039e00ac1c121466b93da80e58d7b0f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  landSpeed: 4.5
 --- !u!68 &2063661026839930905
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -2036,7 +1882,6 @@ GameObject:
   - component: {fileID: 2063661026974763940}
   - component: {fileID: 2063661026974763943}
   - component: {fileID: 2063661026974763942}
-  - component: {fileID: 2063661026974763937}
   - component: {fileID: 2063661026974763936}
   m_Layer: 0
   m_Name: Land (3)
@@ -2156,19 +2001,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.8124497, y: 1.7643485}
   m_EdgeRadius: 0
---- !u!114 &2063661026974763937
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2063661026974763938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 039e00ac1c121466b93da80e58d7b0f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  landSpeed: 4.5
 --- !u!68 &2063661026974763936
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -2217,6 +2049,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2063661027080162159}
+  - component: {fileID: 549563275}
+  - component: {fileID: 549563274}
+  - component: {fileID: 3285913274017060371}
   m_Layer: 0
   m_Name: LandWrapper
   m_TagString: Untagged
@@ -2254,6 +2089,57 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &549563275
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063661027080162158}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 131.90782, y: -3.6936905}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 300.7413, y: 0.10539484}
+  m_EdgeRadius: 0
+--- !u!114 &549563274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063661027080162158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb264ad932298428288420432aa42a54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3285913274017060371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063661027080162158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 039e00ac1c121466b93da80e58d7b0f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  landSpeed: 4.5
 --- !u!1 &2063661027205265714
 GameObject:
   m_ObjectHideFlags: 0
@@ -2266,7 +2152,6 @@ GameObject:
   - component: {fileID: 2063661027205265712}
   - component: {fileID: 2063661027205265718}
   - component: {fileID: 2063661027205265716}
-  - component: {fileID: 2063661027205265719}
   - component: {fileID: 2063661027205265715}
   m_Layer: 0
   m_Name: Land
@@ -2386,19 +2271,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.8124497, y: 1.7643485}
   m_EdgeRadius: 0
---- !u!114 &2063661027205265719
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2063661027205265714}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 039e00ac1c121466b93da80e58d7b0f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  landSpeed: 4.5
 --- !u!68 &2063661027205265715
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -2450,7 +2322,6 @@ GameObject:
   - component: {fileID: 2063661027286561054}
   - component: {fileID: 2063661027286561049}
   - component: {fileID: 2063661027286561048}
-  - component: {fileID: 2063661027286561051}
   - component: {fileID: 2063661027286561050}
   m_Layer: 0
   m_Name: Land (12)
@@ -2570,19 +2441,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.8124497, y: 1.7643485}
   m_EdgeRadius: 0
---- !u!114 &2063661027286561051
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2063661027286561044}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 039e00ac1c121466b93da80e58d7b0f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  landSpeed: 4.5
 --- !u!68 &2063661027286561050
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -2634,7 +2492,6 @@ GameObject:
   - component: {fileID: 2063661027455923939}
   - component: {fileID: 2063661027455923938}
   - component: {fileID: 2063661027455923741}
-  - component: {fileID: 2063661027455923740}
   - component: {fileID: 2063661027455923743}
   m_Layer: 0
   m_Name: Land (10)
@@ -2754,19 +2611,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.8124497, y: 1.7643485}
   m_EdgeRadius: 0
---- !u!114 &2063661027455923740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2063661027455923737}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 039e00ac1c121466b93da80e58d7b0f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  landSpeed: 4.5
 --- !u!68 &2063661027455923743
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -2818,7 +2662,6 @@ GameObject:
   - component: {fileID: 2063661027645271990}
   - component: {fileID: 2063661027645271985}
   - component: {fileID: 2063661027645271984}
-  - component: {fileID: 2063661027645271987}
   - component: {fileID: 2063661027645271986}
   m_Layer: 0
   m_Name: Land (15)
@@ -2938,19 +2781,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.8124497, y: 1.7643485}
   m_EdgeRadius: 0
---- !u!114 &2063661027645271987
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2063661027645271980}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 039e00ac1c121466b93da80e58d7b0f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  landSpeed: 4.5
 --- !u!68 &2063661027645271986
 EdgeCollider2D:
   m_ObjectHideFlags: 0

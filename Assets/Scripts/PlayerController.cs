@@ -467,7 +467,6 @@ public class PlayerController : MonoBehaviour
         {
             HandleReturningOnGround();
         }
-
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -484,7 +483,6 @@ public class PlayerController : MonoBehaviour
             HandleLogicAfterCollisionWithHole(collision);
 
         }
-
     }
 
 
@@ -651,5 +649,5 @@ public class PlayerController : MonoBehaviour
                 break;
         }
     }
-
+    
 }

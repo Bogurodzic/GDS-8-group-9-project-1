@@ -770,13 +770,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerAccelerationSpeed: 2
-  playerSlowDownSpeed: 1.2
+  playerSlowDownSpeed: 1.5
   maxPlayerDistanceLeftDirection: 1
   maxPlayerDistanceRightDirection: 2.2
   normalizationSpeedDelay: 0.4
   jumpHeight: 13500
-  backwardJumpHorizontalForce: -0.4
-  backwardJumpHeightFactor: 0.55
+  backwardJumpHorizontalForce: -0.25
+  backwardJumpHeightFactor: 0.7
   normalJumpHorizontalForce: 0
   normalJumpHeightFactor: 0.91
   forwardJumpHorizontalForce: 0
