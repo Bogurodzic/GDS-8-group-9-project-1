@@ -40,14 +40,12 @@ public class PlayerController : MonoBehaviour
     private bool _horizontalShootReady = true;
     private bool _verticalShootReady = true;
     [Space(10)]
-
-
-
+    
     private Rigidbody2D playerRigidBody;
 
-    private bool _playerDeathInitialized = false;
-    private bool _playerDeathReached = false;
-    private float _deathZoneXPosition;
+    private bool _deathInitialized = false;
+    private bool _finalDeathPositionReached = false;
+    private float _finalDeathPosition;
     
     private UnityArmatureComponent _playerAnimation;
     private bool _accelerationAnimationPlayed = false;
@@ -80,35 +78,60 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.Instance.IsGameRunning())
+        if (IsGameRunning())
         {
-            HanldeShooting();
+            HandleShooting();
             HandleJump();
             HandleMovement();
             Animate();
-        } else if (!GameManager.Instance.IsGameRunning())
+        } else if (!IsGameRunning())
         {
-            if (_playerDeathInitialized && !_playerDeathReached)
+            HandleDeathMovement();
+        }
+    }
+
+    private void HandleDeathMovement()
+    {
+        if (ShouldPlayerMoveTowardsFinalDeathPosition())
+        {
+            if (FinalDeathPositionIsOnRight())
             {
-                if (transform.position.x < _deathZoneXPosition)
-                {
-                    transform.Translate(Vector3.right * (playerAccelerationSpeed * 0.7f) * Time.deltaTime);
-                } else if (transform.position.x > _deathZoneXPosition)
-                {
-                    _playerDeathInitialized = true;
-                    transform.Translate(Vector3.left * (playerAccelerationSpeed * 0.7f) * Time.deltaTime);
-                }
-            } else if (_playerDeathReached)
+                transform.Translate(Vector3.right * (playerAccelerationSpeed * 0.7f) * Time.deltaTime);
+            } else if (FinalDeathPositionIsOnLeft())
             {
-                Animate();
-                if (AnimationReadyToPlay())
-                {
-                    HandlePostDeath();
-                }
+                transform.Translate(Vector3.left * (playerAccelerationSpeed * 0.7f) * Time.deltaTime);
+            }
+        } else if (IsFinalDeathPositionReached())
+        {
+            Animate();
+            if (AnimationReadyToPlay())
+            {
+                HandlePostDeath();
             }
         }
-
     }
+
+    private bool ShouldPlayerMoveTowardsFinalDeathPosition()
+    {
+        return _deathInitialized && !_finalDeathPositionReached;
+    }
+
+    private bool FinalDeathPositionIsOnRight()
+    {
+        return transform.position.x < _finalDeathPosition;
+    }
+
+    private bool FinalDeathPositionIsOnLeft()
+    {
+        return transform.position.x > _finalDeathPosition;
+    }
+
+    private bool IsFinalDeathPositionReached()
+    {
+        return _finalDeathPositionReached;
+    }
+    
+
     
     private void LoadComponents()  
     {
@@ -162,28 +185,10 @@ public class PlayerController : MonoBehaviour
         }
     }
     
-    private void HandleJumpMotionAboveGround()
-    {
-        if (_jumpKind == JumpKind.Backward && ShouldPlayerSlowDown(true))
-        {
-            SlowDown();
-        } else if (_jumpKind == JumpKind.Forward && ShouldPlayerAccelerate(true))
-        {
-            Accelerate();
-        }
-        else
-        {
-            PlayIdleAnimation();
-        }
-    }
-
     private void HandleMovement()
     {
-
-
         if (ShouldPlayerAccelerate())
         {
-
             Accelerate();
             ResetNormalizationStates();
             _jumpKind = JumpKind.Forward;
@@ -205,10 +210,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             HandleNormalizeSpeed();
-        }        
-        
-
-
+        }
     }
 
     private void Accelerate()
@@ -233,7 +235,7 @@ public class PlayerController : MonoBehaviour
 
 
 
-    private void HanldeShooting()
+    private void HandleShooting()
     {
         if (ShouldPlayerShootHorizontally())
         {
@@ -362,19 +364,16 @@ public class PlayerController : MonoBehaviour
 
     private bool IsBackJump()
     {
-        //return Input.GetKey(KeyCode.LeftArrow);
         return _jumpKind == JumpKind.Backward;
     }
 
     private bool IsNormalJump()
     {
-        //return !Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow);
         return _jumpKind == JumpKind.Normal;
     }
 
     private bool IsBigJump()
     {
-        //return Input.GetKey(KeyCode.RightArrow);
         return _jumpKind == JumpKind.Forward;
     }
 
@@ -417,26 +416,45 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Platform"))
         {
 
-            HandlePreDeath(collision);
+            HandleLogicBeforeDeath(collision);
 
         }
 
     }
 
-    private void HandlePreDeath(Collider2D collision)
+    private void HandleLogicBeforeDeath(Collider2D collision)
     {
         SwitchAnimation(PlayerAnimation.None);
-        _deathZoneXPosition = collision.bounds.center.x;
-        GameManager.Instance.StopGame();
-        _playerDeathInitialized = true;
-        Invoke("ReachPlayerDeath", 0.55f);
+        SetFinalDeathPosition(collision.bounds.center.x);
+        StopGame();
+        InitializeDeath();
+        Invoke("ReachFinalDeathPosition", 0.55f);
     }
 
-    private void ReachPlayerDeath()
+    private void StopGame()
     {
-        _playerDeathReached = true;
+        GameManager.Instance.StopGame();
+    }
+
+    private bool IsGameRunning()
+    {
+        return GameManager.Instance.IsGameRunning();
+    }
+
+    private void InitializeDeath()
+    {
+        _deathInitialized = true;
+    }
+
+    private void SetFinalDeathPosition(float position)
+    {
+        _finalDeathPosition = position;
+    }
+
+    private void ReachFinalDeathPosition()
+    {
+        _finalDeathPositionReached = true;
         SwitchAnimation(PlayerAnimation.Death);
-        Debug.Log("PLAYER DEATH REACHED");
     }
 
     private void HandlePostDeath()
@@ -530,7 +548,6 @@ public class PlayerController : MonoBehaviour
                 PlayIdleAnimation();
                 break;
             case PlayerAnimation.Death:
-                Debug.Log("DEATH ANIMATION PLAYED");
                 PlayDeathAnimation();
                 break;
         }
