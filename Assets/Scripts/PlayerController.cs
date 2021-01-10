@@ -253,13 +253,37 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            if (_currentPlayerDecelerationSpeed < playerSlowDownSpeed)
+            if (ShouldSlowDownToNormalSpeed())
             {
-                _currentPlayerDecelerationSpeed += 0.0075f;
+                if (_currentPlayerDecelerationSpeed < playerSlowDownSpeed)
+                {
+                    _currentPlayerDecelerationSpeed += 0.0075f;
+                }
+                transform.Translate(Vector3.left * _currentPlayerDecelerationSpeed * Time.deltaTime); 
+            } else if (ShouldSlowDownBelowNormalSpeed())
+            {
+                if (_currentPlayerDecelerationSpeed < playerSlowDownSpeed / 2)
+                {
+                    _currentPlayerDecelerationSpeed += 0.0075f;
+                } else if (_currentPlayerDecelerationSpeed > playerSlowDownSpeed / 2)
+                {
+                    _currentPlayerDecelerationSpeed -= 0.0075f;
+                }
+                transform.Translate(Vector3.left * _currentPlayerDecelerationSpeed * Time.deltaTime);
             }
-            transform.Translate(Vector3.left * _currentPlayerDecelerationSpeed * Time.deltaTime);
+
         }
         
+    }
+
+    private bool ShouldSlowDownToNormalSpeed()
+    {
+        return transform.position.x > _playerInitialPosition;
+    }
+
+    private bool ShouldSlowDownBelowNormalSpeed()
+    {
+        return transform.position.x <= _playerInitialPosition;
     }
 
     private void ResetNormalizationStates()
@@ -362,6 +386,9 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            _decelerationInitialized = false;
+            _accelerationInitialized = false;
+            
             GameManager.Instance.SetNormalPlayerSpeed();
             _jumpKind = JumpKind.Normal;
             SwitchAnimation(PlayerAnimation.Idle);
