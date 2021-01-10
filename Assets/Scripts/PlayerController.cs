@@ -470,6 +470,10 @@ public class PlayerController : MonoBehaviour
         {
             RespawnPlayer();
         }
+        else
+        {
+            GameManager.Instance.ResetGame();
+        }
 
     }
 

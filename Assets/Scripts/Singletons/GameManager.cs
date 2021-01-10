@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : GenericSingletonClass<GameManager>
 {
@@ -128,9 +129,13 @@ public class GameManager : GenericSingletonClass<GameManager>
         }
     }
 
+    public void ResetLivesAmount()
+    {
+        _currentLivesAmount = _initLivesAmount;
+    }
+
     public void RespawnPlayer()
     {
-   //     ResetScore();
         ResetBombDeployed();
         StartGame();
         DecreaseLivesAmount();
@@ -139,5 +144,19 @@ public class GameManager : GenericSingletonClass<GameManager>
     public void PlayerDeath()
     {
         StopGame();
+    }
+
+    public void ResetGame()
+    {
+        ResetScore();
+        ResetBombDeployed();
+        ResetLivesAmount();
+        StartGame();
+        GoToMenu();
+    }
+
+    public void GoToMenu()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 }
