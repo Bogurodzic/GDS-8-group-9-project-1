@@ -96,10 +96,10 @@ public class PlayerController : MonoBehaviour
         {
             if (FinalDeathPositionIsOnRight())
             {
-                transform.Translate(Vector3.right * (playerAccelerationSpeed * 0.7f) * Time.deltaTime);
+                transform.Translate(Vector3.right * (playerAccelerationSpeed * 1.5f) * Time.deltaTime);
             } else if (FinalDeathPositionIsOnLeft())
             {
-                transform.Translate(Vector3.left * (playerAccelerationSpeed * 0.7f) * Time.deltaTime);
+                transform.Translate(Vector3.left * (playerAccelerationSpeed * 1.5f) * Time.deltaTime);
             }
         } else if (IsFinalDeathPositionReached())
         {
@@ -457,11 +457,12 @@ public class PlayerController : MonoBehaviour
     }
     private void HandleLogicAfterCollisionWithHole(Collider2D collision)
     {
+        playerRigidBody.velocity = new Vector2(playerRigidBody.velocity.x, 0);
         GameManager.Instance.PlayerDeath();
         SwitchAnimation(PlayerAnimation.None);
         SetFinalDeathPosition(collision.bounds.center.x);
         InitializeDeath();
-        Invoke("ReachFinalDeathPosition", 0.55f);
+        Invoke("ReachFinalDeathPosition", 0.65f);
     }
 
     private void HandleLogicAfterDeath()
