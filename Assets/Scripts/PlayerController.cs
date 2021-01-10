@@ -17,6 +17,10 @@ public class PlayerController : MonoBehaviour
     private float _playerInitialPosition;
     private bool _startedSpeedNormalization = false;
     private bool _speedNormalizationActive = false;
+    private bool _accelerationInitialized = false;
+    private float _currentPlayerAccelerationSpeed;
+    private bool _decelerationInitialized = false;
+    private float _currentPlayerDecelerationSpeed; 
     [Space(10)]
     
     [Header("Jump")]
@@ -170,18 +174,18 @@ public class PlayerController : MonoBehaviour
         {
             SwitchAnimation(PlayerAnimation.Deceleration);
             _jumpKind = JumpKind.Backward;
-            playerRigidBody.AddForce(new Vector2( backwardJumpHorizontalForce * jumpHeight, backwardJumpHeightFactor * jumpHeight) , ForceMode2D.Impulse);
+            playerRigidBody.AddForce(new Vector2( backwardJumpHorizontalForce * jumpHeight, backwardJumpHeightFactor * jumpHeight) , ForceMode2D.Force);
         } else if (IsNormalJump())
         {
             SwitchAnimation(PlayerAnimation.Idle);
             _jumpKind = JumpKind.Normal;
-            playerRigidBody.AddForce(new Vector2(normalJumpHorizontalForce * jumpHeight, normalJumpHeightFactor * jumpHeight) , ForceMode2D.Impulse);
+            playerRigidBody.AddForce(new Vector2(normalJumpHorizontalForce * jumpHeight, normalJumpHeightFactor * jumpHeight) , ForceMode2D.Force);
 
         } else if (IsBigJump())
         {
             SwitchAnimation(PlayerAnimation.Acceleration);
             _jumpKind = JumpKind.Forward;
-           playerRigidBody.AddForce(new Vector2( forwardJumpHorizontalForce * jumpHeight, forwardJumpHeightFactor * jumpHeight) , ForceMode2D.Impulse);
+            playerRigidBody.AddForce(new Vector2( forwardJumpHorizontalForce * jumpHeight, forwardJumpHeightFactor * jumpHeight) , ForceMode2D.Force);
         }
     }
     
@@ -216,15 +220,46 @@ public class PlayerController : MonoBehaviour
     private void Accelerate()
     {
         SwitchAnimation(PlayerAnimation.Acceleration);
-        transform.Translate(Vector3.right * playerAccelerationSpeed * Time.deltaTime);
-        GameManager.Instance.SetFastPlayerSpeed(); 
+        GameManager.Instance.SetFastPlayerSpeed();
+
+        _decelerationInitialized = false;
+        
+        if (_accelerationInitialized == false)
+        {
+            _accelerationInitialized = true;
+            _currentPlayerAccelerationSpeed = 0;
+        }
+        else
+        {
+            if (_currentPlayerAccelerationSpeed < playerAccelerationSpeed)
+            {
+                _currentPlayerAccelerationSpeed += 0.0065f;
+            }
+            transform.Translate(Vector3.right * _currentPlayerAccelerationSpeed * Time.deltaTime);
+        }
     }
 
     private void SlowDown()
     {
         SwitchAnimation(PlayerAnimation.Deceleration);
-        transform.Translate(Vector3.left * playerSlowDownSpeed * Time.deltaTime);
-        GameManager.Instance.SetSlowPlayerSpeed();  
+        GameManager.Instance.SetSlowPlayerSpeed();
+
+        _accelerationInitialized = false;
+
+        if (_decelerationInitialized == false)
+        {
+            _decelerationInitialized = true;
+            _currentPlayerDecelerationSpeed = 0;
+        }
+        else
+        {
+            if (_currentPlayerDecelerationSpeed < playerSlowDownSpeed)
+            {
+                _currentPlayerDecelerationSpeed += 0.0075f;
+            }
+            transform.Translate(Vector3.left * _currentPlayerDecelerationSpeed * Time.deltaTime);
+        }
+        
     }
 
     private void ResetNormalizationStates()
