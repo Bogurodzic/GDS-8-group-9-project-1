@@ -141,6 +141,43 @@ public class GameManager : GenericSingletonClass<GameManager>
         ResetBombDeployed();
         StartGame();
         DecreaseLivesAmount();
+        ResetLevel();
+    }
+
+    private void ResetLevel()
+    {
+        ResetLandWrapper();
+        ResetEnemies();
+        ResetProjectiles();
+    }
+
+    private void ResetLandWrapper()
+    {
+        GameObject landWrapper = GameObject.Find("LandWrapper");
+        landWrapper.transform.position = new Vector3(Checkpoint.LastCheckpointXPoint, landWrapper.transform.position.y,
+            landWrapper.transform.position.z);
+    }
+
+    private void ResetEnemies()
+    {
+        DestroyAll("Enemy");
+    }
+    
+    private void ResetProjectiles()
+    {
+        DestroyAll("Projectile");
+        DestroyAll("EnemyProjectile");
+
+    }
+
+    private void DestroyAll(string tag)
+    {
+        GameObject[] gameObjects = GameObject.FindGameObjectsWithTag (tag);
+     
+        for(var i = 0 ; i < gameObjects.Length ; i ++)
+        {
+            Destroy(gameObjects[i]);
+        }
     }
 
     public void PlayerDeath()

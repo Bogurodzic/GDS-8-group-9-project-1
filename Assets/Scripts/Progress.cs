@@ -38,7 +38,7 @@ public class Progress : MonoBehaviour
     private float CalculateProgress()
     {
 
-        float currentPosition = _landWrapperBoxCollider2D.bounds.min.x - _playerInitPosition;
+        float currentPosition = CalculateCurrentPosition();
         float width = _landInitMaxPosition - _landInitMinPosition;
         float progress = currentPosition / width * -1;
         if (progress < 0)
@@ -52,5 +52,15 @@ public class Progress : MonoBehaviour
     {
         float progress = CalculateProgress();
         GameManager.Instance.SetProgress(progress);
+    }
+
+    public float CalculateCurrentPosition()
+    {
+        return _landWrapperBoxCollider2D.bounds.min.x - _playerInitPosition;
+    }
+    
+    public float GetCurrentPosition()
+    {
+        return CalculateCurrentPosition();
     }
 }

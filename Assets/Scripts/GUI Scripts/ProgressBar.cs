@@ -23,7 +23,9 @@ namespace GUI_Scripts
 
         public void SetProgress(float progress)
         {
+
             _slider.value = progress;
+            
         }
     }
 }

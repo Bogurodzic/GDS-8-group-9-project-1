@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public float maxPlayerDistanceRightDirection;
     public float normalizationSpeedDelay;
     private float _playerInitialPosition;
+    private float _playerInitialPositionY;
     private bool _startedSpeedNormalization = false;
     private bool _speedNormalizationActive = false;
     private bool _accelerationInitialized = false;
@@ -146,6 +147,7 @@ public class PlayerController : MonoBehaviour
     private void SetInitialVariables()
     {
         _playerInitialPosition = transform.position.x;
+        _playerInitialPositionY = transform.position.y;
     }
     
     private bool IsPlayerAboveGround()
@@ -548,8 +550,23 @@ public class PlayerController : MonoBehaviour
     private void RespawnPlayer()
     {
         GameManager.Instance.RespawnPlayer();
-        SceneManager.LoadScene("SampleScene");
+        ResetPlayerPositionToLastCheckpoint();
         SwitchAnimation(PlayerAnimation.Idle);
+        ResetPlayerVariables();
+    }
+
+    private void ResetPlayerPositionToLastCheckpoint()
+    {
+        SetPlayerPositionOnTheMap(_playerInitialPosition, _playerInitialPositionY);
+    }
+
+    private void SetPlayerPositionOnTheMap(float x, float y)
+    {
+        transform.position = new Vector3(x, y, transform.position.z);
+    }
+
+    private void ResetPlayerVariables()
+    {
         _deathInitialized = false;
         _finalDeathPositionReached = false;
         _accelerationAnimationPlayed = false;
