@@ -38,8 +38,9 @@ namespace GUI_Scripts
      
             for(var i = 0 ; i < stagePoints.Length ; i ++)
             {
-                float stagePointPositionX = stagePoints[i].transform.position.x;
+                float stagePointPositionX = _progress.CalcHowFarObjectIsFromInitialPosition(stagePoints[i].transform.position.x);
                 float gameWidth = _progress.GetGameWidth();
+                Debug.Log("Before calc: " + stagePointPositionX + " : " + gameWidth );
                 float progress = stagePointPositionX / gameWidth;
                 float progressBarMaxPosition = _rectTransform.rect.xMax;
                 float progressBarMinPosition = _rectTransform.rect.xMin;
