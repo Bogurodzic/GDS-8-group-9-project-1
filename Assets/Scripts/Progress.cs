@@ -39,7 +39,7 @@ public class Progress : MonoBehaviour
     {
 
         float currentPosition = CalculateCurrentPosition();
-        float width = _landInitMaxPosition - _landInitMinPosition;
+        float width = GetGameWidth();
         float progress = currentPosition / width * -1;
         if (progress < 0)
         {
@@ -62,5 +62,10 @@ public class Progress : MonoBehaviour
     public float GetCurrentPosition()
     {
         return CalculateCurrentPosition();
+    }
+
+    public float GetGameWidth()
+    {
+        return _landInitMaxPosition - _landInitMinPosition;
     }
 }

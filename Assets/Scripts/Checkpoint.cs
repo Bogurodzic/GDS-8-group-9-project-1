@@ -7,10 +7,8 @@ public class Checkpoint : MonoBehaviour
 
     public static float LastCheckpointXPoint;
 
-    private Progress _progress;
-
-    public float checkpointIndex;
-    void Start()
+    protected Progress progress;
+    protected void Start()
     {
         LoadComponents();
     }
@@ -20,16 +18,28 @@ public class Checkpoint : MonoBehaviour
         
     }
 
-    private void LoadComponents()
+    protected void LoadComponents()
     {
-        _progress = GameObject.Find("LandWrapper").GetComponent<Progress>();
+        progress = GameObject.Find("LandWrapper").GetComponent<Progress>();
+    }
+
+    protected virtual void OnCheckpointPassed()
+    {
+        UpdateLastCheckpointPosition();
+        Debug.Log("CHECKPOINT: " + LastCheckpointXPoint);
     }
     
-    void OnTriggerEnter2D(Collider2D collision)
+
+    protected void UpdateLastCheckpointPosition()
+    {
+        LastCheckpointXPoint = progress.GetCurrentPosition();
+    }
+    
+    protected void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            LastCheckpointXPoint = _progress.GetCurrentPosition();
+            OnCheckpointPassed();
         }
     }
 }

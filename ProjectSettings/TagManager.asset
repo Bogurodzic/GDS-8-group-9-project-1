@@ -10,6 +10,7 @@ TagManager:
   - Projectile
   - EnemyProjectile
   - CheckPoint
+  - StagePoint
   layers:
   - Default
   - TransparentFX
