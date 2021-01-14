@@ -18,7 +18,7 @@ namespace GUI_Scripts
         void Start()
         {
             LoadComponents();
-            RenderStageIndicators();
+            Invoke("RenderStageIndicators", 0.01f);
         }
   
         void Update()
