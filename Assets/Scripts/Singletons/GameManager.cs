@@ -25,6 +25,8 @@ public class GameManager : GenericSingletonClass<GameManager>
     private int _initLivesAmount = 2;
     private int _currentLivesAmount = 2;
 
+    private float _progress = 0;
+
     public void StopGame()
     {
         this._gameRunning = false;
@@ -139,6 +141,43 @@ public class GameManager : GenericSingletonClass<GameManager>
         ResetBombDeployed();
         StartGame();
         DecreaseLivesAmount();
+        ResetLevel();
+    }
+
+    private void ResetLevel()
+    {
+        ResetLandWrapper();
+        ResetEnemies();
+        ResetProjectiles();
+    }
+
+    private void ResetLandWrapper()
+    {
+        GameObject landWrapper = GameObject.Find("LandWrapper");
+        landWrapper.transform.position = new Vector3(Checkpoint.LastCheckpointXPoint, landWrapper.transform.position.y,
+            landWrapper.transform.position.z);
+    }
+
+    private void ResetEnemies()
+    {
+        DestroyAll("Enemy");
+    }
+    
+    private void ResetProjectiles()
+    {
+        DestroyAll("Projectile");
+        DestroyAll("EnemyProjectile");
+
+    }
+
+    private void DestroyAll(string tag)
+    {
+        GameObject[] gameObjects = GameObject.FindGameObjectsWithTag (tag);
+     
+        for(var i = 0 ; i < gameObjects.Length ; i ++)
+        {
+            Destroy(gameObjects[i]);
+        }
     }
 
     public void PlayerDeath()
@@ -153,6 +192,16 @@ public class GameManager : GenericSingletonClass<GameManager>
         ResetLivesAmount();
         StartGame();
         GoToMenu();
+    }
+
+    public void SetProgress(float progress)
+    {
+        _progress = progress;
+    }
+
+    public float GetProgress()
+    {
+        return _progress;
     }
 
     public void GoToMenu()
