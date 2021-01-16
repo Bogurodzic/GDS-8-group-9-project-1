@@ -12,6 +12,7 @@ TagManager:
   - CheckPoint
   - StagePoint
   - Obstacle
+  - DestructableObstacle
   layers:
   - Default
   - TransparentFX

@@ -40,14 +40,11 @@ namespace GUI_Scripts
             {
                 float stagePointPositionX = _progress.CalcHowFarObjectIsFromInitialPosition(stagePoints[i].transform.position.x);
                 float gameWidth = _progress.GetGameWidth();
-                Debug.Log("Before calc: " + stagePointPositionX + " : " + gameWidth );
                 float progress = stagePointPositionX / gameWidth;
                 float progressBarMaxPosition = _rectTransform.rect.xMax;
                 float progressBarMinPosition = _rectTransform.rect.xMin;
                 float progressBarWidth = progressBarMaxPosition - progressBarMinPosition;
                 float stagePointMarkPosition = progressBarMinPosition + (progressBarWidth * progress);
-                Debug.Log("Progress: " + progress + " : " + stagePointMarkPosition);
-                Debug.Log("1: " + stagePointPositionX + " 2: " + gameWidth + " 3: " + progress + " 4: " + progressBarMinPosition + " 5: " + progressBarMaxPosition + " 6: " + progressBarWidth + " 7: " + stagePointMarkPosition);
                 GameObject stagePointImage = Instantiate(stagePointImagePrefab, Vector3.zero, Quaternion.identity);
                 stagePointImage.transform.SetParent(transform, false);
                 stagePointImage.transform.localScale = new Vector3(1, 1, 1);

@@ -1011,10 +1011,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 522660794}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9546bef3ff89d41d8a9d240ae11c0d12, type: 3}
+  m_Script: {fileID: 11500000, guid: aa7175ca157337347a9cc7d4b3de2b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  txt: {fileID: 0}
 --- !u!1 &536330649
 GameObject:
   m_ObjectHideFlags: 0
@@ -2453,12 +2452,47 @@ PrefabInstance:
     - target: {fileID: 1022580697917123400, guid: 4f3f9da8d97d540b0876acc90cc60f77,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.002400059
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1022580697917123400, guid: 4f3f9da8d97d540b0876acc90cc60f77,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.18129998
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1275745374233919649, guid: 4f3f9da8d97d540b0876acc90cc60f77,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1275745374233919678, guid: 4f3f9da8d97d540b0876acc90cc60f77,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.1547343
+      objectReference: {fileID: 0}
+    - target: {fileID: 1275745374233919678, guid: 4f3f9da8d97d540b0876acc90cc60f77,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.1552064
+      objectReference: {fileID: 0}
+    - target: {fileID: 1275745374233919678, guid: 4f3f9da8d97d540b0876acc90cc60f77,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0.077367246
+      objectReference: {fileID: 0}
+    - target: {fileID: 1275745374233919678, guid: 4f3f9da8d97d540b0876acc90cc60f77,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0.027637362
+      objectReference: {fileID: 0}
+    - target: {fileID: 1275745374233919678, guid: 4f3f9da8d97d540b0876acc90cc60f77,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1275745375830586607, guid: 4f3f9da8d97d540b0876acc90cc60f77,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2063661027080162158, guid: 4f3f9da8d97d540b0876acc90cc60f77,
         type: 3}
@@ -2535,16 +2569,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e1f80eb9d491449ff99d676868374629, type: 2}
-    - target: {fileID: 6634992327265557396, guid: 4f3f9da8d97d540b0876acc90cc60f77,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.101
-      objectReference: {fileID: 0}
-    - target: {fileID: 6634992327265557396, guid: 4f3f9da8d97d540b0876acc90cc60f77,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.993
-      objectReference: {fileID: 0}
     - target: {fileID: 7902831339297172257, guid: 4f3f9da8d97d540b0876acc90cc60f77,
         type: 3}
       propertyPath: m_IsActive

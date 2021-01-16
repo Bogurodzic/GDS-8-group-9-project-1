@@ -26,7 +26,6 @@ public class Checkpoint : MonoBehaviour
     protected virtual void OnCheckpointPassed()
     {
         UpdateLastCheckpointPosition();
-        Debug.Log("CHECKPOINT: " + LastCheckpointXPoint);
     }
     
 
