@@ -485,6 +485,13 @@ public class PlayerController : MonoBehaviour
             HandleLogicAfterCollisionWithHole(collision);
 
         }
+        
+        if (collision.gameObject.CompareTag("Obstacle"))
+        {
+
+            HandleLogicAfterCollisionWithObstacle(collision);
+
+        }
     }
 
 
@@ -518,6 +525,15 @@ public class PlayerController : MonoBehaviour
     private void HandleLogicAfterCollisionWithProjectile(Collider2D collision)
     {
         Destroy(collision.gameObject);
+        GameManager.Instance.PlayerDeath();
+        SwitchAnimation(PlayerAnimation.None);
+        SetFinalDeathPosition(collision.bounds.center.x);
+        InitializeDeath();
+        ReachFinalDeathPosition();
+    }
+
+    private void HandleLogicAfterCollisionWithObstacle(Collider2D collision)
+    {
         GameManager.Instance.PlayerDeath();
         SwitchAnimation(PlayerAnimation.None);
         SetFinalDeathPosition(collision.bounds.center.x);
