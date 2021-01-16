@@ -142,7 +142,7 @@ public class Enemy : MonoBehaviour
         if (GameManager.Instance.CanBombBeSpawned())
         {
             _enemyAnimation.animation.Stop();
-            _enemyAnimation.animation.Play("Enemy_Shot", 1);
+            _enemyAnimation.animation.Play("enemy_shot", 1);
             GameObject enemy = Instantiate(bomb, transform.position, transform.rotation);   
             
             enemy.SendMessage("StartObject", GetBombDirection());
@@ -167,7 +167,7 @@ public class Enemy : MonoBehaviour
     {
         if (_enemyAnimation.animation.isCompleted)
         {
-            _enemyAnimation.animation.Play("Enemy_Fly", 1);
+            _enemyAnimation.animation.Play("enemy_fly", 1);
         }
         
         if (_escapeEnabled)
@@ -340,7 +340,7 @@ public class Enemy : MonoBehaviour
 
     private void PlayDeathAnimation()
     {
-        _enemyAnimation.animation.Play("Enemy_Death", 1);
+        _enemyAnimation.animation.Play("enemy_death", 1);
     }
 
     private void AddPointsForKill()

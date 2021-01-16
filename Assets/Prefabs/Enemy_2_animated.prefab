@@ -332,7 +332,7 @@ GameObject:
   - component: {fileID: 3615788757174164472}
   m_Layer: 0
   m_Name: Enemy_2_animated
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -374,7 +374,7 @@ MonoBehaviour:
   bonesRoot: {fileID: 0}
   unityBones: []
   boneHierarchy: 0
-  animationName: 
+  animationName: enemy_fly
   _playTimes: 0
   _timeScale: 1
   _sortingMode: 0
