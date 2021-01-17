@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using DragonBones;
 using UnityEngine;
 
-public class Rock : Obstacle
+public class Tank : MonoBehaviour
 {
+    public float speed;
 
-    private bool _destroyInitialised = false;
-    private bool _rockDestroyed = false;
-   // private UnityArmatureComponent _rockAnimation;
+    private bool _destroyInitialised;
+    private bool _tankDestroyed;
+    private UnityArmatureComponent _tankAnimation;
     private BoxCollider2D _boxCollider2D;
     private Rigidbody2D _rigidbody2D;
     void Start()
@@ -18,45 +19,46 @@ public class Rock : Obstacle
 
     void Update()
     {
-        /*
-        if (_destroyInitialised && !_rockDestroyed)
+        transform.Translate(Vector3.left * speed * Time.deltaTime);
+        
+        
+        if (_destroyInitialised && !_tankDestroyed)
         {
-            if (_rockAnimation.animation.isCompleted)
+            if (_tankAnimation.animation.isCompleted)
             {
-                _rockDestroyed = true;
+                _tankDestroyed = true;
             }
         } 
-        if (_destroyInitialised && _rockDestroyed)
+        if (_destroyInitialised && _tankDestroyed)
         {
             Destroy(gameObject);
         }
-        */
-    }
 
+    }
+    
     private void LoadComponents()
     {
-       // _rockAnimation = GetComponent<UnityArmatureComponent>();
+        _tankAnimation = GetComponent<UnityArmatureComponent>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _boxCollider2D = GetComponent<BoxCollider2D>();
     }
+
+    
     
     void OnTriggerEnter2D(Collider2D collision)
     {
 
         if (collision.gameObject.CompareTag("Projectile"))
         {
-            //if (!_destroyInitialised)
-            //{
-                HandleDestroyingRock();
-                Destroy(collision.gameObject);
-            //}
+            HandleCollisionWithProjectile();
         }
-    }
 
-    private void HandleDestroyingRock()
+    }
+    
+    private void HandleCollisionWithProjectile()
     {
         _destroyInitialised = true;
-       // _rockAnimation.animation.Play("boulder_destroy_small", 1);
+        _tankAnimation.animation.Play("enemy_death", 1);
         _boxCollider2D.enabled = false;
         _rigidbody2D.Sleep();
         Destroy(gameObject);
