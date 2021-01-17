@@ -13,6 +13,7 @@ TagManager:
   - StagePoint
   - Obstacle
   - DestructableObstacle
+  - EnemyTank
   layers:
   - Default
   - TransparentFX
