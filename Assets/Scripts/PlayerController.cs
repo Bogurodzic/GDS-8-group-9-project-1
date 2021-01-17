@@ -159,10 +159,12 @@ public class PlayerController : MonoBehaviour
     {
         if (ShouldPlayerJump())
         {
+            Debug.Log("BEFORE JUMP");
             HandleJumpMotionOnGround();
         } else if (IsPlayerAboveGround())
         {
             HandleConstraints();
+            Debug.Log("JUMPING");
         }
     }
 
