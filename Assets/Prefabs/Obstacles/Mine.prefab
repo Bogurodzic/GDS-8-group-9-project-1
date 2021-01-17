@@ -91,6 +91,7 @@ GameObject:
   - component: {fileID: 9212765777810006826}
   - component: {fileID: 5329043527595175833}
   - component: {fileID: 4295857856255963999}
+  - component: {fileID: -4736426960057352402}
   m_Layer: 0
   m_Name: Mine
   m_TagString: Obstacle
@@ -189,6 +190,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.55276775, y: 0.15475845}
   m_EdgeRadius: 0
+--- !u!114 &-4736426960057352402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6098538351820436588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 039e00ac1c121466b93da80e58d7b0f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  landSpeed: 4.5
 --- !u!1 &6533059719171076248
 GameObject:
   m_ObjectHideFlags: 0

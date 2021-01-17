@@ -357,7 +357,7 @@ public class PlayerController : MonoBehaviour
 
     private void CreateHorizontalProjectile()
     {
-        Instantiate(horizontalProjectile, new Vector3(transform.position.x + 1.1f, transform.position.y - 0.23f, transform.position.z), horizontalProjectile.transform.rotation);
+        Instantiate(horizontalProjectile, new Vector3(transform.position.x + 1.1f, transform.position.y - 0.13f, transform.position.z), horizontalProjectile.transform.rotation);
     }
 
     private bool ShouldPlayerAccelerate(bool ignoreKey = false)
@@ -476,6 +476,13 @@ public class PlayerController : MonoBehaviour
         {
             HandleLogicAfterCollisionWithTank(collision);
         }
+        
+        if (collision.gameObject.CompareTag("Obstacle"))
+        {
+
+            HandleLogicAfterCollisionWithObstacle(collision);
+
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -495,12 +502,7 @@ public class PlayerController : MonoBehaviour
 
         }
         
-        if (collision.gameObject.CompareTag("Obstacle"))
-        {
 
-            HandleLogicAfterCollisionWithObstacle(collision);
-
-        }
     }
 
 
@@ -551,11 +553,20 @@ public class PlayerController : MonoBehaviour
         ReachFinalDeathPosition();  
     }
 
-    private void HandleLogicAfterCollisionWithObstacle(Collider2D collision)
+    private void HandleLogicAfterCollisionWithObstacle(Collision2D collision)
     {
+        if (collision.gameObject.name == "CrystalSmall" || collision.gameObject.name == "CrystalBig")
+        {
+            collision.gameObject.GetComponent<Rock>().InitDestroyRock();
+        }
+        
+        if (collision.gameObject.name == "RollingRockSmall" || collision.gameObject.name == "RollingRockBig")
+        {
+            collision.gameObject.GetComponent<Rock>().InitDestroyRock();
+        }
         GameManager.Instance.PlayerDeath();
         SwitchAnimation(PlayerAnimation.None);
-        SetFinalDeathPosition(collision.bounds.center.x);
+        SetFinalDeathPosition(collision.collider.bounds.center.x);
         InitializeDeath();
         ReachFinalDeathPosition();
     }

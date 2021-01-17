@@ -21,6 +21,17 @@ public class LandController : MonoBehaviour
         {
             UpdateGameSpeed();
             MoveLand();
+            if (_boxCollider)
+            {
+                _boxCollider.enabled = true;
+            }
+        }
+        else
+        {
+            if (_boxCollider)
+            {
+                _boxCollider.enabled = false;
+            }
         }
     }
 

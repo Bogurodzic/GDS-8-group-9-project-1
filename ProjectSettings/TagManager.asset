@@ -14,6 +14,7 @@ TagManager:
   - Obstacle
   - DestructableObstacle
   - EnemyTank
+  - EnemyProjectileExplosive
   layers:
   - Default
   - TransparentFX

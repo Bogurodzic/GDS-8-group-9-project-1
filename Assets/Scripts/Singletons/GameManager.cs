@@ -21,6 +21,8 @@ public class GameManager : GenericSingletonClass<GameManager>
 
     private int _maxBombAmonut = 2;
     private int _currentBombAmount = 0;
+    private int _maxCraterBombAmount = 1;
+    private int _currentCraterBombAmount = 0;
 
     private int _initLivesAmount = 4;
     private int _currentLivesAmount = 4;
@@ -107,10 +109,34 @@ public class GameManager : GenericSingletonClass<GameManager>
             _currentBombAmount -= 1;
         }
     }
+    
+    public void CraterBombDemployed()
+    {
+        _currentCraterBombAmount += 1;
+    }
+
+    public bool CanCraterBombBeSpawned()
+    {
+        return _currentCraterBombAmount < _maxCraterBombAmount;
+    }
+
+    public void CraterBombDestroyed()
+    {
+        if (_currentCraterBombAmount > 0)
+        {
+            Invoke("DecreaseCraterBombAmountByOne", 1f);
+        }
+    }
+
+    private void DecreaseCraterBombAmountByOne()
+    {
+        _currentCraterBombAmount -= 1;
+    }
 
     public void ResetBombDeployed()
     {
         _currentBombAmount = 0;
+        _currentCraterBombAmount = 0;
     }
 
     public int GetPlayerLives()
