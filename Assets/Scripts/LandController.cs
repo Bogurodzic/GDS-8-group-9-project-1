@@ -5,6 +5,7 @@ using UnityEngine;
 public class LandController : MonoBehaviour
 {
     public float landSpeed;
+    private float _initLandSpeed;
     private float _startingHorizontalPosition;
     
     private BoxCollider2D _boxCollider;
@@ -12,12 +13,29 @@ public class LandController : MonoBehaviour
     {
         LoadComponents();
         _startingHorizontalPosition = transform.position.x;
+        _initLandSpeed = landSpeed;
     }
     void Update()
     {
         if (GameManager.Instance.IsGameRunning())
         {
+            UpdateGameSpeed();
             MoveLand();
+        }
+    }
+
+    private void UpdateGameSpeed()
+    {
+        if (GameManager.Instance.GetPlayerSpeed() == GameManager.PlayerSpeed.Normal)
+        {
+            landSpeed = _initLandSpeed;
+        }
+        else if (GameManager.Instance.GetPlayerSpeed() == GameManager.PlayerSpeed.Fast)
+        {
+            landSpeed = _initLandSpeed * 1.3f;
+        } else if (GameManager.Instance.GetPlayerSpeed() == GameManager.PlayerSpeed.Slow)
+        {
+            landSpeed = _initLandSpeed * 0.7f;
         }
     }
 
