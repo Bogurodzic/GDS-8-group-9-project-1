@@ -31,7 +31,13 @@ public class Bomb : MonoBehaviour
         LoadComponents();
         _bombAnimation.animation.Play("bomb_idle", 2);
         BombDeployed();
+        AddInitialForceToBomb(bombDirection);
+    }
+
+    protected virtual void AddInitialForceToBomb(BombDirection bombDirection)
+    {
         _bombRigidBody.AddForce(new Vector2(GetBombDirection(bombDirection)  * (bombFireForce / 2), 1 * bombFireForce), ForceMode2D.Impulse);
+
     }
 
     protected virtual void BombDeployed()
