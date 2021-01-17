@@ -323,13 +323,13 @@ public class PlayerController : MonoBehaviour
     private void ReloadHorizontalShoot()
     {
         DisableHorizontalShoot();
-        Task.Delay(horizontalProjectileInterval * 1000).ContinueWith(t=> EnableHorizontalShoot());
+        Task.Delay(horizontalProjectileInterval * 100).ContinueWith(t=> EnableHorizontalShoot());
     }
     
     private void ReloadVerticalShoot()
     {
         DisableVerticalShoot();
-        Task.Delay(verticalProjectileInterval * 1000).ContinueWith(t=> EnableVerticalShoot());
+        Task.Delay(verticalProjectileInterval * 100).ContinueWith(t=> EnableVerticalShoot());
     }
 
     private void DisableHorizontalShoot()
