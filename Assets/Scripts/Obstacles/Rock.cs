@@ -8,7 +8,7 @@ public class Rock : Obstacle
 
     private bool _destroyInitialised = false;
     private bool _rockDestroyed = false;
-    private UnityArmatureComponent _rockAnimation;
+   // private UnityArmatureComponent _rockAnimation;
     private BoxCollider2D _boxCollider2D;
     private Rigidbody2D _rigidbody2D;
     void Start()
@@ -18,6 +18,7 @@ public class Rock : Obstacle
 
     void Update()
     {
+        /*
         if (_destroyInitialised && !_rockDestroyed)
         {
             if (_rockAnimation.animation.isCompleted)
@@ -29,11 +30,12 @@ public class Rock : Obstacle
         {
             Destroy(gameObject);
         }
+        */
     }
 
     private void LoadComponents()
     {
-        _rockAnimation = GetComponent<UnityArmatureComponent>();
+       // _rockAnimation = GetComponent<UnityArmatureComponent>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _boxCollider2D = GetComponent<BoxCollider2D>();
     }
@@ -53,8 +55,9 @@ public class Rock : Obstacle
     private void HandleDestroyingRock()
     {
         _destroyInitialised = true;
-        _rockAnimation.animation.Play("boulder_destroy_small", 1);
+       // _rockAnimation.animation.Play("boulder_destroy_small", 1);
         _boxCollider2D.enabled = false;
         _rigidbody2D.Sleep();
+        Destroy(gameObject);
     }
 }
