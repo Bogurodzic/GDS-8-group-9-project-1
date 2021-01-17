@@ -41,6 +41,11 @@ public class Bomb : MonoBehaviour
 
     void Update()
     {
+        HandleBombDestroy();
+    }
+
+    protected void HandleBombDestroy()
+    {
         if (_bombAnimation.animation.isCompleted && !_destroyInitialised)
         {
             _bombAnimation.animation.Play("bomb_fly", 1);

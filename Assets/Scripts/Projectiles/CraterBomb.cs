@@ -15,7 +15,9 @@ public class CraterBomb : Bomb
 
     void Update()
     {
-        
+        HandleBombDestroy();
+        transform.position = Vector3.MoveTowards(transform.position, new Vector3(-9.55f, -1.15f, 0 ), 1.6f * Time.deltaTime);
+
     }
     
     protected override void BombDeployed()
