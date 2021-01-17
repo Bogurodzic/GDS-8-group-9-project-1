@@ -400,7 +400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointsForKill: 70
-  bomb: {fileID: 3089171882319742166, guid: 8114e9c5192a9473eaca83078c29451e, type: 3}
+  bomb: {fileID: 5380591358285191865, guid: 2d16fc9f188ab4a9d81dd381d222ca46, type: 3}
   minWaitBeforeBombDrop: 2
   maxWaitBeforeBombDrop: 4
   waitBeforeEscape: 16
