@@ -159,10 +159,12 @@ public class PlayerController : MonoBehaviour
     {
         if (ShouldPlayerJump())
         {
+            Debug.Log("BEFORE JUMP");
             HandleJumpMotionOnGround();
         } else if (IsPlayerAboveGround())
         {
             HandleConstraints();
+            Debug.Log("JUMPING");
         }
     }
 
@@ -321,13 +323,13 @@ public class PlayerController : MonoBehaviour
     private void ReloadHorizontalShoot()
     {
         DisableHorizontalShoot();
-        Task.Delay(horizontalProjectileInterval * 1000).ContinueWith(t=> EnableHorizontalShoot());
+        Task.Delay(horizontalProjectileInterval * 100).ContinueWith(t=> EnableHorizontalShoot());
     }
     
     private void ReloadVerticalShoot()
     {
         DisableVerticalShoot();
-        Task.Delay(verticalProjectileInterval * 1000).ContinueWith(t=> EnableVerticalShoot());
+        Task.Delay(verticalProjectileInterval * 100).ContinueWith(t=> EnableVerticalShoot());
     }
 
     private void DisableHorizontalShoot()
@@ -469,6 +471,11 @@ public class PlayerController : MonoBehaviour
         {
             HandleReturningOnGround();
         }
+        
+        if (collision.gameObject.CompareTag("EnemyTank"))
+        {
+            HandleLogicAfterCollisionWithTank(collision);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -478,11 +485,20 @@ public class PlayerController : MonoBehaviour
         {
             HandleLogicAfterCollisionWithProjectile(collision);
         }
+        
+
 
         if (collision.gameObject.CompareTag("Platform"))
         {
 
             HandleLogicAfterCollisionWithHole(collision);
+
+        }
+        
+        if (collision.gameObject.CompareTag("Obstacle"))
+        {
+
+            HandleLogicAfterCollisionWithObstacle(collision);
 
         }
     }
@@ -518,6 +534,25 @@ public class PlayerController : MonoBehaviour
     private void HandleLogicAfterCollisionWithProjectile(Collider2D collision)
     {
         Destroy(collision.gameObject);
+        GameManager.Instance.PlayerDeath();
+        SwitchAnimation(PlayerAnimation.None);
+        SetFinalDeathPosition(collision.bounds.center.x);
+        InitializeDeath();
+        ReachFinalDeathPosition();
+    }
+
+    private void HandleLogicAfterCollisionWithTank(Collision2D collision)
+    {
+        collision.gameObject.GetComponent<Tank>().DestroyTank();
+        GameManager.Instance.PlayerDeath();
+        SwitchAnimation(PlayerAnimation.None);
+        SetFinalDeathPosition(collision.collider.bounds.center.x);
+        InitializeDeath();
+        ReachFinalDeathPosition();  
+    }
+
+    private void HandleLogicAfterCollisionWithObstacle(Collider2D collision)
+    {
         GameManager.Instance.PlayerDeath();
         SwitchAnimation(PlayerAnimation.None);
         SetFinalDeathPosition(collision.bounds.center.x);

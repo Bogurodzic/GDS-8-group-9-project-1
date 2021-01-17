@@ -1,42 +1,56 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class ProjectileController : MonoBehaviour
 {
     public enum Direction
     {
-        Horizontal,
-        Vertical
-    }
+        Left,
+        Vertical,
+        Right
+    }       
 
     public Direction projectileDirection;
     public float projectileSpeed;
     // Start is called before the first frame update
     void Start()
     {
-        
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
         HandleProjectileTrajectory();
+        if (projectileDirection == Direction.Right && transform.position.x > -9)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void HandleProjectileTrajectory()
     {
-        if (projectileDirection == Direction.Horizontal)
+        if (projectileDirection == Direction.Right)
         {
-            MoveHorizontally();
+            MoveHorizontallyRight();
         } else if (projectileDirection == Direction.Vertical)
-        {
+        {   
             MoveVertically();
+        } else if (projectileDirection == Direction.Left)
+        {
+            MoveHorizontallyleft();
         }
     }
 
-    private void MoveHorizontally() {
+    private void MoveHorizontallyRight() {
         gameObject.transform.Translate(Vector3.right * projectileSpeed * Time.deltaTime);
+    }
+    
+    private void MoveHorizontallyleft() {
+        gameObject.transform.Translate(Vector3.left * projectileSpeed * Time.deltaTime);
     }
 
     private void MoveVertically()
@@ -46,8 +60,23 @@ public class ProjectileController : MonoBehaviour
     }
     
     
-    void OnTriggerEnter2D(Collider2D col)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        //Debug.Log(col.gameObject.name + " : " + gameObject.name + " : " + Time.time);
+        if (projectileDirection == Direction.Left)
+        {
+            if (collision.gameObject.CompareTag("Projectile"))
+            {
+                Destroy(gameObject);
+                Destroy(collision.gameObject);
+            }        
+        }
+
+    }
+
+    void DestroyProjectile()
+    {
+        Destroy(gameObject);
+        Debug.Log("DESTROYED");
+
     }
 }

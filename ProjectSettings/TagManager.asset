@@ -11,6 +11,9 @@ TagManager:
   - EnemyProjectile
   - CheckPoint
   - StagePoint
+  - Obstacle
+  - DestructableObstacle
+  - EnemyTank
   layers:
   - Default
   - TransparentFX

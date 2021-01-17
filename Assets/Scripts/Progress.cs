@@ -66,33 +66,27 @@ public class Progress : MonoBehaviour
 
     public float GetGameWidth()
     {   
-        Debug.Log("land min: " + _landInitMinPosition + " Land max: " + _landInitMaxPosition);
         return _landInitMaxPosition - _landInitMinPosition;
     }
 
     public float CalcHowFarObjectIsFromInitialPosition(float objectPosition)
     {
         float distance;
-        Debug.Log("CalcHowFarObjectIsFromInitialPosition: " + _landInitMinPosition + " ::: " + objectPosition);
         if (_landInitMinPosition < 0 && objectPosition < 0)
         {
-            Debug.Log("CalcHowFarObjectIsFromInitialPosition1: " + _landInitMinPosition + " ::: " + objectPosition + " ::: " + (_landInitMinPosition - objectPosition));
 
             distance = _landInitMinPosition - objectPosition;
         } else if (_landInitMinPosition < 0 && objectPosition >= 0)
         {
-            Debug.Log("CalcHowFarObjectIsFromInitialPosition2: " + _landInitMinPosition + " ::: " + objectPosition + " ::: " + (-_landInitMinPosition + objectPosition));
 
             distance =  -_landInitMinPosition + objectPosition;
         } else if (_landInitMinPosition >= 0 && objectPosition >= 0)
         {
-            Debug.Log("CalcHowFarObjectIsFromInitialPosition3: " + _landInitMinPosition + " ::: " + objectPosition + " ::: " + (_landInitMinPosition + objectPosition));
 
             distance = _landInitMinPosition + objectPosition;
         }
         else
         {
-            Debug.Log("CalcHowFarObjectIsFromInitialPosition4: " + _landInitMinPosition + " ::: " + objectPosition + " ::: " + (_landInitMinPosition + objectPosition));
 
             distance = _landInitMinPosition + objectPosition;
         }
