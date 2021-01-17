@@ -59,7 +59,7 @@ public class Tank : MonoBehaviour
 
     private void CreateProjectile()
     {
-        Instantiate(projectilePrefab, new Vector3(transform.position.x + 1.1f, transform.position.y - 0.5f, transform.position.z), projectilePrefab.transform.rotation);
+        Instantiate(projectilePrefab, new Vector3(transform.position.x + 1.1f, transform.position.y - 0.1f, transform.position.z), projectilePrefab.transform.rotation);
     }
     
     private void ReloadShoot()

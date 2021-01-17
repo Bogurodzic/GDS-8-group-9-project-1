@@ -89,13 +89,13 @@ GameObject:
   m_Component:
   - component: {fileID: 5466758542422504661}
   - component: {fileID: 1716863990664314701}
-  - component: {fileID: 2797683589479619637}
   - component: {fileID: 7760406656308646992}
   - component: {fileID: 8198455555357021978}
   - component: {fileID: 1489246417964479339}
+  - component: {fileID: 4745618867579442163}
   m_Layer: 0
   m_Name: BombSmall
-  m_TagString: EnemyProjectile
+  m_TagString: EnemyProjectileExplosive
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -145,19 +145,6 @@ MonoBehaviour:
   _zSpace: 0
   _flipX: 0
   _flipY: 0
---- !u!114 &2797683589479619637
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3832676686008520907}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1e45fc14d32143c0b1a205cfc04be1e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bombFireForce: 6
 --- !u!114 &7760406656308646992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,6 +204,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.19993365, y: 0.33041668}
   m_EdgeRadius: 0
+--- !u!114 &4745618867579442163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3832676686008520907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f69ea6bccf7924b91b6dcb402d439691, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bombFireForce: 8
+  holePrefabs:
+  - {fileID: 247128554002542383, guid: bd575c26298be45ee93f19d767bb34fb, type: 3}
+  - {fileID: 6823950046908543957, guid: ddf611b82df5a47b8a1b81bd5b663fb1, type: 3}
 --- !u!1 &5392410648744572013
 GameObject:
   m_ObjectHideFlags: 0

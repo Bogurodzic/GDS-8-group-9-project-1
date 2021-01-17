@@ -1292,7 +1292,7 @@ PrefabInstance:
     - target: {fileID: 3770411041233661316, guid: 847eab96e24224fe281dfd8bbc644fb6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 98.185715
+      value: -4.378
       objectReference: {fileID: 0}
     - target: {fileID: 3770411041233661316, guid: 847eab96e24224fe281dfd8bbc644fb6,
         type: 3}
@@ -3606,12 +3606,12 @@ PrefabInstance:
     - target: {fileID: 8283760175853249227, guid: 952cfa39ca370461ab6960fdabe98e6c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.002400059
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8283760175853249227, guid: 952cfa39ca370461ab6960fdabe98e6c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.18129998
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 952cfa39ca370461ab6960fdabe98e6c, type: 3}
@@ -5022,8 +5022,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8000357674525379319, guid: 7fcba37bb76d94ffb863aca7c75fd12a,
         type: 3}
+      propertyPath: playerSlowDownSpeed
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000357674525379319, guid: 7fcba37bb76d94ffb863aca7c75fd12a,
+        type: 3}
+      propertyPath: playerAccelerationSpeed
+      value: 1.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000357674525379319, guid: 7fcba37bb76d94ffb863aca7c75fd12a,
+        type: 3}
       propertyPath: horizontalProjectileInterval
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000357674525379319, guid: 7fcba37bb76d94ffb863aca7c75fd12a,
+        type: 3}
+      propertyPath: maxPlayerDistanceRightDirection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8000357674525379320, guid: 7fcba37bb76d94ffb863aca7c75fd12a,
         type: 3}
@@ -5032,13 +5047,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8000357674525379320, guid: 7fcba37bb76d94ffb863aca7c75fd12a,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000357674525379320, guid: 7fcba37bb76d94ffb863aca7c75fd12a,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000357674525379320, guid: 7fcba37bb76d94ffb863aca7c75fd12a,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000357674525379320, guid: 7fcba37bb76d94ffb863aca7c75fd12a,
+        type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.45
+      value: -14.819
       objectReference: {fileID: 0}
     - target: {fileID: 8000357674525379320, guid: 7fcba37bb76d94ffb863aca7c75fd12a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.32
+      value: -0.548
       objectReference: {fileID: 0}
     - target: {fileID: 8000357674525379320, guid: 7fcba37bb76d94ffb863aca7c75fd12a,
         type: 3}

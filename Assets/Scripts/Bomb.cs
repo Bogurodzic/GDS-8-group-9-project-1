@@ -11,9 +11,10 @@ public class Bomb : MonoBehaviour
 {
 
     public float bombFireForce;
-    private Rigidbody2D _bombRigidBody;
-    private UnityArmatureComponent _bombAnimation;
-    private bool _destroyInitialised = false;
+    protected Rigidbody2D _bombRigidBody;
+    protected BoxCollider2D _boxCollider2D;
+    protected UnityArmatureComponent _bombAnimation;
+    protected bool _destroyInitialised = false;
     public enum BombDirection
     {
         Left,
@@ -29,10 +30,13 @@ public class Bomb : MonoBehaviour
     {
         LoadComponents();
         _bombAnimation.animation.Play("bomb_idle", 2);
-        GameManager.Instance.BombDeployed();
+        BombDeployed();
         _bombRigidBody.AddForce(new Vector2(GetBombDirection(bombDirection)  * (bombFireForce / 2), 1 * bombFireForce), ForceMode2D.Impulse);
+    }
 
-
+    protected virtual void BombDeployed()
+    {
+        GameManager.Instance.BombDeployed();
     }
 
     void Update()
@@ -49,21 +53,21 @@ public class Bomb : MonoBehaviour
         }
     }
 
-    private void LoadComponents()
+    protected void LoadComponents()
     {
         _bombRigidBody = GetComponent<Rigidbody2D>();
         _bombAnimation = GetComponent<UnityArmatureComponent>();
+        _boxCollider2D = GetComponent<BoxCollider2D>();
     }
     
-    private void DestroyBomb()
+    protected virtual void DestroyBomb()
     {
         GameManager.Instance.BombDestroyed();
 
         _destroyInitialised = true;
         _bombAnimation.animation.Play("bomb_explosion", 1);
-       // _boxCollider2D.enabled = false;
+        _boxCollider2D.enabled = false;
         _bombRigidBody.Sleep();
-        
     }
     
     void OnTriggerEnter2D(Collider2D collision)
@@ -82,7 +86,7 @@ public class Bomb : MonoBehaviour
 
     }
     
-    private int GetBombDirection(BombDirection bombDirection)
+    protected int GetBombDirection(BombDirection bombDirection)
     {
         if (bombDirection == BombDirection.Left)
         {

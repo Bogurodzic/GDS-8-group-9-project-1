@@ -139,20 +139,36 @@ public class Enemy : MonoBehaviour
  
     void SpawnBomb()
     {
-        if (GameManager.Instance.CanBombBeSpawned())
+        if (bomb.CompareTag("EnemyProjectileExplosive"))
         {
-            _enemyAnimation.animation.Stop();
-            _enemyAnimation.animation.Play("enemy_shot", 1);
-            GameObject enemy = Instantiate(bomb, transform.position, transform.rotation);   
+            if (GameManager.Instance.CanCraterBombBeSpawned())
+            {
+                _enemyAnimation.animation.Stop();
+                _enemyAnimation.animation.Play("enemy_shot", 1);
+                GameObject enemy = Instantiate(bomb, transform.position, transform.rotation);   
             
-            enemy.SendMessage("StartObject", GetBombDirection());
+                enemy.SendMessage("StartObject", GetBombDirection());
+            }
+            _isBombSpawning = false;           
         }
-        _isBombSpawning = false;
+        else
+        {
+            if (GameManager.Instance.CanBombBeSpawned())
+            {
+                _enemyAnimation.animation.Stop();
+                _enemyAnimation.animation.Play("enemy_shot", 1);
+                GameObject enemy = Instantiate(bomb, transform.position, transform.rotation);   
+            
+                enemy.SendMessage("StartObject", GetBombDirection());
+            }
+            _isBombSpawning = false;     
+        }
+
     }
 
     private Bomb.BombDirection GetBombDirection()
     {
-        if (transform.position.x < _targetPosition.x)
+        if (!bomb.CompareTag("EnemyProjectileExplosive") && transform.position.x < _targetPosition.x)
         {
             return Bomb.BombDirection.Left;
         }
