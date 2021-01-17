@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a64e5b0e436d4bed9780211ae245f7b, type: 3}
+  m_Name: Stone_roll_small_Data
+  m_EditorClassIdentifier: 
+  dataName: Stone_roll_small
+  dragonBonesJSON: {fileID: 4900000, guid: 71893bcea228e4a4e942a871597aaeee, type: 3}
+  textureAtlas:
+  - textureAtlasJSON: {fileID: 4900000, guid: 45b555f55e8940845acbed87325c52bc, type: 3}
+    texture: {fileID: 2800000, guid: 1b95255d425b2de4bbed3e8ac7ebeb23, type: 3}
+    material: {fileID: 2100000, guid: c1289411400a5984eb1677e16cad1680, type: 2}
+    uiMaterial: {fileID: 0}
