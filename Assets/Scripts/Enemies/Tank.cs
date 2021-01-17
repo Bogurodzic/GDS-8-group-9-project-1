@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using DragonBones;
 using UnityEngine;
+using System.Threading.Tasks;
 
 public class Tank : MonoBehaviour
 {
+    public GameObject projectilePrefab;
     public float speed;
+    public int projectileInterval;
 
     private bool _destroyInitialised;
     private bool _tankDestroyed;
+    private bool _shootReady = true;
     private UnityArmatureComponent _tankAnimation;
     private BoxCollider2D _boxCollider2D;
     private Rigidbody2D _rigidbody2D;
@@ -19,7 +23,8 @@ public class Tank : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(Vector3.left * speed * Time.deltaTime);
+        HandleShooting();
+        
         
         
         if (_destroyInitialised && !_tankDestroyed)
@@ -28,13 +33,50 @@ public class Tank : MonoBehaviour
             {
                 _tankDestroyed = true;
             }
-        } 
-        if (_destroyInitialised && _tankDestroyed)
+        } else if (_destroyInitialised && _tankDestroyed)
         {
             Destroy(gameObject);
         }
+        else
+        {
+            transform.Translate(Vector3.left * speed * Time.deltaTime);
+        }
 
     }
+    
+    private void HandleShooting()
+    {
+        if (ShouldEnemyShoot())
+        {
+            CreateProjectile();
+            ReloadShoot();
+        }
+    }
+    
+    private bool ShouldEnemyShoot(){
+        return ( _shootReady);
+    }
+
+    private void CreateProjectile()
+    {
+        Instantiate(projectilePrefab, new Vector3(transform.position.x + 1.1f, transform.position.y - 0.5f, transform.position.z), projectilePrefab.transform.rotation);
+    }
+    
+    private void ReloadShoot()
+    {
+        DisableHorizontalShoot();
+        Task.Delay(projectileInterval * 1000).ContinueWith(t=> EnableHorizontalShoot());
+    }
+    
+    private void DisableHorizontalShoot()
+    {
+        _shootReady = false;
+    }
+    private void EnableHorizontalShoot()
+    {
+        _shootReady = true;
+    }
+
     
     private void LoadComponents()
     {
@@ -57,10 +99,14 @@ public class Tank : MonoBehaviour
     
     private void HandleCollisionWithProjectile()
     {
+        DestroyTank();
+    }
+
+    public void DestroyTank()
+    {
         _destroyInitialised = true;
         _tankAnimation.animation.Play("enemy_death", 1);
         _boxCollider2D.enabled = false;
         _rigidbody2D.Sleep();
-        Destroy(gameObject);
     }
 }

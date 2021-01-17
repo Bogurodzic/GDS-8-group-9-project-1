@@ -471,6 +471,11 @@ public class PlayerController : MonoBehaviour
         {
             HandleReturningOnGround();
         }
+        
+        if (collision.gameObject.CompareTag("EnemyTank"))
+        {
+            HandleLogicAfterCollisionWithTank(collision);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -480,6 +485,8 @@ public class PlayerController : MonoBehaviour
         {
             HandleLogicAfterCollisionWithProjectile(collision);
         }
+        
+
 
         if (collision.gameObject.CompareTag("Platform"))
         {
@@ -532,6 +539,16 @@ public class PlayerController : MonoBehaviour
         SetFinalDeathPosition(collision.bounds.center.x);
         InitializeDeath();
         ReachFinalDeathPosition();
+    }
+
+    private void HandleLogicAfterCollisionWithTank(Collision2D collision)
+    {
+        collision.gameObject.GetComponent<Tank>().DestroyTank();
+        GameManager.Instance.PlayerDeath();
+        SwitchAnimation(PlayerAnimation.None);
+        SetFinalDeathPosition(collision.collider.bounds.center.x);
+        InitializeDeath();
+        ReachFinalDeathPosition();  
     }
 
     private void HandleLogicAfterCollisionWithObstacle(Collider2D collision)
