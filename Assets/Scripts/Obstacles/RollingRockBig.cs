@@ -20,7 +20,7 @@ public class RollingRockBig : RollingRock
         HandleCollisionWithProjectile(collision);
     }
     
-    protected override void InitDestroyRock()
+    public override void InitDestroyRock()
     {
         _destroyInitialised = true;
         _rockAnimation.animation.Play("boulder_destroy_big", 1);
