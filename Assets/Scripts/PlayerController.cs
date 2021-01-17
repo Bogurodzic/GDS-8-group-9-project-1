@@ -633,7 +633,7 @@ public class PlayerController : MonoBehaviour
         {
             _deathAnimationPlayed = true;
             _playerAnimation.animation.Stop();
-            _playerAnimation.animation.Play("Death_Player", 1);  
+            _playerAnimation.animation.Play("Death_Player_2", 1);  
         }
 
     }
