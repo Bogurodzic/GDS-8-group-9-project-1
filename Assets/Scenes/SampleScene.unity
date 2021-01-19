@@ -1435,7 +1435,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPoints:
   - progressRequiredToSpawn: 5
-    progressRequiredToDespawn: 15
+    progressRequiredToDespawn: 25
     enemyPrefabToSpawn: {fileID: 8144224043300352041, guid: 3bdfa805cdb0f46d2b31d8a81bc5fc61,
       type: 3}
     spawnPointIntensity:
@@ -1445,8 +1445,8 @@ MonoBehaviour:
       topRight: 1
       right: 0
     spawned: 0
-  - progressRequiredToSpawn: 13
-    progressRequiredToDespawn: 24
+  - progressRequiredToSpawn: 25
+    progressRequiredToDespawn: 35
     enemyPrefabToSpawn: {fileID: 5130314518895350953, guid: 23f5b38a760c74185b2fe1971b96b2dc,
       type: 3}
     spawnPointIntensity:

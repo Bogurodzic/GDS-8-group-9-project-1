@@ -28,17 +28,24 @@ public class SpawnManager : GenericSingletonClass<SpawnManager>
 
         foreach (var spawnPoint in spawnPoints)
         {
-            if (progress >= spawnPoint.progressRequiredToSpawn && progress < (spawnPoint.progressRequiredToDespawn - spawProgressTreshold) && !spawnPoint.spawned)
+            if (IsSpawnReady(progress, spawnPoint))
             {
-                Debug.Log("SPAWNING");
                 ExecuteSpawnPoint(spawnPoint);
-            } else if (progress >= spawnPoint.progressRequiredToDespawn && spawnPoint.spawned)
+            } else if (IsDespawnReady(progress, spawnPoint))
             {
-                Debug.Log("DESPAWNING");
-
                 ExecuteDespawn(spawnPoint);
             }
         }
+    }
+
+    private bool IsSpawnReady(float progress, SpawnPoint spawnPoint)
+    {
+        return progress >= spawnPoint.progressRequiredToSpawn && progress < (spawnPoint.progressRequiredToDespawn - spawProgressTreshold) && !spawnPoint.spawned;
+    }
+    
+    private bool IsDespawnReady(float progress, SpawnPoint spawnPoint)
+    {
+        return progress >= spawnPoint.progressRequiredToDespawn && spawnPoint.spawned;
     }
 
     private void LoadComponent()
