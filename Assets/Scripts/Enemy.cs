@@ -113,7 +113,7 @@ public class Enemy : MonoBehaviour
 
     }
     
-    private void EnableEscaping()
+    public void EnableEscaping()
     {
         GenerateEscapeDirection();
         _escapeEnabled = true;
@@ -246,7 +246,12 @@ public class Enemy : MonoBehaviour
 
     private void MoveTowardsTargetPosition()
     {
-        transform.position = Vector3.MoveTowards(transform.position, _targetPosition, enemySpeed * Time.deltaTime);
+        float fixedEnemySpeed = enemySpeed;
+        if (transform.position.x > _targetPosition.x)
+        {
+            fixedEnemySpeed = fixedEnemySpeed / 2;
+        }
+        transform.position = Vector3.MoveTowards(transform.position, _targetPosition, fixedEnemySpeed * Time.deltaTime);
     }
 
     private void HandleGeneratingNewPosition()

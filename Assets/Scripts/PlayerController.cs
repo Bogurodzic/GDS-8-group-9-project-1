@@ -502,6 +502,11 @@ public class PlayerController : MonoBehaviour
 
         }
         
+        if (collision.gameObject.CompareTag("Platform"))
+        {
+            HandleLogicAfterCollisionWithObstacle(collision);
+        }
+        
 
     }
 
@@ -551,6 +556,15 @@ public class PlayerController : MonoBehaviour
         SetFinalDeathPosition(collision.collider.bounds.center.x);
         InitializeDeath();
         ReachFinalDeathPosition();  
+    }
+
+    private void HandleLogicAfterCollisionWithObstacle(Collider2D collision)
+    {
+        GameManager.Instance.PlayerDeath();
+        SwitchAnimation(PlayerAnimation.None);
+        SetFinalDeathPosition(collision.bounds.center.x);
+        InitializeDeath();
+        ReachFinalDeathPosition();
     }
 
     private void HandleLogicAfterCollisionWithObstacle(Collision2D collision)
