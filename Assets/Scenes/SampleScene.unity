@@ -618,12 +618,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!4 &199577493 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 9204484326999928625, guid: f1a4b2a083bef49efb827022e2daa0ed,
-    type: 3}
-  m_PrefabInstance: {fileID: 654699326}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &207589310
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,8 +644,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.6662838, y: -1.5463966, z: -1.0854719}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 199577493}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1451,16 +1444,6 @@ MonoBehaviour:
       topRight: 1
       right: 1
     spawned: 0
-  - progressRequired: 15
-    enemyPrefabToSpawn: {fileID: 3076974065193384409, guid: 92511b47f05fc487dbc87424ac4179d4,
-      type: 3}
-    spawnPointIntensity:
-      left: 1
-      topLeft: 1
-      topCenter: 1
-      topRight: 1
-      right: 1
-    spawned: 0
   leftSpawn: {fileID: 1889105230}
   leftTopSpawn: {fileID: 1285682505}
   centerTopSpawn: {fileID: 1146916706}
@@ -1840,75 +1823,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 536330649}
   m_CullTransparentMesh: 0
---- !u!1001 &654699326
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 207589311}
-    m_Modifications:
-    - target: {fileID: 9204484326999928624, guid: f1a4b2a083bef49efb827022e2daa0ed,
-        type: 3}
-      propertyPath: m_Name
-      value: StagePoint
-      objectReference: {fileID: 0}
-    - target: {fileID: 9204484326999928625, guid: f1a4b2a083bef49efb827022e2daa0ed,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9204484326999928625, guid: f1a4b2a083bef49efb827022e2daa0ed,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 38.20337
-      objectReference: {fileID: 0}
-    - target: {fileID: 9204484326999928625, guid: f1a4b2a083bef49efb827022e2daa0ed,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.6859635
-      objectReference: {fileID: 0}
-    - target: {fileID: 9204484326999928625, guid: f1a4b2a083bef49efb827022e2daa0ed,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -42.886585
-      objectReference: {fileID: 0}
-    - target: {fileID: 9204484326999928625, guid: f1a4b2a083bef49efb827022e2daa0ed,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9204484326999928625, guid: f1a4b2a083bef49efb827022e2daa0ed,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9204484326999928625, guid: f1a4b2a083bef49efb827022e2daa0ed,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9204484326999928625, guid: f1a4b2a083bef49efb827022e2daa0ed,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9204484326999928625, guid: f1a4b2a083bef49efb827022e2daa0ed,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9204484326999928625, guid: f1a4b2a083bef49efb827022e2daa0ed,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9204484326999928625, guid: f1a4b2a083bef49efb827022e2daa0ed,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f1a4b2a083bef49efb827022e2daa0ed, type: 3}
 --- !u!1 &685039160 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6796177598991306341, guid: e3ce98c44d5c04af6bf10da74e8771ab,
