@@ -7,6 +7,7 @@ using UnityEngine;
 public class SpawnManager : GenericSingletonClass<SpawnManager>
 {
     public SpawnPoint[] spawnPoints;
+    public float spawProgressTreshold;
     private Progress _progress;
     private BonusPoints _bonusPoints;
 
@@ -27,9 +28,15 @@ public class SpawnManager : GenericSingletonClass<SpawnManager>
 
         foreach (var spawnPoint in spawnPoints)
         {
-            if (progress >= spawnPoint.progressRequired && !spawnPoint.spawned)
+            if (progress >= spawnPoint.progressRequiredToSpawn && progress < (spawnPoint.progressRequiredToDespawn - spawProgressTreshold) && !spawnPoint.spawned)
             {
+                Debug.Log("SPAWNING");
                 ExecuteSpawnPoint(spawnPoint);
+            } else if (progress >= spawnPoint.progressRequiredToDespawn && spawnPoint.spawned)
+            {
+                Debug.Log("DESPAWNING");
+
+                ExecuteDespawn(spawnPoint);
             }
         }
     }
@@ -51,23 +58,23 @@ public class SpawnManager : GenericSingletonClass<SpawnManager>
         
         if (spawnPoint.spawnPointIntensity.left > 0)
         {
-            SpawnEnemy(spawnPoint.enemyPrefabToSpawn, leftSpawn, spawnPoint.spawnPointIntensity.left, Enemy.EnterDirection.Left, enemyStackID);
+            SpawnEnemy(spawnPoint.enemyPrefabToSpawn, leftSpawn, spawnPoint.spawnPointIntensity.left, Enemy.EnterDirection.Left, enemyStackID, spawnPoint);
         }
         if (spawnPoint.spawnPointIntensity.topLeft > 0)
         {
-            SpawnEnemy(spawnPoint.enemyPrefabToSpawn, leftTopSpawn, spawnPoint.spawnPointIntensity.topLeft, Enemy.EnterDirection.Top, enemyStackID);
+            SpawnEnemy(spawnPoint.enemyPrefabToSpawn, leftTopSpawn, spawnPoint.spawnPointIntensity.topLeft, Enemy.EnterDirection.Top, enemyStackID, spawnPoint);
         }
         if (spawnPoint.spawnPointIntensity.topCenter > 0)
         {
-            SpawnEnemy(spawnPoint.enemyPrefabToSpawn, centerTopSpawn, spawnPoint.spawnPointIntensity.topCenter, Enemy.EnterDirection.Top, enemyStackID);
+            SpawnEnemy(spawnPoint.enemyPrefabToSpawn, centerTopSpawn, spawnPoint.spawnPointIntensity.topCenter, Enemy.EnterDirection.Top, enemyStackID, spawnPoint);
         }
         if (spawnPoint.spawnPointIntensity.topRight > 0)
         {
-            SpawnEnemy(spawnPoint.enemyPrefabToSpawn, rightTopSpawn, spawnPoint.spawnPointIntensity.topRight, Enemy.EnterDirection.Top, enemyStackID);
+            SpawnEnemy(spawnPoint.enemyPrefabToSpawn, rightTopSpawn, spawnPoint.spawnPointIntensity.topRight, Enemy.EnterDirection.Top, enemyStackID, spawnPoint);
         }
         if (spawnPoint.spawnPointIntensity.right > 0)
         {
-            SpawnEnemy(spawnPoint.enemyPrefabToSpawn, rightSpawn, spawnPoint.spawnPointIntensity.right, Enemy.EnterDirection.Right, enemyStackID);
+            SpawnEnemy(spawnPoint.enemyPrefabToSpawn, rightSpawn, spawnPoint.spawnPointIntensity.right, Enemy.EnterDirection.Right, enemyStackID, spawnPoint);
         }
         
 
@@ -80,7 +87,7 @@ public class SpawnManager : GenericSingletonClass<SpawnManager>
                spawnPoint.spawnPointIntensity.topCenter + spawnPoint.spawnPointIntensity.topRight + spawnPoint.spawnPointIntensity.right;
     }
 
-    private void SpawnEnemy(GameObject enemyPrefab, GameObject spawnLocationGameObject, int enemiesQuantityOnSpawnLocation, Enemy.EnterDirection enemyEnterDirection, string enemyStackID)
+    private void SpawnEnemy(GameObject enemyPrefab, GameObject spawnLocationGameObject, int enemiesQuantityOnSpawnLocation, Enemy.EnterDirection enemyEnterDirection, string enemyStackID, SpawnPoint spawnPoint)
     {
         for (int i = 0; i < enemiesQuantityOnSpawnLocation; i++)
         {
@@ -88,6 +95,7 @@ public class SpawnManager : GenericSingletonClass<SpawnManager>
                 spawnLocationGameObject.transform.rotation);
             enemy.GetComponent<Enemy>().SetEnemyStackID(enemyStackID);
             enemy.GetComponent<Enemy>()._enterDirection = enemyEnterDirection;
+            spawnPoint.AddEnemyToEnemiesSpawned(enemy);
         }
 
     }
@@ -95,11 +103,25 @@ public class SpawnManager : GenericSingletonClass<SpawnManager>
     private string Get8CharacterRandomString()
     {
         string path = Path.GetRandomFileName();
-        path = path.Replace(".", ""); // Remove period.
-        return path.Substring(0, 8);  // Return 8 character string
+        path = path.Replace(".", ""); 
+        return path.Substring(0, 8);  
     }
 
+    private void ExecuteDespawn(SpawnPoint spawnPoint)
+    {
+        LinkedList<GameObject>.Enumerator enemiesEnumerator = spawnPoint.GetSpawnedEnemiesEnumerator();
+        while (enemiesEnumerator.MoveNext())
+        {
+            GameObject enemy = enemiesEnumerator.Current;
+            if (enemy)
+            {
+                enemy.GetComponent<Enemy>().EnableEscaping();
+            }
+        } 
 
+        spawnPoint.spawned = false;
+        spawnPoint.ResetEnemiesSpawned();
+    }
 
 }
 
@@ -108,10 +130,28 @@ public class SpawnManager : GenericSingletonClass<SpawnManager>
 [Serializable]
 public class SpawnPoint
 {
-    public float progressRequired;
+    public float progressRequiredToSpawn;
+    public float progressRequiredToDespawn;
     public GameObject enemyPrefabToSpawn;
     public SpawnPointIntensity spawnPointIntensity;
     public bool spawned = false;
+
+    private LinkedList<GameObject> enemiesSpawned = new LinkedList<GameObject>();
+
+    public void AddEnemyToEnemiesSpawned(GameObject enemy)
+    {
+        this.enemiesSpawned.AddLast(enemy);
+    }
+
+    public LinkedList<GameObject>.Enumerator GetSpawnedEnemiesEnumerator()
+    {
+        return this.enemiesSpawned.GetEnumerator();
+    }
+
+    public void ResetEnemiesSpawned()
+    {
+        this.enemiesSpawned.Clear();
+    }
 }
 
 [Serializable]

@@ -1434,16 +1434,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoints:
-  - progressRequired: 5
+  - progressRequiredToSpawn: 5
+    progressRequiredToDespawn: 15
     enemyPrefabToSpawn: {fileID: 8144224043300352041, guid: 3bdfa805cdb0f46d2b31d8a81bc5fc61,
       type: 3}
     spawnPointIntensity:
       left: 1
       topLeft: 1
-      topCenter: 1
+      topCenter: 0
       topRight: 1
-      right: 1
+      right: 0
     spawned: 0
+  - progressRequiredToSpawn: 13
+    progressRequiredToDespawn: 24
+    enemyPrefabToSpawn: {fileID: 5130314518895350953, guid: 23f5b38a760c74185b2fe1971b96b2dc,
+      type: 3}
+    spawnPointIntensity:
+      left: 1
+      topLeft: 1
+      topCenter: 2
+      topRight: 1
+      right: 2
+    spawned: 0
+  spawProgressTreshold: 2
   leftSpawn: {fileID: 1889105230}
   leftTopSpawn: {fileID: 1285682505}
   centerTopSpawn: {fileID: 1146916706}
@@ -4212,7 +4225,7 @@ PrefabInstance:
     - target: {fileID: 6796177598991306340, guid: e3ce98c44d5c04af6bf10da74e8771ab,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 10.43232
       objectReference: {fileID: 0}
     - target: {fileID: 6796177598991306340, guid: e3ce98c44d5c04af6bf10da74e8771ab,
         type: 3}

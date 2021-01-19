@@ -113,7 +113,7 @@ public class Enemy : MonoBehaviour
 
     }
     
-    private void EnableEscaping()
+    public void EnableEscaping()
     {
         GenerateEscapeDirection();
         _escapeEnabled = true;
