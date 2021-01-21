@@ -1485,17 +1485,6 @@ MonoBehaviour:
       topRight: 1
       right: 0
     spawned: 0
-  - progressRequiredToSpawn: 20
-    progressRequiredToDespawn: 35
-    enemyPrefabToSpawn: {fileID: 3076974065193384409, guid: 92511b47f05fc487dbc87424ac4179d4,
-      type: 3}
-    spawnPointIntensity:
-      left: 0
-      topLeft: 0
-      topCenter: 0
-      topRight: 2
-      right: 2
-    spawned: 0
   spawProgressTreshold: 2
   leftSpawn: {fileID: 1889105230}
   leftTopSpawn: {fileID: 1285682505}
@@ -4423,7 +4412,7 @@ PrefabInstance:
     - target: {fileID: 9204484326999928625, guid: f1a4b2a083bef49efb827022e2daa0ed,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.2754898
+      value: 165.6
       objectReference: {fileID: 0}
     - target: {fileID: 9204484326999928625, guid: f1a4b2a083bef49efb827022e2daa0ed,
         type: 3}
