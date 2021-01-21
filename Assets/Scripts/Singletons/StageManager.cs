@@ -25,4 +25,17 @@ public class StageManager : GenericSingletonClass<StageManager>
     {
         return _lastStage;
     }
+
+    public void NextStage()
+    {
+        if (_currentStage < _lastStage)
+        {
+            _currentStage++;
+        }
+    }
+
+    public bool IsCurrentStageLast()
+    {
+        return !(_currentStage < _lastStage);
+    }
 }
