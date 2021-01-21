@@ -5,6 +5,8 @@ using UnityEngine;
 public class ObstacleLoader : MonoBehaviour
 {
     private LinkedList<ObstacleMapped> _obstacles = new LinkedList<ObstacleMapped>();
+    
+    public GameObject crystalPrefab;
     void Start()
     {
         MapObstaclesWithPoints();
@@ -28,7 +30,7 @@ public class ObstacleLoader : MonoBehaviour
 
         foreach (var obstacle in obstacles)
         {
-            Debug.Log("OBSTACLE POSITION: " +  obstacle.transform.position);
+            Debug.Log("OBSTACLE POSITION: " +  obstacle.transform.position + " OBSTACLE NAME: " + obstacle.name);
             ObstacleMapped obstacleMapped = new ObstacleMapped(obstacle, obstacle.transform.position);
             _obstacles.AddLast(obstacleMapped);
         }
@@ -50,11 +52,23 @@ public class ObstacleLoader : MonoBehaviour
         while (obstaclesEnumerator.MoveNext())
         {
             ObstacleMapped obstacleMapped = obstaclesEnumerator.Current;
-            GameObject obstacle = Instantiate(obstacleMapped.GetObstacleGameObject(), obstacleMapped.GetObstacleInitialPosition(),
+            GameObject obstaclePrefab = GetObstaclePrefab(obstacleMapped);
+            GameObject obstacle = Instantiate(obstaclePrefab, obstacleMapped.GetObstacleInitialPosition(),
                 obstacleMapped.GetObstacleGameObject().transform.rotation);
-            obstacle.GetComponent<Rigidbody2D>().WakeUp();
-            obstacle.GetComponent<BoxCollider2D>().enabled = true;
         } 
+    }
+
+
+    private GameObject GetObstaclePrefab(ObstacleMapped obstacleMapped)
+    {
+        if (obstacleMapped.GetObstacleGameObject().name == "CrystalSmall")
+        {
+            return crystalPrefab;
+        }
+        else
+        {
+            return crystalPrefab;
+        }
     }
 }
 
