@@ -28,6 +28,7 @@ public class GameManager : GenericSingletonClass<GameManager>
     private int _currentLivesAmount = 4;
 
     private float _progress = 0;
+    private float _lastProgressCheckpoint;
 
     public void StopGame()
     {
@@ -173,15 +174,36 @@ public class GameManager : GenericSingletonClass<GameManager>
     private void ResetLevel()
     {
         ResetLandWrapper();
+        Reset1stBackgroundLayer();
+        Reset2ndBackgroundLayer();
         ResetEnemies();
         ResetProjectiles();
+        ResetCraters();
     }
 
     private void ResetLandWrapper()
     {
-        GameObject landWrapper = GameObject.Find("LandWrapper");
-        landWrapper.transform.position = new Vector3(Checkpoint.LastCheckpointXPoint, landWrapper.transform.position.y,
-            landWrapper.transform.position.z);
+        ProgressController landWrapperProgressController = GameObject.Find("LandWrapper").GetComponent<ProgressController>();
+        Debug.Log("LAST CHECKPOINT: " + GetLastProgressCheckpoint());
+        landWrapperProgressController.SetGameObjectProgress(GetLastProgressCheckpoint());
+        //landWrapperProgressController.SetGameObjectProgress();
+
+    }
+
+    private void Reset1stBackgroundLayer()
+    {
+        
+        ProgressController background1stLayerProgressController = GameObject.Find("Background1stLayer").GetComponent<ProgressController>();
+        Debug.Log("LAST CHECKPOINT: " + GetLastProgressCheckpoint());
+        background1stLayerProgressController.SetGameObjectProgress(GetLastProgressCheckpoint());
+    }
+    
+    private void Reset2ndBackgroundLayer()
+    {
+        
+        ProgressController background2ndLayerProgressController = GameObject.Find("Background2ndLayer").GetComponent<ProgressController>();
+        Debug.Log("LAST CHECKPOINT: " + GetLastProgressCheckpoint());
+        background2ndLayerProgressController.SetGameObjectProgress(GetLastProgressCheckpoint());
     }
 
     private void ResetEnemies()
@@ -194,6 +216,11 @@ public class GameManager : GenericSingletonClass<GameManager>
         DestroyAll("Projectile");
         DestroyAll("EnemyProjectile");
 
+    }
+
+    private void ResetCraters()
+    {
+            DestroyAll("CraterPlatform");
     }
 
     private void DestroyAll(string tag)
@@ -228,6 +255,16 @@ public class GameManager : GenericSingletonClass<GameManager>
     public float GetProgress()
     {
         return _progress;
+    }
+
+    public void SetLastProgressCheckpoint(float progress)
+    {
+        _lastProgressCheckpoint = progress;
+    }
+
+    public float GetLastProgressCheckpoint()
+    {
+        return _lastProgressCheckpoint;
     }
 
     public void GoToMenu()

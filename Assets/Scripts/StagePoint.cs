@@ -7,7 +7,8 @@ public class StagePoint : Checkpoint
     
     protected override void OnCheckpointPassed()
     {
-        UpdateLastCheckpointPosition();
+        //UpdateLastCheckpointPosition();
+        Debug.Log("STAGE CLEARED ELELELELLEELEL ONEONEONEOENOE");
     }
     
     

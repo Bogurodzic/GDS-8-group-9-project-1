@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
-
-    public static float LastCheckpointXPoint;
-
     protected Progress progress;
     protected void Start()
     {
@@ -17,6 +14,7 @@ public class Checkpoint : MonoBehaviour
     {
         
     }
+    
 
     protected void LoadComponents()
     {
@@ -25,13 +23,14 @@ public class Checkpoint : MonoBehaviour
 
     protected virtual void OnCheckpointPassed()
     {
-        UpdateLastCheckpointPosition();
+        UpdateLastCheckpointProgress();
+        Debug.Log("UpdateLastCheckpointPosition: " + progress.GetCurrentPosition());
     }
     
 
-    protected void UpdateLastCheckpointPosition()
+    protected void UpdateLastCheckpointProgress()
     {
-        LastCheckpointXPoint = progress.GetCurrentPosition();
+        GameManager.Instance.SetLastProgressCheckpoint(GameManager.Instance.GetProgress());
     }
     
     protected void OnTriggerEnter2D(Collider2D collision)

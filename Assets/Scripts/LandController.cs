@@ -21,17 +21,28 @@ public class LandController : MonoBehaviour
         {
             UpdateGameSpeed();
             MoveLand();
-            if (_boxCollider)
-            {
-                _boxCollider.enabled = true;
-            }
+            TurnOnBoxCollider();
         }
         else
         {
-            if (_boxCollider)
-            {
-                _boxCollider.enabled = false;
-            }
+            TurnOffBoxCollider();
+        }
+    }
+
+    private void TurnOnBoxCollider()
+    {
+        if (_boxCollider)
+        {
+            _boxCollider.enabled = true;
+        }  
+    }
+
+
+    private void TurnOffBoxCollider()
+    {
+        if (_boxCollider)
+        {
+            _boxCollider.enabled = false;
         }
     }
 
@@ -59,12 +70,5 @@ public class LandController : MonoBehaviour
     {
         transform.Translate(Vector3.left * landSpeed * Time.deltaTime);
     }
-
-    private void HandleRepeatingBackground()
-    {
-        if (transform.position.x < (_boxCollider.size.x / 2) * -1)
-        {
-            transform.position = new Vector3(_startingHorizontalPosition, transform.position.y, transform.position.z);
-        }
-    }
+    
 }

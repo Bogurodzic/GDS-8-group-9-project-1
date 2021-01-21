@@ -159,12 +159,10 @@ public class PlayerController : MonoBehaviour
     {
         if (ShouldPlayerJump())
         {
-            Debug.Log("BEFORE JUMP");
             HandleJumpMotionOnGround();
         } else if (IsPlayerAboveGround())
         {
             HandleConstraints();
-            Debug.Log("JUMPING");
         }
     }
 
@@ -502,7 +500,14 @@ public class PlayerController : MonoBehaviour
 
         }
         
-        if (collision.gameObject.CompareTag("Platform"))
+        if (collision.gameObject.CompareTag("CraterPlatform"))
+        {
+
+            HandleLogicAfterCollisionWithHole(collision);
+
+        }
+        
+        if (collision.gameObject.CompareTag("Obstacle"))
         {
             HandleLogicAfterCollisionWithObstacle(collision);
         }
