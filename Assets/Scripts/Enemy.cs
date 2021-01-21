@@ -145,7 +145,7 @@ public class Enemy : MonoBehaviour
             {
                 _enemyAnimation.animation.Stop();
                 _enemyAnimation.animation.Play("enemy_shot", 1);
-                GameObject enemy = Instantiate(bomb, transform.position, transform.rotation);   
+                GameObject enemy = Instantiate(bomb, transform.position, bomb.transform.rotation);   
             
                 enemy.SendMessage("StartObject", GetBombDirection());
             }

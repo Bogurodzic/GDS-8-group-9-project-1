@@ -1,7 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
+using Quaternion = UnityEngine.Quaternion;
 using Random = System.Random;
+using Vector2 = UnityEngine.Vector2;
+using Vector3 = UnityEngine.Vector3;
 
 
 public class CraterBomb : Bomb
@@ -18,22 +23,35 @@ public class CraterBomb : Bomb
         HandleBombDestroy();
         if (!_destroyInitialised)
         {
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(-9.55f, -1.15f, 0 ), 1.6f * Time.deltaTime);
+
         }
         else
         {
             transform.Translate(Vector3.left * 4.5f * Time.deltaTime);
+            transform.rotation = Quaternion.identity;
         }
 
     }
-    protected virtual void AddInitialForceToBomb(BombDirection bombDirection)
+
+    private void FixedUpdate()
     {
+
+        if (transform.rotation.z > 0)
+        {
+            transform.Rotate(Vector3.back * 1.1f);
+        }
+
+    }
+
+    protected override void AddInitialForceToBomb(BombDirection bombDirection)
+    {   
+        Debug.Log("START BOMB CRATER");
         float fixedBombFireForce = bombFireForce;
         if (transform.position.x < -14)
         {
-            fixedBombFireForce = fixedBombFireForce * 1.5f;
+            fixedBombFireForce = fixedBombFireForce * 1.6f;
         }
-        _bombRigidBody.AddForce(new Vector2(GetBombDirection(bombDirection)  * (fixedBombFireForce / 2), 1 * fixedBombFireForce), ForceMode2D.Impulse);
+        _bombRigidBody.AddForce(new Vector2(GetBombDirection(bombDirection)  * (fixedBombFireForce), 1), ForceMode2D.Impulse);
 
     }
     
