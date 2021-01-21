@@ -37,7 +37,6 @@ public class ProgressController : MonoBehaviour
     public void SetGameObjectProgress(float progress)
     {
         Debug.Log("000SetGameObjectProgress: " + gameObject.name + " ::: " + _objectInitXPosition + " ::: " + _gameObjectWidth);
-
         Debug.Log("111SetGameObjectProgress: " + gameObject.name + " ::: " + progress);
         float newObjectPosition = _objectInitXPosition - (_gameObjectWidth * progress);
         Debug.Log("222SetGameObjectProgress: " + gameObject.name + " ::: " + newObjectPosition);

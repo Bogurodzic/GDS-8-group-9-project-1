@@ -28,7 +28,7 @@ public class GameManager : GenericSingletonClass<GameManager>
     private int _currentLivesAmount = 4;
 
     private float _progress = 0;
-    private float _lastProgressCheckpoint;
+    private float _lastProgressCheckpoint = 0;
 
     public void StopGame()
     {
@@ -179,22 +179,20 @@ public class GameManager : GenericSingletonClass<GameManager>
         ResetEnemies();
         ResetProjectiles();
         ResetCraters();
+        ResetObstacles();
+        ResetHoles();
     }
 
     private void ResetLandWrapper()
     {
         ProgressController landWrapperProgressController = GameObject.Find("LandWrapper").GetComponent<ProgressController>();
-        Debug.Log("LAST CHECKPOINT: " + GetLastProgressCheckpoint());
         landWrapperProgressController.SetGameObjectProgress(GetLastProgressCheckpoint());
-        //landWrapperProgressController.SetGameObjectProgress();
-
     }
 
     private void Reset1stBackgroundLayer()
     {
         
         ProgressController background1stLayerProgressController = GameObject.Find("Background1stLayer").GetComponent<ProgressController>();
-        Debug.Log("LAST CHECKPOINT: " + GetLastProgressCheckpoint());
         background1stLayerProgressController.SetGameObjectProgress(GetLastProgressCheckpoint());
     }
     
@@ -202,7 +200,6 @@ public class GameManager : GenericSingletonClass<GameManager>
     {
         
         ProgressController background2ndLayerProgressController = GameObject.Find("Background2ndLayer").GetComponent<ProgressController>();
-        Debug.Log("LAST CHECKPOINT: " + GetLastProgressCheckpoint());
         background2ndLayerProgressController.SetGameObjectProgress(GetLastProgressCheckpoint());
     }
 
@@ -215,12 +212,22 @@ public class GameManager : GenericSingletonClass<GameManager>
     {
         DestroyAll("Projectile");
         DestroyAll("EnemyProjectile");
-
+        DestroyAll("EnemyProjectileExplosive");
     }
 
     private void ResetCraters()
     {
-            DestroyAll("CraterPlatform");
+        DestroyAll("CraterPlatform");
+    }
+
+    private void ResetObstacles()
+    {
+        DestroyAll("Obstacle");
+    }
+
+    private void ResetHoles()
+    {
+        DestroyAll("Hole");
     }
 
     private void DestroyAll(string tag)
