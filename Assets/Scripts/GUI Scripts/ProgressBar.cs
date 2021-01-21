@@ -55,9 +55,12 @@ namespace GUI_Scripts
 
         public void SetProgress(float progress)
         {
+            float currentStageProgress = StageManager.Instance.GetCurrentStage() *
+                                   (StageManager.Instance.GetCurrentStage() / StageManager.Instance.GetLastStage() *
+                                    100);
+            float progressWithStages = (progress / StageManager.Instance.GetLastStage()) + currentStageProgress;
 
-            _slider.value = progress;
-            
+            _slider.value = progressWithStages;
         }
     }
 }
