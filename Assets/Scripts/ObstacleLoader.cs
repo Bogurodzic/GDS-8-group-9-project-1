@@ -40,7 +40,6 @@ public class ObstacleLoader : MonoBehaviour
 
         foreach (var obstacle in obstacles)
         {
-            Debug.Log("OBSTACLE POSITION: " +  obstacle.transform.position + " OBSTACLE NAME: " + obstacle.name);
             ObstacleMapped obstacleMapped = new ObstacleMapped(obstacle, obstacle.transform.position);
             _obstacles.AddLast(obstacleMapped);
         }
@@ -77,6 +76,27 @@ public class ObstacleLoader : MonoBehaviour
         } else if (obstacleMapped.GetObstacleGameObject().name == "CrystalBig")
         {
             return crystalBigPrefab;
+        } else if (obstacleMapped.GetObstacleGameObject().name == "Hole1")
+        {
+            return hole1Prefab;
+        } else if (obstacleMapped.GetObstacleGameObject().name == "Hole2")
+        {
+            return hole2Prefab;
+        } else if (obstacleMapped.GetObstacleGameObject().name == "SmallHole1")
+        {
+            return smallHole1Prefab;
+        } else if (obstacleMapped.GetObstacleGameObject().name == "SmallHole2")
+        {
+            return smallHole2Prefab;
+        }else if (obstacleMapped.GetObstacleGameObject().name == "Mine")
+        {
+            return minePrefab;
+        } else if (obstacleMapped.GetObstacleGameObject().name == "RollingRockSmall")
+        {
+            return rollingRockSmallPrefab;
+        } else if (obstacleMapped.GetObstacleGameObject().name == "RollingRockBig")
+        {
+            return rollingRockBigPrefab;
         }
         else
         {
