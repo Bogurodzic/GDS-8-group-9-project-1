@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StagePoint : Checkpoint
 {
@@ -9,6 +10,7 @@ public class StagePoint : Checkpoint
     {
         //UpdateLastCheckpointPosition();
         Debug.Log("STAGE CLEARED ELELELELLEELEL ONEONEONEOENOE");
+        SceneManager.LoadScene("Scenes/ReachPointScreen");
     }
     
     

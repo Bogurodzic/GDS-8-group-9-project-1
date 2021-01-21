@@ -13,6 +13,11 @@ public class GameManager : GenericSingletonClass<GameManager>
         Fast
     }
 
+    private float _timer;
+    private float[] _topRecord = new float[5];
+    public float[] averageTime = new float[5];
+    
+
     private PlayerSpeed _playerSpeed = PlayerSpeed.Normal;
     private Boolean _gameRunning = true;
 
@@ -29,6 +34,33 @@ public class GameManager : GenericSingletonClass<GameManager>
 
     private float _progress = 0;
     private float _lastProgressCheckpoint = 0;
+
+    public void SetTimer(float timer)
+    {
+        _timer = timer;
+    }
+
+    public float GetTimer()
+    {
+        return _timer;
+    }
+
+    public float GetAverageTime(int stage)
+    {
+        return averageTime[stage - 1];
+    }
+
+    public float GetTopRecord(int stage)
+    {
+        if (_topRecord[stage - 1] > 0)
+        {
+            return _topRecord[stage - 1];
+        }
+        else
+        {
+            return averageTime[stage - 1];
+        }
+    }
 
     public void StopGame()
     {
