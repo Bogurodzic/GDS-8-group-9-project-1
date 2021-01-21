@@ -181,6 +181,7 @@ public class GameManager : GenericSingletonClass<GameManager>
         ResetCraters();
         ResetObstacles();
         ResetHoles();
+        GameObject.Find("ObstacleLoader").GetComponent<ObstacleLoader>().ResetObstaclesOnMap();
     }
 
     private void ResetLandWrapper()
