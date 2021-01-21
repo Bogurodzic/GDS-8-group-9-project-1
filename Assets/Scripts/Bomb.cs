@@ -99,6 +99,7 @@ public class Bomb : MonoBehaviour
         GameManager.Instance.BombDestroyed();
 
         _destroyInitialised = true;
+        _bombAnimation.animation.timeScale = 2f;
         _bombAnimation.animation.Play("bomb_explosion", 1);
         _boxCollider2D.enabled = false;
         _bombRigidBody.Sleep();
