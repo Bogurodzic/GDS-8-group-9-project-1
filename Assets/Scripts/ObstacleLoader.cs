@@ -6,7 +6,17 @@ public class ObstacleLoader : MonoBehaviour
 {
     private LinkedList<ObstacleMapped> _obstacles = new LinkedList<ObstacleMapped>();
     
-    public GameObject crystalPrefab;
+    public GameObject crystalSmallPrefab;
+    public GameObject crystalBigPrefab;
+    public GameObject hole1Prefab;
+    public GameObject hole2Prefab;
+    public GameObject smallHole1Prefab;
+    public GameObject smallHole2Prefab;
+    public GameObject minePrefab;
+    public GameObject rollingRockSmallPrefab;
+    public GameObject rollingRockBigPrefab;
+    
+    
     void Start()
     {
         MapObstaclesWithPoints();
@@ -63,11 +73,14 @@ public class ObstacleLoader : MonoBehaviour
     {
         if (obstacleMapped.GetObstacleGameObject().name == "CrystalSmall")
         {
-            return crystalPrefab;
+            return crystalSmallPrefab;
+        } else if (obstacleMapped.GetObstacleGameObject().name == "CrystalBig")
+        {
+            return crystalBigPrefab;
         }
         else
         {
-            return crystalPrefab;
+            return crystalSmallPrefab;
         }
     }
 }
