@@ -538,7 +538,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 039e00ac1c121466b93da80e58d7b0f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  landSpeed: 3
+  landSpeed: 0.9
 --- !u!61 &108294484
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1484,6 +1484,28 @@ MonoBehaviour:
       topCenter: 0
       topRight: 1
       right: 0
+    spawned: 0
+  - progressRequiredToSpawn: 25
+    progressRequiredToDespawn: 50
+    enemyPrefabToSpawn: {fileID: 8144224043300352041, guid: 3bdfa805cdb0f46d2b31d8a81bc5fc61,
+      type: 3}
+    spawnPointIntensity:
+      left: 0
+      topLeft: 1
+      topCenter: 1
+      topRight: 0
+      right: 1
+    spawned: 0
+  - progressRequiredToSpawn: 70
+    progressRequiredToDespawn: 90
+    enemyPrefabToSpawn: {fileID: 8144224043300352041, guid: 3bdfa805cdb0f46d2b31d8a81bc5fc61,
+      type: 3}
+    spawnPointIntensity:
+      left: 1
+      topLeft: 1
+      topCenter: 1
+      topRight: 1
+      right: 1
     spawned: 0
   spawProgressTreshold: 2
   leftSpawn: {fileID: 1889105230}
@@ -3270,7 +3292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 039e00ac1c121466b93da80e58d7b0f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  landSpeed: 4.5
+  landSpeed: 2
 --- !u!61 &1360220794
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3396,7 +3418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 039e00ac1c121466b93da80e58d7b0f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  landSpeed: 4.5
+  landSpeed: 2
 --- !u!114 &1395564135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4670,42 +4692,12 @@ PrefabInstance:
     - target: {fileID: 8000357674525379319, guid: 7fcba37bb76d94ffb863aca7c75fd12a,
         type: 3}
       propertyPath: playerSlowDownSpeed
-      value: 1.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 8000357674525379319, guid: 7fcba37bb76d94ffb863aca7c75fd12a,
-        type: 3}
-      propertyPath: playerAccelerationSpeed
-      value: 1.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 8000357674525379319, guid: 7fcba37bb76d94ffb863aca7c75fd12a,
-        type: 3}
-      propertyPath: horizontalProjectileInterval
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8000357674525379319, guid: 7fcba37bb76d94ffb863aca7c75fd12a,
-        type: 3}
-      propertyPath: maxPlayerDistanceRightDirection
-      value: 2
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 8000357674525379320, guid: 7fcba37bb76d94ffb863aca7c75fd12a,
         type: 3}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8000357674525379320, guid: 7fcba37bb76d94ffb863aca7c75fd12a,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.35
-      objectReference: {fileID: 0}
-    - target: {fileID: 8000357674525379320, guid: 7fcba37bb76d94ffb863aca7c75fd12a,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.35
-      objectReference: {fileID: 0}
-    - target: {fileID: 8000357674525379320, guid: 7fcba37bb76d94ffb863aca7c75fd12a,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 8000357674525379320, guid: 7fcba37bb76d94ffb863aca7c75fd12a,
         type: 3}
@@ -4756,11 +4748,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8000357674525379321, guid: 7fcba37bb76d94ffb863aca7c75fd12a,
-        type: 3}
-      propertyPath: animationName
-      value: drive_idle
       objectReference: {fileID: 0}
     - target: {fileID: 8000357674525379324, guid: 7fcba37bb76d94ffb863aca7c75fd12a,
         type: 3}
