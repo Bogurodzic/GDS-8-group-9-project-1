@@ -34,30 +34,28 @@ namespace GUI_Scripts
 
         private void RenderStageIndicators()
         {
-            GameObject[] stagePoints = GameObject.FindGameObjectsWithTag("StagePoint");
-     
-            for(var i = 0 ; i < stagePoints.Length ; i ++)
+            for(float i = 1 ; i < StageManager.Instance.GetLastStage() ; i++)
             {
-                float stagePointPositionX = _progress.CalcHowFarObjectIsFromInitialPosition(stagePoints[i].transform.position.x);
-                float gameWidth = _progress.GetGameWidth();
-                float progress = stagePointPositionX / gameWidth;
-                float progressBarMaxPosition = _rectTransform.rect.xMax;
-                float progressBarMinPosition = _rectTransform.rect.xMin;
-                float progressBarWidth = progressBarMaxPosition - progressBarMinPosition;
-                float stagePointMarkPosition = progressBarMinPosition + (progressBarWidth * progress);
-                GameObject stagePointImage = Instantiate(stagePointImagePrefab, Vector3.zero, Quaternion.identity);
-                stagePointImage.transform.SetParent(transform, false);
-                stagePointImage.transform.localScale = new Vector3(1, 1, 1);
-                stagePointImage.transform.position = new Vector3(transform.position.x + stagePointMarkPosition,
-                    stagePointImage.transform.position.y, stagePointImage.transform.position.z);
+                
+                    float progress = i / StageManager.Instance.GetLastStage();
+                    float progressBarMaxPosition = _rectTransform.rect.xMax;
+                    float progressBarMinPosition = _rectTransform.rect.xMin;
+                    float progressBarWidth = progressBarMaxPosition - progressBarMinPosition;
+                    float stagePointMarkPosition = progressBarMinPosition + (progressBarWidth * progress);
+                    GameObject stagePointImage = Instantiate(stagePointImagePrefab, Vector3.zero, Quaternion.identity);
+                    stagePointImage.transform.SetParent(transform, false);
+                    stagePointImage.transform.localScale = new Vector3(1, 1, 1);
+                    stagePointImage.transform.position = new Vector3(transform.position.x + stagePointMarkPosition,
+                        stagePointImage.transform.position.y, stagePointImage.transform.position.z);
             }
         }
 
         public void SetProgress(float progress)
         {
+            float currentStageProgress =  (float)(StageManager.Instance.GetCurrentStage() - 1) / (float)StageManager.Instance.GetLastStage() ;
+            float progressWithStages = (progress / StageManager.Instance.GetLastStage()) + currentStageProgress;
 
-            _slider.value = progress;
-            
+            _slider.value = progressWithStages;
         }
     }
 }

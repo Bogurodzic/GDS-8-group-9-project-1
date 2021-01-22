@@ -108,6 +108,8 @@ public class PlayerController : MonoBehaviour
             }
         } else if (IsFinalDeathPositionReached())
         {
+            playerRigidBody.freezeRotation = true;
+            
             Animate();
             if (AnimationReadyToPlay())
             {
@@ -159,12 +161,10 @@ public class PlayerController : MonoBehaviour
     {
         if (ShouldPlayerJump())
         {
-            Debug.Log("BEFORE JUMP");
             HandleJumpMotionOnGround();
         } else if (IsPlayerAboveGround())
         {
             HandleConstraints();
-            Debug.Log("JUMPING");
         }
     }
 
@@ -502,7 +502,19 @@ public class PlayerController : MonoBehaviour
 
         }
         
-        if (collision.gameObject.CompareTag("Platform"))
+        if (collision.gameObject.CompareTag("CraterPlatform"))
+        {
+
+            HandleLogicAfterCollisionWithHole(collision);
+
+        }
+        
+        if (collision.gameObject.CompareTag("Hole"))
+        {
+            HandleLogicAfterCollisionWithHole(collision);
+        }
+        
+        if (collision.gameObject.CompareTag("Obstacle"))
         {
             HandleLogicAfterCollisionWithObstacle(collision);
         }
@@ -596,6 +608,8 @@ public class PlayerController : MonoBehaviour
 
     private void HandleLogicAfterDeath()
     {
+        playerRigidBody.freezeRotation = false;
+
         if (GameManager.Instance.CanRespawnPlayer())
         {
             RespawnPlayer();

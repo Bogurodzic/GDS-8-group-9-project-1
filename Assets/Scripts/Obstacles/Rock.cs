@@ -32,6 +32,7 @@ public class Rock : Obstacle
         } 
         if (_destroyInitialised && _rockDestroyed)
         {
+            _boxCollider2D.enabled = true;
             Destroy(gameObject);
         }     
     }
@@ -65,6 +66,5 @@ public class Rock : Obstacle
         _destroyInitialised = true;
         _rockAnimation.animation.Play("crystal_death", 1);
         _boxCollider2D.enabled = false;
-        _rigidbody2D.Sleep();
     }
 }

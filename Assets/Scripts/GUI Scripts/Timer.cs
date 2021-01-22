@@ -22,9 +22,11 @@ public class Timer : MonoBehaviour
 	
     // Update is called once per frame
     void Update () {
-        if(timerActive){
-            timeStart += Time.deltaTime;
-            timer.text = string.Format("time {0, 3:000}", timeStart);
+        if(timerActive)
+        {
+            float timePassed = GameManager.Instance.GetTimer() + Time.deltaTime;
+            GameManager.Instance.SetTimer(timePassed);
+            timer.text = string.Format("time {0, 3:000}", GameManager.Instance.GetTimer());
         }
     }
     public void timerButton(){

@@ -15,6 +15,8 @@ TagManager:
   - DestructableObstacle
   - EnemyTank
   - EnemyProjectileExplosive
+  - CraterPlatform
+  - Hole
   layers:
   - Default
   - TransparentFX

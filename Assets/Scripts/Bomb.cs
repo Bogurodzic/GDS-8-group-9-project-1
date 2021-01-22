@@ -6,6 +6,7 @@ using DragonBones;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using Vector2 = UnityEngine.Vector2;
+using Vector3 = UnityEngine.Vector3;
 
 public class Bomb : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class Bomb : MonoBehaviour
     protected BoxCollider2D _boxCollider2D;
     protected UnityArmatureComponent _bombAnimation;
     protected bool _destroyInitialised = false;
+    protected BombDirection _bombDirection;
     public enum BombDirection
     {
         Left,
@@ -36,6 +38,7 @@ public class Bomb : MonoBehaviour
 
     protected virtual void AddInitialForceToBomb(BombDirection bombDirection)
     {
+        _bombDirection = bombDirection;
         _bombRigidBody.AddForce(new Vector2(GetBombDirection(bombDirection)  * (bombFireForce / 2), 1 * bombFireForce), ForceMode2D.Impulse);
 
     }
@@ -48,6 +51,26 @@ public class Bomb : MonoBehaviour
     void Update()
     {
         HandleBombDestroy();
+    }
+    
+    private void FixedUpdate()
+    {
+
+        if (_bombDirection == BombDirection.Right)
+        {
+            if (transform.rotation.z > 0)
+            {
+                transform.Rotate(Vector3.back * 1.1f);
+            } 
+        } else if (_bombDirection == BombDirection.Left)
+        {
+            if (transform.rotation.z < 0)
+            {
+                transform.Rotate(Vector3.forward * 1.1f);
+            } 
+        }
+
+
     }
 
     protected void HandleBombDestroy()
@@ -76,6 +99,7 @@ public class Bomb : MonoBehaviour
         GameManager.Instance.BombDestroyed();
 
         _destroyInitialised = true;
+        _bombAnimation.animation.timeScale = 2f;
         _bombAnimation.animation.Play("bomb_explosion", 1);
         _boxCollider2D.enabled = false;
         _bombRigidBody.Sleep();

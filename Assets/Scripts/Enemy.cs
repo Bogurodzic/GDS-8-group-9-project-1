@@ -145,7 +145,7 @@ public class Enemy : MonoBehaviour
             {
                 _enemyAnimation.animation.Stop();
                 _enemyAnimation.animation.Play("enemy_shot", 1);
-                GameObject enemy = Instantiate(bomb, transform.position, transform.rotation);   
+                GameObject enemy = Instantiate(bomb, transform.position, bomb.transform.rotation);   
             
                 enemy.SendMessage("StartObject", GetBombDirection());
             }
@@ -157,7 +157,15 @@ public class Enemy : MonoBehaviour
             {
                 _enemyAnimation.animation.Stop();
                 _enemyAnimation.animation.Play("enemy_shot", 1);
-                GameObject enemy = Instantiate(bomb, transform.position, transform.rotation);   
+                GameObject enemy;
+                if (GetBombDirection() == Bomb.BombDirection.Right)
+                {
+                    enemy = Instantiate(bomb, transform.position, bomb.transform.rotation);
+                }
+                else
+                {
+                    enemy = Instantiate(bomb, transform.position, new Quaternion(0,0,bomb.transform.rotation.z * -1,bomb.transform.rotation.w));
+                }
             
                 enemy.SendMessage("StartObject", GetBombDirection());
             }

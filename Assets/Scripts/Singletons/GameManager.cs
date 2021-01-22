@@ -13,6 +13,11 @@ public class GameManager : GenericSingletonClass<GameManager>
         Fast
     }
 
+    private float _timer;
+    private float[] _topRecord = new float[5];
+    public float[] averageTime = new float[5];
+    
+
     private PlayerSpeed _playerSpeed = PlayerSpeed.Normal;
     private Boolean _gameRunning = true;
 
@@ -28,6 +33,34 @@ public class GameManager : GenericSingletonClass<GameManager>
     private int _currentLivesAmount = 4;
 
     private float _progress = 0;
+    private float _lastProgressCheckpoint = 0;
+
+    public void SetTimer(float timer)
+    {
+        _timer = timer;
+    }
+
+    public float GetTimer()
+    {
+        return _timer;
+    }
+
+    public float GetAverageTime(int stage)
+    {
+        return averageTime[stage - 1];
+    }
+
+    public float GetTopRecord(int stage)
+    {
+        if (_topRecord[stage - 1] > 0)
+        {
+            return _topRecord[stage - 1];
+        }
+        else
+        {
+            return averageTime[stage - 1];
+        }
+    }
 
     public void StopGame()
     {
@@ -173,15 +206,34 @@ public class GameManager : GenericSingletonClass<GameManager>
     private void ResetLevel()
     {
         ResetLandWrapper();
+        Reset1stBackgroundLayer();
+        Reset2ndBackgroundLayer();
         ResetEnemies();
         ResetProjectiles();
+        ResetCraters();
+        ResetObstacles();
+        ResetHoles();
+        GameObject.Find("ObstacleLoader").GetComponent<ObstacleLoader>().ResetObstaclesOnMap();
     }
 
     private void ResetLandWrapper()
     {
-        GameObject landWrapper = GameObject.Find("LandWrapper");
-        landWrapper.transform.position = new Vector3(Checkpoint.LastCheckpointXPoint, landWrapper.transform.position.y,
-            landWrapper.transform.position.z);
+        ProgressController landWrapperProgressController = GameObject.Find("LandWrapper").GetComponent<ProgressController>();
+        landWrapperProgressController.SetGameObjectProgress(GetLastProgressCheckpoint());
+    }
+
+    private void Reset1stBackgroundLayer()
+    {
+        
+        ProgressController background1stLayerProgressController = GameObject.Find("Background1stLayer").GetComponent<ProgressController>();
+        background1stLayerProgressController.SetGameObjectProgress(GetLastProgressCheckpoint());
+    }
+    
+    private void Reset2ndBackgroundLayer()
+    {
+        
+        ProgressController background2ndLayerProgressController = GameObject.Find("Background2ndLayer").GetComponent<ProgressController>();
+        background2ndLayerProgressController.SetGameObjectProgress(GetLastProgressCheckpoint());
     }
 
     private void ResetEnemies()
@@ -193,7 +245,22 @@ public class GameManager : GenericSingletonClass<GameManager>
     {
         DestroyAll("Projectile");
         DestroyAll("EnemyProjectile");
+        DestroyAll("EnemyProjectileExplosive");
+    }
 
+    private void ResetCraters()
+    {
+        DestroyAll("CraterPlatform");
+    }
+
+    private void ResetObstacles()
+    {
+        DestroyAll("Obstacle");
+    }
+
+    private void ResetHoles()
+    {
+        DestroyAll("Hole");
     }
 
     private void DestroyAll(string tag)
@@ -228,6 +295,16 @@ public class GameManager : GenericSingletonClass<GameManager>
     public float GetProgress()
     {
         return _progress;
+    }
+
+    public void SetLastProgressCheckpoint(float progress)
+    {
+        _lastProgressCheckpoint = progress;
+    }
+
+    public float GetLastProgressCheckpoint()
+    {
+        return _lastProgressCheckpoint;
     }
 
     public void GoToMenu()
