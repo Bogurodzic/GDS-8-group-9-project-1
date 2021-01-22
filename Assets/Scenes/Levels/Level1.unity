@@ -4689,11 +4689,6 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0.003796091
       objectReference: {fileID: 0}
-    - target: {fileID: 8000357674525379319, guid: 7fcba37bb76d94ffb863aca7c75fd12a,
-        type: 3}
-      propertyPath: playerSlowDownSpeed
-      value: 1.4
-      objectReference: {fileID: 0}
     - target: {fileID: 8000357674525379320, guid: 7fcba37bb76d94ffb863aca7c75fd12a,
         type: 3}
       propertyPath: m_RootOrder
