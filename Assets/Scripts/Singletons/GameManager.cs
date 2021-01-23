@@ -16,7 +16,8 @@ public class GameManager : GenericSingletonClass<GameManager>
     private float _timer;
     private float[] _topRecord = new float[5];
     public float[] averageTime = new float[5];
-    
+
+    public float gameSpeed;
 
     private PlayerSpeed _playerSpeed = PlayerSpeed.Normal;
     private Boolean _gameRunning = true;
@@ -310,5 +311,11 @@ public class GameManager : GenericSingletonClass<GameManager>
     public void GoToMenu()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+    }
+
+
+    public float GetGameSpeed()
+    {
+        return gameSpeed;
     }
 }

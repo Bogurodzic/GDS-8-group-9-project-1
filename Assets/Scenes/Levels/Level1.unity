@@ -538,7 +538,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 039e00ac1c121466b93da80e58d7b0f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  landSpeed: 0.9
+  speedRatio: 0.65
 --- !u!61 &108294484
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1548,6 +1548,7 @@ MonoBehaviour:
   - 85
   - 95
   - 99
+  gameSpeed: 2
 --- !u!4 &414034351
 Transform:
   m_ObjectHideFlags: 0
@@ -3292,7 +3293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 039e00ac1c121466b93da80e58d7b0f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  landSpeed: 2
+  speedRatio: 1
 --- !u!61 &1360220794
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3418,7 +3419,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 039e00ac1c121466b93da80e58d7b0f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  landSpeed: 2
+  speedRatio: 1
 --- !u!114 &1395564135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4196,7 +4197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 039e00ac1c121466b93da80e58d7b0f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  landSpeed: 0
+  speedRatio: 1
 --- !u!4 &2006929845 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6796177598991306340, guid: e3ce98c44d5c04af6bf10da74e8771ab,
