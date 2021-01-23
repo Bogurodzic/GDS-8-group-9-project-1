@@ -1,10 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class LandController : MonoBehaviour
 {
-    public float landSpeed;
+    public float speedRatio = 1;
+    private float _landSpeed;
     private float _initLandSpeed;
     private float _startingHorizontalPosition;
     
@@ -13,7 +15,8 @@ public class LandController : MonoBehaviour
     {
         LoadComponents();
         _startingHorizontalPosition = transform.position.x;
-        _initLandSpeed = landSpeed;
+        _landSpeed = GameManager.Instance.GetGameSpeed();
+        _initLandSpeed = _landSpeed;
     }
     void Update()
     {
@@ -50,14 +53,14 @@ public class LandController : MonoBehaviour
     {
         if (GameManager.Instance.GetPlayerSpeed() == GameManager.PlayerSpeed.Normal)
         {
-            landSpeed = _initLandSpeed;
+            _landSpeed = _initLandSpeed * speedRatio;
         }
         else if (GameManager.Instance.GetPlayerSpeed() == GameManager.PlayerSpeed.Fast)
         {
-            landSpeed = _initLandSpeed * 1.3f;
+            _landSpeed = _initLandSpeed * 1.3f * speedRatio;
         } else if (GameManager.Instance.GetPlayerSpeed() == GameManager.PlayerSpeed.Slow)
         {
-            landSpeed = _initLandSpeed * 0.7f;
+            _landSpeed = _initLandSpeed * 0.7f * speedRatio;
         }
     }
 
@@ -68,7 +71,7 @@ public class LandController : MonoBehaviour
 
     private void MoveLand()
     {
-        transform.Translate(Vector3.left * landSpeed * Time.deltaTime);
+        transform.Translate(Vector3.left * _landSpeed * Time.deltaTime);
     }
     
 }
