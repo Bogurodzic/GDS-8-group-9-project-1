@@ -218,8 +218,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bombFireForce: 9
   holePrefabs:
-  - {fileID: 247128554002542383, guid: bd575c26298be45ee93f19d767bb34fb, type: 3}
-  - {fileID: 6823950046908543957, guid: ddf611b82df5a47b8a1b81bd5b663fb1, type: 3}
+  - {fileID: 2599883591068213119, guid: 7fe22af04b44847dca8a1f81f5bdc8ef, type: 3}
+  - {fileID: 7354122840263975170, guid: f8ac6eb559ced4ec791a65fa80115921, type: 3}
 --- !u!1 &5392410648744572013
 GameObject:
   m_ObjectHideFlags: 0
