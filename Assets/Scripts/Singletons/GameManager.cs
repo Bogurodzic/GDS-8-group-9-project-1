@@ -22,6 +22,8 @@ public class GameManager : GenericSingletonClass<GameManager>
     private PlayerSpeed _playerSpeed = PlayerSpeed.Normal;
     private Boolean _gameRunning = true;
 
+    public int pointsRequiredForBonusLive;
+    private int _bonusLivesAcquired;
     private int _currentScore = 0;
     private int _highScore = 0;
 
@@ -100,7 +102,16 @@ public class GameManager : GenericSingletonClass<GameManager>
     public void AddPoints(int points)
     {
         _currentScore += points;
+        HandleBonusLifeForPoints();
         RefreshHighScore();
+    }
+
+    private void HandleBonusLifeForPoints()
+    {
+        double liveExchangedForPoints = Math.Floor((double) (_currentScore / pointsRequiredForBonusLive));
+        int livesToAdd = (int) (liveExchangedForPoints - _bonusLivesAcquired);
+        _currentLivesAmount += livesToAdd;
+        _bonusLivesAcquired += livesToAdd;
     }
 
     private void RefreshHighScore()
