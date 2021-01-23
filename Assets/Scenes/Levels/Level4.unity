@@ -1245,12 +1245,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Background2ndLayer
       objectReference: {fileID: 0}
-    - target: {fileID: 6428212409611033244, guid: aa1e50e6697264bd0ac970bfa7ce07d7,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 5e45087d7fb879a4fb170fa7573206fb,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa1e50e6697264bd0ac970bfa7ce07d7, type: 3}
 --- !u!1001 &7432235515551205420
@@ -1320,12 +1314,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Background1stLayer
       objectReference: {fileID: 0}
-    - target: {fileID: 7432235515849032628, guid: 6671604d350cc411ebe1f118872a9061,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: d1aeb3ad50eeee443a20200dffce9492,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6671604d350cc411ebe1f118872a9061, type: 3}
 --- !u!1001 &7841542530424264726
