@@ -318,4 +318,9 @@ public class GameManager : GenericSingletonClass<GameManager>
     {
         return gameSpeed;
     }
+
+    public float GetCurrentStageWidth()
+    {
+        return GameObject.Find("LandWrapper").GetComponent<BoxCollider2D>().size.x;
+    }
 }

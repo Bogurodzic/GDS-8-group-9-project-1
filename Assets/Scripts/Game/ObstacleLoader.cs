@@ -5,6 +5,7 @@ using UnityEngine;
 public class ObstacleLoader : MonoBehaviour
 {
     private LinkedList<ObstacleMapped> _obstacles = new LinkedList<ObstacleMapped>();
+    private float _stageWidth;
     
     public GameObject crystalSmallPrefab;
     public GameObject crystalBigPrefab;
@@ -19,6 +20,7 @@ public class ObstacleLoader : MonoBehaviour
     
     void Start()
     {
+        _stageWidth = GameManager.Instance.GetCurrentStageWidth();
         MapGameObjectWithPoints("Obstacle");
         MapGameObjectWithPoints("Hole");
         DestroyAllObjectsWithTag("Obstacle");
@@ -46,7 +48,7 @@ public class ObstacleLoader : MonoBehaviour
             _obstacles.AddLast(obstacleMapped);
         }
     }
-
+    
     public void DestroyAllObjectsWithTag(string tag)
     {
         GameObject[] obstacles = LoadAllGameObjectsWithTag(tag);
@@ -64,7 +66,8 @@ public class ObstacleLoader : MonoBehaviour
         {
             ObstacleMapped obstacleMapped = obstaclesEnumerator.Current;
             GameObject obstaclePrefab = GetObstaclePrefab(obstacleMapped);
-            GameObject obstacle = Instantiate(obstaclePrefab, obstacleMapped.GetObstacleInitialPosition(), Quaternion.identity);
+            float newObstacleXPosition = obstacleMapped.GetObstacleInitialPosition().x - (_stageWidth * GameManager.Instance.GetLastProgressCheckpoint());
+            GameObject obstacle = Instantiate(obstaclePrefab, new Vector3(newObstacleXPosition, obstacleMapped.GetObstacleInitialPosition().y, obstacleMapped.GetObstacleInitialPosition().z), Quaternion.identity);
         } 
     }
 
