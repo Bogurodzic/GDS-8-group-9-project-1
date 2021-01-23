@@ -352,7 +352,7 @@ public class PlayerController : MonoBehaviour
 
     private void CreateVerticalProjectile()
     {
-        Instantiate(verticalProjectile, new Vector3(transform.position.x - 0.5f, transform.position.y + 0.2f, transform.position.z), verticalProjectile.transform.rotation);
+        Instantiate(verticalProjectile, new Vector3(transform.position.x - 0.4f, transform.position.y + 0.2f, transform.position.z), verticalProjectile.transform.rotation);
     }
 
     private void CreateHorizontalProjectile()
