@@ -457,6 +457,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tank_animated
       objectReference: {fileID: 0}
+    - target: {fileID: 35632829892249993, guid: 847eab96e24224fe281dfd8bbc644fb6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3770411041233661316, guid: 847eab96e24224fe281dfd8bbc644fb6,
         type: 3}
       propertyPath: m_RootOrder
@@ -465,12 +470,12 @@ PrefabInstance:
     - target: {fileID: 3770411041233661316, guid: 847eab96e24224fe281dfd8bbc644fb6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.71
+      value: -7.46
       objectReference: {fileID: 0}
     - target: {fileID: 3770411041233661316, guid: 847eab96e24224fe281dfd8bbc644fb6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.8978415
+      value: -2.01
       objectReference: {fileID: 0}
     - target: {fileID: 3770411041233661316, guid: 847eab96e24224fe281dfd8bbc644fb6,
         type: 3}
