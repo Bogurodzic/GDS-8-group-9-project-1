@@ -16,15 +16,21 @@ public class ObstacleLoader : MonoBehaviour
     public GameObject minePrefab;
     public GameObject rollingRockSmallPrefab;
     public GameObject rollingRockBigPrefab;
-    
+
+    public GameObject checkPointPrefab;
+    public GameObject stagePointPrefab;
     
     void Start()
     {
         _stageWidth = GameManager.Instance.GetCurrentStageWidth();
         MapGameObjectWithPoints("Obstacle");
         MapGameObjectWithPoints("Hole");
+        MapGameObjectWithPoints("CheckPoint");
+        MapGameObjectWithPoints("StagePoint");
         DestroyAllObjectsWithTag("Obstacle");
         DestroyAllObjectsWithTag("Hole");
+        DestroyAllObjectsWithTag("CheckPoint");
+        DestroyAllObjectsWithTag("StagePoint");
         ResetObstaclesOnMap();
     }
 
@@ -107,6 +113,12 @@ public class ObstacleLoader : MonoBehaviour
         } else if (obstacleMapped.GetGameObjectName() == "RollingRockBig")
         {
             return rollingRockBigPrefab;
+        } else if (obstacleMapped.GetGameObjectName() == "CheckPoint")
+        {
+            return checkPointPrefab;
+        } else if (obstacleMapped.GetGameObjectName() == "StagePoint")
+        {
+            return stagePointPrefab;
         }
         else
         {

@@ -214,6 +214,7 @@ public class GameManager : GenericSingletonClass<GameManager>
         ResetCraters();
         ResetObstacles();
         ResetHoles();
+        ResetCheckPoints();
         GameObject.Find("ObstacleLoader").GetComponent<ObstacleLoader>().ResetObstaclesOnMap();
     }
 
@@ -262,6 +263,13 @@ public class GameManager : GenericSingletonClass<GameManager>
     private void ResetHoles()
     {
         DestroyAll("Hole");
+    }
+
+    private void ResetCheckPoints()
+    {
+        DestroyAll("CheckPoint");
+        DestroyAll("StagePoint");
+
     }
 
     private void DestroyAll(string tag)
