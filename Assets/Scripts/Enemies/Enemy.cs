@@ -80,7 +80,10 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        HandleSpawningBomb();
+        if (_customMovingEnabled)
+        {
+            HandleSpawningBomb();
+        }
         
         if (_enemyStatus == EnemyStatus.Alive)
         {
