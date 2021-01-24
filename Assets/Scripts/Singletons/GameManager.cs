@@ -28,9 +28,9 @@ public class GameManager : GenericSingletonClass<GameManager>
     private int _currentScore = 0;
     private int _highScore = 0;
 
-    private int _maxBombAmonut = 2;
+    public int _maxBombAmonut = 3;
     private int _currentBombAmount = 0;
-    private int _maxCraterBombAmount = 1;
+    public int _maxCraterBombAmount = 1;
     private int _currentCraterBombAmount = 0;
 
     private int _initLivesAmount = 4;

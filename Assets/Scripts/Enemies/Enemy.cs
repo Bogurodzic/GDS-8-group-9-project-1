@@ -142,38 +142,43 @@ public class Enemy : MonoBehaviour
  
     void SpawnBomb()
     {
-        if (bomb.CompareTag("EnemyProjectileExplosive"))
+
+        if (_customMovingEnabled)
         {
-            if (GameManager.Instance.CanCraterBombBeSpawned())
+            if (bomb.CompareTag("EnemyProjectileExplosive"))
             {
-                _enemyAnimation.animation.Stop();
-                _enemyAnimation.animation.Play("enemy_shot", 1);
-                GameObject enemy = Instantiate(bomb, transform.position, bomb.transform.rotation);   
+                if (GameManager.Instance.CanCraterBombBeSpawned())
+                {
+                    _enemyAnimation.animation.Stop();
+                    _enemyAnimation.animation.Play("enemy_shot", 1);
+                    GameObject enemy = Instantiate(bomb, transform.position, bomb.transform.rotation);   
             
-                enemy.SendMessage("StartObject", GetBombDirection());
+                    enemy.SendMessage("StartObject", GetBombDirection());
+                }
+                _isBombSpawning = false;           
             }
-            _isBombSpawning = false;           
-        }
-        else
-        {
-            if (GameManager.Instance.CanBombBeSpawned())
+            else
             {
-                _enemyAnimation.animation.Stop();
-                _enemyAnimation.animation.Play("enemy_shot", 1);
-                GameObject enemy;
-                if (GetBombDirection() == Bomb.BombDirection.Right)
+                if (GameManager.Instance.CanBombBeSpawned())
                 {
-                    enemy = Instantiate(bomb, transform.position, bomb.transform.rotation);
-                }
-                else
-                {
-                    enemy = Instantiate(bomb, transform.position, new Quaternion(0,0,bomb.transform.rotation.z * -1,bomb.transform.rotation.w));
-                }
+                    _enemyAnimation.animation.Stop();
+                    _enemyAnimation.animation.Play("enemy_shot", 1);
+                    GameObject enemy;
+                    if (GetBombDirection() == Bomb.BombDirection.Right)
+                    {
+                        enemy = Instantiate(bomb, transform.position, bomb.transform.rotation);
+                    }
+                    else
+                    {
+                        enemy = Instantiate(bomb, transform.position, new Quaternion(0,0,bomb.transform.rotation.z * -1,bomb.transform.rotation.w));
+                    }
             
-                enemy.SendMessage("StartObject", GetBombDirection());
-            }
-            _isBombSpawning = false;     
+                    enemy.SendMessage("StartObject", GetBombDirection());
+                }
+                _isBombSpawning = false;     
+            }        
         }
+
 
     }
 
