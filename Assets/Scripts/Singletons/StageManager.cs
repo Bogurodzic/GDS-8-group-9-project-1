@@ -31,6 +31,7 @@ public class StageManager : GenericSingletonClass<StageManager>
         if (_currentStage < _lastStage)
         {
             _currentStage++;
+            GameManager.Instance.SetTimer(0);
         }
     }
 
