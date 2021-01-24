@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -9,10 +10,15 @@ public class ReachPointBonus : TextDelayAnimation
     protected TextMeshProUGUI _text;
     private string _currentText = "";
     public int baseBonusPoints = 1000;
+
+    public float exchangePointsDelay = 0.2f;
+    private int _currentPoints;
+    private bool _exchangePointsStarted = false;
     void Start()
     {
         LoadComponents();
-        fullText = GetBonusPoint().ToString();
+        fullText = baseBonusPoints + "";
+        _currentPoints = baseBonusPoints;
     }
     
     private void LoadComponents()
@@ -26,6 +32,11 @@ public class ReachPointBonus : TextDelayAnimation
         if (!showTextStarted && reachPointTextController.CanAnimateSpecialBonusScore())
         {
             StartCoroutine(ShowText(_text));
+        }
+
+        if (!_exchangePointsStarted && reachPointTextController.CanAnimateBonusPointExchange())
+        {
+            StartCoroutine(ExchangePoints(_text));
         }
     }
 
@@ -47,6 +58,20 @@ public class ReachPointBonus : TextDelayAnimation
         {
             return baseBonusPoints;
         }
+    }
+    
+    private IEnumerator ExchangePoints(TextMeshProUGUI text)
+    {
+        _exchangePointsStarted = true;
+        
+       while (Math.Round(GameManager.Instance.GetTimer()) <
+              GameManager.Instance.GetAverageTime(StageManager.Instance.GetCurrentStage()))
+       {
+           _currentPoints += 100;
+           GameManager.Instance.SetTimer(GameManager.Instance.GetTimer() + 1);
+           text.text = _currentPoints + "";
+           yield return new WaitForSeconds(exchangePointsDelay);
+       }
     }
     
 

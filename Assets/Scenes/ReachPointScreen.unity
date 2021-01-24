@@ -1719,9 +1719,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e044c9786591e49d0a3d152e23b8dc09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 0.5
+  delay: 0.001
   fullText: asdasdasdasd
   baseBonusPoints: 1000
+  exchangePointsDelay: 0.15
 --- !u!1 &1764902875
 GameObject:
   m_ObjectHideFlags: 0

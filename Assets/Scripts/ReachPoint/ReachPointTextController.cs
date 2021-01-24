@@ -193,4 +193,16 @@ public class ReachPointTextController : MonoBehaviour
     {
         _recordTextCompleted = true;
     }
+
+    public bool CanAnimateBonusPointExchange()
+    {
+        if (_mainTextCompleted && _yourTimeTextCompleted && _yourTimeScoreCompleted && _averageTimeTextCompleted && _averageTimeScoreCompleted && _topRecordTextCompleted && _topRectordScoreCompleted && _specialBonusTextCompleted && _specialBonusScoreCompleted && _recordTextCompleted)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }  
+    }
 }
