@@ -50,3 +50,4 @@ MonoBehaviour:
   - 95
   - 99
   gameSpeed: 3
+  pointsRequiredForBonusLive: 250
