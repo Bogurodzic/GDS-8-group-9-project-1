@@ -20,6 +20,8 @@ public class ReachPointTextController : MonoBehaviour
     private bool _specialBonusScoreCompleted = false;
 
     private bool _recordTextCompleted = false;
+
+    private bool _showRecord = false;
     
     void Start()
     {
@@ -204,5 +206,15 @@ public class ReachPointTextController : MonoBehaviour
         {
             return false;
         }  
+    }
+
+    public void SetNewRecord()
+    {
+        _showRecord = true;
+    }
+
+    public bool CanDisplayNewRecord()
+    {
+        return _showRecord;
     }
 }

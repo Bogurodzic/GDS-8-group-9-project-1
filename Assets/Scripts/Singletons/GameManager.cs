@@ -65,6 +65,11 @@ public class GameManager : GenericSingletonClass<GameManager>
         }
     }
 
+    public void SetTopRecord(int stage, int recordScore)
+    {
+        _topRecord[stage - 1] = recordScore;
+    }
+
     public void StopGame()
     {
         this._gameRunning = false;

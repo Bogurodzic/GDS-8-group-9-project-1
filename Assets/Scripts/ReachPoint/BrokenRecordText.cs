@@ -21,7 +21,14 @@ public class BrokenRecordText : TextDelayAnimation
     {
         if (!showTextStarted && reachPointTextController.CanAnimateRecordText())
         {
-            StartCoroutine(ShowText(text));
+            if (reachPointTextController.CanDisplayNewRecord())
+            {
+                StartCoroutine(ShowText(text));
+            }
+            else
+            {
+                ExecuteAfterShowTextIsComplete();
+            }
         }
     }
 

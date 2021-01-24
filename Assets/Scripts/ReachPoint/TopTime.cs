@@ -6,11 +6,21 @@ using UnityEngine;
 public class TopTime : TextDelayAnimation
 {    
     private TextMeshProUGUI _topTime;
-    
     void Start()
     {
         LoadComponents();
+        CheckRecord();
         fullText = string.Format("{0, 3:000}", GameManager.Instance.GetTopRecord(StageManager.Instance.GetCurrentStage()));
+    }
+
+    private void CheckRecord()
+    {
+        if (GameManager.Instance.GetTimer() <
+            GameManager.Instance.GetTopRecord(StageManager.Instance.GetCurrentStage()))
+        {
+            GameManager.Instance.SetTopRecord(StageManager.Instance.GetCurrentStage(), (int) GameManager.Instance.GetTimer());
+            reachPointTextController.SetNewRecord();
+        } 
     }
 
     private void LoadComponents()
