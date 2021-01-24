@@ -19,6 +19,7 @@ public class ReachPointBonus : TextDelayAnimation
         LoadComponents();
         fullText = baseBonusPoints + "";
         _currentPoints = baseBonusPoints;
+        GameManager.Instance.AddPoints(_currentPoints);
     }
     
     private void LoadComponents()
@@ -68,6 +69,7 @@ public class ReachPointBonus : TextDelayAnimation
               GameManager.Instance.GetAverageTime(StageManager.Instance.GetCurrentStage()))
        {
            _currentPoints += 100;
+           GameManager.Instance.AddPoints(100);
            GameManager.Instance.SetTimer(GameManager.Instance.GetTimer() + 1);
            text.text = _currentPoints + "";
            yield return new WaitForSeconds(exchangePointsDelay);

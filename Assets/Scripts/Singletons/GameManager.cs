@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -38,6 +39,12 @@ public class GameManager : GenericSingletonClass<GameManager>
     private float _progress = 0;
     private float _lastProgressCheckpoint = 0;
 
+    public void Start()
+    {
+        LoadSaveData();
+    Debug.Log("ON STARTTTT");
+    }
+
     public void SetTimer(float timer)
     {
         _timer = timer;
@@ -51,6 +58,11 @@ public class GameManager : GenericSingletonClass<GameManager>
     public float GetAverageTime(int stage)
     {
         return averageTime[stage - 1];
+    }
+
+    public float[] GetAllRecords()
+    {
+        return _topRecord;
     }
 
     public float GetTopRecord(int stage)
@@ -309,6 +321,7 @@ public class GameManager : GenericSingletonClass<GameManager>
         ResetScore();
         ResetBombDeployed();
         ResetLivesAmount();
+        SaveData();
         StartGame();
         GoToMenu();
     }
@@ -335,7 +348,7 @@ public class GameManager : GenericSingletonClass<GameManager>
 
     public void GoToMenu()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        SceneManager.LoadScene("Scenes/menu");
     }
 
 
@@ -347,5 +360,40 @@ public class GameManager : GenericSingletonClass<GameManager>
     public float GetCurrentStageWidth()
     {
         return GameObject.Find("LandWrapper").GetComponent<BoxCollider2D>().size.x;
+    }
+
+
+    public void SaveData()
+    {
+        Save save = PrepareSave();
+        string jsonData = JsonUtility.ToJson(save);
+        File.WriteAllText("/Volumes/Work/MoonPatrol_Save", jsonData);
+    }
+
+    private Save PrepareSave()
+    {
+        Save save = new Save(GameManager.Instance.GetAllRecords(), GameManager.Instance.GetHighScore());
+        return save;
+    }
+
+    public void LoadSaveData()
+    {
+        string jsonData = File.ReadAllText("/Volumes/Work/MoonPatrol_Save");
+        Save save = JsonUtility.FromJson<Save>(jsonData);
+
+        _highScore = save.TopScore;
+        _topRecord = save.TopTime;
+        Debug.Log("SAVED: " + save.TopTime);
+    }
+}
+
+public class Save
+{
+    public float[] TopTime;
+    public int TopScore;
+    public Save(float[] topTime, int topScore)
+    {
+        TopTime = topTime;
+        TopScore = topScore;
     }
 }
