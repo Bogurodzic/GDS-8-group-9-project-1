@@ -61,3 +61,7 @@ MonoBehaviour:
     type: 3}
   rollingRockBigPrefab: {fileID: 1953829797988016917, guid: d6fc0c349e1c4468997766e6995eca3a,
     type: 3}
+  checkPointPrefab: {fileID: 6656606135112427971, guid: 733cacf6a43ea4cda87f8874ca52892d,
+    type: 3}
+  stagePointPrefab: {fileID: 9204484326999928624, guid: f1a4b2a083bef49efb827022e2daa0ed,
+    type: 3}

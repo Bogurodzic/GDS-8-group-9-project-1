@@ -67,7 +67,7 @@ MonoBehaviour:
   spawnPoints:
   - progressRequiredToSpawn: 5
     progressRequiredToDespawn: 20
-    enemyPrefabToSpawn: {fileID: 8144224043300352041, guid: 3bdfa805cdb0f46d2b31d8a81bc5fc61,
+    enemyPrefabToSpawn: {fileID: 3076974065193384409, guid: 92511b47f05fc487dbc87424ac4179d4,
       type: 3}
     spawnPointIntensity:
       left: 1
@@ -78,7 +78,7 @@ MonoBehaviour:
     spawned: 0
   - progressRequiredToSpawn: 25
     progressRequiredToDespawn: 50
-    enemyPrefabToSpawn: {fileID: 8144224043300352041, guid: 3bdfa805cdb0f46d2b31d8a81bc5fc61,
+    enemyPrefabToSpawn: {fileID: 3076974065193384409, guid: 92511b47f05fc487dbc87424ac4179d4,
       type: 3}
     spawnPointIntensity:
       left: 0
@@ -89,7 +89,7 @@ MonoBehaviour:
     spawned: 0
   - progressRequiredToSpawn: 70
     progressRequiredToDespawn: 90
-    enemyPrefabToSpawn: {fileID: 8144224043300352041, guid: 3bdfa805cdb0f46d2b31d8a81bc5fc61,
+    enemyPrefabToSpawn: {fileID: 3076974065193384409, guid: 92511b47f05fc487dbc87424ac4179d4,
       type: 3}
     spawnPointIntensity:
       left: 1
