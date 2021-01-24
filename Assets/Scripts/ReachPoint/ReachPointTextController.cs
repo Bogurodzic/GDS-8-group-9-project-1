@@ -70,6 +70,11 @@ public class ReachPointTextController : MonoBehaviour
         }
     }
     
+    public void AnimateYourTimeScore()
+    {
+        _yourTimeScoreCompleted = true;
+    }
+    
     public bool CanAnimateAverageTimeText()
     {
         if (_mainTextCompleted && _yourTimeTextCompleted && _yourTimeScoreCompleted && !_averageTimeTextCompleted)
@@ -82,6 +87,11 @@ public class ReachPointTextController : MonoBehaviour
         }
     }
     
+    public void AnimateAverageTimeText()
+    {
+        _averageTimeTextCompleted = true;
+    }
+    
     public bool CanAnimateAverageTimeScore()
     {
         if (_mainTextCompleted && _yourTimeTextCompleted && _yourTimeScoreCompleted && _averageTimeTextCompleted && !_averageTimeScoreCompleted)
@@ -92,6 +102,11 @@ public class ReachPointTextController : MonoBehaviour
         {
             return false;
         }
+    }
+    
+    public void AnimateAverageTimeScore()
+    {
+        _averageTimeScoreCompleted = true;
     }
     
     public bool CanAnimateYourTopRecordText()

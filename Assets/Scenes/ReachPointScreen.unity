@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 246718178}
   - component: {fileID: 246718180}
   - component: {fileID: 246718179}
+  - component: {fileID: 246718181}
   m_Layer: 5
   m_Name: AverageTime
   m_TagString: Untagged
@@ -177,7 +178,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: the average time
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f9b46d0d297dd0b428b78e357b9ae80f, type: 2}
   m_sharedMaterial: {fileID: -4091813052434924703, guid: f9b46d0d297dd0b428b78e357b9ae80f,
@@ -255,6 +256,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 246718177}
   m_CullTransparentMesh: 0
+--- !u!114 &246718181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246718177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4d80423a0cce40c5b8348df3432335a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0.05
+  fullText: the average time
+  text: {fileID: 0}
 --- !u!1 &507681163
 GameObject:
   m_ObjectHideFlags: 0
@@ -458,7 +474,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 000
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f9b46d0d297dd0b428b78e357b9ae80f, type: 2}
   m_sharedMaterial: {fileID: -4091813052434924703, guid: f9b46d0d297dd0b428b78e357b9ae80f,
@@ -548,6 +564,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b6df402e568d40cdb4da2e55615bc15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delay: 0.001
+  fullText: 
 --- !u!1 &704646484
 GameObject:
   m_ObjectHideFlags: 0
@@ -1153,7 +1171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ddbaaa5cc8d47d0becac51d0d50f19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 0.05
+  delay: 0.001
   fullText: 
 --- !u!1 &1321567686
 GameObject:
