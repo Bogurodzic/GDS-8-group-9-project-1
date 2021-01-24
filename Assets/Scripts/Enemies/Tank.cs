@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using DragonBones;
 using UnityEngine;
@@ -9,13 +10,16 @@ public class Tank : MonoBehaviour
     public GameObject projectilePrefab;
     public float speed;
     public int projectileInterval;
-
+    public float distanceBetweenPlayerBeforeStartShooting;
+    
     private bool _destroyInitialised;
     private bool _tankDestroyed;
     private bool _shootReady = true;
     private UnityArmatureComponent _tankAnimation;
     private BoxCollider2D _boxCollider2D;
     private Rigidbody2D _rigidbody2D;
+
+    private GameObject _player;
     void Start()
     {
         LoadComponents();
@@ -46,11 +50,13 @@ public class Tank : MonoBehaviour
     
     private void HandleShooting()
     {
-        if (ShouldEnemyShoot())
+
+        if (ShouldEnemyShoot() && IsTankNearPlayer()) 
         {
-            CreateProjectile();
+            CreateProjectile(); 
             ReloadShoot();
         }
+
     }
     
     private bool ShouldEnemyShoot(){
@@ -59,7 +65,7 @@ public class Tank : MonoBehaviour
 
     private void CreateProjectile()
     {
-        Instantiate(projectilePrefab, new Vector3(transform.position.x + 1.1f, transform.position.y - 0.1f, transform.position.z), projectilePrefab.transform.rotation);
+        Instantiate(projectilePrefab, new Vector3(transform.position.x + 1.1f, transform.position.y + 0.05f, transform.position.z), projectilePrefab.transform.rotation);
     }
     
     private void ReloadShoot()
@@ -83,6 +89,7 @@ public class Tank : MonoBehaviour
         _tankAnimation = GetComponent<UnityArmatureComponent>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _boxCollider2D = GetComponent<BoxCollider2D>();
+        _player = GameObject.Find("Car");
     }
 
     
@@ -109,4 +116,11 @@ public class Tank : MonoBehaviour
         _boxCollider2D.enabled = false;
         _rigidbody2D.Sleep();
     }
+
+    private bool IsTankNearPlayer()
+    {
+        return Math.Abs(_player.transform.position.x) - Math.Abs(gameObject.transform.position.x) <=
+               distanceBetweenPlayerBeforeStartShooting;
+    }
+    
 }

@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1541824358843090316
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1541824358843090306}
+  - component: {fileID: 1541824358843090307}
+  m_Layer: 0
+  m_Name: ObstacleLoader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1541824358843090306
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1541824358843090316}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.0337036, y: 4.590215, z: -1.8150007}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1541824358843090307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1541824358843090316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f66a607e521f41818f4e8a4338e86b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crystalSmallPrefab: {fileID: 254763583221152863, guid: c644fbec6e1224192810b875076b33d6,
+    type: 3}
+  crystalBigPrefab: {fileID: 2956969259134437816, guid: f92dd6722c98e4aab8afe5d72a56f756,
+    type: 3}
+  hole1Prefab: {fileID: 564837001457465854, guid: e485df648834e47b291f68038e9343eb,
+    type: 3}
+  hole2Prefab: {fileID: 2101370530087761069, guid: db79ee559e858498682084b39dda99a2,
+    type: 3}
+  smallHole1Prefab: {fileID: 247128554002542383, guid: bd575c26298be45ee93f19d767bb34fb,
+    type: 3}
+  smallHole2Prefab: {fileID: 6823950046908543957, guid: ddf611b82df5a47b8a1b81bd5b663fb1,
+    type: 3}
+  minePrefab: {fileID: 6098538351820436588, guid: 952cfa39ca370461ab6960fdabe98e6c,
+    type: 3}
+  rollingRockSmallPrefab: {fileID: 6905598331761528954, guid: 01db0d9646cb24973bd3e9db203278fe,
+    type: 3}
+  rollingRockBigPrefab: {fileID: 1953829797988016917, guid: d6fc0c349e1c4468997766e6995eca3a,
+    type: 3}

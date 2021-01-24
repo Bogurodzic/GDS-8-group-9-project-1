@@ -31,7 +31,7 @@ public class Bomb : MonoBehaviour
     public void StartObject(BombDirection bombDirection)
     {
         LoadComponents();
-        _bombAnimation.animation.Play("bomb_idle", 2);
+        _bombAnimation.animation.Play("bomb_fly", 2);
         BombDeployed();
         AddInitialForceToBomb(bombDirection);
     }
@@ -77,7 +77,7 @@ public class Bomb : MonoBehaviour
     {
         if (_bombAnimation.animation.isCompleted && !_destroyInitialised)
         {
-            _bombAnimation.animation.Play("bomb_fly", 1);
+            _bombAnimation.animation.Play("bomb_idle", 1);
         } else if (_destroyInitialised)
         {
             if (_bombAnimation.animation.isCompleted)

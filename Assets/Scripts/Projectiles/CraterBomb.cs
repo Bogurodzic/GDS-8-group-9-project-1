@@ -76,12 +76,12 @@ public class CraterBomb : Bomb
         }
 
     }
-    
+
     private void CreateCrater()
     {
         Random random = new Random();
         GameObject holePrefab = holePrefabs[random.Next(1, holePrefabs.Length)];
-        Instantiate(holePrefab, new Vector3(transform.position.x, -1.13f, transform.position.z), transform.rotation);
+        Instantiate(holePrefab, new Vector3(transform.position.x, -2.48f, transform.position.z), transform.rotation);
     }
     
     protected virtual void DestroyBomb()

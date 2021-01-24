@@ -352,12 +352,14 @@ public class PlayerController : MonoBehaviour
 
     private void CreateVerticalProjectile()
     {
-        Instantiate(verticalProjectile, new Vector3(transform.position.x - 0.5f, transform.position.y + 0.2f, transform.position.z), verticalProjectile.transform.rotation);
+        Instantiate(verticalProjectile, new Vector3(transform.position.x - 0.4f, transform.position.y + 0.2f, transform.position.z), verticalProjectile.transform.rotation);
     }
+
+    
 
     private void CreateHorizontalProjectile()
     {
-        Instantiate(horizontalProjectile, new Vector3(transform.position.x + 1.1f, transform.position.y - 0.13f, transform.position.z), horizontalProjectile.transform.rotation);
+        Instantiate(horizontalProjectile, new Vector3(transform.position.x + 1.1f, transform.position.y - 0.2395f, transform.position.z), horizontalProjectile.transform.rotation);
     }
 
     private bool ShouldPlayerAccelerate(bool ignoreKey = false)

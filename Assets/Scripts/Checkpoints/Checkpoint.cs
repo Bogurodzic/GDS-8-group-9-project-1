@@ -24,7 +24,7 @@ public class Checkpoint : MonoBehaviour
     protected virtual void OnCheckpointPassed()
     {
         UpdateLastCheckpointProgress();
-        Debug.Log("UpdateLastCheckpointPosition: " + progress.GetCurrentPosition());
+        Debug.Log("UpdateLastCheckpointPosition: " + GameManager.Instance.GetProgress());
     }
     
 

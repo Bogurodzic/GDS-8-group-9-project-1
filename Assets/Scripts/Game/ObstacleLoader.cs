@@ -5,6 +5,7 @@ using UnityEngine;
 public class ObstacleLoader : MonoBehaviour
 {
     private LinkedList<ObstacleMapped> _obstacles = new LinkedList<ObstacleMapped>();
+    private float _stageWidth;
     
     public GameObject crystalSmallPrefab;
     public GameObject crystalBigPrefab;
@@ -15,14 +16,21 @@ public class ObstacleLoader : MonoBehaviour
     public GameObject minePrefab;
     public GameObject rollingRockSmallPrefab;
     public GameObject rollingRockBigPrefab;
-    
+
+    public GameObject checkPointPrefab;
+    public GameObject stagePointPrefab;
     
     void Start()
     {
+        _stageWidth = GameManager.Instance.GetCurrentStageWidth();
         MapGameObjectWithPoints("Obstacle");
         MapGameObjectWithPoints("Hole");
+        MapGameObjectWithPoints("CheckPoint");
+        MapGameObjectWithPoints("StagePoint");
         DestroyAllObjectsWithTag("Obstacle");
         DestroyAllObjectsWithTag("Hole");
+        DestroyAllObjectsWithTag("CheckPoint");
+        DestroyAllObjectsWithTag("StagePoint");
         ResetObstaclesOnMap();
     }
 
@@ -46,7 +54,7 @@ public class ObstacleLoader : MonoBehaviour
             _obstacles.AddLast(obstacleMapped);
         }
     }
-
+    
     public void DestroyAllObjectsWithTag(string tag)
     {
         GameObject[] obstacles = LoadAllGameObjectsWithTag(tag);
@@ -64,7 +72,8 @@ public class ObstacleLoader : MonoBehaviour
         {
             ObstacleMapped obstacleMapped = obstaclesEnumerator.Current;
             GameObject obstaclePrefab = GetObstaclePrefab(obstacleMapped);
-            GameObject obstacle = Instantiate(obstaclePrefab, obstacleMapped.GetObstacleInitialPosition(), Quaternion.identity);
+            float newObstacleXPosition = obstacleMapped.GetObstacleInitialPosition().x - (_stageWidth * GameManager.Instance.GetLastProgressCheckpoint());
+            GameObject obstacle = Instantiate(obstaclePrefab, new Vector3(newObstacleXPosition, obstacleMapped.GetObstacleInitialPosition().y, obstacleMapped.GetObstacleInitialPosition().z), Quaternion.identity);
         } 
     }
 
@@ -104,6 +113,12 @@ public class ObstacleLoader : MonoBehaviour
         } else if (obstacleMapped.GetGameObjectName() == "RollingRockBig")
         {
             return rollingRockBigPrefab;
+        } else if (obstacleMapped.GetGameObjectName() == "CheckPoint")
+        {
+            return checkPointPrefab;
+        } else if (obstacleMapped.GetGameObjectName() == "StagePoint")
+        {
+            return stagePointPrefab;
         }
         else
         {

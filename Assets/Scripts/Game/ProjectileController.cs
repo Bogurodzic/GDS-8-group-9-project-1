@@ -25,7 +25,7 @@ public class ProjectileController : MonoBehaviour
     void Update()
     {
         HandleProjectileTrajectory();
-        if (projectileDirection == Direction.Right && transform.position.x > -9)
+        if (projectileDirection == Direction.Right && transform.position.x > -10.5)
         {
             Destroy(gameObject);
         }
