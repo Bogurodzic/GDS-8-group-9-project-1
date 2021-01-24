@@ -267,6 +267,7 @@ public class GameManager : GenericSingletonClass<GameManager>
 
     private void ResetEnemies()
     {
+        GameObject.Find("SpawnManager").GetComponent<SpawnManager>().ResetSpawns();
         DestroyAll("Enemy");
         DestroyAll("EnemyTank");
     }

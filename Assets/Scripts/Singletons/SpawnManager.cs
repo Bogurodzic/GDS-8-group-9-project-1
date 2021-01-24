@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-public class SpawnManager : GenericSingletonClass<SpawnManager>
+public class SpawnManager : MonoBehaviour
 {
     public SpawnPoint[] spawnPoints;
     public float spawProgressTreshold;
@@ -35,6 +35,14 @@ public class SpawnManager : GenericSingletonClass<SpawnManager>
             {
                 ExecuteDespawn(spawnPoint);
             }
+        }
+    }
+
+    public void ResetSpawns()
+    {
+        foreach (var spawnPoint in spawnPoints)
+        {
+            spawnPoint.spawned = false;
         }
     }
 
