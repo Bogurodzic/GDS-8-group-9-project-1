@@ -31,7 +31,7 @@ public class ReachPointBonus : TextDelayAnimation
 
     protected override void ExecuteAfterShowTextIsComplete()
     {
-        //reachPointTextController.AnimateMainText();
+        reachPointTextController.AnimateSpecialBonusScore();
     }
 
     private int GetBonusPoint()

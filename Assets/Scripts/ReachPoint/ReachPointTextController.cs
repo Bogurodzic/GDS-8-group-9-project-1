@@ -154,6 +154,11 @@ public class ReachPointTextController : MonoBehaviour
             return false;
         }
     }
+
+    public void AnimateSpecialBonusText()
+    {
+        _specialBonusTextCompleted = true;
+    }
     
     public bool CanAnimateSpecialBonusScore()
     {
@@ -166,6 +171,11 @@ public class ReachPointTextController : MonoBehaviour
             return false;
         }
     }
+
+    public void AnimateSpecialBonusScore()
+    {
+        _specialBonusScoreCompleted = true;
+    }
     
     public bool CanAnimateRecordText()
     {
@@ -177,5 +187,10 @@ public class ReachPointTextController : MonoBehaviour
         {
             return false;
         }
+    }
+
+    public void AnimateRecordText()
+    {
+        _recordTextCompleted = true;
     }
 }

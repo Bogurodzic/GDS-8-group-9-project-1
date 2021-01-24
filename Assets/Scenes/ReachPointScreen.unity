@@ -1433,6 +1433,7 @@ GameObject:
   - component: {fileID: 1531089032}
   - component: {fileID: 1531089034}
   - component: {fileID: 1531089033}
+  - component: {fileID: 1531089035}
   m_Layer: 5
   m_Name: RecordText
   m_TagString: Untagged
@@ -1478,7 +1479,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You have broken a record!
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f9b46d0d297dd0b428b78e357b9ae80f, type: 2}
   m_sharedMaterial: {fileID: -4091813052434924703, guid: f9b46d0d297dd0b428b78e357b9ae80f,
@@ -1556,6 +1557,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1531089031}
   m_CullTransparentMesh: 0
+--- !u!114 &1531089035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531089031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51c20bb924ab2425bafa06258bedb815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0.05
+  fullText: You have broken a record!
+  text: {fileID: 0}
 --- !u!1 &1738211835
 GameObject:
   m_ObjectHideFlags: 0
@@ -1922,6 +1938,7 @@ GameObject:
   - component: {fileID: 2132125984}
   - component: {fileID: 2132125986}
   - component: {fileID: 2132125985}
+  - component: {fileID: 2132125987}
   m_Layer: 5
   m_Name: GoodBonus
   m_TagString: Untagged
@@ -1967,7 +1984,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: special bonus points
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f9b46d0d297dd0b428b78e357b9ae80f, type: 2}
   m_sharedMaterial: {fileID: -4091813052434924703, guid: f9b46d0d297dd0b428b78e357b9ae80f,
@@ -2045,3 +2062,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2132125983}
   m_CullTransparentMesh: 0
+--- !u!114 &2132125987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2132125983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5f9c79f0308a431381a49deb88bbc12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0.05
+  fullText: special bonus points
+  text: {fileID: 0}
