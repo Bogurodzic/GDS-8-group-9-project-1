@@ -3,26 +3,25 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class YourTime : TextDelayAnimation
+public class YourTimeText : TextDelayAnimation
 {
-    private TextMeshProUGUI _yourTime;
+    public TextMeshProUGUI text;
     void Start()
     {
         LoadComponents();
-        fullText = string.Format("{0, 3:000}", GameManager.Instance.GetTimer());
     }
 
     private void LoadComponents()
     {
-        _yourTime = GetComponent<TextMeshProUGUI>();
+        text = GetComponent<TextMeshProUGUI>();
         reachPointTextController = GameObject.Find("ReachPoint").GetComponent<ReachPointTextController>();
     }
 
     void Update()
     {
-        if (!showTextStarted && reachPointTextController.CanAnimateYourTimeScore())
+        if (!showTextStarted && reachPointTextController.CanAnimateYourTimeText())
         {
-            StartCoroutine(ShowText(_yourTime));
+            StartCoroutine(ShowText(text));
         }
     }
 
