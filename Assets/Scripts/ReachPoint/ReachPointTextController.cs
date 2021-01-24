@@ -121,6 +121,11 @@ public class ReachPointTextController : MonoBehaviour
         }
     }
     
+    public void AnimateYourTopRecordText()
+    {
+        _topRecordTextCompleted = true;
+    }
+    
     public bool CanAnimateYourTopRecordScore()
     {
         if (_mainTextCompleted && _yourTimeTextCompleted && _yourTimeScoreCompleted && _averageTimeTextCompleted && _averageTimeScoreCompleted && _topRecordTextCompleted && !_topRectordScoreCompleted)
@@ -131,6 +136,11 @@ public class ReachPointTextController : MonoBehaviour
         {
             return false;
         }
+    }
+    
+    public void AnimateYourTopRecordScore()
+    {
+        _topRectordScoreCompleted = true;
     }
     
     public bool CanAnimateSpecialBonusText()
