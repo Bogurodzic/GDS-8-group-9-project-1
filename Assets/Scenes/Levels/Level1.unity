@@ -460,7 +460,7 @@ PrefabInstance:
     - target: {fileID: 35632829892249993, guid: 847eab96e24224fe281dfd8bbc644fb6,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3770411041233661316, guid: 847eab96e24224fe281dfd8bbc644fb6,
         type: 3}
@@ -922,6 +922,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1541824358843090307, guid: cb8365d4af7c64fc496c90543027d855,
+        type: 3}
+      propertyPath: tankAnimatedPrefab
+      value: 
+      objectReference: {fileID: 35632829892249993, guid: 847eab96e24224fe281dfd8bbc644fb6,
+        type: 3}
     - target: {fileID: 1541824358843090316, guid: cb8365d4af7c64fc496c90543027d855,
         type: 3}
       propertyPath: m_Name

@@ -252,6 +252,7 @@ public class GameManager : GenericSingletonClass<GameManager>
     private void ResetEnemies()
     {
         DestroyAll("Enemy");
+        DestroyAll("EnemyTank");
     }
     
     private void ResetProjectiles()

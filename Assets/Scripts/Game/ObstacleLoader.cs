@@ -17,6 +17,8 @@ public class ObstacleLoader : MonoBehaviour
     public GameObject rollingRockSmallPrefab;
     public GameObject rollingRockBigPrefab;
 
+    public GameObject tankAnimatedPrefab;
+    
     public GameObject checkPointPrefab;
     public GameObject stagePointPrefab;
     
@@ -25,10 +27,12 @@ public class ObstacleLoader : MonoBehaviour
         _stageWidth = GameManager.Instance.GetCurrentStageWidth();
         MapGameObjectWithPoints("Obstacle");
         MapGameObjectWithPoints("Hole");
+        MapGameObjectWithPoints("EnemyTank");
         MapGameObjectWithPoints("CheckPoint");
         MapGameObjectWithPoints("StagePoint");
         DestroyAllObjectsWithTag("Obstacle");
         DestroyAllObjectsWithTag("Hole");
+        DestroyAllObjectsWithTag("EnemyTank");
         DestroyAllObjectsWithTag("CheckPoint");
         DestroyAllObjectsWithTag("StagePoint");
         ResetObstaclesOnMap();
@@ -113,6 +117,9 @@ public class ObstacleLoader : MonoBehaviour
         } else if (obstacleMapped.GetGameObjectName() == "RollingRockBig")
         {
             return rollingRockBigPrefab;
+        } else if (obstacleMapped.GetGameObjectName() == "Tank_animated")
+        {
+            return tankAnimatedPrefab;
         } else if (obstacleMapped.GetGameObjectName() == "CheckPoint")
         {
             return checkPointPrefab;
