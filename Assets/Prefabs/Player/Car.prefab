@@ -1259,7 +1259,7 @@ MonoBehaviour:
   forwardJumpHeightFactor: 1.05
   horizontalProjectile: {fileID: 4839127419380771314, guid: 73cccc26a24bf437e9df71ecb1747553,
     type: 3}
-  verticalProjectile: {fileID: 3004442331666695499, guid: f2f4fe44e1fb348c291c7d33756414f8,
+  verticalProjectile: {fileID: 7239983588146014571, guid: f2f4fe44e1fb348c291c7d33756414f8,
     type: 3}
   horizontalProjectileInterval: 4
   verticalProjectileInterval: 0

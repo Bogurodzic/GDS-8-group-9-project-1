@@ -357,7 +357,15 @@ public class Enemy : MonoBehaviour
     {
         _enemyBoxCollider.enabled = false;
         _enemyStatus = EnemyStatus.Dying;
-        Destroy(collision.gameObject);
+        
+        if (collision.gameObject.GetComponent<ProjectileController>())
+        {
+            collision.gameObject.GetComponent<ProjectileController>().InitDestroyProjectile();
+        } else if (collision.gameObject.GetComponent<VerticalProjectileController>())
+        {
+            collision.gameObject.GetComponent<VerticalProjectileController>().InitDestroyProjectile();
+        }
+        
         PlayDeathAnimation();
     }
     

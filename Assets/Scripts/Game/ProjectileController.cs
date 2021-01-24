@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using DragonBones;
 using UnityEngine;
 
 public class ProjectileController : MonoBehaviour
@@ -14,24 +15,24 @@ public class ProjectileController : MonoBehaviour
 
     public Direction projectileDirection;
     public float projectileSpeed;
-    // Start is called before the first frame update
+    
     void Start()
     {
 
 
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         HandleProjectileTrajectory();
+        
         if (projectileDirection == Direction.Right && transform.position.x > -10.5)
         {
             Destroy(gameObject);
         }
     }
-
-    private void HandleProjectileTrajectory()
+    
+    protected void HandleProjectileTrajectory()
     {
         if (projectileDirection == Direction.Right)
         {
@@ -60,23 +61,26 @@ public class ProjectileController : MonoBehaviour
     }
     
     
-    void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (projectileDirection == Direction.Left)
         {
             if (collision.gameObject.CompareTag("Projectile"))
             {
-                Destroy(gameObject);
+                InitDestroyProjectile();
                 Destroy(collision.gameObject);
             }        
         }
 
     }
+    
+    public virtual void InitDestroyProjectile()
+    {
+        DestroyProjectile();
+    }
 
-    void DestroyProjectile()
+    protected void DestroyProjectile()
     {
         Destroy(gameObject);
-        Debug.Log("DESTROYED");
-
     }
 }

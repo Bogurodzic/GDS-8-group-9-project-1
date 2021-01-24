@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private PlayerAnimation _animationToDisplay;
-    private enum PlayerAnimation
+    public enum PlayerAnimation
     {
         Idle,
         Acceleration,
@@ -344,7 +344,7 @@ public class PlayerController : MonoBehaviour
     private void DisableVerticalShoot()
     {
         _verticalShootReady = false;
-    }
+    } 
     private void EnableVerticalShoot()
     {
         _verticalShootReady = true;
@@ -352,7 +352,8 @@ public class PlayerController : MonoBehaviour
 
     private void CreateVerticalProjectile()
     {
-        Instantiate(verticalProjectile, new Vector3(transform.position.x - 0.4f, transform.position.y + 0.2f, transform.position.z), verticalProjectile.transform.rotation);
+        GameObject projectile = Instantiate(verticalProjectile, new Vector3(transform.position.x - 0.4f, transform.position.y + 0.2f, transform.position.z), verticalProjectile.transform.rotation);
+        projectile.GetComponent<VerticalProjectileController>().PlayAnimationAccordingToPlayerAnimation(_animationToDisplay);
     }
 
     
