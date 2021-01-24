@@ -75,7 +75,6 @@ public class Enemy : MonoBehaviour
     {
         LoadComponents();
         CalculateEnemyAreaBounds();
-        Invoke(methodName:"EnableEscaping", waitBeforeEscape);
     }
 
     void Update()
