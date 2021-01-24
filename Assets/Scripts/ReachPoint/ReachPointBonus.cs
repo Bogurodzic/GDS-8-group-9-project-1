@@ -14,6 +14,7 @@ public class ReachPointBonus : TextDelayAnimation
     public float exchangePointsDelay = 0.2f;
     private int _currentPoints;
     private bool _exchangePointsStarted = false;
+    private AverageTime _averageTime;
     void Start()
     {
         LoadComponents();
@@ -26,6 +27,7 @@ public class ReachPointBonus : TextDelayAnimation
     {
         _text = GetComponent<TextMeshProUGUI>();
         reachPointTextController = GameObject.Find("ReachPoint").GetComponent<ReachPointTextController>();
+        _averageTime = GameObject.Find("ATime").GetComponent<AverageTime>();
     }
 
     void Update()
@@ -66,11 +68,11 @@ public class ReachPointBonus : TextDelayAnimation
         _exchangePointsStarted = true;
         
        while (Math.Round(GameManager.Instance.GetTimer()) <
-              GameManager.Instance.GetAverageTime(StageManager.Instance.GetCurrentStage()))
+              _averageTime.GetAverageTime())
        {
            _currentPoints += 100;
            GameManager.Instance.AddPoints(100);
-           GameManager.Instance.SetTimer(GameManager.Instance.GetTimer() + 1);
+           _averageTime.RemoveOneSecond();
            text.text = _currentPoints + "";
            yield return new WaitForSeconds(exchangePointsDelay);
        }

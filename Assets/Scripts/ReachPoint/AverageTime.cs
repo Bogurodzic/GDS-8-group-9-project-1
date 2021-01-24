@@ -6,10 +6,13 @@ using UnityEngine;
 public class AverageTime : TextDelayAnimation
 {
     private TextMeshProUGUI _yourTime;
+
+    private float _averageTime;
     void Start()
     {
         LoadComponents();
-        fullText = string.Format("{0, 3:000}", GameManager.Instance.GetAverageTime(StageManager.Instance.GetCurrentStage()));
+        _averageTime = GameManager.Instance.GetAverageTime(StageManager.Instance.GetCurrentStage());
+        fullText = string.Format("{0, 3:000}", _averageTime);
     }
 
     private void LoadComponents()
@@ -24,10 +27,25 @@ public class AverageTime : TextDelayAnimation
         {
             StartCoroutine(ShowText(_yourTime));
         }
+        
+        if (reachPointTextController.CanAnimateBonusPointExchange())
+        {
+            _yourTime.text = string.Format("{0, 3:000}", _averageTime);
+        }
     }
 
     protected override void ExecuteAfterShowTextIsComplete()
     {
         reachPointTextController.AnimateAverageTimeScore();
+    }
+
+    public float GetAverageTime()
+    {
+        return _averageTime;
+    }
+
+    public void RemoveOneSecond()
+    {
+        _averageTime--;
     }
 }

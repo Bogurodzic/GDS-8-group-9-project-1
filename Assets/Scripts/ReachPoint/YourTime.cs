@@ -24,11 +24,6 @@ public class YourTime : TextDelayAnimation
         {
             StartCoroutine(ShowText(_yourTime));
         }
-
-        if (reachPointTextController.CanAnimateBonusPointExchange())
-        {
-            _yourTime.text = string.Format("{0, 3:000}", GameManager.Instance.GetTimer());
-        }
     }
 
     protected override void ExecuteAfterShowTextIsComplete()
