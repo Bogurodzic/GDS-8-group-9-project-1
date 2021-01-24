@@ -80,7 +80,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if (_customMovingEnabled)
+        if (_customMovingEnabled && !_escapeEnabled)
         {
             HandleSpawningBomb();
         }
@@ -143,7 +143,7 @@ public class Enemy : MonoBehaviour
     void SpawnBomb()
     {
 
-        if (_customMovingEnabled)
+        if (_customMovingEnabled && !_escapeEnabled)
         {
             if (bomb.CompareTag("EnemyProjectileExplosive"))
             {
