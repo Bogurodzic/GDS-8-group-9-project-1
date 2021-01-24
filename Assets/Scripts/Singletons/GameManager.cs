@@ -42,7 +42,6 @@ public class GameManager : GenericSingletonClass<GameManager>
     public void Start()
     {
         LoadSaveData();
-    Debug.Log("ON STARTTTT");
     }
 
     public void SetTimer(float timer)
@@ -367,7 +366,9 @@ public class GameManager : GenericSingletonClass<GameManager>
     {
         Save save = PrepareSave();
         string jsonData = JsonUtility.ToJson(save);
-        File.WriteAllText("/Volumes/Work/MoonPatrol_Save", jsonData);
+        File.WriteAllText(Application.persistentDataPath + "/MoonPatrol_Save", jsonData);
+        
+        
     }
 
     private Save PrepareSave()
@@ -378,12 +379,14 @@ public class GameManager : GenericSingletonClass<GameManager>
 
     public void LoadSaveData()
     {
-        string jsonData = File.ReadAllText("/Volumes/Work/MoonPatrol_Save");
-        Save save = JsonUtility.FromJson<Save>(jsonData);
+        if (System.IO.File.Exists(Application.persistentDataPath + "/MoonPatrol_Save"))
+        {
+            string jsonData = File.ReadAllText(Application.persistentDataPath + "/MoonPatrol_Save");
+            Save save = JsonUtility.FromJson<Save>(jsonData);
 
-        _highScore = save.TopScore;
-        _topRecord = save.TopTime;
-        Debug.Log("SAVED: " + save.TopTime);
+            _highScore = save.TopScore;
+            _topRecord = save.TopTime;
+        }
     }
 }
 
