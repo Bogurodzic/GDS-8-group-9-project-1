@@ -50,4 +50,6 @@ MonoBehaviour:
   - 95
   - 99
   gameSpeed: 3
-  pointsRequiredForBonusLive: 250
+  pointsRequiredForBonusLive: 10000
+  _maxBombAmonut: 3
+  _maxCraterBombAmount: 1
