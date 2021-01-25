@@ -25,6 +25,8 @@ public class ObstacleLoader : MonoBehaviour
     
     public GameObject checkPointPrefab;
     public GameObject stagePointPrefab;
+
+    public GameObject jumpPointPrefab;
     
     void Start()
     {
@@ -35,6 +37,7 @@ public class ObstacleLoader : MonoBehaviour
         MapGameObjectWithPoints("CheckPoint");
         MapGameObjectWithPoints("StagePoint");
         MapGameObjectWithPoints("CautionPoint");
+       //MapGameObjectWithPoints("JumpPoint");
 
         DestroyAllObjectsWithTag("Obstacle");
         DestroyAllObjectsWithTag("Hole");
@@ -42,6 +45,7 @@ public class ObstacleLoader : MonoBehaviour
         DestroyAllObjectsWithTag("CheckPoint");
         DestroyAllObjectsWithTag("StagePoint");
         DestroyAllObjectsWithTag("CautionPoint");
+        //DestroyAllObjectsWithTag("JumpPoint");
 
         ResetObstaclesOnMap();
     }
@@ -143,7 +147,11 @@ public class ObstacleLoader : MonoBehaviour
         } else if (obstacleMapped.GetGameObjectName() == "ObstacleCautionPoint")
         {
             return obstacleCautionPointPrefab;
-        }
+        } 
+        /*else if (obstacleMapped.GetGameObjectName() == "JumpPoint")
+        {
+            return jumpPointPrefab;
+        }*/
         else
         {
             return crystalSmallPrefab;

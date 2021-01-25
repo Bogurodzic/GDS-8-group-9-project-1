@@ -299,6 +299,8 @@ public class GameManager : GenericSingletonClass<GameManager>
         DestroyAll("CheckPoint");
         DestroyAll("StagePoint");
         DestroyAll("CautionPoint");
+        //DestroyAll("JumpPoint");
+
     }
 
     private void DestroyAll(string tag)

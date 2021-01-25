@@ -18,6 +18,7 @@ TagManager:
   - CraterPlatform
   - Hole
   - CautionPoint
+  - JumpPoint
   layers:
   - Default
   - TransparentFX

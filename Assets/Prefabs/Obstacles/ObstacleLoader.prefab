@@ -73,3 +73,5 @@ MonoBehaviour:
     type: 3}
   stagePointPrefab: {fileID: 9204484326999928624, guid: f1a4b2a083bef49efb827022e2daa0ed,
     type: 3}
+  jumpPointPrefab: {fileID: 3453283912299528917, guid: aba45a657ebb844b0a8c2721e5859c35,
+    type: 3}
