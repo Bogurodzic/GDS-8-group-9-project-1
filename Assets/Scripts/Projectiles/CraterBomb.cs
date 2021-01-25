@@ -49,7 +49,7 @@ public class CraterBomb : Bomb
         float fixedBombFireForce = bombFireForce;
         if (transform.position.x < -14)
         {
-            fixedBombFireForce = fixedBombFireForce * 1.6f;
+            fixedBombFireForce = fixedBombFireForce * 1.9f;
         }
         _bombRigidBody.AddForce(new Vector2(GetBombDirection(bombDirection)  * (fixedBombFireForce), 1), ForceMode2D.Impulse);
 

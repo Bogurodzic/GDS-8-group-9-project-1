@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class StageManager : GenericSingletonClass<StageManager>
@@ -31,6 +32,7 @@ public class StageManager : GenericSingletonClass<StageManager>
         if (_currentStage < _lastStage)
         {
             _currentStage++;
+            GameManager.Instance.SetTimer(0);
         }
     }
 
@@ -39,3 +41,5 @@ public class StageManager : GenericSingletonClass<StageManager>
         return !(_currentStage < _lastStage);
     }
 }
+
+

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -27,9 +28,9 @@ public class GameManager : GenericSingletonClass<GameManager>
     private int _currentScore = 0;
     private int _highScore = 0;
 
-    private int _maxBombAmonut = 2;
+    public int _maxBombAmonut = 3;
     private int _currentBombAmount = 0;
-    private int _maxCraterBombAmount = 1;
+    public int _maxCraterBombAmount = 1;
     private int _currentCraterBombAmount = 0;
 
     private int _initLivesAmount = 4;
@@ -37,6 +38,11 @@ public class GameManager : GenericSingletonClass<GameManager>
 
     private float _progress = 0;
     private float _lastProgressCheckpoint = 0;
+
+    public void Start()
+    {
+        LoadSaveData();
+    }
 
     public void SetTimer(float timer)
     {
@@ -53,6 +59,11 @@ public class GameManager : GenericSingletonClass<GameManager>
         return averageTime[stage - 1];
     }
 
+    public float[] GetAllRecords()
+    {
+        return _topRecord;
+    }
+
     public float GetTopRecord(int stage)
     {
         if (_topRecord[stage - 1] > 0)
@@ -63,6 +74,11 @@ public class GameManager : GenericSingletonClass<GameManager>
         {
             return averageTime[stage - 1];
         }
+    }
+
+    public void SetTopRecord(int stage, int recordScore)
+    {
+        _topRecord[stage - 1] = recordScore;
     }
 
     public void StopGame()
@@ -251,7 +267,9 @@ public class GameManager : GenericSingletonClass<GameManager>
 
     private void ResetEnemies()
     {
+        GameObject.Find("SpawnManager").GetComponent<SpawnManager>().ResetSpawns();
         DestroyAll("Enemy");
+        DestroyAll("EnemyTank");
     }
     
     private void ResetProjectiles()
@@ -280,7 +298,7 @@ public class GameManager : GenericSingletonClass<GameManager>
     {
         DestroyAll("CheckPoint");
         DestroyAll("StagePoint");
-
+        DestroyAll("CautionPoint");
     }
 
     private void DestroyAll(string tag)
@@ -303,6 +321,7 @@ public class GameManager : GenericSingletonClass<GameManager>
         ResetScore();
         ResetBombDeployed();
         ResetLivesAmount();
+        SaveData();
         StartGame();
         GoToMenu();
     }
@@ -329,7 +348,7 @@ public class GameManager : GenericSingletonClass<GameManager>
 
     public void GoToMenu()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        SceneManager.LoadScene("Scenes/menu");
     }
 
 
@@ -341,5 +360,44 @@ public class GameManager : GenericSingletonClass<GameManager>
     public float GetCurrentStageWidth()
     {
         return GameObject.Find("LandWrapper").GetComponent<BoxCollider2D>().size.x;
+    }
+
+
+    public void SaveData()
+    {
+        Save save = PrepareSave();
+        string jsonData = JsonUtility.ToJson(save);
+        File.WriteAllText(Application.persistentDataPath + "/MoonPatrol_Save", jsonData);
+        
+        
+    }
+
+    private Save PrepareSave()
+    {
+        Save save = new Save(GameManager.Instance.GetAllRecords(), GameManager.Instance.GetHighScore());
+        return save;
+    }
+
+    public void LoadSaveData()
+    {
+        if (System.IO.File.Exists(Application.persistentDataPath + "/MoonPatrol_Save"))
+        {
+            string jsonData = File.ReadAllText(Application.persistentDataPath + "/MoonPatrol_Save");
+            Save save = JsonUtility.FromJson<Save>(jsonData);
+
+            _highScore = save.TopScore;
+            _topRecord = save.TopTime;
+        }
+    }
+}
+
+public class Save
+{
+    public float[] TopTime;
+    public int TopScore;
+    public Save(float[] topTime, int topScore)
+    {
+        TopTime = topTime;
+        TopScore = topScore;
     }
 }

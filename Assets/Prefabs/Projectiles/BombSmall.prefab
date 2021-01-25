@@ -216,7 +216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f69ea6bccf7924b91b6dcb402d439691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bombFireForce: 9
+  bombFireForce: 7
   holePrefabs:
   - {fileID: 2599883591068213119, guid: 7fe22af04b44847dca8a1f81f5bdc8ef, type: 3}
   - {fileID: 7354122840263975170, guid: f8ac6eb559ced4ec791a65fa80115921, type: 3}

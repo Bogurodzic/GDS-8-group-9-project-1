@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 246718178}
   - component: {fileID: 246718180}
   - component: {fileID: 246718179}
+  - component: {fileID: 246718181}
   m_Layer: 5
   m_Name: AverageTime
   m_TagString: Untagged
@@ -177,7 +178,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: the average time
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f9b46d0d297dd0b428b78e357b9ae80f, type: 2}
   m_sharedMaterial: {fileID: -4091813052434924703, guid: f9b46d0d297dd0b428b78e357b9ae80f,
@@ -255,6 +256,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 246718177}
   m_CullTransparentMesh: 0
+--- !u!114 &246718181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246718177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4d80423a0cce40c5b8348df3432335a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0.05
+  fullText: the average time
+  text: {fileID: 0}
 --- !u!1 &507681163
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,7 +365,7 @@ SpriteShapeRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -458,7 +474,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 000
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f9b46d0d297dd0b428b78e357b9ae80f, type: 2}
   m_sharedMaterial: {fileID: -4091813052434924703, guid: f9b46d0d297dd0b428b78e357b9ae80f,
@@ -548,6 +564,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b6df402e568d40cdb4da2e55615bc15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delay: 0.001
+  fullText: 
 --- !u!1 &704646484
 GameObject:
   m_ObjectHideFlags: 0
@@ -667,6 +685,7 @@ GameObject:
   - component: {fileID: 1091687160}
   - component: {fileID: 1091687162}
   - component: {fileID: 1091687161}
+  - component: {fileID: 1091687163}
   m_Layer: 5
   m_Name: TopRecord
   m_TagString: Untagged
@@ -712,7 +731,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: top record
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f9b46d0d297dd0b428b78e357b9ae80f, type: 2}
   m_sharedMaterial: {fileID: -4091813052434924703, guid: f9b46d0d297dd0b428b78e357b9ae80f,
@@ -790,6 +809,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1091687159}
   m_CullTransparentMesh: 0
+--- !u!114 &1091687163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091687159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d361e6e2b0a9a47c1a70d751f318db5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0.05
+  fullText: top record
+  text: {fileID: 0}
 --- !u!1 &1116354359
 GameObject:
   m_ObjectHideFlags: 0
@@ -867,6 +901,7 @@ GameObject:
   - component: {fileID: 1227691286}
   - component: {fileID: 1227691288}
   - component: {fileID: 1227691287}
+  - component: {fileID: 1227691289}
   m_Layer: 5
   m_Name: PlayerTime
   m_TagString: Untagged
@@ -912,7 +947,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: your time
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f9b46d0d297dd0b428b78e357b9ae80f, type: 2}
   m_sharedMaterial: {fileID: -4091813052434924703, guid: f9b46d0d297dd0b428b78e357b9ae80f,
@@ -990,6 +1025,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1227691285}
   m_CullTransparentMesh: 0
+--- !u!114 &1227691289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1227691285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dccc17dde494f4913960907c47a06e86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0.05
+  fullText: your time
+  text: {fileID: 0}
 --- !u!1 &1229002883
 GameObject:
   m_ObjectHideFlags: 0
@@ -1047,7 +1097,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 000
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f9b46d0d297dd0b428b78e357b9ae80f, type: 2}
   m_sharedMaterial: {fileID: -4091813052434924703, guid: f9b46d0d297dd0b428b78e357b9ae80f,
@@ -1137,6 +1187,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ddbaaa5cc8d47d0becac51d0d50f19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delay: 0.001
+  fullText: 
 --- !u!1 &1321567686
 GameObject:
   m_ObjectHideFlags: 0
@@ -1194,7 +1246,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Time to reach point ""
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f9b46d0d297dd0b428b78e357b9ae80f, type: 2}
   m_sharedMaterial: {fileID: -4091813052434924703, guid: f9b46d0d297dd0b428b78e357b9ae80f,
@@ -1284,6 +1336,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 294e5b53c9adc4d6a890c2483ab25677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delay: 0.05
+  fullText: 
   nextReachPoint: {fileID: 0}
 --- !u!1 &1333950026
 GameObject:
@@ -1379,6 +1433,7 @@ GameObject:
   - component: {fileID: 1531089032}
   - component: {fileID: 1531089034}
   - component: {fileID: 1531089033}
+  - component: {fileID: 1531089035}
   m_Layer: 5
   m_Name: RecordText
   m_TagString: Untagged
@@ -1424,7 +1479,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You have broken a record!
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f9b46d0d297dd0b428b78e357b9ae80f, type: 2}
   m_sharedMaterial: {fileID: -4091813052434924703, guid: f9b46d0d297dd0b428b78e357b9ae80f,
@@ -1502,6 +1557,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1531089031}
   m_CullTransparentMesh: 0
+--- !u!114 &1531089035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531089031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51c20bb924ab2425bafa06258bedb815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0.05
+  fullText: You have broken a record!
+  text: {fileID: 0}
 --- !u!1 &1738211835
 GameObject:
   m_ObjectHideFlags: 0
@@ -1559,7 +1629,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 000
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f9b46d0d297dd0b428b78e357b9ae80f, type: 2}
   m_sharedMaterial: {fileID: -4091813052434924703, guid: f9b46d0d297dd0b428b78e357b9ae80f,
@@ -1649,7 +1719,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e044c9786591e49d0a3d152e23b8dc09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delay: 0.001
+  fullText: asdasdasdasd
   baseBonusPoints: 1000
+  exchangePointsDelay: 0.15
 --- !u!1 &1764902875
 GameObject:
   m_ObjectHideFlags: 0
@@ -1707,7 +1780,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 000
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f9b46d0d297dd0b428b78e357b9ae80f, type: 2}
   m_sharedMaterial: {fileID: -4091813052434924703, guid: f9b46d0d297dd0b428b78e357b9ae80f,
@@ -1797,6 +1870,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba9d0b566ee034943892edddfd410a52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delay: 0.05
+  fullText: 
 --- !u!1 &1772712406
 GameObject:
   m_ObjectHideFlags: 0
@@ -1807,6 +1882,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1772712408}
   - component: {fileID: 1772712407}
+  - component: {fileID: 1772712409}
   m_Layer: 0
   m_Name: ReachPoint
   m_TagString: Untagged
@@ -1840,6 +1916,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1772712409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1772712406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e708052aa1e342a8b3e1f7cd4170615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2132125983
 GameObject:
   m_ObjectHideFlags: 0
@@ -1851,6 +1939,7 @@ GameObject:
   - component: {fileID: 2132125984}
   - component: {fileID: 2132125986}
   - component: {fileID: 2132125985}
+  - component: {fileID: 2132125987}
   m_Layer: 5
   m_Name: GoodBonus
   m_TagString: Untagged
@@ -1896,7 +1985,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: special bonus points
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f9b46d0d297dd0b428b78e357b9ae80f, type: 2}
   m_sharedMaterial: {fileID: -4091813052434924703, guid: f9b46d0d297dd0b428b78e357b9ae80f,
@@ -1974,3 +2063,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2132125983}
   m_CullTransparentMesh: 0
+--- !u!114 &2132125987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2132125983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5f9c79f0308a431381a49deb88bbc12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0.05
+  fullText: special bonus points
+  text: {fileID: 0}

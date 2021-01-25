@@ -17,6 +17,7 @@ TagManager:
   - EnemyProjectileExplosive
   - CraterPlatform
   - Hole
+  - CautionPoint
   layers:
   - Default
   - TransparentFX
