@@ -23,6 +23,8 @@ public class GameManager : GenericSingletonClass<GameManager>
     private PlayerSpeed _playerSpeed = PlayerSpeed.Normal;
     private Boolean _gameRunning = true;
 
+    private bool _playerFallenInHole = false;
+    
     public int pointsRequiredForBonusLive;
     private int _bonusLivesAcquired;
     private int _currentScore = 0;
@@ -242,6 +244,12 @@ public class GameManager : GenericSingletonClass<GameManager>
         ResetObstacles();
         ResetHoles();
         ResetCheckPoints();
+        SetPlayerFallenInHole(false);
+        ReserObstaclesOnMap();
+    }
+
+    private void ReserObstaclesOnMap()
+    {
         GameObject.Find("ObstacleLoader").GetComponent<ObstacleLoader>().ResetObstaclesOnMap();
     }
 
@@ -299,7 +307,6 @@ public class GameManager : GenericSingletonClass<GameManager>
         DestroyAll("CheckPoint");
         DestroyAll("StagePoint");
         DestroyAll("CautionPoint");
-        //DestroyAll("JumpPoint");
 
     }
 
@@ -311,6 +318,12 @@ public class GameManager : GenericSingletonClass<GameManager>
         {
             Destroy(gameObjects[i]);
         }
+    }
+
+    public void PlayerFallingInHole()
+    {
+        SetPlayerFallenInHole(true);
+        PlayerDeath();
     }
 
     public void PlayerDeath()
@@ -390,6 +403,16 @@ public class GameManager : GenericSingletonClass<GameManager>
             _highScore = save.TopScore;
             _topRecord = save.TopTime;
         }
+    }
+
+    private void SetPlayerFallenInHole(bool playerFallenInHole)
+    {
+        _playerFallenInHole = playerFallenInHole;
+    }
+
+    public bool GetPlayerFallenInHole()
+    {
+        return _playerFallenInHole;
     }
 }
 

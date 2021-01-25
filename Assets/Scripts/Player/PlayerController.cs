@@ -602,7 +602,7 @@ public class PlayerController : MonoBehaviour
     private void HandleLogicAfterCollisionWithHole(Collider2D collision)
     {
         playerRigidBody.velocity = new Vector2(playerRigidBody.velocity.x, 0);
-        GameManager.Instance.PlayerDeath();
+        GameManager.Instance.PlayerFallingInHole();
         SwitchAnimation(PlayerAnimation.None);
         SetFinalDeathPosition(collision.bounds.center.x);
         InitializeDeath();

@@ -10,10 +10,8 @@ public class LandController : MonoBehaviour
     private float _initLandSpeed;
     private float _startingHorizontalPosition;
     
-    private BoxCollider2D _boxCollider;
     void Start()
     {
-        LoadComponents();
         _startingHorizontalPosition = transform.position.x;
         _landSpeed = GameManager.Instance.GetGameSpeed();
         _initLandSpeed = _landSpeed;
@@ -24,49 +22,53 @@ public class LandController : MonoBehaviour
         {
             UpdateGameSpeed();
             MoveLand();
-            TurnOnBoxCollider();
         }
-        else
-        {
-            TurnOffBoxCollider();
-        }
+
     }
-
-    private void TurnOnBoxCollider()
-    {
-        if (_boxCollider)
-        {
-            _boxCollider.enabled = true;
-        }  
-    }
-
-
-    private void TurnOffBoxCollider()
-    {
-        if (_boxCollider)
-        {
-            _boxCollider.enabled = false;
-        }
-    }
-
+    
     private void UpdateGameSpeed()
     {
-        if (GameManager.Instance.GetPlayerSpeed() == GameManager.PlayerSpeed.Normal)
+        if (IsGameSpeedNormal())
         {
-            _landSpeed = _initLandSpeed * speedRatio;
+            NormalizeLandSpeed();
         }
-        else if (GameManager.Instance.GetPlayerSpeed() == GameManager.PlayerSpeed.Fast)
+        else if (IsGameSpeedFast())
         {
-            _landSpeed = _initLandSpeed * 1.3f * speedRatio;
-        } else if (GameManager.Instance.GetPlayerSpeed() == GameManager.PlayerSpeed.Slow)
+            SpeedUpLandSpeed();
+        } else if (IsGameSpeedSlow())
         {
-            _landSpeed = _initLandSpeed * 0.7f * speedRatio;
+            SlowDownLandSpeed();
         }
     }
 
-    private void LoadComponents()
+    private bool IsGameSpeedNormal()
     {
-        _boxCollider = GetComponent<BoxCollider2D>();
+        return GameManager.Instance.GetPlayerSpeed() == GameManager.PlayerSpeed.Normal;
+    }
+
+    private bool IsGameSpeedFast()
+    {
+        return GameManager.Instance.GetPlayerSpeed() == GameManager.PlayerSpeed.Fast;
+    }
+
+    private bool IsGameSpeedSlow()
+    {
+        return GameManager.Instance.GetPlayerSpeed() == GameManager.PlayerSpeed.Slow;
+    }
+
+    private void NormalizeLandSpeed()
+    {
+        _landSpeed = _initLandSpeed * speedRatio;
+    }
+
+    private void SpeedUpLandSpeed()
+    {
+        _landSpeed = _initLandSpeed * 1.3f * speedRatio;
+    }
+
+    private void SlowDownLandSpeed()
+    {
+        _landSpeed = _initLandSpeed * 0.7f * speedRatio;
     }
 
     private void MoveLand()
