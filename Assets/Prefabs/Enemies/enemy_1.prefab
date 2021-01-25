@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3076974065193384415}
   - component: {fileID: 3076974065193384414}
   m_Layer: 0
-  m_Name: Enemy_1_animated
+  m_Name: enemy_1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,7 +84,7 @@ MonoBehaviour:
   maxWaitBeforeBombDrop: 4
   waitBeforeEscape: 16
   _enterDirection: 0
-  enemySpeed: 1
+  enemySpeed: 1.5
   enemyEscapingSpeed: 3
 --- !u!61 &3076974065193384412
 BoxCollider2D:

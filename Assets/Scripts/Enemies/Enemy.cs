@@ -259,7 +259,7 @@ public class Enemy : MonoBehaviour
         {
             fixedEnemySpeed = fixedEnemySpeed / 2;
         }
-        transform.position = Vector3.MoveTowards(transform.position, _targetPosition, fixedEnemySpeed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, _targetPosition, fixedEnemySpeed * Time.deltaTime);
     }
 
     private void HandleGeneratingNewPosition()

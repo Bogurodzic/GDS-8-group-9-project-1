@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 564837001457465849}
   - component: {fileID: 564837001457465848}
-  - component: {fileID: 564837001457465855}
   - component: {fileID: 564837001457465850}
   - component: {fileID: 7926910649658814619}
   - component: {fileID: 6787283166918770479}
+  - component: {fileID: 2455948068053439346}
   m_Layer: 0
   m_Name: Hole1
   m_TagString: Hole
@@ -85,32 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &564837001457465855
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 564837001457465854}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.005340159, y: -0.14685106}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.93, y: 1.83}
-    newSize: {x: 1.93, y: 1.83}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.438716, y: 1.5362978}
-  m_EdgeRadius: 0
 --- !u!114 &564837001457465850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 039e00ac1c121466b93da80e58d7b0f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  landSpeed: 4.5
+  speedRatio: 1
 --- !u!68 &7926910649658814619
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -173,3 +147,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!70 &2455948068053439346
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564837001457465854}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.6}
+  m_Size: {x: 1, y: 1}
+  m_Direction: 1
