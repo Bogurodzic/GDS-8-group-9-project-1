@@ -1132,6 +1132,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpawnManager
       objectReference: {fileID: 0}
+    - target: {fileID: 3735751919221287125, guid: 051705aef34fb45e792177daa45b8080,
+        type: 3}
+      propertyPath: spawnPoints.Array.data[1].progressRequiredToSpawn
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 3735751919221287127, guid: 051705aef34fb45e792177daa45b8080,
         type: 3}
       propertyPath: m_RootOrder
