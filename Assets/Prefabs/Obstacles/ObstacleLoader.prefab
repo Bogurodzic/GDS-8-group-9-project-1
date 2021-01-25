@@ -61,6 +61,14 @@ MonoBehaviour:
     type: 3}
   rollingRockBigPrefab: {fileID: 1953829797988016917, guid: d6fc0c349e1c4468997766e6995eca3a,
     type: 3}
+  airCautionPointPrefab: {fileID: 8509075067820717043, guid: 8a671b8c8c5c3410da6ab1aef0c56c30,
+    type: 3}
+  landCautionPointPrefab: {fileID: 4127966273369865615, guid: 791ac145bdab64cf7ae8e58c428a32c9,
+    type: 3}
+  obstacleCautionPointPrefab: {fileID: 4830706903920588364, guid: b9fa88a56078449e79c438162b798cd8,
+    type: 3}
+  tankAnimatedPrefab: {fileID: 35632829892249993, guid: 847eab96e24224fe281dfd8bbc644fb6,
+    type: 3}
   checkPointPrefab: {fileID: 6656606135112427971, guid: 733cacf6a43ea4cda87f8874ca52892d,
     type: 3}
   stagePointPrefab: {fileID: 9204484326999928624, guid: f1a4b2a083bef49efb827022e2daa0ed,

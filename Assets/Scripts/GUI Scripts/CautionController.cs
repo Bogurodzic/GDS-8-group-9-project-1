@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class CautionController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public float dangerActiveTime;
+    
     public GameObject textPrefab;
     public GameObject airPrefab;
     public GameObject landPrefab;
@@ -31,11 +32,6 @@ public class CautionController : MonoBehaviour
     void Start()
     {
         LoadComponents();
-        _textImage.sprite = textDanger;
-        _airImage.sprite = airDanger;
-        _landImage.sprite = landDanger;
-        _obstacleImage.sprite = obstacleDanger;
-
     }
 
     private void LoadComponents()
@@ -48,5 +44,58 @@ public class CautionController : MonoBehaviour
     }
     void Update()
     {
+    }
+
+    public void ActiveAirFlag()
+    {
+        AlertText();
+        _airImage.sprite = airDanger;
+        Invoke("ResetFlags", dangerActiveTime);
+    }
+    
+    public void ActiveLandFlag()
+    {
+        AlertText();
+        _landImage.sprite = landDanger;
+        Invoke("ResetFlags", dangerActiveTime);
+    }
+    
+    public void ActiveObstacleFlag()
+    {
+        AlertText();
+        _obstacleImage.sprite = obstacleDanger;
+        Invoke("ResetFlags", dangerActiveTime);
+    }
+
+    public void AlertText()
+    {
+        ActivateDangerText();
+        Invoke("DectivateDangerText", 0.5f);
+        Invoke("ActivateDangerText", 1f);
+        Invoke("DectivateDangerText", 1.5f);
+        Invoke("ActivateDangerText", 2f);
+        Invoke("DectivateDangerText", 2.5f);
+
+    }
+
+    public void ActivateDangerText()
+    {
+        _textImage.sprite = textDanger;
+    }
+    
+    public void DectivateDangerText()
+    {
+        _textImage.sprite = textNormal;
+    }
+    
+
+
+    public void ResetFlags()
+    {
+        _textImage.sprite = textNormal;
+        _airImage.sprite = airNormal;
+        _landImage.sprite = landNormal;
+        _obstacleImage.sprite = obstacleNormal;
+
     }
 }

@@ -17,6 +17,10 @@ public class ObstacleLoader : MonoBehaviour
     public GameObject rollingRockSmallPrefab;
     public GameObject rollingRockBigPrefab;
 
+    public GameObject airCautionPointPrefab;
+    public GameObject landCautionPointPrefab;
+    public GameObject obstacleCautionPointPrefab;
+
     public GameObject tankAnimatedPrefab;
     
     public GameObject checkPointPrefab;
@@ -30,11 +34,15 @@ public class ObstacleLoader : MonoBehaviour
         MapGameObjectWithPoints("EnemyTank");
         MapGameObjectWithPoints("CheckPoint");
         MapGameObjectWithPoints("StagePoint");
+        MapGameObjectWithPoints("CautionPoint");
+
         DestroyAllObjectsWithTag("Obstacle");
         DestroyAllObjectsWithTag("Hole");
         DestroyAllObjectsWithTag("EnemyTank");
         DestroyAllObjectsWithTag("CheckPoint");
         DestroyAllObjectsWithTag("StagePoint");
+        DestroyAllObjectsWithTag("CautionPoint");
+
         ResetObstaclesOnMap();
     }
 
@@ -126,6 +134,15 @@ public class ObstacleLoader : MonoBehaviour
         } else if (obstacleMapped.GetGameObjectName() == "StagePoint")
         {
             return stagePointPrefab;
+        } else if (obstacleMapped.GetGameObjectName() == "AirCautionPoint")
+        {
+            return airCautionPointPrefab;
+        } else if (obstacleMapped.GetGameObjectName() == "LandCautionPoint")
+        {
+            return landCautionPointPrefab;
+        } else if (obstacleMapped.GetGameObjectName() == "ObstacleCautionPoint")
+        {
+            return obstacleCautionPointPrefab;
         }
         else
         {
