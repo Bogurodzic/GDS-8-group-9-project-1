@@ -1139,6 +1139,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3735751919221287125, guid: 051705aef34fb45e792177daa45b8080,
         type: 3}
+      propertyPath: spawnPoints.Array.data[0].enemyPrefabToSpawn
+      value: 
+      objectReference: {fileID: 8144224043300352041, guid: 3bdfa805cdb0f46d2b31d8a81bc5fc61,
+        type: 3}
+    - target: {fileID: 3735751919221287125, guid: 051705aef34fb45e792177daa45b8080,
+        type: 3}
+      propertyPath: spawnPoints.Array.data[0].progressRequiredToSpawn
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 3735751919221287125, guid: 051705aef34fb45e792177daa45b8080,
+        type: 3}
       propertyPath: spawnPoints.Array.data[1].progressRequiredToSpawn
       value: 20
       objectReference: {fileID: 0}
