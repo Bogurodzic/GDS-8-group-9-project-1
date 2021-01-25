@@ -65,20 +65,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoints:
-  - progressRequiredToSpawn: 5
-    progressRequiredToDespawn: 20
-    enemyPrefabToSpawn: {fileID: 3076974065193384409, guid: 92511b47f05fc487dbc87424ac4179d4,
+  - progressRequiredToSpawn: 19
+    progressRequiredToDespawn: 29
+    enemyPrefabToSpawn: {fileID: 8144224043300352041, guid: 3bdfa805cdb0f46d2b31d8a81bc5fc61,
       type: 3}
     spawnPointIntensity:
       left: 1
+      topLeft: 0
+      topCenter: 0
+      topRight: 1
+      right: 0
+    spawned: 0
+  - progressRequiredToSpawn: 19
+    progressRequiredToDespawn: 29
+    enemyPrefabToSpawn: {fileID: 5130314518895350953, guid: 23f5b38a760c74185b2fe1971b96b2dc,
+      type: 3}
+    spawnPointIntensity:
+      left: 0
       topLeft: 1
       topCenter: 0
       topRight: 1
       right: 0
     spawned: 0
-  - progressRequiredToSpawn: 25
-    progressRequiredToDespawn: 50
-    enemyPrefabToSpawn: {fileID: 3076974065193384409, guid: 92511b47f05fc487dbc87424ac4179d4,
+  - progressRequiredToSpawn: 26.5
+    progressRequiredToDespawn: 36.5
+    enemyPrefabToSpawn: {fileID: 8144224043300352041, guid: 3bdfa805cdb0f46d2b31d8a81bc5fc61,
+      type: 3}
+    spawnPointIntensity:
+      left: 0
+      topLeft: 1
+      topCenter: 0
+      topRight: 1
+      right: 0
+    spawned: 0
+  - progressRequiredToSpawn: 49.5
+    progressRequiredToDespawn: 59.5
+    enemyPrefabToSpawn: {fileID: 5130314518895350953, guid: 23f5b38a760c74185b2fe1971b96b2dc,
       type: 3}
     spawnPointIntensity:
       left: 0
@@ -87,16 +109,27 @@ MonoBehaviour:
       topRight: 0
       right: 1
     spawned: 0
-  - progressRequiredToSpawn: 70
-    progressRequiredToDespawn: 90
+  - progressRequiredToSpawn: 72
+    progressRequiredToDespawn: 82
     enemyPrefabToSpawn: {fileID: 3076974065193384409, guid: 92511b47f05fc487dbc87424ac4179d4,
       type: 3}
     spawnPointIntensity:
       left: 1
-      topLeft: 1
-      topCenter: 1
+      topLeft: 0
+      topCenter: 0
       topRight: 1
-      right: 1
+      right: 0
+    spawned: 0
+  - progressRequiredToSpawn: 80
+    progressRequiredToDespawn: 90
+    enemyPrefabToSpawn: {fileID: 5130314518895350953, guid: 23f5b38a760c74185b2fe1971b96b2dc,
+      type: 3}
+    spawnPointIntensity:
+      left: 1
+      topLeft: 0
+      topCenter: 1
+      topRight: 0
+      right: 0
     spawned: 0
   spawProgressTreshold: 2
   leftSpawn: {fileID: 3735751917619852799}
@@ -124,7 +157,7 @@ PrefabInstance:
     - target: {fileID: 6796177598991306340, guid: e3ce98c44d5c04af6bf10da74e8771ab,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.1
+      value: 5.07
       objectReference: {fileID: 0}
     - target: {fileID: 6796177598991306340, guid: e3ce98c44d5c04af6bf10da74e8771ab,
         type: 3}
@@ -250,12 +283,12 @@ PrefabInstance:
     - target: {fileID: 6796177598991306340, guid: e3ce98c44d5c04af6bf10da74e8771ab,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.62
+      value: -5.72
       objectReference: {fileID: 0}
     - target: {fileID: 6796177598991306340, guid: e3ce98c44d5c04af6bf10da74e8771ab,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.1
+      value: 4.93
       objectReference: {fileID: 0}
     - target: {fileID: 6796177598991306340, guid: e3ce98c44d5c04af6bf10da74e8771ab,
         type: 3}
@@ -381,7 +414,7 @@ PrefabInstance:
     - target: {fileID: 6796177598991306340, guid: e3ce98c44d5c04af6bf10da74e8771ab,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.31
+      value: 0.52
       objectReference: {fileID: 0}
     - target: {fileID: 6796177598991306340, guid: e3ce98c44d5c04af6bf10da74e8771ab,
         type: 3}
@@ -502,12 +535,12 @@ PrefabInstance:
     - target: {fileID: 6796177598991306340, guid: e3ce98c44d5c04af6bf10da74e8771ab,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.72
+      value: -2.84
       objectReference: {fileID: 0}
     - target: {fileID: 6796177598991306340, guid: e3ce98c44d5c04af6bf10da74e8771ab,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.1
+      value: 5.07
       objectReference: {fileID: 0}
     - target: {fileID: 6796177598991306340, guid: e3ce98c44d5c04af6bf10da74e8771ab,
         type: 3}
