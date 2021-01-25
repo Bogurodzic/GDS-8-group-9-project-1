@@ -11,6 +11,8 @@ public class Tank : MonoBehaviour
     public float speed;
     public int projectileInterval;
     public float distanceBetweenPlayerBeforeStartShooting;
+
+    public int pointsForKill;
     
     private bool _destroyInitialised;
     private bool _tankDestroyed;
@@ -111,6 +113,7 @@ public class Tank : MonoBehaviour
 
     public void DestroyTank()
     {
+        GameManager.Instance.AddPoints(pointsForKill);
         _destroyInitialised = true;
         _tankAnimation.animation.Play("enemy_death", 1);
         _boxCollider2D.enabled = false;

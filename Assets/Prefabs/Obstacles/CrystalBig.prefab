@@ -222,7 +222,7 @@ MonoBehaviour:
   _sortingLayerName: Default
   _sortingOrder: 0
   _zSpace: 0
-  _flipX: 1
+  _flipX: 0
   _flipY: 0
 --- !u!114 &2956969259134437810
 MonoBehaviour:
@@ -236,6 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c42b25f0323a428c97a3bfb6a564d96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointsForKill: 100
 --- !u!50 &2956969259134437812
 Rigidbody2D:
   serializedVersion: 4

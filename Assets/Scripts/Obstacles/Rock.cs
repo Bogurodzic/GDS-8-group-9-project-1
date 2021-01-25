@@ -6,6 +6,7 @@ using UnityEngine;
 public class Rock : Obstacle
 {
 
+    public int pointsForKill;
     protected bool _destroyInitialised = false;
     protected bool _rockDestroyed = false;
     protected UnityArmatureComponent _rockAnimation;
@@ -63,6 +64,7 @@ public class Rock : Obstacle
 
     public virtual void InitDestroyRock()
     {
+        GameManager.Instance.AddPoints(pointsForKill);
         _destroyInitialised = true;
         _rockAnimation.animation.Play("crystal_death", 1);
         _boxCollider2D.enabled = false;
