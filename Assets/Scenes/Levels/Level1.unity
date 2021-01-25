@@ -3838,6 +3838,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 37081106, guid: 73ec300a13a7947b5ab9d5287bc068c9, type: 3}
+      propertyPath: dangerActiveTime
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1066445011799413585, guid: 73ec300a13a7947b5ab9d5287bc068c9,
         type: 3}
       propertyPath: m_Name
