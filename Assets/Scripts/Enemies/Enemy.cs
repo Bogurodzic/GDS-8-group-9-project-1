@@ -75,6 +75,7 @@ public class Enemy : MonoBehaviour
     {
         LoadComponents();
         CalculateEnemyAreaBounds();
+        _enemyBoxCollider.enabled = false;
     }
 
     void Update()
@@ -118,6 +119,7 @@ public class Enemy : MonoBehaviour
     public void EnableEscaping()
     {
         GenerateEscapeDirection();
+        _enemyBoxCollider.enabled = false;
         _escapeEnabled = true;
     }
 
@@ -356,6 +358,7 @@ public class Enemy : MonoBehaviour
     }
     private void EnableCustomMoving()
     {
+        _enemyBoxCollider.enabled = true;
         _customMovingEnabled = true;
     }
 
