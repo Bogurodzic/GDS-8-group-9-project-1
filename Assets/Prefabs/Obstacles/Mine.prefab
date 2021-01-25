@@ -108,7 +108,7 @@ Transform:
   m_GameObject: {fileID: 6098538351820436588}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9.56, y: -2.17, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6, y: 1, z: 1}
   m_Children:
   - {fileID: 2723735515575437096}
   - {fileID: 8283760175853249227}
@@ -136,7 +136,7 @@ MonoBehaviour:
   boneHierarchy: 0
   animationName: enemy_mine_light
   _playTimes: 0
-  _timeScale: 1
+  _timeScale: 0.5
   _sortingMode: 0
   _sortingLayerName: Default
   _sortingOrder: 0
@@ -177,7 +177,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0038552284, y: 0.0053346157}
+  m_Offset: {x: 0.002245903, y: 0.010418998}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -188,7 +188,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.55276775, y: 0.15475845}
+  m_Size: {x: 0.52022743, y: 0.12018421}
   m_EdgeRadius: 0
 --- !u!114 &-4736426960057352402
 MonoBehaviour:
@@ -202,7 +202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 039e00ac1c121466b93da80e58d7b0f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  landSpeed: 4.5
+  speedRatio: 1
 --- !u!1 &6533059719171076248
 GameObject:
   m_ObjectHideFlags: 0
