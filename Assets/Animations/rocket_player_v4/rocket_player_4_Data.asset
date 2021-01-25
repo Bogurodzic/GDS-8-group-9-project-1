@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1a64e5b0e436d4bed9780211ae245f7b, type: 3}
-  m_Name: rocket_player_Data
+  m_Name: rocket_player_4_Data
   m_EditorClassIdentifier: 
-  dataName: rocket_player
-  dragonBonesJSON: {fileID: 4900000, guid: a5356fa291659cf43b0f6c62c5f651aa, type: 3}
+  dataName: rocket_player_4
+  dragonBonesJSON: {fileID: 4900000, guid: b2b9e1a65aa544481bd3eae345d80b50, type: 3}
   textureAtlas:
-  - textureAtlasJSON: {fileID: 4900000, guid: 80eb6392cea8a9145bee70a9f5a2ce0d, type: 3}
-    texture: {fileID: 2800000, guid: a62102246ca48014298ba4e3ef4aae99, type: 3}
-    material: {fileID: 2100000, guid: 29f8427279063466e9652e0d8fa68876, type: 2}
+  - textureAtlasJSON: {fileID: 4900000, guid: d0acc5ebb4f5d4b7fa4b4e59e8bf5b16, type: 3}
+    texture: {fileID: 2800000, guid: 6b27c9934195d4714ae69c99275e931b, type: 3}
+    material: {fileID: 2100000, guid: 1e7c45d278d334a53b6adadfa02f8563, type: 2}
     uiMaterial: {fileID: 0}
