@@ -9,9 +9,13 @@ public class LandController : MonoBehaviour
     private float _landSpeed;
     private float _initLandSpeed;
     private float _startingHorizontalPosition;
+
+    private Rigidbody2D _rigidbody;
     
     void Start()
     {
+        LoadComponents();
+        
         _startingHorizontalPosition = transform.position.x;
         _landSpeed = GameManager.Instance.GetGameSpeed();
         _initLandSpeed = _landSpeed;
@@ -24,6 +28,20 @@ public class LandController : MonoBehaviour
             MoveLand();
         }
 
+        if (!GameManager.Instance.IsGameRunning() && _rigidbody)
+        {
+            _rigidbody.bodyType = RigidbodyType2D.Kinematic;
+        }
+        else if (GameManager.Instance.IsGameRunning() && _rigidbody)
+        {
+            _rigidbody.bodyType = RigidbodyType2D.Dynamic;
+        }
+
+    }
+
+    private void LoadComponents()
+    {
+        _rigidbody = GetComponent<Rigidbody2D>();
     }
     
     private void UpdateGameSpeed()

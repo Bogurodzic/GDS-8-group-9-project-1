@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 1740426540854435001}
   - component: {fileID: -2672911456392468671}
   - component: {fileID: -1331457181616539381}
-  - component: {fileID: -481778590033052785}
   m_Layer: 0
   m_Name: HorizontalProjectile
   m_TagString: Projectile
@@ -47,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 055ee2bfafcac4d1784529e5a6e18421, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shootDistanceLimit: 5
   projectileDirection: 2
   projectileSpeed: 4
 --- !u!212 &1740426540854435001
@@ -146,15 +146,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-481778590033052785
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4839127419380771314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 547a0b912d0eb491d870fa03a6f58a55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

@@ -76,6 +76,8 @@ public class ReachPointBonus : TextDelayAnimation
            text.text = _currentPoints + "";
            yield return new WaitForSeconds(exchangePointsDelay);
        }
+       
+       reachPointTextController.ActiaveGoingToNewStage();
     }
     
 

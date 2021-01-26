@@ -17,12 +17,16 @@ public class StartCountdown : MonoBehaviour
     void Start()
     {
         LoadComponents();
-        BeginCountdown();
-    }
-
-    void Update()
-    {
         
+        if (ShouldCountDownStart())
+        {
+            BeginCountdown();
+        } 
+    }
+    
+    private bool ShouldCountDownStart()
+    {
+        return !GameManager.Instance.IsGameStarted();
     }
 
     private void LoadComponents()
@@ -64,10 +68,17 @@ public class StartCountdown : MonoBehaviour
         _audio.Play();
         _coutdownText.text = phase4Text;
         GameManager.Instance.StartGame();
+        GameManager.Instance.PlayGame();
     }
 
     private void TurnOffCountdown()
     {
         Destroy(gameObject);
+    }
+
+    private void TurnOnCountdown()
+    {
+        gameObject.SetActive(true);
+
     }
 }

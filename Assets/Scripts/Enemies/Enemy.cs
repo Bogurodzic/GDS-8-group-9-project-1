@@ -119,7 +119,6 @@ public class Enemy : MonoBehaviour
     public void EnableEscaping()
     {
         GenerateEscapeDirection();
-        _enemyBoxCollider.enabled = false;
         _escapeEnabled = true;
     }
 
@@ -144,45 +143,70 @@ public class Enemy : MonoBehaviour
     void SpawnBomb()
     {
 
-        if (_customMovingEnabled && !_escapeEnabled)
+        if (CanBombBeSpawned())
         {
-            if (bomb.CompareTag("EnemyProjectileExplosive"))
+            if (IsBombExplosive())
             {
-                if (GameManager.Instance.CanCraterBombBeSpawned())
-                {
-                    _enemyAnimation.animation.Stop();
-                    _enemyAnimation.animation.Play("enemy_shot", 1);
-                    GameObject enemy = Instantiate(bomb, transform.position, bomb.transform.rotation);   
-            
-                    enemy.SendMessage("StartObject", GetBombDirection());
-                }
-                _isBombSpawning = false;           
+                SpawnCraterBomb();
             }
-            else
+            else if (IsBombNormal())
             {
-                if (GameManager.Instance.CanBombBeSpawned())
-                {
-                    _enemyAnimation.animation.Stop();
-                    _enemyAnimation.animation.Play("enemy_shot", 1);
-                    GameObject enemy;
-                    if (GetBombDirection() == Bomb.BombDirection.Right)
-                    {
-                        enemy = Instantiate(bomb, transform.position, bomb.transform.rotation);
-                    }
-                    else
-                    {
-                        enemy = Instantiate(bomb, transform.position, new Quaternion(0,0,bomb.transform.rotation.z * -1,bomb.transform.rotation.w));
-                    }
-            
-                    enemy.SendMessage("StartObject", GetBombDirection());
-                }
-                _isBombSpawning = false;     
+                SpawnNormalBomb();
             }        
         }
 
 
     }
 
+    private bool CanBombBeSpawned()
+    {
+        return _customMovingEnabled && !_escapeEnabled && _enemyStatus != EnemyStatus.Dying &&
+               _enemyStatus != EnemyStatus.Destroyed;
+    }
+
+    private bool IsBombExplosive()
+    {
+        return bomb.CompareTag("EnemyProjectileExplosive");
+    }
+
+    private bool IsBombNormal()
+    {
+        return bomb.CompareTag("EnemyProjectile");
+    }
+
+    private void SpawnCraterBomb()
+    {
+        if (GameManager.Instance.CanCraterBombBeSpawned())
+        {
+            _enemyAnimation.animation.Stop();
+            _enemyAnimation.animation.Play("enemy_shot", 1);
+            GameObject enemy = Instantiate(bomb, transform.position, bomb.transform.rotation);   
+            
+            enemy.SendMessage("StartObject", GetBombDirection());
+        }
+        _isBombSpawning = false;    
+    }
+
+    private void SpawnNormalBomb()
+    {
+        if (GameManager.Instance.CanBombBeSpawned())
+        {
+            _enemyAnimation.animation.Stop();
+            _enemyAnimation.animation.Play("enemy_shot", 1);
+            GameObject enemy;
+            if (GetBombDirection() == Bomb.BombDirection.Right)
+            {
+                enemy = Instantiate(bomb, transform.position, bomb.transform.rotation);
+            }
+            else
+            {
+                enemy = Instantiate(bomb, transform.position, new Quaternion(0,0,bomb.transform.rotation.z * -1,bomb.transform.rotation.w));
+            }
+            
+            enemy.SendMessage("StartObject", GetBombDirection());
+        }
+        _isBombSpawning = false;   
+    }
     private Bomb.BombDirection GetBombDirection()
     {
         if (!bomb.CompareTag("EnemyProjectileExplosive") && transform.position.x < _targetPosition.x)

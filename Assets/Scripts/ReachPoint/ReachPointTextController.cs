@@ -22,7 +22,8 @@ public class ReachPointTextController : MonoBehaviour
     private bool _recordTextCompleted = false;
 
     private bool _showRecord = false;
-    
+
+    private bool _canGoToNewStage = false;
     void Start()
     {
         
@@ -216,5 +217,15 @@ public class ReachPointTextController : MonoBehaviour
     public bool CanDisplayNewRecord()
     {
         return _showRecord;
+    }
+
+    public void ActiaveGoingToNewStage()
+    {
+        _canGoToNewStage = true;
+    }
+
+    public bool CanGoToNewStage()
+    {
+        return _canGoToNewStage;
     }
 }

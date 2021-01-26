@@ -64,9 +64,9 @@ public class Rock : Obstacle
 
     public virtual void InitDestroyRock()
     {
+        gameObject.tag = "Untagged";
         GameManager.Instance.AddPoints(pointsForKill);
         _destroyInitialised = true;
         _rockAnimation.animation.Play("crystal_death", 1);
-        _boxCollider2D.enabled = false;
     }
 }
