@@ -13,6 +13,7 @@ public class AudioMenager : MonoBehaviour
     public void Start()
     {
         LoadComponents();
+        DontDestroyOnLoad(this.gameObject);
     }
 
     private void LoadComponents()
@@ -20,3 +21,4 @@ public class AudioMenager : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
     }
 }
+ 
