@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1321872623}
   - component: {fileID: 1430669912}
   - component: {fileID: 1875160822}
+  - component: {fileID: 9074725493582474935}
   m_Layer: 0
   m_Name: Tank_animated
   m_TagString: EnemyTank
@@ -29,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 35632829892249993}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.31, y: -1.63, z: 0}
+  m_LocalPosition: {x: -12.317, y: -1.63, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children:
   - {fileID: 3395460791344265049}
@@ -61,7 +62,7 @@ MonoBehaviour:
   animationName: enemy_idle
   _playTimes: 0
   _timeScale: 1
-  _sortingMode: 0
+  _sortingMode: 1
   _sortingLayerName: Default
   _sortingOrder: 5
   _zSpace: 0
@@ -80,7 +81,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.090572536, y: 0.14275277}
+  m_Offset: {x: 0.09, y: 0.14275277}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -145,6 +146,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!210 &9074725493582474935
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 35632829892249993}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 5
 --- !u!1 &317378374812301664
 GameObject:
   m_ObjectHideFlags: 0
@@ -452,7 +464,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 0
 --- !u!33 &9189807832878419103
 MeshFilter:
   m_ObjectHideFlags: 0

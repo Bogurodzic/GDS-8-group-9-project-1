@@ -70,7 +70,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 0
 --- !u!33 &1836722402111164970
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -330,6 +330,7 @@ GameObject:
   - component: {fileID: 2604006451050506181}
   - component: {fileID: 429667536362042611}
   - component: {fileID: 3615788757174164472}
+  - component: {fileID: 5514067793237080567}
   m_Layer: 0
   m_Name: enemy_2
   m_TagString: Enemy
@@ -374,10 +375,10 @@ MonoBehaviour:
   bonesRoot: {fileID: 0}
   unityBones: []
   boneHierarchy: 0
-  animationName: enemy_fly
+  animationName: 
   _playTimes: 0
   _timeScale: 1
-  _sortingMode: 0
+  _sortingMode: 1
   _sortingLayerName: Default
   _sortingOrder: 5
   _zSpace: 0
@@ -462,3 +463,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 547a0b912d0eb491d870fa03a6f58a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!210 &5514067793237080567
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8144224043300352041}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 5

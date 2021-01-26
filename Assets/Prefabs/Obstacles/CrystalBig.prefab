@@ -104,8 +104,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2956969258754923326}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.40879995, y: 0.03, z: 0}
+  m_LocalRotation: {x: -0.00000008742278, y: -1, z: 3.821371e-15, w: 0.00000004371139}
+  m_LocalPosition: {x: -0.4088, y: 0.029999865, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2956969259134437814}
@@ -149,7 +149,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 0
 --- !u!33 &2956969258754923324
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -172,6 +172,7 @@ GameObject:
   - component: {fileID: 2956969259134437812}
   - component: {fileID: 2956969259134437813}
   - component: {fileID: 2833553478580781222}
+  - component: {fileID: 8493029811816454239}
   m_Layer: 0
   m_Name: CrystalBig
   m_TagString: Obstacle
@@ -187,7 +188,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2956969259134437816}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children:
   - {fileID: 2956969258754923325}
@@ -219,7 +220,7 @@ MonoBehaviour:
   animationName: 
   _playTimes: 0
   _timeScale: 0.8
-  _sortingMode: 0
+  _sortingMode: 1
   _sortingLayerName: Default
   _sortingOrder: 5
   _zSpace: 0
@@ -285,7 +286,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.3, y: 0.4}
+  m_Offset: {x: -0.3, y: 0.4}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -298,6 +299,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.41442448, y: 0.61529076}
   m_EdgeRadius: 0
+--- !u!210 &8493029811816454239
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2956969259134437816}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 5
 --- !u!1 &2956969259637742617
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,7 +337,7 @@ Transform:
   m_GameObject: {fileID: 2956969259637742617}
   m_LocalRotation: {x: -0.00000008742278, y: -1, z: 3.821371e-15, w: 0.00000004371139}
   m_LocalPosition: {x: 0, y: 0, z: -0.001}
-  m_LocalScale: {x: 0.17856768, y: 0.17856768, z: 1}
+  m_LocalScale: {x: 0.44055206, y: 0.44055206, z: 1}
   m_Children: []
   m_Father: {fileID: 2956969259134437814}
   m_RootOrder: 1
@@ -368,7 +380,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
 --- !u!33 &2956969259637742615
 MeshFilter:
   m_ObjectHideFlags: 0

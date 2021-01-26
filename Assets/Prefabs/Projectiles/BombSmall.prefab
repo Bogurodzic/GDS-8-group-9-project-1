@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 523724570481569675}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.012012749, y: -0.95700103, z: -0.001}
-  m_LocalScale: {x: 0.19988453, y: 0.19988453, z: 1}
+  m_LocalPosition: {x: -0.021009207, y: -0.95565385, z: -0.001}
+  m_LocalScale: {x: 0.349576, y: 0.349576, z: 1}
   m_Children: []
   m_Father: {fileID: 5466758542422504661}
   m_RootOrder: 1
@@ -70,7 +70,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 11
+  m_SortingOrder: 10
 --- !u!33 &1932426027019294977
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -96,7 +96,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6487106334195123445
 Transform:
   m_ObjectHideFlags: 0
@@ -105,8 +105,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1103631186521239212}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.014523141, y: -0.9619635, z: -0.004}
-  m_LocalScale: {x: 1.227314, y: 1.227314, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.004}
+  m_LocalScale: {x: 1.4219953, y: 1.4219953, z: 1}
   m_Children: []
   m_Father: {fileID: 5466758542422504661}
   m_RootOrder: 4
@@ -129,7 +129,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9a1036ccf7b4c43559afb99b762d45d5, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -149,7 +149,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 9
+  m_SortingOrder: 40
 --- !u!33 &8903998764229868696
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -333,7 +333,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2022615531527366862
 Transform:
   m_ObjectHideFlags: 0
@@ -342,8 +342,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2377242384691452981}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.002}
-  m_LocalScale: {x: 1.35, y: 1.35, z: 1}
+  m_LocalPosition: {x: -0.024357587, y: -0.9514753, z: -0.002}
+  m_LocalScale: {x: 1.3166431, y: 1.3166431, z: 1}
   m_Children: []
   m_Father: {fileID: 5466758542422504661}
   m_RootOrder: 2
@@ -366,7 +366,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 9a1036ccf7b4c43559afb99b762d45d5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -386,7 +386,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 11
+  m_SortingOrder: 20
 --- !u!33 &578475053758519337
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -409,6 +409,7 @@ GameObject:
   - component: {fileID: 8198455555357021978}
   - component: {fileID: 1489246417964479339}
   - component: {fileID: 4745618867579442163}
+  - component: {fileID: 7729542193620263882}
   m_Layer: 0
   m_Name: BombSmall
   m_TagString: EnemyProjectileExplosive
@@ -459,7 +460,7 @@ MonoBehaviour:
   animationName: bomb_explosion
   _playTimes: 0
   _timeScale: 1
-  _sortingMode: 0
+  _sortingMode: 1
   _sortingLayerName: Default
   _sortingOrder: 11
   _zSpace: 0
@@ -540,6 +541,17 @@ MonoBehaviour:
   holePrefabs:
   - {fileID: 2599883591068213119, guid: 7fe22af04b44847dca8a1f81f5bdc8ef, type: 3}
   - {fileID: 2599883591068213119, guid: 7fe22af04b44847dca8a1f81f5bdc8ef, type: 3}
+--- !u!210 &7729542193620263882
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3832676686008520907}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 11
 --- !u!1 &4100362185593941137
 GameObject:
   m_ObjectHideFlags: 0
@@ -610,7 +622,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 11
+  m_SortingOrder: 0
 --- !u!33 &5316615338665660768
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -636,7 +648,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &117576101184139931
 Transform:
   m_ObjectHideFlags: 0
@@ -645,7 +657,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6471808404317350124}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.008721701, y: -0.964173, z: -0.006}
+  m_LocalPosition: {x: 0, y: 0, z: -0.006}
   m_LocalScale: {x: 1.43, y: 1.43, z: 1}
   m_Children: []
   m_Father: {fileID: 5466758542422504661}
@@ -669,7 +681,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9a1036ccf7b4c43559afb99b762d45d5, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -689,7 +701,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 11
+  m_SortingOrder: 60
 --- !u!33 &3439503712603999777
 MeshFilter:
   m_ObjectHideFlags: 0

@@ -262,9 +262,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6905598330167155704}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.08800003, y: -0.088, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.83010495, w: 0.5576073}
+  m_LocalPosition: {x: 0.08800001, y: -0.015602902, z: 0}
+  m_LocalScale: {x: 0.9999999, y: 1.0000001, z: 1}
   m_Children: []
   m_Father: {fileID: 6905598331761528903}
   m_RootOrder: 0
@@ -488,6 +488,7 @@ GameObject:
   - component: {fileID: 6905598331761528902}
   - component: {fileID: 863190807}
   - component: {fileID: 6665207326544275294}
+  - component: {fileID: 3656448962514240474}
   m_Layer: 0
   m_Name: RollingRockSmall
   m_TagString: Obstacle
@@ -538,9 +539,9 @@ MonoBehaviour:
   animationName: boulder_roll
   _playTimes: 0
   _timeScale: 1
-  _sortingMode: 0
+  _sortingMode: 1
   _sortingLayerName: Default
-  _sortingOrder: 0
+  _sortingOrder: 5
   _zSpace: 0
   _flipX: 0
   _flipY: 0
@@ -590,7 +591,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c1c487e39fb840e5bfbfd4defbf69f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointsForKill: 100
+  pointsForKill: 50
 --- !u!58 &6665207326544275294
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -607,6 +608,17 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!210 &3656448962514240474
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6905598331761528954}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 5
 --- !u!1001 &6164565256278988081
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -614,6 +626,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6905598331761528903}
     m_Modifications:
+    - target: {fileID: 3453283912299528912, guid: aba45a657ebb844b0a8c2721e5859c35,
+        type: 3}
+      propertyPath: pointsForJump
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 3453283912299528913, guid: aba45a657ebb844b0a8c2721e5859c35,
         type: 3}
       propertyPath: m_RootOrder
