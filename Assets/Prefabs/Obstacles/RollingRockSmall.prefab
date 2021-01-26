@@ -262,9 +262,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6905598330167155704}
-  m_LocalRotation: {x: 0, y: 0, z: 0.383129, w: 0.92369485}
-  m_LocalPosition: {x: 0.08799997, y: 0.101102784, z: 0}
-  m_LocalScale: {x: 0.9999998, y: 1.0000001, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.08800003, y: -0.088, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6905598331761528903}
   m_RootOrder: 0
@@ -590,7 +590,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c1c487e39fb840e5bfbfd4defbf69f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointsForKill: 0
+  pointsForKill: 100
 --- !u!58 &6665207326544275294
 CircleCollider2D:
   m_ObjectHideFlags: 0

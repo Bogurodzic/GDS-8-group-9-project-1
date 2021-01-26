@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3770411041233661316}
   - component: {fileID: 7333505077043136691}
-  - component: {fileID: 1321872620}
   - component: {fileID: 1321872619}
   - component: {fileID: 1321872623}
   - component: {fileID: 1430669912}
+  - component: {fileID: 1875160822}
   m_Layer: 0
   m_Name: Tank_animated
   m_TagString: EnemyTank
@@ -63,31 +63,10 @@ MonoBehaviour:
   _timeScale: 1
   _sortingMode: 0
   _sortingLayerName: Default
-  _sortingOrder: 0
+  _sortingOrder: 5
   _zSpace: 0
   _flipX: 0
   _flipY: 0
---- !u!50 &1321872620
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 35632829892249993}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!61 &1321872619
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -128,9 +107,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 5763233502494652423, guid: 87ac0f753f5e14288baf9d61668668c3,
     type: 3}
-  speed: 1
+  speed: 0
   projectileInterval: 5
   distanceBetweenPlayerBeforeStartShooting: 6
+  pointsForKill: 200
 --- !u!114 &1430669912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,6 +124,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedRatio: 1
+--- !u!50 &1875160822
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 35632829892249993}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &317378374812301664
 GameObject:
   m_ObjectHideFlags: 0
@@ -451,7 +452,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
 --- !u!33 &9189807832878419103
 MeshFilter:
   m_ObjectHideFlags: 0
