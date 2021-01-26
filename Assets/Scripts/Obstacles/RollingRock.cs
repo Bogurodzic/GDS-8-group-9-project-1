@@ -23,9 +23,10 @@ public class RollingRock : Rock
     
     public override void InitDestroyRock()
     {
+        gameObject.tag = "Untagged";
+        _rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
         _destroyInitialised = true;
         _rockAnimation.animation.Play("boulder_destroy_small", 1);
-        _boxCollider2D.enabled = false;
-        _rigidbody2D.bodyType = RigidbodyType2D.Kinematic;    
+  
     }
 }
