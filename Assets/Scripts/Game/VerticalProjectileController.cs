@@ -10,11 +10,7 @@ public class VerticalProjectileController : ProjectileController
     private bool _initProjectileDestroy = false;
     private bool _projectileDestroyAnimationPlayed = false;
     private UnityArmatureComponent _projectileAnimation;
-    void Start()
-    {
-        
-    }
-
+    
     void Update()
     {
         if (ProjectileIsAlive())

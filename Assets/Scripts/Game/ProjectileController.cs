@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class ProjectileController : MonoBehaviour
 {
+    private Rigidbody2D _rigidbody;
     public enum Direction
     {
         Left,
@@ -18,8 +19,12 @@ public class ProjectileController : MonoBehaviour
     
     void Start()
     {
+        LoadComponents();
+    }
 
-
+    private void LoadComponents()
+    {
+        _rigidbody = GetComponent<Rigidbody2D>();
     }
     
     void Update()
@@ -77,6 +82,7 @@ public class ProjectileController : MonoBehaviour
     public virtual void InitDestroyProjectile()
     {
         DestroyProjectile();
+        _rigidbody.bodyType = RigidbodyType2D.Kinematic;
     }
 
     protected void DestroyProjectile()
