@@ -383,7 +383,7 @@ MonoBehaviour:
   _timeScale: 1
   _sortingMode: 0
   _sortingLayerName: Default
-  _sortingOrder: 0
+  _sortingOrder: 5
   _zSpace: 0
   _flipX: 0
   _flipY: 0
@@ -405,7 +405,7 @@ MonoBehaviour:
   maxWaitBeforeBombDrop: 4
   waitBeforeEscape: 16
   _enterDirection: 0
-  enemySpeed: 1.5
+  enemySpeed: 2.5
   enemyEscapingSpeed: 3
 --- !u!61 &6436755457798486787
 BoxCollider2D:
@@ -674,7 +674,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cd9ed5b5b02e7674aa4477b8d9119a23, type: 2}
+  - {fileID: 2100000, guid: 5497f23835c4d4499ad4db193dc46f99, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -694,7 +694,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
 --- !u!33 &5564628508765606267
 MeshFilter:
   m_ObjectHideFlags: 0
