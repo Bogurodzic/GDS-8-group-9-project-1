@@ -1252,7 +1252,7 @@ MonoBehaviour:
   normalizationSpeedDelay: 0.5
   jumpHeight: 35000
   backwardJumpHorizontalForce: -0.25
-  backwardJumpHeightFactor: 0.7
+  backwardJumpHeightFactor: 1
   normalJumpHorizontalForce: 0
   normalJumpHeightFactor: 1.2
   forwardJumpHorizontalForce: 0

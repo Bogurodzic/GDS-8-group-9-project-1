@@ -353,7 +353,7 @@ Canvas:
   m_GameObject: {fileID: 1066445011799413585}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 1
@@ -363,7 +363,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!114 &1066445011799413587
 MonoBehaviour:
@@ -530,7 +530,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -708, y: 285}
+  m_AnchoredPosition: {x: -703, y: 285}
   m_SizeDelta: {x: 500, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1066445011946193517
@@ -771,8 +771,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 705, y: 289}
-  m_SizeDelta: {x: 500, y: 500}
+  m_AnchoredPosition: {x: 645.5001, y: 289}
+  m_SizeDelta: {x: 619, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1066445012319183112
 CanvasRenderer:
@@ -852,7 +852,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5002738651969985288}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 30, y: -177, z: -7.5}
+  m_LocalPosition: {x: 693, y: 761, z: -7.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 533090453}
@@ -874,7 +874,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0109935789a624e43bfd47fbb15d44d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dangerActiveTime: 3
+  dangerActiveTime: 2
   textPrefab: {fileID: 1148656371}
   airPrefab: {fileID: 533090452}
   landPrefab: {fileID: 1569762740}
@@ -1000,12 +1000,12 @@ PrefabInstance:
     - target: {fileID: 6991366187529291803, guid: be272b54eb36c534eacf24d0f56e0dbd,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -960
+      value: -1024
       objectReference: {fileID: 0}
     - target: {fileID: 6991366187529291803, guid: be272b54eb36c534eacf24d0f56e0dbd,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -502
+      value: 510
       objectReference: {fileID: 0}
     - target: {fileID: 6991366187529291803, guid: be272b54eb36c534eacf24d0f56e0dbd,
         type: 3}
