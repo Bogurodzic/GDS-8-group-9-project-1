@@ -524,14 +524,7 @@ public class PlayerController : MonoBehaviour
         
 
     }
-
-
-
-    private void StopGame()
-    {
-        GameManager.Instance.StopGame();
-    }
-
+    
     private bool IsGameRunning()
     {
         return GameManager.Instance.IsGameRunning();

@@ -22,6 +22,7 @@ public class GameManager : GenericSingletonClass<GameManager>
 
     private PlayerSpeed _playerSpeed = PlayerSpeed.Normal;
     private Boolean _gameRunning = false;
+    private Boolean _gameStarted = false;
 
     private bool _playerFallenInHole = false;
     
@@ -88,19 +89,38 @@ public class GameManager : GenericSingletonClass<GameManager>
         _topRecord[stage - 1] = recordScore;
     }
 
-    public void StopGame()
+    public void PauseGame()
     {
         this._gameRunning = false;
     }
 
-    public void StartGame()
+    public void PlayGame()
     {
         _gameRunning = true;
     }
+    
     public Boolean IsGameRunning()
     {
-        return this._gameRunning;
+        return _gameRunning;
     }
+
+    public void StopGame()
+    {
+        _gameStarted = false;
+    }
+    
+    public void StartGame()
+    {
+        _gameStarted = true;
+    }
+
+    public bool IsGameStarted()
+    {
+        return _gameStarted;
+    }
+    
+    
+
 
     public PlayerSpeed GetPlayerSpeed()
     {
@@ -233,7 +253,7 @@ public class GameManager : GenericSingletonClass<GameManager>
     public void RespawnPlayer()
     {
         ResetBombDeployed();
-        StartGame();
+        PlayGame();
         DecreaseLivesAmount();
         ResetLevel();
     }
@@ -261,6 +281,7 @@ public class GameManager : GenericSingletonClass<GameManager>
         ResetLivesAmount();
         ResetTimer();
         SaveData();
+        StopGame();
         GoToMenu();
     }
 
@@ -345,7 +366,7 @@ public class GameManager : GenericSingletonClass<GameManager>
 
     public void PlayerDeath()
     {
-        StopGame();
+        PauseGame();
     }
 
 
