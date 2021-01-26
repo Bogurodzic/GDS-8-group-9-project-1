@@ -57,6 +57,11 @@ public class PlayerController : MonoBehaviour
     private bool _decelerationAnimationPlayed = false;
     private bool _deathAnimationPlayed = false;
 
+
+    private AudioSource _audio;
+    public AudioClip carJumpSound;
+    public AudioClip carExplosionSound;
+    public AudioClip missleSound;
     
     private enum JumpKind
     {
@@ -109,8 +114,9 @@ public class PlayerController : MonoBehaviour
         } else if (IsFinalDeathPositionReached())
         {
             playerRigidBody.freezeRotation = true;
-            
+            PlayExplostionSound();
             Animate();
+            
             if (AnimationReadyToPlay())
             {
                 HandleLogicAfterDeath();
@@ -144,6 +150,7 @@ public class PlayerController : MonoBehaviour
     {
         playerRigidBody = GetComponent<Rigidbody2D>();
         _playerAnimation = GetComponent<UnityArmatureComponent>();
+        _audio = GetComponent<AudioSource>();
     }
 
     private void SetInitialVariables()
@@ -198,6 +205,8 @@ public class PlayerController : MonoBehaviour
             _jumpKind = JumpKind.Forward;
             playerRigidBody.AddForce(new Vector2( forwardJumpHorizontalForce * jumpHeight, forwardJumpHeightFactor * jumpHeight) , ForceMode2D.Force);
         }
+
+        PlayJumpSound();
     }
     
     private void HandleMovement()
@@ -309,6 +318,8 @@ public class PlayerController : MonoBehaviour
     {
         if (ShouldPlayerShootHorizontally())
         {
+            PlayMissleSound();
+            
             CreateHorizontalProjectile();
             ReloadHorizontalShoot();
         }
@@ -735,6 +746,25 @@ public class PlayerController : MonoBehaviour
                 PlayDeathAnimation();
                 break;
         }
+    }
+
+
+    private void PlayMissleSound()
+    {
+        _audio.clip = missleSound;
+        _audio.Play();
+    }
+
+    private void PlayExplostionSound()
+    {
+        _audio.clip = carExplosionSound;
+        _audio.Play();
+    }
+    
+    private void PlayJumpSound()
+    {
+        _audio.clip = carJumpSound;
+        _audio.Play();
     }
     
 }
