@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class ProjectileController : MonoBehaviour
 {
+    public float shootDistanceLimit;
     private Rigidbody2D _rigidbody;
     public enum Direction
     {
@@ -31,7 +32,7 @@ public class ProjectileController : MonoBehaviour
     {
         HandleProjectileTrajectory();
         
-        if (projectileDirection == Direction.Right && transform.position.x > -10.5)
+        if (projectileDirection == Direction.Right && transform.position.x > GameObject.Find("Car").transform.position.x + shootDistanceLimit)
         {
             Destroy(gameObject);
         }
@@ -76,7 +77,6 @@ public class ProjectileController : MonoBehaviour
                 Destroy(collision.gameObject);
             }        
         }
-
     }
     
     public virtual void InitDestroyProjectile()

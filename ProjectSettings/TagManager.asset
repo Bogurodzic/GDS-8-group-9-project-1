@@ -20,6 +20,7 @@ TagManager:
   - CautionPoint
   - JumpPoint
   - Countdown
+  - HorizontalShootLimit
   layers:
   - Default
   - TransparentFX
