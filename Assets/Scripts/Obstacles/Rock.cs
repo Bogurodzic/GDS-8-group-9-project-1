@@ -26,14 +26,19 @@ public class Rock : Obstacle
     {
         if (_destroyInitialised && !_rockDestroyed)
         {
+            Debug.Log("Crystal INIT 2");
+
             if (_rockAnimation.animation.isCompleted)
             {
+                Debug.Log("Crystal INIT 3");
+
                 _rockDestroyed = true;
             }
         } 
         if (_destroyInitialised && _rockDestroyed)
         {
-            _boxCollider2D.enabled = true;
+            Debug.Log("Crystal INIT 4");
+
             Destroy(gameObject);
         }     
     }
@@ -68,5 +73,6 @@ public class Rock : Obstacle
         GameManager.Instance.AddPoints(pointsForKill);
         _destroyInitialised = true;
         _rockAnimation.animation.Play("crystal_death", 1);
+        Debug.Log("Crystal INIT 1");
     }
 }
