@@ -17,12 +17,25 @@ public class StartCountdown : MonoBehaviour
     void Start()
     {
         LoadComponents();
-        BeginCountdown();
+        
+        if (ShouldCountDownStart())
+        {
+            BeginCountdown();
+        }
+        else
+        {
+            TurnOffCountdown();
+        }
     }
 
     void Update()
     {
         
+    }
+
+    private bool ShouldCountDownStart()
+    {
+        return StageManager.Instance.GetCurrentStage() == 1;
     }
 
     private void LoadComponents()
