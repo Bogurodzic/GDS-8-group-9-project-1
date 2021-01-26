@@ -56,6 +56,11 @@ public class GameManager : GenericSingletonClass<GameManager>
         return _timer;
     }
 
+    public void ResetTimer()
+    {
+        _timer = 0;
+    }
+
     public float GetAverageTime(int stage)
     {
         return averageTime[stage - 1];
@@ -246,7 +251,19 @@ public class GameManager : GenericSingletonClass<GameManager>
         ResetCheckPoints();
         SetPlayerFallenInHole(false);
         ReserObstaclesOnMap();
+        ResetBombDeployed();
     }
+    
+    public void ResetGame()
+    {
+        ResetLevel();
+        ResetScore();
+        ResetLivesAmount();
+        ResetTimer();
+        SaveData();
+        GoToMenu();
+    }
+
 
     private void ReserObstaclesOnMap()
     {
@@ -331,15 +348,6 @@ public class GameManager : GenericSingletonClass<GameManager>
         StopGame();
     }
 
-    public void ResetGame()
-    {
-        ResetScore();
-        ResetBombDeployed();
-        ResetLivesAmount();
-        SaveData();
-        StartGame();
-        GoToMenu();
-    }
 
     public void SetProgress(float progress)
     {
