@@ -21,7 +21,7 @@ public class GameManager : GenericSingletonClass<GameManager>
     public float gameSpeed;
 
     private PlayerSpeed _playerSpeed = PlayerSpeed.Normal;
-    private Boolean _gameRunning = true;
+    private Boolean _gameRunning = false;
 
     private bool _playerFallenInHole = false;
     

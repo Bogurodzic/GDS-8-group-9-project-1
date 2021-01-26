@@ -19,6 +19,7 @@ TagManager:
   - Hole
   - CautionPoint
   - JumpPoint
+  - Countdown
   layers:
   - Default
   - TransparentFX
