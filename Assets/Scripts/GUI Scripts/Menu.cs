@@ -6,12 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
-    public void PlayGame()
-    {
-        SceneManager.LoadScene("Scenes/Levels/Level1");
-    }
-
-
+    private AudioSource _audioSource;
+    
     public void Update()
     {
         if (Input.GetKey("escape"))
@@ -19,6 +15,24 @@ public class Menu : MonoBehaviour
             QuitGame();
         }
     }
+
+    public void Start()
+    {
+        LoadComponents();
+    }
+    
+    private void LoadComponents()
+    {
+        _audioSource = GetComponent<AudioSource>();
+    }
+
+    
+    public void PlayGame()
+    {
+        _audioSource.Play();
+        SceneManager.LoadScene("Scenes/Levels/Level1");
+    }
+
 
 
     public void QuitGame()
