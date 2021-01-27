@@ -158,7 +158,6 @@ public class GameManager : GenericSingletonClass<GameManager>
 
     private void HandleBonusLifeForPoints()
     {
-        Debug.Log(":::" + _currentScore + ":::" + pointsRequiredForBonusLive);
         double liveExchangedForPoints = Math.Floor((double) (_currentScore / pointsRequiredForBonusLive));
         
         int livesToAdd = (int) (liveExchangedForPoints - _bonusLivesAcquired);

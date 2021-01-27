@@ -37,7 +37,6 @@ public class ObstacleLoader : MonoBehaviour
         MapGameObjectWithPoints("CheckPoint");
         MapGameObjectWithPoints("StagePoint");
         MapGameObjectWithPoints("CautionPoint");
-       //MapGameObjectWithPoints("JumpPoint");
 
         DestroyAllObjectsWithTag("Obstacle");
         DestroyAllObjectsWithTag("Hole");
@@ -45,7 +44,6 @@ public class ObstacleLoader : MonoBehaviour
         DestroyAllObjectsWithTag("CheckPoint");
         DestroyAllObjectsWithTag("StagePoint");
         DestroyAllObjectsWithTag("CautionPoint");
-        //DestroyAllObjectsWithTag("JumpPoint");
 
         ResetObstaclesOnMap();
     }

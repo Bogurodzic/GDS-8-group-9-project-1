@@ -28,7 +28,6 @@ public class TextDelayAnimation : MonoBehaviour
 
     protected virtual void ExecuteAfterShowTextIsComplete()
     {
-        Debug.Log("EXECUTE DEFAULT");
     }
 
     protected IEnumerator ShowText(TextMeshProUGUI text)

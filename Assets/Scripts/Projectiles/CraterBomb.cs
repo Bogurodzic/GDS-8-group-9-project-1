@@ -45,7 +45,6 @@ public class CraterBomb : Bomb
 
     protected override void AddInitialForceToBomb(BombDirection bombDirection)
     {   
-        Debug.Log("START BOMB CRATER");
         float fixedBombFireForce = bombFireForce;
         if (transform.position.x < -14)
         {

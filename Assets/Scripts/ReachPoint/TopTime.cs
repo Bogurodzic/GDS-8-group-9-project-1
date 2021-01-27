@@ -19,7 +19,6 @@ public class TopTime : TextDelayAnimation
             (int) GameManager.Instance.GetTopRecord(StageManager.Instance.GetCurrentStage()))
         {
             
-            Debug.Log("DDDD=" + (int) GameManager.Instance.GetTimer() + "=DDD=" + (int) GameManager.Instance.GetTopRecord(StageManager.Instance.GetCurrentStage()));
             GameManager.Instance.SetTopRecord(StageManager.Instance.GetCurrentStage(), (int) GameManager.Instance.GetTimer());
             reachPointTextController.SetNewRecord();
         } 

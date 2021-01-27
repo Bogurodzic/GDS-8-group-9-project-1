@@ -28,7 +28,6 @@ public class NextPoint : TextDelayAnimation
 
     protected override void ExecuteAfterShowTextIsComplete()
     {
-        Debug.Log("EXECUTE SHITTT");
         reachPointTextController.AnimateMainText();
     }
 }
