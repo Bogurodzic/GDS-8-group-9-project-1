@@ -2030,7 +2030,7 @@ PrefabInstance:
     - target: {fileID: 9204484326999928625, guid: f1a4b2a083bef49efb827022e2daa0ed,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5
+      value: 275
       objectReference: {fileID: 0}
     - target: {fileID: 9204484326999928625, guid: f1a4b2a083bef49efb827022e2daa0ed,
         type: 3}
@@ -4439,6 +4439,41 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4291821834831987637, guid: b0dcd2e2f4b32d84680c62c39ab95317,
+        type: 3}
+      propertyPath: stagePointImagePrefabs.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4291821834831987637, guid: b0dcd2e2f4b32d84680c62c39ab95317,
+        type: 3}
+      propertyPath: stagePointImagePrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 6882068156159671266, guid: 20dc3c51185594a548334feb8f66a50a,
+        type: 3}
+    - target: {fileID: 4291821834831987637, guid: b0dcd2e2f4b32d84680c62c39ab95317,
+        type: 3}
+      propertyPath: stagePointImagePrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 3282129866991908542, guid: a48859a71b3dc4518a208f79657e430f,
+        type: 3}
+    - target: {fileID: 4291821834831987637, guid: b0dcd2e2f4b32d84680c62c39ab95317,
+        type: 3}
+      propertyPath: stagePointImagePrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 5241005850987115281, guid: 6cc9bb5a67b96453a9b9f513ad6d4885,
+        type: 3}
+    - target: {fileID: 4291821834831987637, guid: b0dcd2e2f4b32d84680c62c39ab95317,
+        type: 3}
+      propertyPath: stagePointImagePrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 3730842395157738775, guid: a0f143279c05443bc84db492555b830e,
+        type: 3}
+    - target: {fileID: 4291821834831987637, guid: b0dcd2e2f4b32d84680c62c39ab95317,
+        type: 3}
+      propertyPath: stagePointImagePrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 8496636093699305324, guid: 6e11fc7f228f04c559ed064b068987b1,
+        type: 3}
     - target: {fileID: 4291821835824652201, guid: b0dcd2e2f4b32d84680c62c39ab95317,
         type: 3}
       propertyPath: m_Camera

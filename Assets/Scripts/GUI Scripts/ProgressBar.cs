@@ -8,7 +8,7 @@ namespace GUI_Scripts
         private Slider _slider;
         private Progress _progress;
         private RectTransform _rectTransform;
-        public GameObject stagePointImagePrefab;
+        public GameObject[] stagePointImagePrefabs;
 
         private void Awake()
         {
@@ -43,7 +43,7 @@ namespace GUI_Scripts
                     float progressBarWidth = progressBarMaxPosition - progressBarMinPosition;
                     float stagePointMarkPosition = progressBarMinPosition + (progressBarWidth * progress);
                     Debug.Log(":::" + progress + ":::" + progressBarMaxPosition + ":::" + progressBarMinPosition + ":::" + progressBarWidth + ":::" + stagePointMarkPosition);
-                    GameObject stagePointImage = Instantiate(stagePointImagePrefab, Vector3.zero, Quaternion.identity);
+                    GameObject stagePointImage = Instantiate(stagePointImagePrefabs[(int)i - 1], Vector3.zero, Quaternion.identity);
                     stagePointImage.transform.SetParent(transform, false);
                     stagePointImage.transform.localScale = new Vector3(1, 1, 1);
                     stagePointImage.transform.position = new Vector3(transform.position.x + stagePointMarkPosition,
