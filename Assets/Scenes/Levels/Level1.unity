@@ -4429,6 +4429,21 @@ PrefabInstance:
       propertyPath: spawnPoints.Array.data[2].progressRequiredToDespawn
       value: 46
       objectReference: {fileID: 0}
+    - target: {fileID: 534206195962960106, guid: b0dcd2e2f4b32d84680c62c39ab95317,
+        type: 3}
+      propertyPath: m_TargetCamera
+      value: 
+      objectReference: {fileID: 329906289}
+    - target: {fileID: 2943886758364091539, guid: b0dcd2e2f4b32d84680c62c39ab95317,
+        type: 3}
+      propertyPath: m_TargetCamera
+      value: 
+      objectReference: {fileID: 329906289}
+    - target: {fileID: 2943886758364091539, guid: b0dcd2e2f4b32d84680c62c39ab95317,
+        type: 3}
+      propertyPath: m_PlaybackSpeed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4291821834494195427, guid: b0dcd2e2f4b32d84680c62c39ab95317,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -4479,6 +4494,11 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 329906289}
+    - target: {fileID: 6610466971036366507, guid: b0dcd2e2f4b32d84680c62c39ab95317,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6638196464062608267, guid: b0dcd2e2f4b32d84680c62c39ab95317,
         type: 3}
       propertyPath: m_RootOrder
@@ -4534,6 +4554,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7627844251954143788, guid: b0dcd2e2f4b32d84680c62c39ab95317,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7627844251954143788, guid: b0dcd2e2f4b32d84680c62c39ab95317,
+        type: 3}
+      propertyPath: m_AspectRatio
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7627844251954143788, guid: b0dcd2e2f4b32d84680c62c39ab95317,
+        type: 3}
+      propertyPath: m_TargetCamera
+      value: 
+      objectReference: {fileID: 329906289}
+    - target: {fileID: 7627844251954143788, guid: b0dcd2e2f4b32d84680c62c39ab95317,
+        type: 3}
+      propertyPath: m_TargetTexture
+      value: 
+      objectReference: {fileID: 8400000, guid: d279c3c72e845be47a840b4ddd273525, type: 2}
     - target: {fileID: 8322847710270633656, guid: b0dcd2e2f4b32d84680c62c39ab95317,
         type: 3}
       propertyPath: m_Name
