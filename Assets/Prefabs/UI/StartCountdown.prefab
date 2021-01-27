@@ -60,16 +60,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8584906, g: 0.044544328, b: 0.044544328, a: 1}
+  m_Color: {r: 1, g: 0.2509804, b: 0.26666668, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: e1bec0ca36bca71479fa7d18042c1bd0, type: 3}
     m_FontSize: 160
-    m_FontStyle: 0
+    m_FontStyle: 2
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 160
@@ -95,7 +95,7 @@ MonoBehaviour:
   phase1Text: 3
   phase2Text: 2
   phase3Text: 1
-  phase4Text: Go
+  phase4Text: Go!
   phaseDelay: 1
 --- !u!82 &3378212869166385711
 AudioSource:
