@@ -26,7 +26,7 @@ public class GameManager : GenericSingletonClass<GameManager>
 
     private bool _playerFallenInHole = false;
     
-    public int pointsRequiredForBonusLive;
+    public int pointsRequiredForBonusLive = 10000;
     private int _bonusLivesAcquired;
     private int _currentScore = 0;
     private int _highScore = 0;
@@ -158,7 +158,9 @@ public class GameManager : GenericSingletonClass<GameManager>
 
     private void HandleBonusLifeForPoints()
     {
+        Debug.Log(":::" + _currentScore + ":::" + pointsRequiredForBonusLive);
         double liveExchangedForPoints = Math.Floor((double) (_currentScore / pointsRequiredForBonusLive));
+        
         int livesToAdd = (int) (liveExchangedForPoints - _bonusLivesAcquired);
         _currentLivesAmount += livesToAdd;
         _bonusLivesAcquired += livesToAdd;
