@@ -114,7 +114,11 @@ public class PlayerController : MonoBehaviour
         } else if (IsFinalDeathPositionReached())
         {
             playerRigidBody.freezeRotation = true;
-            PlayExplostionSound();
+            
+            if (!_audio.isPlaying)
+            {
+                PlayExplostionSound();
+            }
             Animate();
             
             if (AnimationReadyToPlay())
@@ -615,6 +619,7 @@ public class PlayerController : MonoBehaviour
 
     private void HandleLogicAfterDeath()
     {
+        _audio.Stop();
         playerRigidBody.freezeRotation = false;
 
         if (GameManager.Instance.CanRespawnPlayer())

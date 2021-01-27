@@ -12,7 +12,7 @@ public class AudioMenager : MonoBehaviour
 
     public void Start()
     {
-        LoadComponents();
+        GameManager.Instance.StartBackgroundMusic();
         DontDestroyOnLoad(this.gameObject);
     }
 

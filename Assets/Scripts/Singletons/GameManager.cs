@@ -47,6 +47,13 @@ public class GameManager : GenericSingletonClass<GameManager>
         LoadSaveData();
     }
 
+    public void StartBackgroundMusic()
+    {
+        GetComponent<AudioSource>().Stop();
+        GetComponent<AudioSource>().loop = true;
+        GetComponent<AudioSource>().Play();
+    }
+
     public void SetTimer(float timer)
     {
         _timer = timer;
@@ -276,6 +283,7 @@ public class GameManager : GenericSingletonClass<GameManager>
     
     public void ResetGame()
     {
+        
         ResetLevel();
         ResetScore();
         ResetLivesAmount();

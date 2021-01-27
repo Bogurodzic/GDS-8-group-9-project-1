@@ -19,6 +19,12 @@ public class ReachPointBonus : TextDelayAnimation
     {
         LoadComponents();
         fullText = baseBonusPoints + "";
+
+        if (StageManager.Instance.IsCurrentStageLast())
+        {
+            baseBonusPoints = 5000;
+        }
+        
         _currentPoints = baseBonusPoints;
         GameManager.Instance.AddPoints(_currentPoints);
     }

@@ -148,10 +148,7 @@ public class ObstacleLoader : MonoBehaviour
         {
             return obstacleCautionPointPrefab;
         } 
-        /*else if (obstacleMapped.GetGameObjectName() == "JumpPoint")
-        {
-            return jumpPointPrefab;
-        }*/
+
         else
         {
             return crystalSmallPrefab;
