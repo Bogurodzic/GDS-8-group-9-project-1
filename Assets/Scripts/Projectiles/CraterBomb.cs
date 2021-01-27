@@ -81,7 +81,7 @@ public class CraterBomb : Bomb
     {
         Random random = new Random();
         GameObject holePrefab = holePrefabs[random.Next(1, holePrefabs.Length)];
-        Instantiate(holePrefab, new Vector3(transform.position.x, -2.38f, transform.position.z), transform.rotation);
+        Instantiate(holePrefab, new Vector3(transform.position.x, -3.7f, transform.position.z), transform.rotation);
     }
     
     protected virtual void DestroyBomb()

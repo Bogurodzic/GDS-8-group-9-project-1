@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3346731701558333292
 Transform:
   m_ObjectHideFlags: 0
@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3346731701558333293}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.58730006, y: 0.302, z: -0.001}
+  m_LocalPosition: {x: 0, y: 0, z: -0.001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3346731701831699843}
@@ -50,7 +50,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0f61894e8276746b998ad11c0ae618b6, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -70,7 +70,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
 --- !u!33 &3346731701558333295
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 3346731701831699843}
   - component: {fileID: 3346731701831699840}
   - component: {fileID: 3346731701831699842}
+  - component: {fileID: 7573417352705106177}
   m_Layer: 0
   m_Name: StartPoint
   m_TagString: Untagged
@@ -137,7 +138,7 @@ MonoBehaviour:
   _timeScale: 1
   _sortingMode: 0
   _sortingLayerName: Default
-  _sortingOrder: 0
+  _sortingOrder: 2
   _zSpace: 0
   _flipX: 0
   _flipY: 0
@@ -154,6 +155,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedRatio: 1
+--- !u!60 &7573417352705106177
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3346731701831699841}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.5423136, y: 0.22589791}
+      - {x: -0.29584694, y: 0.24805534}
+      - {x: -2.4796, y: 0.23505524}
+      - {x: -0.5877852, y: -0.80901706}
+      - {x: 0.58778536, y: -0.80901694}
+      - {x: 4.9290514, y: -0.51067185}
+      - {x: 3.610776, y: -0.21875513}
+      - {x: 2.9445438, y: -0.1388359}
+      - {x: 2.3925104, y: 0.0069254637}
+      - {x: 1.8966112, y: 0.123663664}
+      - {x: 1.2469044, y: 0.24738222}
 --- !u!1 &3346731702480593211
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,7 +261,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
 --- !u!33 &3346731702480593213
 MeshFilter:
   m_ObjectHideFlags: 0

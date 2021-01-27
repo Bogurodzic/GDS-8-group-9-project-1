@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 3076974065193384412}
   - component: {fileID: 3076974065193384415}
   - component: {fileID: 3076974065193384414}
+  - component: {fileID: 34024245980028506}
   m_Layer: 0
   m_Name: enemy_1
   m_TagString: Enemy
@@ -142,9 +143,9 @@ MonoBehaviour:
   animationName: 
   _playTimes: 0
   _timeScale: 1
-  _sortingMode: 0
+  _sortingMode: 1
   _sortingLayerName: Default
-  _sortingOrder: 0
+  _sortingOrder: 11
   _zSpace: 0
   _flipX: 0
   _flipY: 0
@@ -227,6 +228,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 547a0b912d0eb491d870fa03a6f58a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!210 &34024245980028506
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3076974065193384409}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 11
 --- !u!1 &4207596500636999166
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,7 +388,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 20
 --- !u!33 &5098741703939238106
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -613,7 +625,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
 --- !u!33 &3488331025183527554
 MeshFilter:
   m_ObjectHideFlags: 0

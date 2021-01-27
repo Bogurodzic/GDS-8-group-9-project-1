@@ -96,7 +96,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6299604366391893186
 Transform:
   m_ObjectHideFlags: 0
@@ -105,7 +105,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1629961940581236970}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.003199876, y: 0.18099993, z: -0.002}
+  m_LocalPosition: {x: 0, y: 0, z: -0.002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5380591358285191867}
@@ -129,7 +129,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: db7ad093f887d4116acc87cdcedaa922, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -149,7 +149,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 9
+  m_SortingOrder: 20
 --- !u!33 &8441715463345636054
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -263,8 +263,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3919064357580887192}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0021223293, y: 0.02062792, z: -0.007}
-  m_LocalScale: {x: 0.6242165, y: 0.6242165, z: 1}
+  m_LocalPosition: {x: 0.0049639945, y: 0.017451942, z: -0.007}
+  m_LocalScale: {x: 1.46, y: 1.46, z: 1}
   m_Children: []
   m_Father: {fileID: 5380591358285191867}
   m_RootOrder: 7
@@ -307,7 +307,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 70
 --- !u!33 &2738779407217960725
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -342,8 +342,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4200322318947525677}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.006678259, y: 0.007903631, z: -0.009000001}
-  m_LocalScale: {x: 0.26606598, y: 0.26606598, z: 1}
+  m_LocalPosition: {x: -0.003153113, y: 0.008746295, z: -0.009000001}
+  m_LocalScale: {x: 0.12562191, y: 0.12562191, z: 1}
   m_Children: []
   m_Father: {fileID: 5380591358285191867}
   m_RootOrder: 9
@@ -386,7 +386,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 90
 --- !u!33 &7655080197018743416
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -412,7 +412,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4244781971855284901
 Transform:
   m_ObjectHideFlags: 0
@@ -421,8 +421,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4235355501571874427}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0017618166, y: 0.009196398, z: -0.0050000004}
-  m_LocalScale: {x: 1.1745464, y: 1.1745464, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.0050000004}
+  m_LocalScale: {x: 1.2759801, y: 1.2759801, z: 1}
   m_Children: []
   m_Father: {fileID: 5380591358285191867}
   m_RootOrder: 5
@@ -445,7 +445,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: db7ad093f887d4116acc87cdcedaa922, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -465,7 +465,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 50
 --- !u!33 &6812553971690707832
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -646,6 +646,7 @@ GameObject:
   - component: {fileID: 5999336098429100874}
   - component: {fileID: 5606972481627697497}
   - component: {fileID: 338276716263833102}
+  - component: {fileID: 245029168724673536}
   m_Layer: 0
   m_Name: BombBig
   m_TagString: EnemyProjectile
@@ -699,7 +700,7 @@ MonoBehaviour:
   animationName: bomb_explosion
   _playTimes: 0
   _timeScale: 1
-  _sortingMode: 0
+  _sortingMode: 1
   _sortingLayerName: Default
   _sortingOrder: 11
   _zSpace: 0
@@ -777,6 +778,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.15166664, y: 0.5651157}
   m_EdgeRadius: 0
+--- !u!210 &245029168724673536
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5380591358285191865}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 11
 --- !u!1 &6957159182132453372
 GameObject:
   m_ObjectHideFlags: 0
@@ -803,8 +815,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6957159182132453372}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0008457842, y: 0.0093724895, z: -0.004}
-  m_LocalScale: {x: 0.2225756, y: 0.2225756, z: 1}
+  m_LocalPosition: {x: 0.00018999788, y: 0.006524992, z: -0.004}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 1}
   m_Children: []
   m_Father: {fileID: 5380591358285191867}
   m_RootOrder: 4
@@ -847,7 +859,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 40
 --- !u!33 &3904791578637514424
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -873,7 +885,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6453432275075755869
 Transform:
   m_ObjectHideFlags: 0
@@ -882,8 +894,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7395947968503815725}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.008}
-  m_LocalScale: {x: 1.4440104, y: 1.4440104, z: 1}
+  m_LocalPosition: {x: 0.01176309, y: 0.01670911, z: -0.008}
+  m_LocalScale: {x: 1.2926478, y: 1.2926478, z: 1}
   m_Children: []
   m_Father: {fileID: 5380591358285191867}
   m_RootOrder: 8
@@ -906,7 +918,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: db7ad093f887d4116acc87cdcedaa922, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -926,7 +938,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 11
+  m_SortingOrder: 80
 --- !u!33 &6707575192003018849
 MeshFilter:
   m_ObjectHideFlags: 0
