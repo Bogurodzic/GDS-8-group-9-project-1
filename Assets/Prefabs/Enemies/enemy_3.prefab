@@ -409,7 +409,7 @@ MonoBehaviour:
   enemySpeed: 2.5
   enemyEscapingSpeed: 3
   flyingSound: {fileID: 8300000, guid: 70fba0386601443d2aafc211ea43afe5, type: 3}
-  explostionSound: {fileID: 8300000, guid: 90c40a593cec74c55b3eb95b2e4f50d2, type: 3}
+  explostionSound: {fileID: 8300000, guid: 5be440ce270c7c6448234bf3792498c9, type: 3}
 --- !u!61 &6436755457798486787
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -481,7 +481,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0

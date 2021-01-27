@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 3076974065193384415}
   - component: {fileID: 3076974065193384414}
   - component: {fileID: 4002704889519186267}
+  - component: {fileID: 2572833556788129755}
   m_Layer: 0
   m_Name: enemy_1
   m_TagString: Enemy
@@ -143,9 +144,9 @@ MonoBehaviour:
   animationName: 
   _playTimes: 0
   _timeScale: 1
-  _sortingMode: 0
+  _sortingMode: 1
   _sortingLayerName: Default
-  _sortingOrder: 0
+  _sortingOrder: 5
   _zSpace: 0
   _flipX: 0
   _flipY: 0
@@ -170,7 +171,7 @@ MonoBehaviour:
   enemySpeed: 2.5
   enemyEscapingSpeed: 3
   flyingSound: {fileID: 8300000, guid: 70fba0386601443d2aafc211ea43afe5, type: 3}
-  explostionSound: {fileID: 8300000, guid: 90c40a593cec74c55b3eb95b2e4f50d2, type: 3}
+  explostionSound: {fileID: 8300000, guid: 5be440ce270c7c6448234bf3792498c9, type: 3}
 --- !u!61 &3076974065193384412
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -242,7 +243,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -326,6 +327,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!210 &2572833556788129755
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3076974065193384409}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 5
 --- !u!1 &4207596500636999166
 GameObject:
   m_ObjectHideFlags: 0
@@ -475,7 +487,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 20
 --- !u!33 &5098741703939238106
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -712,7 +724,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
 --- !u!33 &3488331025183527554
 MeshFilter:
   m_ObjectHideFlags: 0
