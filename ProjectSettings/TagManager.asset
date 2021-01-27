@@ -9,6 +9,18 @@ TagManager:
   - Enemy
   - Projectile
   - EnemyProjectile
+  - CheckPoint
+  - StagePoint
+  - Obstacle
+  - DestructableObstacle
+  - EnemyTank
+  - EnemyProjectileExplosive
+  - CraterPlatform
+  - Hole
+  - CautionPoint
+  - JumpPoint
+  - Countdown
+  - HorizontalShootLimit
   layers:
   - Default
   - TransparentFX
