@@ -6,10 +6,11 @@ using UnityEngine;
 public class NextPoint : TextDelayAnimation
 {
     public TextMeshProUGUI nextReachPoint;
+    public string[] nextReachPointText;
     void Start()
     {
         LoadComponents();
-        fullText = "Time to reach point '" + (StageManager.Instance.GetCurrentStage() + 1) + "'";
+        fullText = "Time to reach point '" + (nextReachPointText[StageManager.Instance.GetCurrentStage()]) + "'";
     }
 
     private void LoadComponents()

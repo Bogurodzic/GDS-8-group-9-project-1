@@ -1339,6 +1339,11 @@ MonoBehaviour:
   delay: 0.05
   fullText: 
   nextReachPoint: {fileID: 0}
+  nextReachPointText:
+  - E
+  - J
+  - O
+  - Z
 --- !u!1 &1333950026
 GameObject:
   m_ObjectHideFlags: 0

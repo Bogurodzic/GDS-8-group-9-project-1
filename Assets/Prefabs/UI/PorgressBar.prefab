@@ -421,5 +421,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b7c7277a3173494a99c4fc38ef2f14f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stagePointImagePrefab: {fileID: 6171288729302825068, guid: 41abf440348d8417d867272fb10d4ae7,
-    type: 3}
+  stagePointImagePrefabs:
+  - {fileID: 6882068156159671266, guid: 20dc3c51185594a548334feb8f66a50a, type: 3}
+  - {fileID: 3282129866991908542, guid: a48859a71b3dc4518a208f79657e430f, type: 3}
+  - {fileID: 5241005850987115281, guid: 6cc9bb5a67b96453a9b9f513ad6d4885, type: 3}
+  - {fileID: 3730842395157738775, guid: a0f143279c05443bc84db492555b830e, type: 3}
+  - {fileID: 8496636093699305324, guid: 6e11fc7f228f04c559ed064b068987b1, type: 3}
