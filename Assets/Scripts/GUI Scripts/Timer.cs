@@ -28,7 +28,7 @@ public class Timer : MonoBehaviour
 
     private void UpdateTimerText()
     {
-        timer.text = string.Format("time {0, 3:000}", GameManager.Instance.GetTimer());
+        timer.text = string.Format("{0, 3:000}", GameManager.Instance.GetTimer());
     }
     
 }

@@ -13,6 +13,6 @@ public class Lives : MonoBehaviour
 
     void Update()
     {
-        txt.text = "Lives: " + GameManager.Instance.GetPlayerLives().ToString();
+        txt.text = GameManager.Instance.GetPlayerLives().ToString();
     }
 }

@@ -13,6 +13,6 @@ public class HighScore : MonoBehaviour
 
     void Update()
     {
-        txt.text = "High Score: " + GameManager.Instance.GetHighScore().ToString();
+        txt.text = GameManager.Instance.GetHighScore().ToString();
     }
 }
