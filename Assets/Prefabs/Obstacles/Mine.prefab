@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 5329043527595175833}
   - component: {fileID: 4295857856255963999}
   - component: {fileID: -4736426960057352402}
+  - component: {fileID: 1755185096}
   m_Layer: 0
   m_Name: Mine
   m_TagString: Obstacle
@@ -138,7 +139,7 @@ MonoBehaviour:
   animationName: enemy_mine_light
   _playTimes: 0
   _timeScale: 0.5
-  _sortingMode: 0
+  _sortingMode: 1
   _sortingLayerName: Default
   _sortingOrder: 5
   _zSpace: 0
@@ -164,7 +165,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &4295857856255963999
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -175,7 +176,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.002245903, y: 0.010418998}
@@ -204,6 +205,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedRatio: 1
+--- !u!210 &1755185096
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6098538351820436588}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 5
 --- !u!1 &6533059719171076248
 GameObject:
   m_ObjectHideFlags: 0
@@ -274,7 +286,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 0
 --- !u!33 &6298456833308579036
 MeshFilter:
   m_ObjectHideFlags: 0
