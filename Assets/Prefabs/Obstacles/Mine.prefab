@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1254608174835966626}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.001}
+  m_LocalPosition: {x: 0, y: 0, z: -0.501}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2364677986908426775}
@@ -70,7 +70,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
 --- !u!33 &5331816238947618192
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -89,7 +89,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2364677986908426775}
   - component: {fileID: 9212765777810006826}
-  - component: {fileID: 5329043527595175833}
   - component: {fileID: 4295857856255963999}
   - component: {fileID: -4736426960057352402}
   m_Layer: 0
@@ -141,30 +140,9 @@ MonoBehaviour:
   _sortingMode: 0
   _sortingLayerName: Default
   _sortingOrder: 5
-  _zSpace: 0
+  _zSpace: 0.5
   _flipX: 0
   _flipY: 0
---- !u!50 &5329043527595175833
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6098538351820436588}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!61 &4295857856255963999
 BoxCollider2D:
   m_ObjectHideFlags: 0
