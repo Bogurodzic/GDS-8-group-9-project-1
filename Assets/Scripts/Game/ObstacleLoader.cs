@@ -95,7 +95,6 @@ public class ObstacleLoader : MonoBehaviour
     private GameObject GetObstaclePrefab(ObstacleMapped obstacleMapped)
     {
         
-        Debug.Log("OBSTACLE NAME: " + obstacleMapped.GetGameObjectName());
         if (obstacleMapped.GetGameObjectName() == "CrystalSmall")
         {
             return crystalSmallPrefab;
@@ -104,13 +103,9 @@ public class ObstacleLoader : MonoBehaviour
             return crystalBigPrefab;
         } else if (obstacleMapped.GetGameObjectName() == "Hole1")
         {
-            
-            Debug.Log("HOLE1 PREFAB!!!!!!");
             return hole1Prefab;
         } else if (obstacleMapped.GetGameObjectName() == "Hole2")
         {
-            Debug.Log("HOLE2 PREFAB!!!!!!");
-
             return hole2Prefab;
         } else if (obstacleMapped.GetGameObjectName() == "SmallHole1")
         {

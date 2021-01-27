@@ -42,7 +42,6 @@ namespace GUI_Scripts
                     float progressBarMinPosition = _rectTransform.rect.xMin;
                     float progressBarWidth = progressBarMaxPosition - progressBarMinPosition;
                     float stagePointMarkPosition = progressBarMinPosition + (progressBarWidth * progress);
-                    Debug.Log(":::" + progress + ":::" + progressBarMaxPosition + ":::" + progressBarMinPosition + ":::" + progressBarWidth + ":::" + stagePointMarkPosition);
                     GameObject stagePointImage = Instantiate(stagePointImagePrefabs[(int)i - 1], Vector3.zero, Quaternion.identity);
                     stagePointImage.transform.SetParent(transform, false);
                     stagePointImage.transform.localScale = new Vector3(1, 1, 1);
