@@ -5,6 +5,7 @@ using UnityEngine;
 public class Checkpoint : MonoBehaviour
 {
     protected Progress progress;
+    protected AudioSource _audio;
     protected void Start()
     {
         LoadComponents();
@@ -19,12 +20,13 @@ public class Checkpoint : MonoBehaviour
     protected void LoadComponents()
     {
         progress = GameObject.Find("LandWrapper").GetComponent<Progress>();
+        _audio = GetComponent<AudioSource>();
     }
 
     protected virtual void OnCheckpointPassed()
     {
         UpdateLastCheckpointProgress();
-        Debug.Log("UpdateLastCheckpointPosition: " + GameManager.Instance.GetProgress());
+        _audio.Play();
     }
     
 

@@ -53,19 +53,16 @@ public class StartCountdown : MonoBehaviour
     
     private void CountdownPhase2()
     {
-        _audio.Play();
         _coutdownText.text = phase2Text;
     }
     
     private void CountdownPhase3()
     {
-        _audio.Play();
         _coutdownText.text = phase3Text;
     }
     
     private void CountdownPhase4()
     {
-        _audio.Play();
         _coutdownText.text = phase4Text;
         GameManager.Instance.StartGame();
         GameManager.Instance.PlayGame();
@@ -73,6 +70,7 @@ public class StartCountdown : MonoBehaviour
 
     private void TurnOffCountdown()
     {
+        _audio.Stop();
         Destroy(gameObject);
     }
 
