@@ -452,13 +452,13 @@ PrefabInstance:
     - target: {fileID: 3346731701558333293, guid: fa828dab1ef3342a1add618a1686f740,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3346731701558333294, guid: fa828dab1ef3342a1add618a1686f740,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2100000, guid: 0f61894e8276746b998ad11c0ae618b6, type: 2}
     - target: {fileID: 3346731701558333295, guid: fa828dab1ef3342a1add618a1686f740,
         type: 3}
       propertyPath: m_Mesh
@@ -2167,6 +2167,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3595296827790474492, guid: 07c129628cd8c4af6b8664701a59e4ce,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 3595296827918226773, guid: 07c129628cd8c4af6b8664701a59e4ce,
         type: 3}
       propertyPath: m_RootOrder
@@ -4494,6 +4499,21 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 329906289}
+    - target: {fileID: 4936155793042784563, guid: b0dcd2e2f4b32d84680c62c39ab95317,
+        type: 3}
+      propertyPath: phaseDelay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4936155793042784566, guid: b0dcd2e2f4b32d84680c62c39ab95317,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: d03cc5db662f07148bd346334dbce19b, type: 3}
+    - target: {fileID: 4936155793042784566, guid: b0dcd2e2f4b32d84680c62c39ab95317,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6610466971036366507, guid: b0dcd2e2f4b32d84680c62c39ab95317,
         type: 3}
       propertyPath: m_RootOrder
