@@ -341,9 +341,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1953829797621272199}
-  m_LocalRotation: {x: 0, y: 0, z: -0.89548385, w: -0.4450941}
-  m_LocalPosition: {x: 0.13149992, y: 0.24134728, z: 0}
-  m_LocalScale: {x: 1.0000001, y: 0.9999999, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.13149998, y: 0.0435, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1953829797988016942}
   m_RootOrder: 0
@@ -386,7 +386,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 0
 --- !u!33 &1953829797621272197
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -411,6 +411,7 @@ GameObject:
   - component: {fileID: 837453256}
   - component: {fileID: 3266504614764425370}
   - component: {fileID: 1003872329240355706}
+  - component: {fileID: 4011077643344690457}
   m_Layer: 0
   m_Name: RollingRockBig
   m_TagString: Obstacle
@@ -460,7 +461,7 @@ MonoBehaviour:
   animationName: boulder_roll
   _playTimes: 0
   _timeScale: 1
-  _sortingMode: 0
+  _sortingMode: 1
   _sortingLayerName: Default
   _sortingOrder: 6
   _zSpace: 0
@@ -721,6 +722,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!210 &4011077643344690457
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953829797988016917}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 6
 --- !u!1001 &5206169655811229669
 PrefabInstance:
   m_ObjectHideFlags: 0
