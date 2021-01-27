@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
-    private AudioSource _audioSource;
     
     public void Update()
     {
@@ -18,18 +17,15 @@ public class Menu : MonoBehaviour
 
     public void Start()
     {
-        LoadComponents();
     }
     
     private void LoadComponents()
     {
-        _audioSource = GetComponent<AudioSource>();
     }
 
     
     public void PlayGame()
     {
-        _audioSource.Play();
         SceneManager.LoadScene("Scenes/Levels/Level1");
     }
 

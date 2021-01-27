@@ -9,6 +9,7 @@ public class Checkpoint : MonoBehaviour
     protected void Start()
     {
         LoadComponents();
+        Debug.Log("CHECKPOINT GAME OBJECT NAME: " +gameObject.name);
     }
 
     void Update()
@@ -26,7 +27,11 @@ public class Checkpoint : MonoBehaviour
     protected virtual void OnCheckpointPassed()
     {
         UpdateLastCheckpointProgress();
-        _audio.Play();
+        if (_audio)
+        {
+            _audio.Play();
+
+        }
     }
     
 
