@@ -12,7 +12,8 @@ public class AudioMenager : MonoBehaviour
 
     public void Start()
     {
-        LoadComponents();
+        GameManager.Instance.StartBackgroundMusic();
+        DontDestroyOnLoad(this.gameObject);
     }
 
     private void LoadComponents()
@@ -20,3 +21,4 @@ public class AudioMenager : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
     }
 }
+ 

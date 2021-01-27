@@ -12,6 +12,7 @@ public class Rock : Obstacle
     protected UnityArmatureComponent _rockAnimation;
     protected BoxCollider2D _boxCollider2D;
     protected Rigidbody2D _rigidbody2D;
+    protected AudioSource _audio;
     void Start()
     {
         LoadComponents();
@@ -48,6 +49,7 @@ public class Rock : Obstacle
         _rockAnimation = GetComponent<UnityArmatureComponent>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _boxCollider2D = GetComponent<BoxCollider2D>();
+        _audio = GetComponent<AudioSource>();
     }
     
     void OnTriggerEnter2D(Collider2D collision)
@@ -69,6 +71,7 @@ public class Rock : Obstacle
 
     public virtual void InitDestroyRock()
     {
+        _audio.Play();
         gameObject.tag = "Untagged";
         GameManager.Instance.AddPoints(pointsForKill);
         _destroyInitialised = true;

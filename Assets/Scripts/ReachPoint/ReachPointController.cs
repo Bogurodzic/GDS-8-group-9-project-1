@@ -6,14 +6,21 @@ using UnityEngine.SceneManagement;
 public class ReachPointController : MonoBehaviour
 {
     private ReachPointTextController _reachPointTextController;
+    private AudioSource _audio;
     void Start()
     {
         LoadComponents();
+
+        if (StageManager.Instance.IsCurrentStageLast())
+        {
+            _audio.Play();
+        }
     }
 
     private void LoadComponents()
     {
         _reachPointTextController = GetComponent<ReachPointTextController>();
+        _audio = GetComponent<AudioSource>();
     }
 
     void Update()

@@ -43,6 +43,10 @@ public class Enemy : MonoBehaviour
     private UnityArmatureComponent _enemyAnimation;
 
     private EnemyStatus _enemyStatus = EnemyStatus.Alive;
+
+    private AudioSource _audio;
+    public AudioClip flyingSound;
+    public AudioClip explostionSound;
     
     private enum EscapeDirection
     {
@@ -76,6 +80,7 @@ public class Enemy : MonoBehaviour
         LoadComponents();
         CalculateEnemyAreaBounds();
         _enemyBoxCollider.enabled = false;
+        PlayFlyingSound();
     }
 
     void Update()
@@ -105,6 +110,7 @@ public class Enemy : MonoBehaviour
         _bounds = _enemyAreaBoxCollider.bounds;
         _enemyAnimation = GetComponent<UnityArmatureComponent>();
         _enemyBoxCollider = GetComponent<BoxCollider2D>();
+        _audio = GetComponent<AudioSource>();
     }
     
     private void CalculateEnemyAreaBounds()
@@ -389,6 +395,7 @@ public class Enemy : MonoBehaviour
 
     private void HandleCollisionWithProjectile(Collider2D collision)
     {
+        PlayExplosionSound();
         _enemyBoxCollider.enabled = false;
         _enemyStatus = EnemyStatus.Dying;
         
@@ -442,5 +449,20 @@ public class Enemy : MonoBehaviour
             HandleCollisionWithProjectile(collision);
         }
 
+    }
+
+    private void PlayFlyingSound()
+    {
+        _audio.clip = flyingSound;
+        _audio.loop = true;
+        _audio.Play();
+    }
+    
+    private void PlayExplosionSound()
+    {
+        _audio.Stop();
+        _audio.clip = explostionSound;
+        _audio.loop = false;
+        _audio.Play();
     }
 }
