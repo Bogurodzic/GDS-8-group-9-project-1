@@ -45,9 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   averageTime:
-  - 65
-  - 75
-  - 85
+  - 90
+  - 100
+  - 100
   - 95
   - 99
   gameSpeed: 3
